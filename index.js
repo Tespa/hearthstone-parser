@@ -69,7 +69,7 @@ LogWatcher.prototype.start = function () {
       fileSize = 0;
       sizeDiff = newFileSize;
     }
-    
+
     var buffer = new Buffer(sizeDiff);
     var fileDescriptor = fs.openSync(self.options.logFile, 'r');
     fs.readSync(fileDescriptor, buffer, 0, sizeDiff, fileSize);
@@ -97,6 +97,25 @@ LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
   // Iterate over each line in the buffer.
   buffer.toString().split(this.options.endOfLineChar).forEach(function (line) {
 
+    // Check when the Mulligan begins
+    var beginMulliganRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=GameEntity tag=STEP value=BEGIN_MULLIGAN$/;
+    if(beginMulliganRegex.test(line)){
+      friendlyCount = 30;
+      opposingCount = 30;
+    }
+
+    // Check for players entering play and track their team IDs.
+    var newPlayerRegex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(.*) PlayerName=(.*)$/;
+    if (newPlayerRegex.test(line)) {
+      var parts = newPlayerRegex.exec(line);
+      parserState.players.push({
+        id: parseInt(parts[1]),
+        name: parts[2]
+      });
+      log.gameStart('A game has started.');
+      self.emit('game-start', parserState.players);
+    }
+
     // Check if a card is changing zones.
     var zoneChangeRegex = /^\[Zone\] ZoneChangeList.ProcessChanges\(\) - id=\d* local=.* \[entityName=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] zone from ?(FRIENDLY|OPPOSING)? ?(.*)? -> ?(FRIENDLY|OPPOSING)? ?(.*)?$/
     if (zoneChangeRegex.test(line)) {
@@ -110,7 +129,9 @@ LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
         fromTeam: parts[5],
         fromZone: parts[6],
         toTeam: parts[7],
-        toZone: parts[8]
+        toZone: parts[8],
+        fCount: friendlyCount,
+        oCount: opposingCount
       };
       log.zoneChange('%s moved from %s %s to %s %s.', data.cardName, data.fromTeam, data.fromZone, data.toTeam, data.toZone);
       self.emit('zone-change', data);
@@ -130,41 +151,40 @@ LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
         opposingCount++;
       }
 
-      if(data.fromTeam == 'FRIENDLY' && data.fromZone == 'DECK'){
+      if(data.fromTeam == 'OPPOSING' && data.fromZone == 'DECK'){
         friendlyCount--;
       }
 
-      console.log('Friendly deck: %d', friendlyCount);
-      console.log('Opposing deck: %d', opposingCount);
+      //console.log('Friendly deck: %d', friendlyCount);
+      //console.log('Opposing deck: %d', opposingCount);
 
       // Only zone transitions show both the player ID and the friendly or opposing zone type. By tracking entities going into
       // the "PLAY (Hero)" zone we can then set the player's team to FRIENDLY or OPPOSING. Once both players are associated with
       // a team we can emite the game-start event.
-      if (data.toZone == 'PLAY (Hero)') {
-        console.log("Players: ", parserState.players);
-        parserState.players.forEach(function (player) {
-          if (player.id == data.playerId) {
-            player.team = data.toTeam;
-            parserState.playerCount++;
-            if (parserState.playerCount == 2) {
-              console.log('A game has started.');
-              log.gameStart('A game has started.');
-              self.emit('game-start', parserState.players);
-            }
-          }
-        });
-      }
+      // if (data.toZone == 'PLAY (Hero)') {
+      //   console.log("Players: ", parserState.players);
+      //   parserState.players.forEach(function (player) {
+      //     if (player.id == data.playerId) {
+      //       player.team = data.toTeam;
+      //       parserState.playerCount++;
+      //       if (parserState.playerCount == 2) {
+      //         console.log('A game has started.');
+      //         log.gameStart('A game has started.');
+      //         self.emit('game-start', parserState.players);
+      //       }
+      //     }
+      //   });
+      // }
     }
 
-    // Check for players entering play and track their team IDs.
-    var newPlayerRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYER_ID value=(.)$/;
-    if (newPlayerRegex.test(line)) {
-      var parts = newPlayerRegex.exec(line);
-      parserState.players.push({
-        name: parts[1],
-        id: parseInt(parts[2])
-      });
-    }
+
+    // // Check when both mulligans are complete
+    // var gameReadyRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY$/;
+    // if(gameReadyRegex.test(line)) {
+    //   friendlyCount = 30;
+    //   opposingCount = 30;
+    // }
+
 
     // Check if the game is over.
     var gameOverRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)$/;

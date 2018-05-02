@@ -14,6 +14,8 @@ hlw.on('game-start', function (players) {
 
 hlw.on('zone-change', function (data){
   console.log('%s has moved to %s %s.', data.cardName, data.toTeam, data.toZone);
+  console.log('Deck 1: %d', data.fCount);
+  console.log('Deck 2: %d', data.oCount)
 });
 
 hlw.on('game-over', function (players){
