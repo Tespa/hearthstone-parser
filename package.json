@@ -34,7 +34,8 @@
     "fastbuild": "trash dist && tsc -p tsconfig.json",
     "static": "tslint -c tslint.json 'src/**/*.ts'",
     "pretest": "npm run static",
-    "test": "mocha -r ts-node/register test/**.spec.ts"
+    "test": "mocha -r ts-node/register test/**.spec.ts",
+    "fasttest": "mocha -r ts-node/register test/**.spec.ts"
   },
   "keywords": [
     "hearthstone",
