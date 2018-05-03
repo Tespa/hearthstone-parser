@@ -16,17 +16,11 @@ export class TurnLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState) {
 		const data = formatParts(parts);
 		const player = gameState.getPlayerByName(data.playerName);
-		if (player) {
-			player.turn = data.turn;
+		if (!player) {
 			return;
 		}
 
-		gameState.addPlayer({
-			id: 0,
-			name: data.playerName,
-			status: 'unknown',
-			turn: data.turn
-		});
+		player.turn = data.turn;
 	}
 
 	formatLogMessage(parts: string[], _gameState: GameState) {
