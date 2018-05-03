@@ -1,6 +1,7 @@
 'use strict';
 
-// Natice
+// Native
+const fs = require('fs');
 const path = require('path');
 
 // Packages
@@ -42,6 +43,22 @@ describe('hearthstone-log-watcher', () => {
 
 			logWatcher.start();
 			logWatcher.stop();
+		});
+	});
+
+	describe('parsing', () => {
+		beforeEach(() => {
+			this.logWatcher = new LogWatcher({
+				logFile: logFileFixture,
+				configFile: configFileFixture
+			});
+		});
+
+		it('should correctly parse player deck sizes', () => {
+			const logBuffer = fs.readFileSync(logFileFixture);
+			const parserState = this.logWatcher.parseBuffer(logBuffer);
+			parserState.friendlyCount.should.equal(23);
+			parserState.opposingCount.should.equal(30);
 		});
 	});
 });
