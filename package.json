@@ -31,6 +31,7 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "trash dist && tsc -p tsconfig.json",
+    "fastbuild": "trash dist && tsc -p tsconfig.json",
     "static": "tslint -c tslint.json 'src/**/*.ts'",
     "pretest": "npm run static",
     "test": "mocha -r ts-node/register test/**.spec.ts"
