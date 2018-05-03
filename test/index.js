@@ -50,7 +50,8 @@ describe('hearthstone-log-watcher', () => {
 		beforeEach(() => {
 			this.logWatcher = new LogWatcher({
 				logFile: logFileFixture,
-				configFile: configFileFixture
+				configFile: configFileFixture,
+				endOfLineChar: '\r\n'
 			});
 		});
 
