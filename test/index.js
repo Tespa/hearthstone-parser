@@ -10,7 +10,7 @@ require('chai').should();
 // Ours
 const LogWatcher = require('../index');
 
-const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
+const logFileFixture = path.join(__dirname, '/artifacts/logan_log.txt');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
 describe('hearthstone-log-watcher', () => {
@@ -58,8 +58,8 @@ describe('hearthstone-log-watcher', () => {
 		it('should correctly parse player deck sizes', () => {
 			const logBuffer = fs.readFileSync(logFileFixture);
 			const parserState = this.logWatcher.parseBuffer(logBuffer);
-			parserState.friendlyCount.should.equal(23);
-			parserState.opposingCount.should.equal(30);
+			parserState.friendlyCount.should.equal(11);
+			parserState.opposingCount.should.equal(11);
 		});
 	});
 });
