@@ -1,6 +1,6 @@
 /// <reference types="node" />
-import * as EventEmitter from 'events';
 import * as fs from 'fs';
+import { EventEmitter2 } from 'eventemitter2';
 import { GameState } from './GameState';
 export interface IOptions {
     logFile: string;
@@ -9,7 +9,7 @@ export interface IOptions {
 export interface ILogWatcher {
     update(filePath: string, stats: fs.Stats): void;
 }
-export declare class LogWatcher extends EventEmitter implements ILogWatcher {
+export declare class LogWatcher extends EventEmitter2 implements ILogWatcher {
     options: IOptions;
     gameState: GameState;
     update(_filePath: string, _stats: fs.Stats): void;

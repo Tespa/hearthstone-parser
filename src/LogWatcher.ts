@@ -1,16 +1,16 @@
 // Native
-import * as EventEmitter from 'events';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
 // Packages
-import {FSWatcher} from 'chokidar';
+import * as debug from 'debug';
+import {EventEmitter2} from 'eventemitter2';
+import * as extend from 'extend';
 import chokidar = require('chokidar');
 import debounce = require('lodash.debounce');
-import * as debug from 'debug';
-import * as extend from 'extend';
 import splitLines = require('split-lines');
+import {FSWatcher} from 'chokidar';
 
 // Ours
 import {GameState} from './GameState';
@@ -49,7 +49,7 @@ export interface ILogWatcher {
 }
 
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-export class LogWatcher extends EventEmitter implements ILogWatcher {
+export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 	options: IOptions;
 	gameState: GameState;
 

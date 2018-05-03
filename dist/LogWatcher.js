@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // Native
-const EventEmitter = require("events");
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
+// Packages
+const debug = require("debug");
+const eventemitter2_1 = require("eventemitter2");
+const extend = require("extend");
 const chokidar = require("chokidar");
 const debounce = require("lodash.debounce");
-const debug = require("debug");
-const extend = require("extend");
 const splitLines = require("split-lines");
 // Ours
 const GameState_1 = require("./GameState");
@@ -35,7 +36,7 @@ else {
     }
 }
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-class LogWatcher extends EventEmitter {
+class LogWatcher extends eventemitter2_1.EventEmitter2 {
     constructor(options) {
         super();
         this._lastFileSize = 0;

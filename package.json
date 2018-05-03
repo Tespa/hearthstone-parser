@@ -6,6 +6,7 @@
   "dependencies": {
     "chokidar": "^2.0.3",
     "debug": "^3.1.0",
+    "eventemitter2": "^5.0.1",
     "extend": "^3.0.1",
     "lodash.debounce": "^4.0.8",
     "require-all": "^2.2.0",

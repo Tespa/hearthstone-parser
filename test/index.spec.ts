@@ -15,6 +15,10 @@ should(); // Initialize chai's "should" interface.
 const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
+interface IEventCounters {
+	[key: string]: number;
+}
+
 describe('hearthstone-log-watcher', () => {
 	describe('constructor', () => {
 		// Skipped for now because we throw errors if the paths don't exist.
@@ -69,6 +73,26 @@ describe('hearthstone-log-watcher', () => {
 				gameOverCount: 0,
 				friendlyCount: 11,
 				opposingCount: 11
+			});
+		});
+
+		it('should emit the expected number of events', function () {
+			const logBuffer = fs.readFileSync(logFileFixture);
+			const eventCounters = {} as IEventCounters;
+			this.logWatcher.onAny((event: string) => {
+				if (!(event in eventCounters)) {
+					eventCounters[event] = 0;
+				}
+
+				eventCounters[event]++;
+			});
+			this.logWatcher.parseBuffer(logBuffer);
+
+			eventCounters.should.deep.equal({
+				'player-joined': 4,
+				'game-start': 2,
+				'zone-change': 236,
+				'turn-change': 36
 			});
 		});
 	});
