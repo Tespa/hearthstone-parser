@@ -21,6 +21,11 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 
 	lineMatched(parts: string[], gameState: GameState) {
 		const data = formatParts(parts);
+
+		if (data.toZone === data.fromZone) {
+			return;
+		}
+
 		if (data.toTeam === 'FRIENDLY' && data.toZone === 'DECK') {
 			// If entering the deck, increment deck count
 			gameState.friendlyCount++;
