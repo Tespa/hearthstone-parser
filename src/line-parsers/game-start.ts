@@ -6,8 +6,8 @@ export class GameStartLineParser extends AbstractLineParser {
 	regex = /\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*CREATE_GAME/;
 	eventName = 'game-start';
 
-	lineMatched(_parts: string[], gameState: GameState) {
-		gameState.reset();
+	lineMatched(_parts: string[], _gameState: GameState) {
+		return;
 	}
 
 	formatLogMessage(_parts: string[], _gameState: GameState) {

@@ -14,6 +14,9 @@ export class GameOverLineParser extends AbstractLineParser {
 		}
 
 		gameState.gameOverCount++;
+		if (gameState.gameOverCount === 2) {
+			gameState.reset();
+		}
 	}
 
 	formatLogMessage(_parts: string[], gameState: GameState) {
