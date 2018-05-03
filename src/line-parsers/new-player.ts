@@ -7,10 +7,11 @@ export class NewPlayerLineParser extends AbstractLineParser {
 	eventName = 'player-joined';
 
 	lineMatched(parts: string[], gameState: GameState) {
-		gameState.players.push({
+		gameState.addPlayer({
 			id: parseInt(parts[1], 10),
 			name: parts[2],
-			status: ''
+			status: '',
+			turn: false
 		});
 	}
 

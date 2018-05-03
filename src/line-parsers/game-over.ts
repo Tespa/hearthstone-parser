@@ -8,11 +8,10 @@ export class GameOverLineParser extends AbstractLineParser {
 
 	lineMatched(parts: string[], gameState: GameState) {
 		// Set the status for the appropriate player.
-		gameState.players.forEach(player => {
-			if (player.name === parts[0]) {
-				player.status = parts[1];
-			}
-		});
+		const player = gameState.getPlayerByName(parts[0]);
+		if (player) {
+			player.status = parts[1];
+		}
 
 		gameState.gameOverCount++;
 	}
