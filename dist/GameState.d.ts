@@ -13,7 +13,7 @@ export declare class GameState {
     constructor();
     reset(): void;
     addPlayer(player: Player): Player;
-    getPlayerByIndex(index: number): Player;
-    getPlayerByPosition(position: 'top' | 'bottom'): Player;
+    getPlayerById(index: number): Player | undefined;
+    getPlayerByPosition(position: 'top' | 'bottom'): Player | undefined;
     getPlayerByName(name: string): Player | undefined;
 }

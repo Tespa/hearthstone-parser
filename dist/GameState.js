@@ -15,19 +15,11 @@ class GameState {
         this.players.push(player);
         return player;
     }
-    getPlayerByIndex(index) {
-        if (!this.players[index]) {
-            this.players[index] = {
-                id: 0,
-                name: `Player ${index}`,
-                status: 'unknown',
-                turn: false
-            };
-        }
-        return this.players[index];
+    getPlayerById(index) {
+        return this.players.find(player => player.id === index);
     }
     getPlayerByPosition(position) {
-        return this.getPlayerByIndex(position === 'top' ? 1 : 0);
+        return this.getPlayerById(position === 'top' ? 1 : 2);
     }
     getPlayerByName(name) {
         return this.players.find(player => player.name === name);

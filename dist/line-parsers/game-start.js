@@ -8,8 +8,8 @@ class GameStartLineParser extends AbstractLineParser_1.AbstractLineParser {
         this.regex = /\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*CREATE_GAME/;
         this.eventName = 'game-start';
     }
-    lineMatched(_parts, gameState) {
-        gameState.reset();
+    lineMatched(_parts, _gameState) {
+        return;
     }
     formatLogMessage(_parts, _gameState) {
         return 'A new game has started.';

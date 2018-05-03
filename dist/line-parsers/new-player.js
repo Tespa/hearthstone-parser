@@ -5,7 +5,7 @@ const AbstractLineParser_1 = require("./AbstractLineParser");
 class NewPlayerLineParser extends AbstractLineParser_1.AbstractLineParser {
     constructor() {
         super(...arguments);
-        this.regex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(.*) PlayerName=(.*)$/;
+        this.regex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(\d), PlayerName=(.*)$/;
         this.eventName = 'player-joined';
     }
     lineMatched(parts, gameState) {
@@ -17,7 +17,7 @@ class NewPlayerLineParser extends AbstractLineParser_1.AbstractLineParser {
         });
     }
     formatLogMessage(parts, _gameState) {
-        return `Player "${parts[2]}" has joined.`;
+        return `Player "${parts[2]}" has joined (ID: ${parseInt(parts[1], 10)}).`;
     }
     shouldEmit(_gameState) {
         return true;
