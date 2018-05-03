@@ -10,7 +10,7 @@ function formatParts(parts: string[]) {
 
 // Check if the current turn has changed.
 export class TurnLineParser extends AbstractLineParser {
-	regex = /^\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
+	regex = /^\[Power\] GameState\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
 	eventName = 'turn-change';
 
 	lineMatched(parts: string[], gameState: GameState) {
