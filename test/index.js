@@ -10,7 +10,7 @@ require('chai').should();
 // Ours
 const LogWatcher = require('../index');
 
-const logFileFixture = path.join(__dirname, '/artifacts/logan_log.txt');
+const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
 describe('hearthstone-log-watcher', () => {
