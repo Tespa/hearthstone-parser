@@ -3,11 +3,11 @@ import {GameState} from '../GameState';
 
 // Check if a new game has started.
 export class GameStartLineParser extends AbstractLineParser {
-	regex = /\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*CREATE_GAME/;
+	regex = /\[Power\] GameState\.DebugPrintPower\(\) -\s*CREATE_GAME/;
 	eventName = 'game-start';
 
-	lineMatched(_parts: string[], _gameState: GameState) {
-		return;
+	lineMatched(_parts: string[], gameState: GameState) {
+		gameState.reset();
 	}
 
 	formatLogMessage(_parts: string[], _gameState: GameState) {

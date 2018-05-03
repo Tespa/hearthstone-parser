@@ -70,7 +70,7 @@ describe('hearthstone-log-watcher', () => {
 					{id: 2, name: 'Baquio#1418', status: '', turn: true}
 				],
 				playerCount: 0,
-				gameOverCount: 0,
+				gameOverCount: 2,
 				friendlyCount: 11,
 				opposingCount: 11
 			});
@@ -89,9 +89,10 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
-				'player-joined': 4,
+				'game-over': 2,
 				'game-start': 2,
-				'zone-change': 236,
+				'player-joined': 4,
+				'zone-change': 237,
 				'turn-change': 36
 			});
 		});
