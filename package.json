@@ -4,15 +4,15 @@
   "description": "This simple module monitors the Hearthstone log file and emits events based on important events from the log.",
   "main": "index.js",
   "dependencies": {
-    "debug": "^2.6.9",
+    "debug": "^3.1.0",
     "extend": "^3.0.1",
     "require-all": "^2.2.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-xo": "^0.22.0",
-    "mocha": "^2.5.3"
+    "mocha": "^5.1.1"
   },
   "scripts": {
     "static": "eslint .",
