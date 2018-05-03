@@ -1,4 +1,4 @@
-# Hearthstone Log Watcher
+# Hearthstone Log Watcher [![CircleCI](https://circleci.com/bb/tespa/hearthstone-parser/tree/master.svg?style=svg&circle-token=40d258248800226671fc3ad40665d70bce221485)](https://circleci.com/bb/tespa/hearthstone-parser/tree/master)
 
 This module is simple. It takes care of the low-level monitoring of the Hearthstone log file and emits events based on what happens in the log file. Use this module if you want to build your own Hearthstone deck tracker and don't want to do the work of parsing through the nasty log file yourself.
 
