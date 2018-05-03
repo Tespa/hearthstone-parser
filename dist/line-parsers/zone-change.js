@@ -10,7 +10,7 @@ function formatParts(parts) {
         fromTeam: parts[5],
         fromZone: parts[6],
         toTeam: parts[7],
-        toZone: parts[8],
+        toZone: parts[8]
     };
 }
 // Check if a card is changing zones.

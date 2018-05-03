@@ -14,16 +14,10 @@ const splitLines = require("split-lines");
 const GameState_1 = require("./GameState");
 const line_parsers_1 = require("./line-parsers");
 const defaultOptions = {};
-// Define some debug logging functions for easy and readable debug messages.
-const log = {
-    main: debug('hlw'),
-    gameStart: debug('hlw:game-start'),
-    zoneChange: debug('hlw:zone-change'),
-    gameOver: debug('hlw:game-over')
-};
+const log = debug('hlw');
 // Determine the default location of the config and log files.
 if (/^win/.test(os.platform())) {
-    log.main('Windows platform detected.');
+    log('Windows platform detected.');
     let programFiles = 'Program Files';
     if (/64/.test(os.arch())) {
         programFiles += ' (x86)';
@@ -34,7 +28,7 @@ if (/^win/.test(os.platform())) {
     }
 }
 else {
-    log.main('OS X platform detected.');
+    log('OS X platform detected.');
     if (process.env.HOME) {
         defaultOptions.logFile = path.join(process.env.HOME, 'Library', 'Logs', 'Unity', 'Player.log');
         defaultOptions.configFile = path.join(process.env.HOME, 'Library', 'Preferences', 'Blizzard', 'Hearthstone', 'log.config');
@@ -51,8 +45,8 @@ class LogWatcher extends EventEmitter {
         this.update = debounce((filePath, stats) => {
             this._update(filePath, stats);
         }, 100);
-        log.main('config file path: %s', this.options.configFile);
-        log.main('log file path: %s', this.options.logFile);
+        log('config file path: %s', this.options.configFile);
+        log('log file path: %s', this.options.logFile);
         if (!fs.existsSync(path.parse(this.options.configFile).dir)) {
             throw new Error('Config file path does not exist.');
         }
@@ -63,13 +57,13 @@ class LogWatcher extends EventEmitter {
         // We're just gonna do this every time.
         const localConfigFile = path.join(__dirname, '../log.config');
         fs.createReadStream(localConfigFile).pipe(fs.createWriteStream(this.options.configFile));
-        log.main('Copied log.config file to force Hearthstone to write to its log file.');
+        log('Copied log.config file to force Hearthstone to write to its log file.');
     }
     // tslint:disable-next-line:no-empty
     update(_filePath, _stats) { }
     start() {
         this.gameState.reset();
-        log.main('Log watcher started.');
+        log('Log watcher started.');
         // Begin watching the Hearthstone log file.
         const watcher = chokidar.watch(this.options.logFile, {
             persistent: true,
