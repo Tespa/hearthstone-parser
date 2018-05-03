@@ -1,1 +1,20 @@
-node_modules/
+node_modules
+bower_components
+
+coverage
+.nyc_output
+/cache
+
+!.empty_directory
+
+# JetBrains IDEs (IntelliJ/WebStorm)
+/.idea/compiler.xml
+/.idea/encodings.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/workspace.xml
+/.idea/shelf/
+/.idea/codeStyles/codeStyleConfig.xml
+
+npm-debug.log
+
+/desktop.ini

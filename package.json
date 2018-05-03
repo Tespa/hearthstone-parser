@@ -6,14 +6,17 @@
   "dependencies": {
     "debug": "^2.6.9",
     "extend": "^3.0.1",
-    "os": "^0.1.1",
-    "test": "^0.6.0"
+    "os": "^0.1.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^4.19.1",
+    "eslint-config-xo": "^0.22.0",
     "mocha": "^2.5.3"
   },
   "scripts": {
+    "static": "eslint .",
+    "pretest": "npm run static",
     "test": "mocha"
   },
   "keywords": [

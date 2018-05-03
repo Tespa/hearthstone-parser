@@ -1,45 +1,47 @@
-var should = require('chai').should();
-var LogWatcher = require('../index');
-var os = require('os');
+'use strict';
 
-describe('hearthstone-log-watcher', function () {
-  describe('constructor', function () {
+// Natice
+const path = require('path');
 
-    it('should configure default options when none are passed in.', function () {
-      var logWatcher = new LogWatcher();
-      logWatcher.should.have.property('options');
-      logWatcher.options.should.have.property('logFile');
-      logWatcher.options.should.have.property('configFile');
-    });
+// Packages
+require('chai').should();
 
-    it('should override the options with passed in values.', function () {
-      var logFile = __dirname + '/artifacts/dummy.log';
-      var configFile = __dirname + '/artifacts/dummy.config';
-      var logWatcher = new LogWatcher({
-        logFile: logFile,
-        configFile: configFile
-      });
-      logWatcher.should.have.property('options');
-      logWatcher.options.should.have.property('logFile', logFile);
-      logWatcher.options.should.have.property('configFile', configFile);
-    });
+// Ours
+const LogWatcher = require('../index');
 
-  });
+const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
+const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
-  describe('instance', function () {
+describe('hearthstone-log-watcher', () => {
+	describe('constructor', () => {
+		it('should configure default options when none are passed in.', () => {
+			const logWatcher = new LogWatcher();
+			logWatcher.should.have.property('options');
+			logWatcher.options.should.have.property('logFile');
+			logWatcher.options.should.have.property('configFile');
+		});
 
-    it ('should allow the watcher to be started and stopped.', function () {
-      var logWatcher = new LogWatcher();
-      logWatcher.should.have.property('start').which.is.a('function');
-      logWatcher.should.have.property('stop').which.is.a('function');
-      logWatcher.should.not.have.ownProperty('stop');
-      logWatcher.start();
-      logWatcher.should.have.ownProperty('stop')
-      logWatcher.stop.should.be.a('function');
-      logWatcher.stop();
-      logWatcher.should.have.property('stop').and.be.a('function');
-      logWatcher.should.not.have.ownProperty('stop');
-    });
+		it('should override the options with passed in values.', () => {
+			const logWatcher = new LogWatcher({
+				logFile: logFileFixture,
+				configFile: configFileFixture
+			});
 
-  });
+			logWatcher.should.have.property('options');
+			logWatcher.options.should.have.property('logFile', logFileFixture);
+			logWatcher.options.should.have.property('configFile', configFileFixture);
+		});
+	});
+
+	describe('instance', () => {
+		it('should allow the watcher to be started and stopped.', () => {
+			const logWatcher = new LogWatcher({
+				logFile: logFileFixture,
+				configFile: configFileFixture
+			});
+
+			logWatcher.start();
+			logWatcher.stop();
+		});
+	});
 });
