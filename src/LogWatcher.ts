@@ -1,23 +1,27 @@
-'use strict';
-
 // Native
-const EventEmitter = require('events');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+import * as EventEmitter from 'events';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 
 // Packages
-const chokidar = require('chokidar');
-const debounce = require('lodash.debounce');
-const debug = require('debug');
-const extend = require('extend');
-const splitLines = require('split-lines');
+import {FSWatcher} from 'chokidar';
+import chokidar = require('chokidar');
+import debounce = require('lodash.debounce');
+import * as debug from 'debug';
+import * as extend from 'extend';
+import splitLines = require('split-lines');
 
 // Ours
-const ParserState = require('./ParserState');
-const lineParsers = require('./line-parsers');
+import {GameState} from './GameState';
+import {lineParsers} from './line-parsers';
 
-const defaultOptions = {};
+export interface IOptions {
+	logFile: string;
+	configFile: string;
+}
+
+const defaultOptions = {} as IOptions;
 
 // Define some debug logging functions for easy and readable debug messages.
 const log = {
@@ -35,20 +39,31 @@ if (/^win/.test(os.platform())) {
 		programFiles += ' (x86)';
 	}
 	defaultOptions.logFile = path.join('C:', programFiles, 'Hearthstone', 'Hearthstone_Data', 'output_log.txt');
-	defaultOptions.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
+
+	if (process.env.LOCALAPPDATA) {
+		defaultOptions.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
+	}
 } else {
 	log.main('OS X platform detected.');
-	defaultOptions.logFile = path.join(process.env.HOME, 'Library', 'Logs', 'Unity', 'Player.log');
-	defaultOptions.configFile = path.join(process.env.HOME, 'Library', 'Preferences', 'Blizzard', 'Hearthstone', 'log.config');
+	if (process.env.HOME) {
+		defaultOptions.logFile = path.join(process.env.HOME, 'Library', 'Logs', 'Unity', 'Player.log');
+		defaultOptions.configFile = path.join(process.env.HOME, 'Library', 'Preferences', 'Blizzard', 'Hearthstone', 'log.config');
+	}
 }
 
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-class LogWatcher extends EventEmitter {
-	constructor(options) {
+export class LogWatcher extends EventEmitter {
+	options: IOptions;
+	gameState: GameState;
+
+	private _lastFileSize = 0;
+	private _watcher: FSWatcher | null;
+
+	constructor(options?: IOptions) {
 		super();
 
 		this.options = extend({}, defaultOptions, options);
-		this.parserState = new ParserState();
+		this.gameState = new GameState();
 		this._lastFileSize = 0;
 		this.update = debounce(this.update, 100);
 
@@ -71,7 +86,7 @@ class LogWatcher extends EventEmitter {
 	}
 
 	start() {
-		this.parserState.reset();
+		this.gameState.reset();
 		log.main('Log watcher started.');
 
 		// Begin watching the Hearthstone log file.
@@ -81,18 +96,18 @@ class LogWatcher extends EventEmitter {
 			usePolling: true
 		});
 
-		watcher.on('add', (path, stats) => {
-			this.update(path, stats);
+		watcher.on('add', (filePath, stats) => {
+			this.update(filePath, stats);
 		});
 
-		watcher.on('change', (path, stats) => {
-			this.update(path, stats);
+		watcher.on('change', (filePath, stats) => {
+			this.update(filePath, stats);
 		});
 
 		this._watcher = watcher;
 	}
 
-	update(path, stats) {
+	update(filePath: string, stats: fs.Stats) {
 		// We're only going to read the portion of the file that we have not read so far.
 		const newFileSize = stats.size;
 		let sizeDiff = newFileSize - this._lastFileSize;
@@ -101,45 +116,56 @@ class LogWatcher extends EventEmitter {
 		}
 
 		const buffer = Buffer.alloc(sizeDiff);
-		const fileDescriptor = fs.openSync(path, 'r');
+		const fileDescriptor = fs.openSync(filePath, 'r');
 		fs.readSync(fileDescriptor, buffer, 0, sizeDiff, this._lastFileSize);
 		fs.closeSync(fileDescriptor);
 		this._lastFileSize = newFileSize;
 
-		this.parseBuffer(buffer, this.parserState);
+		this.parseBuffer(buffer, this.gameState);
 	}
 
 	stop() {
-		if (this._watcher) {
-			this._watcher.close();
-			this._watcher = null;
-			this._lastFileSize = 0;
+		if (!this._watcher) {
+			return;
 		}
+
+		this._watcher.close();
+		this._watcher = null;
+		this._lastFileSize = 0;
 	}
 
-	parseBuffer(buffer, parserState) {
-		if (!parserState) {
-			parserState = new ParserState();
+	parseBuffer(buffer: Buffer, gameState: GameState) {
+		if (!gameState) {
+			// tslint:disable-next-line:no-parameter-reassignment
+			gameState = new GameState();
 		}
 
 		// Iterate over each line in the buffer.
 		splitLines(buffer.toString()).forEach(line => {
 			// Run each line through our entire array of line parsers.
-			lineParsers.forEach(lineParser => {
-				lineParser(line, parserState, this, log);
-			});
+			for (const lineParser of lineParsers) {
+				const parts = lineParser.parseLine(line);
+				if (!parts || parts.length <= 0) {
+					continue;
+				}
 
-			// // Check when both mulligans are complete
-			// var gameReadyRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY$/;
-			// if(gameReadyRegex.test(line)) {
-			//   friendlyCount = 30;
-			//   opposingCount = 30;
-			// }
+				lineParser.lineMatched(parts, gameState);
+
+				const logMessage = lineParser.formatLogMessage(parts, gameState);
+				if (logMessage) {
+					lineParser.logger(logMessage);
+				}
+
+				const shouldEmit = lineParser.shouldEmit(gameState);
+				if (shouldEmit) {
+					this.emit(lineParser.eventName);
+				}
+
+				// Stop after the first match we get.
+				break;
+			}
 		});
 
-		return parserState;
+		return gameState;
 	}
 }
-
-// Set the entire module to our emitter.
-module.exports = LogWatcher;

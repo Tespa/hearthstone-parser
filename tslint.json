@@ -1,0 +1,8 @@
+{
+	"extends": "tslint-xo",
+	"rules": {
+		"no-require-imports": false,
+		"no-unused-variable": [true, {"ignore-pattern": "^_"}],
+		"variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+	}
+}

@@ -1,14 +1,16 @@
 'use strict';
 
 // Native
-const fs = require('fs');
-const path = require('path');
+import * as fs from 'fs';
+import * as path from 'path';
 
 // Packages
-require('chai').should();
+import {should} from 'chai';
 
 // Ours
-const LogWatcher = require('../index');
+import {LogWatcher} from '../src';
+
+should(); // Initialize chai's "should" interface.
 
 const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
@@ -48,18 +50,18 @@ describe('hearthstone-log-watcher', () => {
 	});
 
 	describe('parsing', () => {
-		beforeEach(() => {
+		beforeEach(function () {
 			this.logWatcher = new LogWatcher({
 				logFile: logFileFixture,
 				configFile: configFileFixture
 			});
 		});
 
-		it('should correctly parse player deck sizes', () => {
+		it('should correctly parse player deck sizes', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
-			const parserState = this.logWatcher.parseBuffer(logBuffer);
-			parserState.friendlyCount.should.equal(11);
-			parserState.opposingCount.should.equal(11);
+			const gameState = this.logWatcher.parseBuffer(logBuffer);
+			gameState.friendlyCount.should.equal(11);
+			gameState.opposingCount.should.equal(11);
 		});
 	});
 });
