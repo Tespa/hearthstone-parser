@@ -5,11 +5,11 @@ const AbstractLineParser_1 = require("./AbstractLineParser");
 class GameStartLineParser extends AbstractLineParser_1.AbstractLineParser {
     constructor() {
         super(...arguments);
-        this.regex = /\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*CREATE_GAME/;
+        this.regex = /\[Power\] GameState\.DebugPrintPower\(\) -\s*CREATE_GAME/;
         this.eventName = 'game-start';
     }
-    lineMatched(_parts, _gameState) {
-        return;
+    lineMatched(_parts, gameState) {
+        gameState.reset();
     }
     formatLogMessage(_parts, _gameState) {
         return 'A new game has started.';

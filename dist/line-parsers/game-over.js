@@ -15,9 +15,6 @@ class GameOverLineParser extends AbstractLineParser_1.AbstractLineParser {
             player.status = parts[1];
         }
         gameState.gameOverCount++;
-        if (gameState.gameOverCount === 2) {
-            gameState.reset();
-        }
     }
     formatLogMessage(_parts, gameState) {
         if (gameState.gameOverCount === 2) {
