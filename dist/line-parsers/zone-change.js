@@ -38,11 +38,11 @@ class ZoneChangeLineParser extends AbstractLineParser_1.AbstractLineParser {
             gameState.opposingCount--;
         }
     }
-    formatLogMessage(parts) {
+    formatLogMessage(parts, _gameState) {
         const data = formatParts(parts);
         return `${data.cardName} moved from ${data.fromTeam} ${data.fromZone} to ${data.toTeam} ${data.toZone}`;
     }
-    shouldEmit() {
+    shouldEmit(_gameState) {
         return true;
     }
 }

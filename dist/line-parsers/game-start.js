@@ -11,10 +11,10 @@ class GameStartLineParser extends AbstractLineParser_1.AbstractLineParser {
     lineMatched(_parts, gameState) {
         gameState.reset();
     }
-    formatLogMessage() {
+    formatLogMessage(_parts, _gameState) {
         return 'A new game has started.';
     }
-    shouldEmit() {
+    shouldEmit(_gameState) {
         return true;
     }
 }

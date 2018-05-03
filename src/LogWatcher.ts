@@ -51,10 +51,17 @@ if (/^win/.test(os.platform())) {
 	}
 }
 
+export interface ILogWatcher {
+	update(filePath: string, stats: fs.Stats): void;
+}
+
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-export class LogWatcher extends EventEmitter {
+export class LogWatcher extends EventEmitter implements ILogWatcher {
 	options: IOptions;
 	gameState: GameState;
+
+	// tslint:disable-next-line:no-empty
+	update(_filePath: string, _stats: fs.Stats): void {}
 
 	private _lastFileSize = 0;
 	private _watcher: FSWatcher | null;
@@ -65,7 +72,9 @@ export class LogWatcher extends EventEmitter {
 		this.options = extend({}, defaultOptions, options);
 		this.gameState = new GameState();
 		this._lastFileSize = 0;
-		this.update = debounce(this.update, 100);
+		this.update = debounce((filePath: string, stats: fs.Stats) => {
+			this._update(filePath, stats);
+		}, 100);
 
 		log.main('config file path: %s', this.options.configFile);
 		log.main('log file path: %s', this.options.logFile);
@@ -107,7 +116,7 @@ export class LogWatcher extends EventEmitter {
 		this._watcher = watcher;
 	}
 
-	update(filePath: string, stats: fs.Stats) {
+	_update(filePath: string, stats: fs.Stats) {
 		// We're only going to read the portion of the file that we have not read so far.
 		const newFileSize = stats.size;
 		let sizeDiff = newFileSize - this._lastFileSize;

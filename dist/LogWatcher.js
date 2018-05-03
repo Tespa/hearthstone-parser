@@ -48,7 +48,9 @@ class LogWatcher extends EventEmitter {
         this.options = extend({}, defaultOptions, options);
         this.gameState = new GameState_1.GameState();
         this._lastFileSize = 0;
-        this.update = debounce(this.update, 100);
+        this.update = debounce((filePath, stats) => {
+            this._update(filePath, stats);
+        }, 100);
         log.main('config file path: %s', this.options.configFile);
         log.main('log file path: %s', this.options.logFile);
         if (!fs.existsSync(path.parse(this.options.configFile).dir)) {
@@ -63,6 +65,8 @@ class LogWatcher extends EventEmitter {
         fs.createReadStream(localConfigFile).pipe(fs.createWriteStream(this.options.configFile));
         log.main('Copied log.config file to force Hearthstone to write to its log file.');
     }
+    // tslint:disable-next-line:no-empty
+    update(_filePath, _stats) { }
     start() {
         this.gameState.reset();
         log.main('Log watcher started.');
@@ -80,7 +84,7 @@ class LogWatcher extends EventEmitter {
         });
         this._watcher = watcher;
     }
-    update(filePath, stats) {
+    _update(filePath, stats) {
         // We're only going to read the portion of the file that we have not read so far.
         const newFileSize = stats.size;
         let sizeDiff = newFileSize - this._lastFileSize;
@@ -112,17 +116,18 @@ class LogWatcher extends EventEmitter {
             // Run each line through our entire array of line parsers.
             for (const lineParser of line_parsers_1.lineParsers) {
                 const parts = lineParser.parseLine(line);
-                if (!parts || parts.length > 0) {
+                if (!parts || parts.length <= 0) {
                     continue;
                 }
-                /*const logMessage = lineParser.formatLogMessage(parts, gameState);
+                lineParser.lineMatched(parts, gameState);
+                const logMessage = lineParser.formatLogMessage(parts, gameState);
                 if (logMessage) {
-                    lineParser.logger.log(logMessage);
-                }*/
-                /*const shouldEmit = lineParser.shouldEmit(gameState);
+                    lineParser.logger(logMessage);
+                }
+                const shouldEmit = lineParser.shouldEmit(gameState);
                 if (shouldEmit) {
                     this.emit(lineParser.eventName);
-                }*/
+                }
                 // Stop after the first match we get.
                 break;
             }
@@ -130,5 +135,5 @@ class LogWatcher extends EventEmitter {
         return gameState;
     }
 }
-exports.default = LogWatcher;
+exports.LogWatcher = LogWatcher;
 //# sourceMappingURL=LogWatcher.js.map

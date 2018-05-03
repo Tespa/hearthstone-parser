@@ -12,10 +12,10 @@ class MulliganStartLineParser extends AbstractLineParser_1.AbstractLineParser {
         gameState.friendlyCount = 30;
         gameState.opposingCount = 30;
     }
-    formatLogMessage() {
+    formatLogMessage(_parts, _gameState) {
         return 'A mulligan has begun.';
     }
-    shouldEmit() {
+    shouldEmit(_gameState) {
         return true;
     }
 }

@@ -15,10 +15,10 @@ class NewPlayerLineParser extends AbstractLineParser_1.AbstractLineParser {
             status: ''
         });
     }
-    formatLogMessage(parts) {
+    formatLogMessage(parts, _gameState) {
         return `Player "${parts[2]}" has joined.`;
     }
-    shouldEmit() {
+    shouldEmit(_gameState) {
         return true;
     }
 }

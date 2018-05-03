@@ -4,6 +4,6 @@ export declare class MulliganStartLineParser extends AbstractLineParser {
     regex: RegExp;
     eventName: string;
     lineMatched(_parts: string[], gameState: GameState): void;
-    formatLogMessage(): string;
-    shouldEmit(): boolean;
+    formatLogMessage(_parts: string[], _gameState: GameState): string;
+    shouldEmit(_gameState: GameState): boolean;
 }
