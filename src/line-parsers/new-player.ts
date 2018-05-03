@@ -3,7 +3,7 @@ import {GameState} from '../GameState';
 
 // Check for players entering play and track their team IDs.
 export class NewPlayerLineParser extends AbstractLineParser {
-	regex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(.*) PlayerName=(.*)$/;
+	regex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(\d), PlayerName=(.*)$/;
 	eventName = 'player-joined';
 
 	lineMatched(parts: string[], gameState: GameState) {
@@ -16,7 +16,7 @@ export class NewPlayerLineParser extends AbstractLineParser {
 	}
 
 	formatLogMessage(parts: string[], _gameState: GameState) {
-		return `Player "${parts[2]}" has joined.`;
+		return `Player "${parts[2]}" has joined (ID: ${parseInt(parts[1], 10)}).`;
 	}
 
 	shouldEmit(_gameState: GameState) {
