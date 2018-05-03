@@ -19,6 +19,9 @@ Which in regex is:
 /\[Power\] GameState\.DebugPrintPower\(\) -\s*CREATE_GAME/
 ```
 
+When you're parsing through the Power logs, you might find that it contains two logs: GameState and PowerTaskList - they both essentially log the same information but GameState is logged as soon as the client receives the information and PowerTaskList is logged once the client actually executes the action (which can be delayed by e.g. animations)
+so you can and should ignore one of them.
+
 Then:
 
 - Create a new line parser file in src/line-parsers/
