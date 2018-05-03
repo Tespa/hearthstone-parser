@@ -29,21 +29,12 @@ export class GameState {
 		return player;
 	}
 
-	getPlayerByIndex(index: number) {
-		if (!this.players[index]) {
-			this.players[index] = {
-				id: 0,
-				name: `Player ${index}`,
-				status: 'unknown',
-				turn: false
-			};
-		}
-
-		return this.players[index];
+	getPlayerById(index: number) {
+		return this.players.find(player => player.id === index);
 	}
 
 	getPlayerByPosition(position: 'top' | 'bottom') {
-		return this.getPlayerByIndex(position === 'top' ? 1 : 0);
+		return this.getPlayerById(position === 'top' ? 1 : 2);
 	}
 
 	getPlayerByName(name: string) {
