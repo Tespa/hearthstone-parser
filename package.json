@@ -1,5 +1,5 @@
 {
-  "name": "hearthstone-log-watcher-test",
+  "name": "hearthstone-parser",
   "version": "3.0.1",
   "description": "This simple module monitors the Hearthstone log file and emits events based on important events from the log.",
   "main": "index.js",
@@ -23,6 +23,5 @@
     "hearthstone",
     "deck tracker"
   ],
-  "author": "Chevex",
-  "license": "ISC"
+  "author": ""
 }
