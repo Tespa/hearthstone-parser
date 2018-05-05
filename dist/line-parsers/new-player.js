@@ -9,6 +9,9 @@ class NewPlayerLineParser extends AbstractLineParser_1.AbstractLineParser {
         this.eventName = 'player-joined';
     }
     lineMatched(parts, gameState) {
+        if (parts[2] === 'UNKNOWN HUMAN PLAYER') {
+            return;
+        }
         gameState.addPlayer({
             id: parseInt(parts[1], 10),
             name: parts[2],

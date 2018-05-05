@@ -11,9 +11,11 @@ export declare class GameState {
     opposingCount: number;
     private players;
     constructor();
+    readonly numPlayers: number;
     reset(): void;
     addPlayer(player: Player): Player;
     getPlayerById(index: number): Player | undefined;
     getPlayerByPosition(position: 'top' | 'bottom'): Player | undefined;
     getPlayerByName(name: string): Player | undefined;
+    getAllPlayers(): Player[];
 }
