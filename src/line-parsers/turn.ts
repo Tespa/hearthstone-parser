@@ -17,6 +17,16 @@ export class TurnLineParser extends AbstractLineParser {
 		const data = formatParts(parts);
 		const player = gameState.getPlayerByName(data.playerName);
 		if (!player) {
+			if (gameState.numPlayers === 1) {
+				const allPlayers = gameState.getAllPlayers();
+				const existingPlayerId = allPlayers[0].id;
+				gameState.addPlayer({
+					id: existingPlayerId === 1 ? 2 : 1,
+					name: data.playerName,
+					status: '',
+					turn: data.turn
+				});
+			}
 			return;
 		}
 

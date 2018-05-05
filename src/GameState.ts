@@ -16,9 +16,12 @@ export class GameState {
 		this.reset();
 	}
 
+	get numPlayers() {
+		return this.players.length;
+	}
+
 	reset() {
 		this.players = [];
-		this.playerCount = 0;
 		this.gameOverCount = 0;
 		this.friendlyCount = 0;
 		this.opposingCount = 0;
@@ -34,10 +37,14 @@ export class GameState {
 	}
 
 	getPlayerByPosition(position: 'top' | 'bottom') {
-		return this.getPlayerById(position === 'top' ? 1 : 2);
+		return this.getPlayerById(position === 'top' ? 2 : 1);
 	}
 
 	getPlayerByName(name: string) {
 		return this.players.find(player => player.name === name);
+	}
+
+	getAllPlayers() {
+		return this.players.slice(0);
 	}
 }

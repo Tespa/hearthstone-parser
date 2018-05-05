@@ -69,7 +69,6 @@ describe('hearthstone-log-watcher', () => {
 					{id: 1, name: 'Apple#1264', status: '', turn: false},
 					{id: 2, name: 'Baquio#1418', status: '', turn: true}
 				],
-				playerCount: 0,
 				gameOverCount: 2,
 				friendlyCount: 11,
 				opposingCount: 11
