@@ -96,4 +96,38 @@ describe('hearthstone-log-watcher', () => {
 			});
 		});
 	});
+
+	describe('foo', () => {
+		const fooFileFixture = path.join(__dirname, '/artifacts/wrong_turns.log');
+		beforeEach(function () {
+			this.logWatcher = new LogWatcher({
+				logFile: fooFileFixture,
+				configFile: configFileFixture
+			});
+		});
+
+		it('bar', function () {
+			const logBuffer = fs.readFileSync(fooFileFixture);
+			const gameState = this.logWatcher.parseBuffer(logBuffer);
+			gameState.should.deep.equal({
+				friendlyCount: 25,
+				gameOverCount: 0,
+				opposingCount: 26,
+				players: [
+					{
+						id: 1,
+						name: 'HCTObs3#1745',
+						status: '',
+						turn: true
+					},
+					{
+						id: 2,
+						name: 'HCTObs1#1891',
+						status: '',
+						turn: false
+					}
+				]
+			});
+		});
+	});
 });
