@@ -16,7 +16,8 @@ class NewPlayerLineParser extends AbstractLineParser_1.AbstractLineParser {
             id: parseInt(parts[1], 10),
             name: parts[2],
             status: '',
-            turn: false
+            turn: false,
+            questCounter: -1
         });
     }
     formatLogMessage(parts, _gameState) {

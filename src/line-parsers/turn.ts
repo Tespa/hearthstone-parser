@@ -24,7 +24,8 @@ export class TurnLineParser extends AbstractLineParser {
 					id: existingPlayerId === 1 ? 2 : 1,
 					name: data.playerName,
 					status: '',
-					turn: data.turn
+					turn: data.turn,
+					questCounter: -1
 				});
 			}
 			return;
