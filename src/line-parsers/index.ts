@@ -4,6 +4,7 @@ import {MulliganStartLineParser} from './mulligan-start';
 import {NewPlayerLineParser} from './new-player';
 import {TurnLineParser} from './turn';
 import {ZoneChangeLineParser} from './zone-change';
+import {TagChangeLineParser} from './tag-change';
 
 export const lineParsers = [
 	new GameOverLineParser(),
@@ -11,5 +12,6 @@ export const lineParsers = [
 	new MulliganStartLineParser(),
 	new NewPlayerLineParser(),
 	new TurnLineParser(),
-	new ZoneChangeLineParser()
+	new ZoneChangeLineParser(),
+	new TagChangeLineParser()
 ];

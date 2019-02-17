@@ -3,6 +3,7 @@ export interface Player {
     name: string;
     status: string;
     turn: boolean;
+    questCounter: number;
 }
 export declare class GameState {
     playerCount: number;

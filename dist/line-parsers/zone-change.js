@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const AbstractLineParser_1 = require("./AbstractLineParser");
+// For now, we hard code quest ids, as there are a limited number of unique quests. Later, if we want to implement secret tracking, we should use hearthstonejson to recognize whether a card is a secret or a quest
+const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
 function formatParts(parts) {
     return {
         cardName: parts[1],
@@ -39,6 +41,18 @@ class ZoneChangeLineParser extends AbstractLineParser_1.AbstractLineParser {
         }
         else if (data.fromTeam === 'OPPOSING' && data.fromZone === 'DECK') {
             gameState.opposingCount--;
+        }
+        if (quests.find(cardId => cardId === data.cardId) && data.toZone === 'SECRET') {
+            const player = gameState.getPlayerById(data.playerId);
+            if (player) {
+                player.questCounter = 0;
+            }
+        }
+        else if (quests.find(cardId => cardId === data.cardId) && data.fromZone === 'SECRET') {
+            const player = gameState.getPlayerById(data.playerId);
+            if (player) {
+                player.questCounter = -1;
+            }
         }
     }
     formatLogMessage(parts, _gameState) {
