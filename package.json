@@ -14,6 +14,8 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "@types/chai": "^4.1.3",
     "@types/chokidar": "^1.7.5",
     "@types/debug": "0.0.30",
@@ -22,6 +24,7 @@
     "@types/mocha": "^5.2.0",
     "@types/node": "^10.0.3",
     "chai": "^4.1.2",
+    "husky": "^1.3.1",
     "mocha": "^5.1.1",
     "trash-cli": "^1.4.0",
     "ts-node": "^6.0.2",
@@ -43,5 +46,10 @@
     "hearthstone",
     "deck tracker"
   ],
-  "author": ""
+  "author": "",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
