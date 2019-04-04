@@ -1,32 +1,83 @@
-version: 2
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+  working_directory: ~/project
 
+version: 2
 jobs:
-  build-and-test:
-    docker:
-      - image: circleci/node:8
-        environment:
-          NPM_CONFIG_PREFIX: ~/.npm-global
+  Checkout Code:
+    <<: *defaults
     steps:
       - checkout
-      # Download and cache dependencies
+      - attach_workspace:
+          at: ~/project
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run:
-          name: Install project npm deps
-          command: npm install
+            - npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - npm-cache-{{ .Branch }}
+            - npm-cache-
+      - run: npm ci
       - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths: [node_modules]
+      - persist_to_workspace:
+          root: .
+          paths: [.]
+  Check for vulnerabilities:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm audit
+  Test node-10:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm t
+      - persist_to_workspace:
+          root: .
           paths:
-            - node_modules
-      - run:
-          name: Test
-          command: npm test
+            - .nyc_output
+  Send Coverage:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm run report-coverage
+      - store_artifacts:
+          path: ./nyc_output
+          prefix: coverage
+
+  Build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm run build
+      - persist_to_workspace:
+          root: .
+          paths: [.]
 
 workflows:
   version: 2
-  build-and-test:
+  Test build and deploy(master only):
     jobs:
-      - build-and-test
+      - Checkout Code
+      - Check for vulnerabilities:
+          requires:
+            - Checkout Code
+      - Test node-10:
+          requires:
+            - Checkout Code
+      - Send Coverage:
+          requires:
+            - Check for vulnerabilities
+            - Test node-10
+      - Build:
+          requires:
+            - Send Coverage
+          filters:
+            branches:
+              only:
+                - master

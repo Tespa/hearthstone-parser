@@ -22,7 +22,7 @@ export interface IOptions {
 }
 
 const defaultOptions = {} as IOptions;
-const log = debug('hlw');
+const log = debug('hlp');
 
 // Determine the default location of the config and log files.
 if (/^win/.test(os.platform())) {
@@ -109,23 +109,6 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		this._watcher = watcher;
 	}
 
-	_update(filePath: string, stats: fs.Stats) {
-		// We're only going to read the portion of the file that we have not read so far.
-		const newFileSize = stats.size;
-		let sizeDiff = newFileSize - this._lastFileSize;
-		if (sizeDiff < 0) {
-			sizeDiff = newFileSize;
-		}
-
-		const buffer = Buffer.alloc(sizeDiff);
-		const fileDescriptor = fs.openSync(filePath, 'r');
-		fs.readSync(fileDescriptor, buffer, 0, sizeDiff, this._lastFileSize);
-		fs.closeSync(fileDescriptor);
-		this._lastFileSize = newFileSize;
-
-		this.parseBuffer(buffer, this.gameState);
-	}
-
 	stop() {
 		if (!this._watcher) {
 			return;
@@ -169,5 +152,22 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		});
 
 		return gameState;
+	}
+
+	_update(filePath: string, stats: fs.Stats) {
+		// We're only going to read the portion of the file that we have not read so far.
+		const newFileSize = stats.size;
+		let sizeDiff = newFileSize - this._lastFileSize;
+		if (sizeDiff < 0) {
+			sizeDiff = newFileSize;
+		}
+
+		const buffer = Buffer.alloc(sizeDiff);
+		const fileDescriptor = fs.openSync(filePath, 'r');
+		fs.readSync(fileDescriptor, buffer, 0, sizeDiff, this._lastFileSize);
+		fs.closeSync(fileDescriptor);
+		this._lastFileSize = newFileSize;
+
+		this.parseBuffer(buffer, this.gameState);
 	}
 }

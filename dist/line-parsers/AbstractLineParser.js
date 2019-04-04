@@ -4,7 +4,7 @@ const debug = require("debug");
 class AbstractLineParser {
     get logger() {
         if (!this._logger) {
-            this._logger = debug(`hlw:${this.eventName}`);
+            this._logger = debug(`hlp:${this.eventName}`);
         }
         return this._logger;
     }

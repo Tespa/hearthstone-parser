@@ -13,3 +13,5 @@ coverage
 npm-debug.log
 
 /desktop.ini
+
+/dist
