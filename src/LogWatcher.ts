@@ -59,7 +59,7 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 	private _lastFileSize = 0;
 	private _watcher: FSWatcher | null;
 
-	constructor(options?: IOptions) {
+	constructor(options?: Partial<IOptions>) {
 		super();
 
 		this.options = extend({}, defaultOptions, options);
