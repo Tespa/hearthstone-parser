@@ -59,6 +59,13 @@ jobs:
           root: .
           paths: [.]
 
+  Release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: npm run semantic-release || true
+
 workflows:
   version: 2
   Test build and deploy(master only):
@@ -77,7 +84,6 @@ workflows:
       - Build:
           requires:
             - Send Coverage
-          filters:
-            branches:
-              only:
-                - master
+      - Release:
+          requires:
+            - Build
