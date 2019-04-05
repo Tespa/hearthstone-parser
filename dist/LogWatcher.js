@@ -15,7 +15,7 @@ const splitLines = require("split-lines");
 const GameState_1 = require("./GameState");
 const line_parsers_1 = require("./line-parsers");
 const defaultOptions = {};
-const log = debug('hlw');
+const log = debug('hlp');
 // Determine the default location of the config and log files.
 if (/^win/.test(os.platform())) {
     log('Windows platform detected.');
@@ -79,20 +79,6 @@ class LogWatcher extends eventemitter2_1.EventEmitter2 {
         });
         this._watcher = watcher;
     }
-    _update(filePath, stats) {
-        // We're only going to read the portion of the file that we have not read so far.
-        const newFileSize = stats.size;
-        let sizeDiff = newFileSize - this._lastFileSize;
-        if (sizeDiff < 0) {
-            sizeDiff = newFileSize;
-        }
-        const buffer = Buffer.alloc(sizeDiff);
-        const fileDescriptor = fs.openSync(filePath, 'r');
-        fs.readSync(fileDescriptor, buffer, 0, sizeDiff, this._lastFileSize);
-        fs.closeSync(fileDescriptor);
-        this._lastFileSize = newFileSize;
-        this.parseBuffer(buffer, this.gameState);
-    }
     stop() {
         if (!this._watcher) {
             return;
@@ -128,6 +114,20 @@ class LogWatcher extends eventemitter2_1.EventEmitter2 {
             }
         });
         return gameState;
+    }
+    _update(filePath, stats) {
+        // We're only going to read the portion of the file that we have not read so far.
+        const newFileSize = stats.size;
+        let sizeDiff = newFileSize - this._lastFileSize;
+        if (sizeDiff < 0) {
+            sizeDiff = newFileSize;
+        }
+        const buffer = Buffer.alloc(sizeDiff);
+        const fileDescriptor = fs.openSync(filePath, 'r');
+        fs.readSync(fileDescriptor, buffer, 0, sizeDiff, this._lastFileSize);
+        fs.closeSync(fileDescriptor);
+        this._lastFileSize = newFileSize;
+        this.parseBuffer(buffer, this.gameState);
     }
 }
 exports.LogWatcher = LogWatcher;

@@ -17,7 +17,7 @@ export declare class LogWatcher extends EventEmitter2 implements ILogWatcher {
     private _watcher;
     constructor(options?: Partial<IOptions>);
     start(): void;
-    _update(filePath: string, stats: fs.Stats): void;
     stop(): void;
     parseBuffer(buffer: Buffer, gameState: GameState): GameState;
+    _update(filePath: string, stats: fs.Stats): void;
 }
