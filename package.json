@@ -37,6 +37,7 @@
     "typescript": "^2.8.3"
   },
   "scripts": {
+    "pretbuild": "npm t",
     "build": "trash dist && tsc -p tsconfig.json",
     "watch": "tsc -p tsconfig.json --watch",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
