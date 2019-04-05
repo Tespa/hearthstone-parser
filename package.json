@@ -4,6 +4,9 @@
   "description": "This simple module monitors the Hearthstone log file and emits events based on important events from the log.",
   "main": "dist/index.js",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "chokidar": "^2.0.3",
     "debug": "^3.1.0",
