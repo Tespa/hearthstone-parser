@@ -149,3 +149,8 @@ Then:
 ## Acknowledgements
 
 This library used [hearthstone-log-parser](https://www.npmjs.com/package/hearthstone-log-parser) as a starting point.
+
+
+## License
+
+`hearthstone-parser` is released under the MIT license, which is available to read [here](LICENSE).
