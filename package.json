@@ -12,7 +12,7 @@
     "debug": "^3.1.0",
     "eventemitter2": "^5.0.1",
     "extend": "^3.0.1",
-    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "require-all": "^2.2.0",
     "split-lines": "^1.1.0",
     "tslib": "^1.9.0"
@@ -20,15 +20,20 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
+    "@supportclass/tsconfig-base": "^1.0.2",
     "@types/chai": "^4.1.3",
     "@types/chokidar": "^1.7.5",
     "@types/debug": "0.0.30",
     "@types/extend": "^3.0.0",
-    "@types/lodash.debounce": "^4.0.3",
+    "@types/lodash.throttle": "^4.1.6",
     "@types/mocha": "^5.2.0",
     "@types/node": "^10.0.3",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.4",
+    "eslint": "^5.16.0",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-config-xo-typescript": "^0.9.0",
     "husky": "^1.3.1",
     "mocha": "^5.1.1",
     "nyc": "^13.3.0",
@@ -36,17 +41,15 @@
     "source-map-support": "^0.5.6",
     "trash-cli": "^1.4.0",
     "ts-node": "^6.0.2",
-    "tslint": "^5.9.1",
-    "tslint-xo": "^0.7.2",
-    "typescript": "^2.8.3"
+    "typescript": "^3.4.3"
   },
   "scripts": {
-    "pretbuild": "npm t",
+    "prebuild": "npm t",
     "build": "trash dist && tsc -p tsconfig.json",
     "watch": "tsc -p tsconfig.json --watch",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "static": "tslint -c tslint.json 'src/**/*.ts'",
-    "test": "nyc mocha",
+    "static": "eslint \"**/*.ts\"",
+    "test": "npm run static && nyc mocha",
     "semantic-release": "semantic-release"
   },
   "nyc": {

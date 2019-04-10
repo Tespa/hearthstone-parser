@@ -15,7 +15,7 @@ should(); // Initialize chai's "should" interface.
 const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
-interface IEventCounters {
+interface EventCounters {
 	[key: string]: number;
 }
 
@@ -77,7 +77,7 @@ describe('hearthstone-log-watcher', () => {
 
 		it('should emit the expected number of events', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
-			const eventCounters = {} as IEventCounters;
+			const eventCounters: EventCounters = {};
 			this.logWatcher.onAny((event: string) => {
 				if (!(event in eventCounters)) {
 					eventCounters[event] = 0;

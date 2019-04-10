@@ -1,7 +1,12 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
-function formatParts(parts: string[]) {
+interface Parts {
+	playerName: string;
+	turn: boolean;
+}
+
+function formatParts(parts: string[]): Parts {
 	return {
 		playerName: parts[1],
 		turn: Boolean(parseInt(parts[2], 10))
@@ -11,9 +16,10 @@ function formatParts(parts: string[]) {
 // Check if the current turn has changed.
 export class TurnLineParser extends AbstractLineParser {
 	regex = /^\[Power\] GameState\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
+
 	eventName = 'turn-change';
 
-	lineMatched(parts: string[], gameState: GameState) {
+	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 		const player = gameState.getPlayerByName(data.playerName);
 		if (!player) {
@@ -28,19 +34,20 @@ export class TurnLineParser extends AbstractLineParser {
 					questCounter: -1
 				});
 			}
+
 			return;
 		}
 
 		player.turn = data.turn;
 	}
 
-	formatLogMessage(parts: string[], _gameState: GameState) {
+	formatLogMessage(parts: string[]): string {
 		const data = formatParts(parts);
 		const turnState = data.turn ? 'begun' : 'ended';
 		return `${data.playerName}'s turn has ${turnState}`;
 	}
 
-	shouldEmit(_gameState: GameState) {
+	shouldEmit(): boolean {
 		return true;
 	}
 }

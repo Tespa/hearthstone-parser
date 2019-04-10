@@ -1,49 +1,18 @@
 {
+	"extends": "@supportclass/tsconfig-base",
 	"compilerOptions": {
-		"alwaysStrict": true,
-		"baseUrl": "./",
-		"declaration": true,
-		"forceConsistentCasingInFileNames": true,
-		"importHelpers": true,
-		"lib": [
-			"es6",
-			"dom.iterable"
-		],
-		"listFiles": false,
+		"rootDir": "src",
+		"outDir": "dist",
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "./dist",
+		"baseUrl": "./",
 		"paths": {
 			"*": [
-				"./node_modules/*",
 				"./src/types/*"
-			],
-			"node-boilerplate": [
-				"./src/index.ts"
 			]
-		},
-		"pretty": true,
-		"sourceMap": true,
-		"strictNullChecks": true,
-		"target": "es6",
-		"traceResolution": false,
-		"types": [
-			"node",
-			"mocha"
-		]
+		}
 	},
 	"include": [
 		"./src/**/*.ts"
-	],
-	"exclude": [
-		"node_modules/**",
-		"src/**/*spec.ts"
-	],
-	"compileOnSave": false
+	]
 }
