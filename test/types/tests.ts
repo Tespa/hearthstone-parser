@@ -12,6 +12,12 @@ logWatcher.on('turn-change', () => {});
 logWatcher.on('tag-change', () => {});
 logWatcher.on('zone-change', () => {});
 
+// Wildcard event -- valid because we use EventEmitter2.
+logWatcher.onAny((event, value) => {
+	console.log(event);
+	console.log(value);
+});
+
 // Invalid event name.
 // $ExpectError
 logWatcher.on('fakeEvent', () => {});
