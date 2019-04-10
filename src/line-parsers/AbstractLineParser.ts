@@ -1,10 +1,11 @@
 import {GameState} from '../GameState';
 import * as debug from 'debug';
+import {Events} from './index';
 
 export abstract class AbstractLineParser {
-	abstract regex: RegExp;
+	abstract readonly regex: RegExp;
 
-	abstract eventName: string;
+	abstract readonly eventName: keyof Events;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	private _logger: debug.IDebugger;

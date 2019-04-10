@@ -5,7 +5,7 @@ import {GameState} from '../GameState';
 export class GameOverLineParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)/;
 
-	eventName = 'game-over';
+	eventName = 'game-over' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		// Set the status for the appropriate player.

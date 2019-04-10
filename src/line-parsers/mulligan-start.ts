@@ -5,7 +5,7 @@ import {GameState} from '../GameState';
 export class MulliganStartLineParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=GameEntity tag=STEP value=BEGIN_MULLIGAN$/;
 
-	eventName = 'mulligan-start';
+	eventName = 'mulligan-start' as const;
 
 	lineMatched(_parts: string[], gameState: GameState): void {
 		gameState.friendlyCount = 30;

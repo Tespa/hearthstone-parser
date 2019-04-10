@@ -5,7 +5,7 @@ import {GameState} from '../GameState';
 export class NewPlayerLineParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintGame\(\) - PlayerID=(\d), PlayerName=(.*)$/;
 
-	eventName = 'player-joined';
+	eventName = 'player-joined' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		if (parts[2] === 'UNKNOWN HUMAN PLAYER') {
