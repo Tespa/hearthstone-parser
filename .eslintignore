@@ -2,3 +2,6 @@ node_modules
 bower_components
 coverage
 dist
+
+# This is linted by dtslint.
+test/types/tests.ts

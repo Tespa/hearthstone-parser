@@ -1,6 +1,7 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
+		"rootDir": "../..",
 		"lib": ["es2017"],
 		"alwaysStrict": true,
 		"forceConsistentCasingInFileNames": true,
@@ -14,7 +15,13 @@
 		"strictFunctionTypes": true,
 		"baseUrl": ".",
 		"paths": {
-			"hearthstone-parser": ["../../src"]
+			"hearthstone-parser": ["../../src"],
+			"*": [
+				"../../src/types/*"
+			]
 		}
-	}
+	},
+	"include": [
+		"./**/*.ts"
+	]
 }

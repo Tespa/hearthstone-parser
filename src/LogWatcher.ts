@@ -50,7 +50,7 @@ if (/^win/.test(os.platform())) {
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-function-type
-const HspEventsEmitter: { new (): StrictEventEmitter<EventEmitter2, Events> } = EventEmitter2;
+const HspEventsEmitter = EventEmitter2 as { new (): StrictEventEmitter<EventEmitter2, Events> };
 
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
 export class LogWatcher extends HspEventsEmitter {
