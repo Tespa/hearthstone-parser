@@ -1,7 +1,16 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
-function formatParts(parts: string[]) {
+interface Parts {
+	cardName: string;
+	entityId: number;
+	cardId: string;
+	playerId: number;
+	tag: string;
+	value: number;
+}
+
+function formatParts(parts: string[]): Parts {
 	return {
 		cardName: parts[1],
 		entityId: parseInt(parts[2], 10),
@@ -15,26 +24,28 @@ function formatParts(parts: string[]) {
 // Check if a card is changing tags.
 export class TagChangeLineParser extends AbstractLineParser {
 	regex = /^\[Power\] GameState.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=\[entityName=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] tag=(.*) value=(\d*)/;
+
 	eventName = 'tag-change';
 
-	lineMatched(parts: string[], gameState: GameState) {
+	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
 		if (data.tag !== 'QUEST_PROGRESS') {
 			return;
 		}
+
 		const player = gameState.getPlayerById(data.playerId);
 		if (player) {
 			player.questCounter = data.value;
 		}
 	}
 
-	formatLogMessage(parts: string[], _gameState: GameState) {
+	formatLogMessage(parts: string[]): string {
 		const data = formatParts(parts);
 		return `Tag ${data.tag} of player ${data.playerId}'s ${data.cardName} set to ${data.value}`;
 	}
 
-	shouldEmit(_gameState: GameState) {
+	shouldEmit(): boolean {
 		return true;
 	}
 }

@@ -7,21 +7,24 @@ import * as path from 'path';
 import * as debug from 'debug';
 import {EventEmitter2} from 'eventemitter2';
 import * as extend from 'extend';
-import chokidar = require('chokidar');
-import debounce = require('lodash.debounce');
-import splitLines = require('split-lines');
+import * as chokidar from 'chokidar';
+import throttle = require('lodash.throttle'); // eslint-disable-line @typescript-eslint/no-require-imports
+import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
 import {FSWatcher} from 'chokidar';
 
 // Ours
 import {GameState} from './GameState';
 import {lineParsers} from './line-parsers';
 
-export interface IOptions {
+export interface Options {
 	logFile: string;
 	configFile: string;
 }
 
-const defaultOptions = {} as IOptions;
+const defaultOptions: Options = {
+	logFile: '',
+	configFile: ''
+};
 const log = debug('hlp');
 
 // Determine the default location of the config and log files.
@@ -31,6 +34,7 @@ if (/^win/.test(os.platform())) {
 	if (/64/.test(os.arch())) {
 		programFiles += ' (x86)';
 	}
+
 	defaultOptions.logFile = path.join('C:', programFiles, 'Hearthstone', 'Hearthstone_Data', 'output_log.txt');
 
 	if (process.env.LOCALAPPDATA) {
@@ -44,30 +48,24 @@ if (/^win/.test(os.platform())) {
 	}
 }
 
-export interface ILogWatcher {
-	update(filePath: string, stats: fs.Stats): void;
-}
-
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-export class LogWatcher extends EventEmitter2 implements ILogWatcher {
-	options: IOptions;
+export class LogWatcher extends EventEmitter2 {
+	options: Options;
+
 	gameState: GameState;
 
-	// tslint:disable-next-line:no-empty
-	update(_filePath: string, _stats: fs.Stats): void {}
-
 	private _lastFileSize = 0;
+
 	private _watcher: FSWatcher | null;
 
-	constructor(options?: Partial<IOptions>) {
+	private _updateDebouncer: (filePath: string, stats: fs.Stats) => void;
+
+	constructor(options?: Partial<Options>) {
 		super();
 
 		this.options = extend({}, defaultOptions, options);
 		this.gameState = new GameState();
 		this._lastFileSize = 0;
-		this.update = debounce((filePath: string, stats: fs.Stats) => {
-			this._update(filePath, stats);
-		}, 100);
 
 		log('config file path: %s', this.options.configFile);
 		log('log file path: %s', this.options.logFile);
@@ -87,7 +85,19 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		log('Copied log.config file to force Hearthstone to write to its log file.');
 	}
 
-	start() {
+	// This is a throttled version of our private _update method.
+	// It is on a throttle to avoid thrashing, as we might sometimes have hundreds of updates in a single tick.
+	update(filePath: string, stats: fs.Stats): void {
+		if (!this._updateDebouncer) {
+			this._updateDebouncer = throttle((filePath: string, stats: fs.Stats) => {
+				this._update(filePath, stats);
+			}, 100);
+		}
+
+		return this._updateDebouncer(filePath, stats);
+	}
+
+	start(): void {
 		this.gameState.reset();
 		log('Log watcher started.');
 
@@ -99,17 +109,21 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		});
 
 		watcher.on('add', (filePath, stats) => {
-			this.update(filePath, stats);
+			if (stats) {
+				this.update(filePath, stats);
+			}
 		});
 
 		watcher.on('change', (filePath, stats) => {
-			this.update(filePath, stats);
+			if (stats) {
+				this.update(filePath, stats);
+			}
 		});
 
 		this._watcher = watcher;
 	}
 
-	stop() {
+	stop(): void {
 		if (!this._watcher) {
 			return;
 		}
@@ -119,9 +133,8 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		this._lastFileSize = 0;
 	}
 
-	parseBuffer(buffer: Buffer, gameState: GameState) {
+	parseBuffer(buffer: Buffer, gameState: GameState): GameState {
 		if (!gameState) {
-			// tslint:disable-next-line:no-parameter-reassignment
 			gameState = new GameState();
 		}
 
@@ -154,7 +167,7 @@ export class LogWatcher extends EventEmitter2 implements ILogWatcher {
 		return gameState;
 	}
 
-	_update(filePath: string, stats: fs.Stats) {
+	private _update(filePath: string, stats: fs.Stats): void {
 		// We're only going to read the portion of the file that we have not read so far.
 		const newFileSize = stats.size;
 		let sizeDiff = newFileSize - this._lastFileSize;

@@ -4,9 +4,10 @@ import {GameState} from '../GameState';
 // Check if the game is over.
 export class GameOverLineParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)/;
+
 	eventName = 'game-over';
 
-	lineMatched(parts: string[], gameState: GameState) {
+	lineMatched(parts: string[], gameState: GameState): void {
 		// Set the status for the appropriate player.
 		const player = gameState.getPlayerByName(parts[0]);
 		if (player) {
@@ -16,7 +17,7 @@ export class GameOverLineParser extends AbstractLineParser {
 		gameState.gameOverCount++;
 	}
 
-	formatLogMessage(_parts: string[], gameState: GameState) {
+	formatLogMessage(_: string[], gameState: GameState): string | false {
 		if (gameState.gameOverCount === 2) {
 			return 'The current game has ended.';
 		}
@@ -24,7 +25,7 @@ export class GameOverLineParser extends AbstractLineParser {
 		return false;
 	}
 
-	shouldEmit(gameState: GameState) {
+	shouldEmit(gameState: GameState): boolean {
 		// When both players have lost, emit a game-over event.
 		return gameState.gameOverCount === 2;
 	}

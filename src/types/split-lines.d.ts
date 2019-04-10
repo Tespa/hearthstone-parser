@@ -4,8 +4,8 @@
 
 export = SplitLines;
 
-declare function SplitLines(input: string, options?: ISplitLinesOptions): string[];
+declare function SplitLines(input: string, options?: SplitLinesOptions): string[];
 
-declare interface ISplitLinesOptions {
+declare interface SplitLinesOptions {
 	preserveNewlines?: boolean;
 }

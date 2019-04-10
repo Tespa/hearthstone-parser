@@ -4,7 +4,18 @@ import {GameState} from '../GameState';
 // For now, we hard code quest ids, as there are a limited number of unique quests. Later, if we want to implement secret tracking, we should use hearthstonejson to recognize whether a card is a secret or a quest
 const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
 
-function formatParts(parts: string[]) {
+interface Parts {
+	cardName: string;
+	entityId: number;
+	cardId: string;
+	playerId: number;
+	fromTeam: string;
+	fromZone: string;
+	toTeam: string;
+	toZone: string;
+}
+
+function formatParts(parts: string[]): Parts {
 	return {
 		cardName: parts[1],
 		entityId: parseInt(parts[2], 10),
@@ -20,9 +31,10 @@ function formatParts(parts: string[]) {
 // Check if a card is changing zones.
 export class ZoneChangeLineParser extends AbstractLineParser {
 	regex = /^\[Zone\] ZoneChangeList.ProcessChanges\(\) - id=\d* local=.* \[entityName=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] zone from ?(FRIENDLY|OPPOSING)? ?(.*)? -> ?(FRIENDLY|OPPOSING)? ?(.*)?$/;
+
 	eventName = 'zone-change';
 
-	lineMatched(parts: string[], gameState: GameState) {
+	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
 		if (data.toZone === data.fromZone) {
@@ -55,12 +67,12 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 		}
 	}
 
-	formatLogMessage(parts: string[], _gameState: GameState) {
+	formatLogMessage(parts: string[]): string {
 		const data = formatParts(parts);
 		return `${data.cardName} moved from ${data.fromTeam} ${data.fromZone} to ${data.toTeam} ${data.toZone}`;
 	}
 
-	shouldEmit(_gameState: GameState) {
+	shouldEmit(): boolean {
 		return true;
 	}
 }
