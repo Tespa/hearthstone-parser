@@ -6,6 +6,8 @@
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"baseUrl": "./",
+		"declaration": true,
+		"sourceMap": true,
 		"paths": {
 			"*": [
 				"./src/types/*"
