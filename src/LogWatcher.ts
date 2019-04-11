@@ -172,7 +172,7 @@ export class LogWatcher extends HspEventsEmitter {
 		});
 
 		if (updated) {
-			this.emit('gamestate-changed');
+			this.emit('gamestate-changed', gameState);
 		}
 
 		return gameState;
