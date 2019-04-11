@@ -4,6 +4,7 @@ const logWatcher = new LogWatcher();
 logWatcher.start();
 
 // Valid event names.
+logWatcher.on('gamestate-changed', () => {});
 logWatcher.on('game-over', () => {});
 logWatcher.on('game-start', () => {});
 logWatcher.on('mulligan-start', () => {});

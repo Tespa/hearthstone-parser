@@ -142,6 +142,8 @@ export class LogWatcher extends HspEventsEmitter {
 			gameState = new GameState();
 		}
 
+		let updated = false;
+
 		// Iterate over each line in the buffer.
 		splitLines(buffer.toString()).forEach(line => {
 			// Run each line through our entire array of line parsers.
@@ -151,6 +153,7 @@ export class LogWatcher extends HspEventsEmitter {
 					continue;
 				}
 
+				updated = true;
 				lineParser.lineMatched(parts, gameState);
 
 				const logMessage = lineParser.formatLogMessage(parts, gameState);
@@ -167,6 +170,10 @@ export class LogWatcher extends HspEventsEmitter {
 				break;
 			}
 		});
+
+		if (updated) {
+			this.emit('gamestate-changed');
+		}
 
 		return gameState;
 	}

@@ -88,6 +88,7 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
 				'player-joined': 4,

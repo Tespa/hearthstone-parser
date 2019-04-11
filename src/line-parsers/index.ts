@@ -17,6 +17,7 @@ export const lineParsers = [
 ];
 
 export interface Events {
+	'gamestate-changed': void;
 	'game-over': void;
 	'game-start': void;
 	'mulligan-start': void;
