@@ -15,3 +15,14 @@ export const lineParsers = [
 	new ZoneChangeLineParser(),
 	new TagChangeLineParser()
 ];
+
+export interface Events {
+	'gamestate-changed': void;
+	'game-over': void;
+	'game-start': void;
+	'mulligan-start': void;
+	'player-joined': void;
+	'turn-change': void;
+	'tag-change': void;
+	'zone-change': void;
+}

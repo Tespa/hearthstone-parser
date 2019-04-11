@@ -17,7 +17,7 @@ function formatParts(parts: string[]): Parts {
 export class TurnLineParser extends AbstractLineParser {
 	regex = /^\[Power\] GameState\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
 
-	eventName = 'turn-change';
+	eventName = 'turn-change' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);

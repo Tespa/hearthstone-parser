@@ -11,10 +11,11 @@ import * as chokidar from 'chokidar';
 import throttle = require('lodash.throttle'); // eslint-disable-line @typescript-eslint/no-require-imports
 import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
 import {FSWatcher} from 'chokidar';
+import StrictEventEmitter from 'strict-event-emitter-types';
 
 // Ours
 import {GameState} from './GameState';
-import {lineParsers} from './line-parsers';
+import {Events, lineParsers} from './line-parsers';
 
 export interface Options {
 	logFile: string;
@@ -48,8 +49,11 @@ if (/^win/.test(os.platform())) {
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-function-type
+const HspEventsEmitter = EventEmitter2 as { new (): StrictEventEmitter<EventEmitter2, Events> };
+
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
-export class LogWatcher extends EventEmitter2 {
+export class LogWatcher extends HspEventsEmitter {
 	options: Options;
 
 	gameState: GameState;
@@ -138,6 +142,8 @@ export class LogWatcher extends EventEmitter2 {
 			gameState = new GameState();
 		}
 
+		let updated = false;
+
 		// Iterate over each line in the buffer.
 		splitLines(buffer.toString()).forEach(line => {
 			// Run each line through our entire array of line parsers.
@@ -147,6 +153,7 @@ export class LogWatcher extends EventEmitter2 {
 					continue;
 				}
 
+				updated = true;
 				lineParser.lineMatched(parts, gameState);
 
 				const logMessage = lineParser.formatLogMessage(parts, gameState);
@@ -163,6 +170,10 @@ export class LogWatcher extends EventEmitter2 {
 				break;
 			}
 		});
+
+		if (updated) {
+			this.emit('gamestate-changed');
+		}
 
 		return gameState;
 	}

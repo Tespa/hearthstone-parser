@@ -5,7 +5,7 @@ import {GameState} from '../GameState';
 export class GameStartLineParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintPower\(\) -\s*CREATE_GAME/;
 
-	eventName = 'game-start';
+	eventName = 'game-start' as const;
 
 	lineMatched(_: string[], gameState: GameState): void {
 		gameState.reset();

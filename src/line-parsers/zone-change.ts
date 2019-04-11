@@ -32,7 +32,7 @@ function formatParts(parts: string[]): Parts {
 export class ZoneChangeLineParser extends AbstractLineParser {
 	regex = /^\[Zone\] ZoneChangeList.ProcessChanges\(\) - id=\d* local=.* \[entityName=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] zone from ?(FRIENDLY|OPPOSING)? ?(.*)? -> ?(FRIENDLY|OPPOSING)? ?(.*)?$/;
 
-	eventName = 'zone-change';
+	eventName = 'zone-change' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
