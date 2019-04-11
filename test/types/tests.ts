@@ -4,7 +4,10 @@ const logWatcher = new LogWatcher();
 logWatcher.start();
 
 // Valid event names.
-logWatcher.on('gamestate-changed', () => {});
+logWatcher.on('gamestate-changed', (gameState) => {
+	gameState.playerCount; // $ExpectType number
+	gameState.gameOverCount; // $ExpectType number
+});
 logWatcher.on('game-over', () => {});
 logWatcher.on('game-start', () => {});
 logWatcher.on('mulligan-start', () => {});
@@ -22,3 +25,9 @@ logWatcher.onAny((event, value) => {
 // Invalid event name.
 // $ExpectError
 logWatcher.on('fakeEvent', () => {});
+
+// Extraneous event args.
+// $ExpectError
+logWatcher.on('game-over', (fakeArg) => {
+	console.log(fakeArg);
+});
