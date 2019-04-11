@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "log.config"
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
