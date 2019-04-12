@@ -37,20 +37,26 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
-		if (data.toZone === data.fromZone) {
+		if (data.toZone === data.fromZone && data.toTeam === data.fromTeam) {
 			return;
 		}
 
 		if (data.toTeam === 'FRIENDLY' && data.toZone === 'DECK') {
 			// If entering the deck, increment deck count
 			gameState.friendlyCount++;
-		} else if (data.fromTeam === 'FRIENDLY' && data.fromZone === 'DECK') {
+		}
+
+		if (data.fromTeam === 'FRIENDLY' && data.fromZone === 'DECK') {
 			// If drawn from deck, decrement deck count
 			gameState.friendlyCount--;
-		} else if (data.toTeam === 'OPPOSING' && data.toZone === 'DECK') {
+		}
+
+		if (data.toTeam === 'OPPOSING' && data.toZone === 'DECK') {
 			// If entering the deck, increment deck count
 			gameState.opposingCount++;
-		} else if (data.fromTeam === 'OPPOSING' && data.fromZone === 'DECK') {
+		}
+
+		if (data.fromTeam === 'OPPOSING' && data.fromZone === 'DECK') {
 			gameState.opposingCount--;
 		}
 
