@@ -100,7 +100,7 @@ describe('hearthstone-log-watcher', () => {
 		});
 	});
 
-	describe('parsing_2', () => {
+	describe('test_togwaggle_deck_swap', () => {
 		beforeEach(function () {
 			this.logWatcher = new LogWatcher({
 				logFile: logFileFixture2,
@@ -119,28 +119,6 @@ describe('hearthstone-log-watcher', () => {
 				gameOverCount: 0,
 				friendlyCount: 10,
 				opposingCount: 16
-			});
-		});
-
-		it('should emit the expected number of events', function () {
-			const logBuffer = fs.readFileSync(logFileFixture2);
-			const eventCounters: EventCounters = {};
-			this.logWatcher.onAny((event: string) => {
-				if (!(event in eventCounters)) {
-					eventCounters[event] = 0;
-				}
-
-				eventCounters[event]++;
-			});
-			this.logWatcher.parseBuffer(logBuffer);
-
-			eventCounters.should.deep.equal({
-				'gamestate-changed': 1,
-				'game-start': 1,
-				'player-joined': 2,
-				'zone-change': 219,
-				'turn-change': 33,
-				'tag-change': 899
 			});
 		});
 	});
