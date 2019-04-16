@@ -13,6 +13,7 @@ import {LogWatcher} from '../src';
 should(); // Initialize chai's "should" interface.
 
 const logFileFixture = path.join(__dirname, '/artifacts/dummy.log');
+const logFileFixture2 = path.join(__dirname, '/artifacts/dummy_2.log');
 const configFileFixture = path.join(__dirname, '/artifacts/dummy.config');
 
 interface EventCounters {
@@ -95,6 +96,51 @@ describe('hearthstone-log-watcher', () => {
 				'zone-change': 237,
 				'turn-change': 36,
 				'tag-change': 852
+			});
+		});
+	});
+
+	describe('parsing_2', () => {
+		beforeEach(function () {
+			this.logWatcher = new LogWatcher({
+				logFile: logFileFixture2,
+				configFile: configFileFixture
+			});
+		});
+
+		it('should correctly parse the state tree', function () {
+			const logBuffer = fs.readFileSync(logFileFixture2);
+			const gameState = this.logWatcher.parseBuffer(logBuffer);
+			gameState.should.deep.equal({
+				players: [
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1}
+				],
+				gameOverCount: 0,
+				friendlyCount: 10,
+				opposingCount: 16
+			});
+		});
+
+		it('should emit the expected number of events', function () {
+			const logBuffer = fs.readFileSync(logFileFixture2);
+			const eventCounters: EventCounters = {};
+			this.logWatcher.onAny((event: string) => {
+				if (!(event in eventCounters)) {
+					eventCounters[event] = 0;
+				}
+
+				eventCounters[event]++;
+			});
+			this.logWatcher.parseBuffer(logBuffer);
+
+			eventCounters.should.deep.equal({
+				'gamestate-changed': 1,
+				'game-start': 1,
+				'player-joined': 2,
+				'zone-change': 219,
+				'turn-change': 33,
+				'tag-change': 899
 			});
 		});
 	});
