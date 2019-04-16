@@ -137,11 +137,7 @@ export class LogWatcher extends HspEventsEmitter {
 		this._lastFileSize = 0;
 	}
 
-	parseBuffer(buffer: Buffer, gameState: GameState): GameState {
-		if (!gameState) {
-			gameState = new GameState();
-		}
-
+	parseBuffer(buffer: Buffer, gameState: GameState = new GameState()): GameState {
 		let updated = false;
 
 		// Iterate over each line in the buffer.
