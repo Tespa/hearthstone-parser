@@ -97,5 +97,25 @@ describe('hearthstone-log-watcher', () => {
 				'tag-change': 852
 			});
 		});
+
+		it('should correctly handle a togwaggle deck swap', () => {
+			const logFilePath = path.join(__dirname, '/artifacts/togwaggle_deck_swap.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			gameState.should.deep.equal({
+				players: [
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1}
+				],
+				gameOverCount: 0,
+				friendlyCount: 10,
+				opposingCount: 16
+			});
+		});
 	});
 });
