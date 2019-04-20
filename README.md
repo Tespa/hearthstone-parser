@@ -1,4 +1,4 @@
-# Hearthstone Parser [![CircleCI](https://circleci.com/gh/Tespa/hearthstone-parser.svg?style=svg&circle-token=05f88c42a2f9db1a70dbcd5df487818bcc6e9887)](https://circleci.com/gh/Tespa/hearthstone-parser) [![npm](https://img.shields.io/npm/v/hearthstone-parser.svg)](https://www.npmjs.com/package/hearthstone-parser)
+# Hearthstone Parser [![CircleCI](https://circleci.com/gh/Tespa/hearthstone-parser.svg?style=svg&circle-token=05f88c42a2f9db1a70dbcd5df487818bcc6e9887)](https://circleci.com/gh/Tespa/hearthstone-parser) [![npm](https://img.shields.io/npm/v/hearthstone-parser.svg)](https://www.npmjs.com/package/hearthstone-parser) [![codecov](https://codecov.io/gh/Tespa/hearthstone-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/Tespa/hearthstone-parser)
 
 > A Node.js module for real-time parsing of Hearthstone game log files. 
 
