@@ -1,5 +1,6 @@
 import {GameOverLineParser} from './game-over';
 import {GameStartLineParser} from './game-start';
+import {GameTagChangeLineParser} from './game-tag-change';
 import {MulliganStartLineParser} from './mulligan-start';
 import {NewPlayerLineParser} from './new-player';
 import {TurnLineParser} from './turn';
@@ -10,6 +11,7 @@ import {GameState} from '../GameState';
 export const lineParsers = [
 	new GameOverLineParser(),
 	new GameStartLineParser(),
+	new GameTagChangeLineParser(),
 	new MulliganStartLineParser(),
 	new NewPlayerLineParser(),
 	new TurnLineParser(),
@@ -21,6 +23,7 @@ export interface Events {
 	'gamestate-changed': GameState;
 	'game-over': void;
 	'game-start': void;
+	'game-tag-change': void;
 	'mulligan-start': void;
 	'player-joined': void;
 	'turn-change': void;

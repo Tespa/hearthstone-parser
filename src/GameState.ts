@@ -17,6 +17,8 @@ export class GameState {
 
 	players: Player[];
 
+	mulliganEnd: boolean;
+
 	constructor() {
 		this.reset();
 	}
@@ -30,6 +32,7 @@ export class GameState {
 		this.gameOverCount = 0;
 		this.friendlyCount = 0;
 		this.opposingCount = 0;
+		this.mulliganEnd = false;
 	}
 
 	addPlayer(player: Player): Player {
