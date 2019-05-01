@@ -72,7 +72,7 @@ describe('hearthstone-log-watcher', () => {
 				gameOverCount: 2,
 				friendlyCount: 11,
 				opposingCount: 11,
-				mulliganEnd: true
+				mulliganActive: false
 			});
 		});
 
@@ -117,7 +117,7 @@ describe('hearthstone-log-watcher', () => {
 				gameOverCount: 0,
 				friendlyCount: 10,
 				opposingCount: 16,
-				mulliganEnd: true
+				mulliganActive: false
 			});
 		});
 	});

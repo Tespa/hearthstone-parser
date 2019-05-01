@@ -23,7 +23,7 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 		const data = formatParts(parts);
 
 		if (data.tag === 'STEP' && data.value === 'MAIN_READY') {
-			gameState.mulliganEnd = true;
+			gameState.mulliganActive = false;
 		}
 	}
 
