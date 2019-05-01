@@ -10,7 +10,7 @@ logWatcher.on('gamestate-changed', (gameState) => {
 });
 logWatcher.on('game-over', () => {});
 logWatcher.on('game-start', () => {});
-logWatcher.on('mulligan-start', () => {});
+logWatcher.on('game-tag-change', () => {});
 logWatcher.on('player-joined', () => {});
 logWatcher.on('turn-change', () => {});
 logWatcher.on('tag-change', () => {});

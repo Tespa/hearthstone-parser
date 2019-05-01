@@ -25,6 +25,10 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 		if (data.tag === 'STEP' && data.value === 'MAIN_READY') {
 			gameState.mulliganActive = false;
 		}
+
+		if (data.tag === 'STEP' && data.value === 'BEGIN_MULLIGAN') {
+			gameState.mulliganActive = true;
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {

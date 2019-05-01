@@ -32,7 +32,6 @@ export class GameState {
 		this.gameOverCount = 0;
 		this.friendlyCount = 0;
 		this.opposingCount = 0;
-		this.mulliganActive = true;
 	}
 
 	addPlayer(player: Player): Player {
