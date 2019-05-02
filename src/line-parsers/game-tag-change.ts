@@ -13,7 +13,7 @@ function formatParts(parts: string[]): Parts {
 	};
 }
 
-// Check if a card is changing tags.
+// Check for gamestate tag changes.
 export class GameTagChangeLineParser extends AbstractLineParser {
 	regex = /^\[Power\] GameState.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=GameEntity tag=(.*) value=(.*)/;
 
