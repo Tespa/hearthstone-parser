@@ -71,7 +71,8 @@ describe('hearthstone-log-watcher', () => {
 				],
 				gameOverCount: 2,
 				friendlyCount: 11,
-				opposingCount: 11
+				opposingCount: 11,
+				mulliganActive: false
 			});
 		});
 
@@ -91,6 +92,7 @@ describe('hearthstone-log-watcher', () => {
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
+				'game-tag-change': 496,
 				'player-joined': 4,
 				'zone-change': 237,
 				'turn-change': 36,
@@ -114,7 +116,8 @@ describe('hearthstone-log-watcher', () => {
 				],
 				gameOverCount: 0,
 				friendlyCount: 10,
-				opposingCount: 16
+				opposingCount: 16,
+				mulliganActive: false
 			});
 		});
 	});

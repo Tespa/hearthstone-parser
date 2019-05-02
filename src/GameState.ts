@@ -17,6 +17,8 @@ export class GameState {
 
 	players: Player[];
 
+	mulliganActive: boolean;
+
 	constructor() {
 		this.reset();
 	}
