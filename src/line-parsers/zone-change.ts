@@ -71,6 +71,13 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 				player.questCounter = -1;
 			}
 		}
+
+		if (gameState.mulliganActive && data.cardName === 'The Coin' && data.toZone === 'HAND') {
+			const player = gameState.getPlayerById(3 - data.playerId); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
+			if (player) {
+				player.turn = true;
+			}
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {
