@@ -71,6 +71,14 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 				player.questCounter = -1;
 			}
 		}
+
+		if (gameState.mulliganActive && data.cardName === 'The Coin' && data.toZone === 'HAND') {
+			const position = data.fromTeam === 'FRIENDLY' ? 'top' : 'bottom';
+			const player = gameState.getPlayerByPosition(position);
+			if (player) {
+				player.turn = true;
+			}
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {
