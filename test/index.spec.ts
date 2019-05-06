@@ -66,12 +66,12 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'Apple#1264', status: '', turn: false, questCounter: 3},
-					{id: 2, name: 'Baquio#1418', status: '', turn: true, questCounter: -1}
+					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6},
+					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1}
 				],
 				gameOverCount: 2,
-				friendlyCount: 11,
-				opposingCount: 11,
+				friendlyCount: 16,
+				opposingCount: 18,
 				mulliganActive: false
 			});
 		});
@@ -92,11 +92,11 @@ describe('hearthstone-log-watcher', () => {
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
-				'game-tag-change': 496,
+				'game-tag-change': 858,
 				'player-joined': 4,
-				'zone-change': 237,
-				'turn-change': 36,
-				'tag-change': 852
+				'zone-change': 360,
+				'turn-change': 66,
+				'tag-change': 2936
 			});
 		});
 
