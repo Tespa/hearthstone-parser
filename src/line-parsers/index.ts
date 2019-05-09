@@ -10,11 +10,11 @@ import {GameState} from '../GameState';
 export const lineParsers = [
 	new GameOverLineParser(),
 	new GameStartLineParser(),
-	new GameTagChangeLineParser(),
 	new NewPlayerLineParser(),
 	new TurnLineParser(),
 	new ZoneChangeLineParser(),
-	new TagChangeLineParser()
+	new TagChangeLineParser(),
+	new GameTagChangeLineParser()
 ];
 
 export interface Events {

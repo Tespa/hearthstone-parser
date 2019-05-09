@@ -31,7 +31,8 @@ export class TurnLineParser extends AbstractLineParser {
 					name: data.playerName,
 					status: '',
 					turn: data.turn,
-					questCounter: -1
+					questCounter: -1,
+					timeout: 45
 				});
 			}
 

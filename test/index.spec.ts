@@ -6,6 +6,7 @@ import * as path from 'path';
 
 // Packages
 import {should} from 'chai';
+import {set, reset} from 'mockdate';
 
 // Ours
 import {LogWatcher} from '../src';
@@ -63,16 +64,21 @@ describe('hearthstone-log-watcher', () => {
 
 		it('should correctly parse the state tree', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
+			const date = new Date();
+			set(date);
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
+			reset();
+
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6},
-					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1}
+					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75},
+					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75}
 				],
 				gameOverCount: 2,
 				friendlyCount: 16,
 				opposingCount: 18,
-				mulliganActive: false
+				mulliganActive: false,
+				turnStart: date
 			});
 		});
 
@@ -92,7 +98,7 @@ describe('hearthstone-log-watcher', () => {
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
-				'game-tag-change': 858,
+				'game-tag-change': 2232,
 				'player-joined': 4,
 				'zone-change': 360,
 				'turn-change': 66,
@@ -106,18 +112,21 @@ describe('hearthstone-log-watcher', () => {
 				logFile: logFilePath,
 				configFile: configFileFixture
 			});
-
+			const date = new Date();
+			set(date);
 			const logBuffer = fs.readFileSync(logFilePath);
 			const gameState = logWatcher.parseBuffer(logBuffer);
+			reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75}
 				],
 				gameOverCount: 0,
 				friendlyCount: 10,
 				opposingCount: 16,
-				mulliganActive: false
+				mulliganActive: false,
+				turnStart: date
 			});
 		});
 	});
