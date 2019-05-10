@@ -26,7 +26,7 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 
 		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'MAIN_READY') {
 			gameState.mulliganActive = false;
-			gameState.turnStart = new Date();
+			gameState.turnStartTime = new Date();
 		}
 
 		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'BEGIN_MULLIGAN') {

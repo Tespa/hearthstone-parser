@@ -6,7 +6,7 @@ import * as path from 'path';
 
 // Packages
 import {should} from 'chai';
-import {set, reset} from 'mockdate';
+import * as mockdate from 'mockdate';
 
 // Ours
 import {LogWatcher} from '../src';
@@ -65,9 +65,9 @@ describe('hearthstone-log-watcher', () => {
 		it('should correctly parse the state tree', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
 			const date = new Date();
-			set(date);
+			mockdate.set(date);
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
-			reset();
+			mockdate.reset();
 
 			gameState.should.deep.equal({
 				players: [
@@ -78,7 +78,7 @@ describe('hearthstone-log-watcher', () => {
 				friendlyCount: 16,
 				opposingCount: 18,
 				mulliganActive: false,
-				turnStart: date
+				turnStartTime: date
 			});
 		});
 
@@ -113,10 +113,10 @@ describe('hearthstone-log-watcher', () => {
 				configFile: configFileFixture
 			});
 			const date = new Date();
-			set(date);
+			mockdate.set(date);
 			const logBuffer = fs.readFileSync(logFilePath);
 			const gameState = logWatcher.parseBuffer(logBuffer);
-			reset();
+			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
 					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75},
@@ -126,7 +126,7 @@ describe('hearthstone-log-watcher', () => {
 				friendlyCount: 10,
 				opposingCount: 16,
 				mulliganActive: false,
-				turnStart: date
+				turnStartTime: date
 			});
 		});
 	});

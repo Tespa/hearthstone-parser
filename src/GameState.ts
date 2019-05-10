@@ -20,7 +20,7 @@ export class GameState {
 
 	mulliganActive: boolean;
 
-	turnStart: Date;
+	turnStartTime: Date;
 
 	constructor() {
 		this.reset();
@@ -35,7 +35,7 @@ export class GameState {
 		this.gameOverCount = 0;
 		this.friendlyCount = 0;
 		this.opposingCount = 0;
-		this.turnStart = new Date();
+		this.turnStartTime = new Date();
 	}
 
 	addPlayer(player: Player): Player {
