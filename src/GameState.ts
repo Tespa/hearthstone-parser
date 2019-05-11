@@ -4,6 +4,7 @@ export interface Player {
 	status: string;
 	turn: boolean;
 	questCounter: number;
+	timeout: number;
 }
 
 export class GameState {
@@ -19,6 +20,8 @@ export class GameState {
 
 	mulliganActive: boolean;
 
+	turnStartTime: Date;
+
 	constructor() {
 		this.reset();
 	}
@@ -32,6 +35,7 @@ export class GameState {
 		this.gameOverCount = 0;
 		this.friendlyCount = 0;
 		this.opposingCount = 0;
+		this.turnStartTime = new Date();
 	}
 
 	addPlayer(player: Player): Player {

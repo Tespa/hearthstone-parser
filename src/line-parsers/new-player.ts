@@ -17,7 +17,8 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			name: parts[2],
 			status: '',
 			turn: false,
-			questCounter: -1
+			questCounter: -1,
+			timeout: 45
 		});
 	}
 
