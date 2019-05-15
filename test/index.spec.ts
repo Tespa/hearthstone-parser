@@ -71,12 +71,10 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75},
-					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75}
+					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75, cardCount: 16},
+					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 18}
 				],
 				gameOverCount: 2,
-				friendlyCount: 16,
-				opposingCount: 18,
 				mulliganActive: false,
 				turnStartTime: date
 			});
@@ -119,12 +117,10 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16}
 				],
 				gameOverCount: 0,
-				friendlyCount: 10,
-				opposingCount: 16,
 				mulliganActive: false,
 				turnStartTime: date
 			});

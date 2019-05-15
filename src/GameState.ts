@@ -5,16 +5,13 @@ export interface Player {
 	turn: boolean;
 	questCounter: number;
 	timeout: number;
+	cardCount: number;
 }
 
 export class GameState {
 	playerCount: number;
 
 	gameOverCount: number;
-
-	friendlyCount: number;
-
-	opposingCount: number;
 
 	players: Player[];
 
@@ -33,8 +30,6 @@ export class GameState {
 	reset(): void {
 		this.players = [];
 		this.gameOverCount = 0;
-		this.friendlyCount = 0;
-		this.opposingCount = 0;
 		this.turnStartTime = new Date();
 	}
 

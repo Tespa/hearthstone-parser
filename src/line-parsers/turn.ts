@@ -32,7 +32,8 @@ export class TurnLineParser extends AbstractLineParser {
 					status: '',
 					turn: data.turn,
 					questCounter: -1,
-					timeout: 45
+					timeout: 45,
+					cardCount: 0
 				});
 			}
 
