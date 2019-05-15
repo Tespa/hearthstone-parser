@@ -41,23 +41,35 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			return;
 		}
 
-		if (data.toTeam === 'FRIENDLY' && data.toZone === 'DECK') {
-			// If entering the deck, increment deck count
-			gameState.friendlyCount++;
+		if (data.toZone === 'DECK' && data.fromZone === 'DECK' && data.fromTeam !== data.toTeam) {
+			// Handle the Togwaggle swap case
+			const toPlayer = gameState.getPlayerById(data.playerId);
+			const fromPlayer = gameState.getPlayerById(3 - data.playerId); // Player 1's opponent is Player 2
+			if (fromPlayer) {
+				fromPlayer.cardCount--;
+			}
+
+			if (toPlayer) {
+				toPlayer.cardCount++;
+			}
+
+			return;
 		}
 
-		if (data.fromTeam === 'FRIENDLY' && data.fromZone === 'DECK') {
+		if (data.toZone === 'DECK') {
+			// If entering the deck, increment deck count
+			const player = gameState.getPlayerById(data.playerId);
+			if (player) {
+				player.cardCount++;
+			}
+		}
+
+		if (data.fromZone === 'DECK') {
 			// If drawn from deck, decrement deck count
-			gameState.friendlyCount--;
-		}
-
-		if (data.toTeam === 'OPPOSING' && data.toZone === 'DECK') {
-			// If entering the deck, increment deck count
-			gameState.opposingCount++;
-		}
-
-		if (data.fromTeam === 'OPPOSING' && data.fromZone === 'DECK') {
-			gameState.opposingCount--;
+			const player = gameState.getPlayerById(data.playerId);
+			if (player) {
+				player.cardCount--;
+			}
 		}
 
 		if (quests.find(cardId => cardId === data.cardId) && data.toZone === 'SECRET') {

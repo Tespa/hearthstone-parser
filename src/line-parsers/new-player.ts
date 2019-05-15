@@ -18,7 +18,8 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			status: '',
 			turn: false,
 			questCounter: -1,
-			timeout: 45
+			timeout: 45,
+			cardCount: 0
 		});
 	}
 
