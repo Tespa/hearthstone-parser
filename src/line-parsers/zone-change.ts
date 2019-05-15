@@ -1,8 +1,53 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
-// For now, we hard code quest ids, as there are a limited number of unique quests. Later, if we want to implement secret tracking, we should use hearthstonejson to recognize whether a card is a secret or a quest
+// For now, we hard code quest ids, as there are a limited number of unique quests.
 const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
+
+/* eslint-disable: @typescript-eslint/camelcase */
+const secretToClass: {[id: string]: string} =
+{
+	AT_002: 'MAGE',
+	AT_060: 'HUNTER',
+	AT_073: 'PALADIN',
+	BOT_908: 'PALADIN',
+	CFM_026: 'HUNTER',
+	CFM_620: 'MAGE',
+	CFM_800: 'PALADIN',
+	DAL_570: 'PALADIN',
+	EX1_130: 'PALADIN',
+	EX1_132: 'PALADIN',
+	EX1_136: 'PALADIN',
+	EX1_287: 'MAGE',
+	EX1_289: 'MAGE',
+	EX1_294: 'MAGE',
+	EX1_295: 'MAGE',
+	EX1_379: 'PALADIN',
+	EX1_533: 'HUNTER',
+	EX1_554: 'HUNTER',
+	EX1_594: 'MAGE',
+	EX1_609: 'HUNTER',
+	EX1_610: 'HUNTER',
+	EX1_611: 'HUNTER',
+	FP1_018: 'MAGE',
+	FP1_020: 'PALADIN',
+	GIL_577: 'HUNTER',
+	GIL_903: 'PALADIN',
+	ICC_082: 'MAGE',
+	ICC_200: 'HUNTER',
+	KAR_004: 'HUNTER',
+	LOE_021: 'HUNTER',
+	LOE_027: 'PALADIN',
+	LOOT_079: 'HUNTER',
+	LOOT_101: 'MAGE',
+	LOOT_204: 'ROGUE',
+	LOOT_210: 'ROGUE',
+	LOOT_214: 'ROGUE',
+	TRL_400: 'MAGE',
+	tt_010: 'MAGE', // eslint-disable-line @typescript-eslint/camelcase
+	UNG_024: 'MAGE'
+};
+/* eslint-enable: @typescript-eslint/camelcase */
 
 interface Parts {
 	cardName: string;
@@ -72,15 +117,37 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			}
 		}
 
-		if (quests.find(cardId => cardId === data.cardId) && data.toZone === 'SECRET') {
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.questCounter = 0;
+		if (data.toZone === 'SECRET') {
+			if (quests.find(cardId => cardId === data.cardId)) {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					player.questCounter = 0;
+				}
+			} else {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					const cardClass = secretToClass[data.cardId];
+					if (cardClass) {
+						player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
+					}
+				}
 			}
-		} else if (quests.find(cardId => cardId === data.cardId) && data.fromZone === 'SECRET') {
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.questCounter = -1;
+		}
+
+		if (data.fromZone === 'SECRET') {
+			if (quests.find(cardId => cardId === data.cardId)) {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					player.questCounter = -1;
+				}
+			} else {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					const index = player.secrets.findIndex(secret => {
+						return secret.cardId === data.cardId;
+					});
+					player.secrets = player.secrets.splice(index);
+				}
 			}
 		}
 

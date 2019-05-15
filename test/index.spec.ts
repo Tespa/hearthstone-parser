@@ -71,8 +71,8 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75, cardCount: 16},
-					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 18}
+					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: []},
+					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: []}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -117,10 +117,52 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: []},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: []}
 				],
 				gameOverCount: 0,
+				mulliganActive: false,
+				turnStartTime: date
+			});
+		});
+
+		it('should correctly handle secrets', () => {
+			const logFilePath = path.join(__dirname, '/artifacts/secrets_test.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const date = new Date();
+			mockdate.set(date);
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			mockdate.reset();
+			gameState.should.deep.equal({
+				players: [
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 15, secrets: []},
+					{id: 2, name: 'YAYtears#1552', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 12,
+						secrets: [{
+							cardClass: 'PALADIN',
+							cardId: 'EX1_130',
+							cardName: 'Noble Sacrifice'
+						},
+						{
+							cardClass: 'PALADIN',
+							cardId: 'GIL_903',
+							cardName: 'Hidden Wisdom'
+						},
+						{
+							cardClass: 'PALADIN',
+							cardId: 'EX1_379',
+							cardName: 'Repentance'
+						},
+						{
+							cardClass: 'PALADIN',
+							cardId: 'BOT_908',
+							cardName: 'Autodefense Matrix'
+						}]}
+				],
+				gameOverCount: 2,
 				mulliganActive: false,
 				turnStartTime: date
 			});

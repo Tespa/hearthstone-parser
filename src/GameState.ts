@@ -1,3 +1,9 @@
+export interface Secret {
+	cardId: string;
+	cardClass: string;
+	cardName: string;
+}
+
 export interface Player {
 	id: number;
 	name: string;
@@ -6,6 +12,7 @@ export interface Player {
 	questCounter: number;
 	timeout: number;
 	cardCount: number;
+	secrets: Secret[];
 }
 
 export class GameState {
