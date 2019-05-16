@@ -1,53 +1,9 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
+import {secretToClass} from '../data/secrets';
 
 // For now, we hard code quest ids, as there are a limited number of unique quests.
 const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
-
-/* eslint-disable: @typescript-eslint/camelcase */
-const secretToClass: {[id: string]: string} =
-{
-	AT_002: 'MAGE',
-	AT_060: 'HUNTER',
-	AT_073: 'PALADIN',
-	BOT_908: 'PALADIN',
-	CFM_026: 'HUNTER',
-	CFM_620: 'MAGE',
-	CFM_800: 'PALADIN',
-	DAL_570: 'PALADIN',
-	EX1_130: 'PALADIN',
-	EX1_132: 'PALADIN',
-	EX1_136: 'PALADIN',
-	EX1_287: 'MAGE',
-	EX1_289: 'MAGE',
-	EX1_294: 'MAGE',
-	EX1_295: 'MAGE',
-	EX1_379: 'PALADIN',
-	EX1_533: 'HUNTER',
-	EX1_554: 'HUNTER',
-	EX1_594: 'MAGE',
-	EX1_609: 'HUNTER',
-	EX1_610: 'HUNTER',
-	EX1_611: 'HUNTER',
-	FP1_018: 'MAGE',
-	FP1_020: 'PALADIN',
-	GIL_577: 'HUNTER',
-	GIL_903: 'PALADIN',
-	ICC_082: 'MAGE',
-	ICC_200: 'HUNTER',
-	KAR_004: 'HUNTER',
-	LOE_021: 'HUNTER',
-	LOE_027: 'PALADIN',
-	LOOT_079: 'HUNTER',
-	LOOT_101: 'MAGE',
-	LOOT_204: 'ROGUE',
-	LOOT_210: 'ROGUE',
-	LOOT_214: 'ROGUE',
-	TRL_400: 'MAGE',
-	tt_010: 'MAGE', // eslint-disable-line @typescript-eslint/camelcase
-	UNG_024: 'MAGE'
-};
-/* eslint-enable: @typescript-eslint/camelcase */
 
 interface Parts {
 	cardName: string;
