@@ -26,6 +26,7 @@ export class TurnLineParser extends AbstractLineParser {
 			if (gameState.numPlayers === 1) {
 				const allPlayers = gameState.getAllPlayers();
 				const existingPlayerId = allPlayers[0].id;
+				const existingPlayerPosition = allPlayers[0].position;
 				gameState.addPlayer({
 					id: existingPlayerId === 1 ? 2 : 1,
 					name: data.playerName,
@@ -34,6 +35,7 @@ export class TurnLineParser extends AbstractLineParser {
 					questCounter: -1,
 					timeout: 45,
 					cardCount: 0,
+					position: existingPlayerPosition === 'top' ? 'bottom' : 'top',
 					secrets: []
 				});
 			}

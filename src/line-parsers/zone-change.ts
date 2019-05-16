@@ -62,6 +62,10 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			const player = gameState.getPlayerById(data.playerId);
 			if (player) {
 				player.cardCount++;
+				const position = data.toTeam === 'FRIENDLY' ? 'bottom' : 'top';
+				if (player.position !== position) {
+					player.position = position;
+				}
 			}
 		}
 
