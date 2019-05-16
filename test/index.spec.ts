@@ -71,8 +71,8 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: []},
-					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: []}
+					{id: 1, name: 'SpookyPatron#1959', status: '', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom'},
+					{id: 2, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top'}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -117,8 +117,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: []},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: []}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom'},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top'}
 				],
 				gameOverCount: 0,
 				mulliganActive: false,
@@ -139,8 +139,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 15, secrets: []},
-					{id: 2, name: 'YAYtears#1552', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 12,
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: []},
+					{id: 2, name: 'YAYtears#1552', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom',
 						secrets: [{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_132',

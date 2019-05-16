@@ -20,6 +20,7 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			questCounter: -1,
 			timeout: 45,
 			cardCount: 0,
+			position: gameState.numPlayers === 0 ? 'bottom' : 'top',
 			secrets: []
 		});
 	}

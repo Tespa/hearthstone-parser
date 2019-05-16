@@ -14,6 +14,7 @@ export interface Player {
 	questCounter: number;
 	timeout: number;
 	cardCount: number;
+	position: 'top' | 'bottom';
 	secrets: Secret[];
 }
 
@@ -52,7 +53,7 @@ export class GameState {
 	}
 
 	getPlayerByPosition(position: 'top' | 'bottom'): Player | undefined {
-		return this.getPlayerById(position === 'top' ? 2 : 1);
+		return this.players.find(player => player.position === position);
 	}
 
 	getPlayerByName(name: string): Player | undefined {
