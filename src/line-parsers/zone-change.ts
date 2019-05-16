@@ -1,7 +1,8 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
+import {secretToClass} from '../data/secrets';
 
-// For now, we hard code quest ids, as there are a limited number of unique quests. Later, if we want to implement secret tracking, we should use hearthstonejson to recognize whether a card is a secret or a quest
+// For now, we hard code quest ids, as there are a limited number of unique quests.
 const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
 
 interface Parts {
@@ -72,15 +73,34 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			}
 		}
 
-		if (quests.find(cardId => cardId === data.cardId) && data.toZone === 'SECRET') {
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.questCounter = 0;
+		if (data.toZone === 'SECRET') {
+			if (quests.find(cardId => cardId === data.cardId)) {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					player.questCounter = 0;
+				}
+			} else {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					const cardClass = secretToClass[data.cardId];
+					if (cardClass) {
+						player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
+					}
+				}
 			}
-		} else if (quests.find(cardId => cardId === data.cardId) && data.fromZone === 'SECRET') {
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.questCounter = -1;
+		}
+
+		if (data.fromZone === 'SECRET') {
+			if (quests.find(cardId => cardId === data.cardId)) {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					player.questCounter = -1;
+				}
+			} else {
+				const player = gameState.getPlayerById(data.playerId);
+				if (player) {
+					player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
+				}
 			}
 		}
 

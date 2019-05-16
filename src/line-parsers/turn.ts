@@ -33,7 +33,8 @@ export class TurnLineParser extends AbstractLineParser {
 					turn: data.turn,
 					questCounter: -1,
 					timeout: 45,
-					cardCount: 0
+					cardCount: 0,
+					secrets: []
 				});
 			}
 
