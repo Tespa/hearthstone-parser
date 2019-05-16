@@ -1,6 +1,8 @@
+import {SecretClass} from './data/secrets';
+
 export interface Secret {
 	cardId: string;
-	cardClass: string;
+	cardClass: SecretClass;
 	cardName: string;
 }
 
