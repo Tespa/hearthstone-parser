@@ -143,8 +143,13 @@ describe('hearthstone-log-watcher', () => {
 					{id: 2, name: 'YAYtears#1552', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 12,
 						secrets: [{
 							cardClass: 'PALADIN',
-							cardId: 'EX1_130',
-							cardName: 'Noble Sacrifice'
+							cardId: 'EX1_132',
+							cardName: 'Eye for an Eye'
+						},
+						{
+							cardClass: 'PALADIN',
+							cardId: 'DAL_570',
+							cardName: 'Never Surrender!'
 						},
 						{
 							cardClass: 'PALADIN',

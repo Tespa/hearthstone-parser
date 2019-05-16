@@ -99,10 +99,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			} else {
 				const player = gameState.getPlayerById(data.playerId);
 				if (player) {
-					const index = player.secrets.findIndex(secret => {
-						return secret.cardId === data.cardId;
-					});
-					player.secrets = player.secrets.splice(index);
+					player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
 				}
 			}
 		}
