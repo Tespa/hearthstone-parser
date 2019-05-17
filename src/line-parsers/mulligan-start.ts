@@ -2,7 +2,7 @@ import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
 // Check if a new game has started.
-export class GameStartLineParser extends AbstractLineParser {
+export class MulliganStartParser extends AbstractLineParser {
 	regex = /\[Power\] GameState\.DebugPrintPower\(\) -\s*tag=MULLIGAN_STATE value=INPUT/;
 
 	eventName = 'mulligan-start' as const;
