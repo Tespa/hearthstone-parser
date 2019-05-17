@@ -26,4 +26,5 @@ export interface Events {
 	'turn-change': void;
 	'tag-change': void;
 	'zone-change': void;
+	'mulligan-start': void;
 }
