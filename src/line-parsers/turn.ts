@@ -15,35 +15,35 @@ function formatParts(parts: string[]): Parts {
 
 // Check if the current turn has changed.
 export class TurnLineParser extends AbstractLineParser {
-	regex = /^\[Power\] GameState\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
+	regex = /^\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
 
 	eventName = 'turn-change' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 		const player = gameState.getPlayerByName(data.playerName);
-		if (!player) {
-			if (gameState.numPlayers === 1) {
-				const allPlayers = gameState.getAllPlayers();
-				const existingPlayerId = allPlayers[0].id;
-				const existingPlayerPosition = allPlayers[0].position;
-				gameState.addPlayer({
-					id: existingPlayerId === 1 ? 2 : 1,
-					name: data.playerName,
-					status: '',
-					turn: data.turn,
-					questCounter: -1,
-					timeout: 45,
-					cardCount: 0,
-					position: existingPlayerPosition === 'top' ? 'bottom' : 'top',
-					secrets: []
-				});
-			}
 
+		if (player) {
+			player.turn = data.turn;
 			return;
 		}
 
-		player.turn = data.turn;
+		if (gameState.numPlayers === 1) {
+			const allPlayers = gameState.getAllPlayers();
+			const existingPlayerId = allPlayers[0].id;
+			const existingPlayerPosition = allPlayers[0].position;
+			gameState.addPlayer({
+				id: existingPlayerId === 1 ? 2 : 1,
+				name: data.playerName,
+				status: '',
+				turn: data.turn,
+				questCounter: -1,
+				timeout: 45,
+				cardCount: 0,
+				position: existingPlayerPosition === 'top' ? 'bottom' : 'top',
+				secrets: []
+			});
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {
