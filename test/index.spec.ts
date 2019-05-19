@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Packages
-import {should} from 'chai';
+import {should, expect} from 'chai';
 import * as mockdate from 'mockdate';
 
 // Ours
@@ -171,6 +171,31 @@ describe('hearthstone-log-watcher', () => {
 				mulliganActive: false,
 				turnStartTime: date
 			});
+		});
+
+		it('should not update turn start time until new turn animation', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/long-animation-end-of-turn.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			expect(gameState.turnStartTime).equal(undefined);
+		});
+
+		it('should correctly handle a new turn', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/new-turn.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const date = new Date();
+			mockdate.set(date);
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			mockdate.reset();
+			expect(gameState.turnStartTime.getTime()).equal(date.getTime());
 		});
 	});
 });
