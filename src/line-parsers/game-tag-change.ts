@@ -2,7 +2,6 @@ import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
 interface Parts {
-	trigger: 'state' | 'animation';
 	entity: string;
 	tag: string;
 	value: string;
@@ -10,16 +9,15 @@ interface Parts {
 
 function formatParts(parts: string[]): Parts {
 	return {
-		trigger: parts[1] === 'GameState' ? 'state' : 'animation',
-		entity: parts[2],
-		tag: parts[3],
-		value: parts[4].trim()
+		entity: parts[1],
+		tag: parts[2],
+		value: parts[3].trim()
 	};
 }
 
 // Check for gamestate tag changes.
 export class GameTagChangeLineParser extends AbstractLineParser {
-	regex = /^\[Power\] (GameState|PowerTaskList).DebugPrintPower\(\) -\s+TAG_CHANGE Entity=([a-zA-Z0-9#]*) tag=(.*) value=(.*)/;
+	regex = /^\[Power\] PowerTaskList.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=([a-zA-Z0-9#]*) tag=(.*) value=(.*)/;
 
 	eventName = 'game-tag-change' as const;
 
@@ -29,7 +27,6 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 		if (
 			data.entity === 'GameEntity' &&
 			data.tag === 'STEP' &&
-			data.trigger === 'animation' &&
 			data.value === 'MAIN_ACTION'
 		) {
 			gameState.mulliganActive = false;
