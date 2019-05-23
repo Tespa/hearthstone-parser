@@ -96,7 +96,7 @@ describe('hearthstone-log-watcher', () => {
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
-				'game-tag-change': 4404,
+				'game-tag-change': 2106,
 				'player-joined': 4,
 				'zone-change': 360,
 				'turn-change': 66,
