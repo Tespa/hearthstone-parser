@@ -10,7 +10,7 @@ export class GameOverLineParser extends AbstractLineParser {
 	lineMatched([, entity, status]: string[], gameState: GameState): void {
 		// Set the status for the appropriate player.
 		const player = gameState.getPlayerByName(entity);
-		if (player) {
+		if (player && (status === 'WON' || status === 'LOST' || status === 'TIED')) {
 			player.status = status;
 		}
 

@@ -9,7 +9,7 @@ export interface Secret {
 export interface Player {
 	id: number;
 	name: string;
-	status: string;
+	status: 'LOST' | 'WON' | 'TIED' | '';
 	turn: boolean;
 	questCounter: number;
 	timeout: number;
