@@ -27,6 +27,14 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'MAIN_READY') {
 			gameState.mulliganActive = false;
 			gameState.turnStartTime = new Date();
+
+			// Neither of players have turn true which means bottom player is playing first
+			if (gameState.players.every(player => !player.turn)) {
+				const bottomPlayer = gameState.getPlayerByPosition('bottom');
+				if (bottomPlayer) {
+					bottomPlayer.turn = true;
+				}
+			}
 		}
 
 		if (data.tag === 'MULLIGAN_STATE' && data.value === 'DEALING') {
