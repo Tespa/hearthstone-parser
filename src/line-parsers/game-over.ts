@@ -3,7 +3,7 @@ import {GameState} from '../GameState';
 
 // Check if the game is over.
 export class GameOverLineParser extends AbstractLineParser {
-	regex = /\[Power\] GameState\.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)/;
+	regex = /\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)/;
 
 	eventName = 'game-over' as const;
 
