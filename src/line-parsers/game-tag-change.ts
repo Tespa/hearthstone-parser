@@ -24,11 +24,7 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
-		if (
-			data.entity === 'GameEntity' &&
-			data.tag === 'STEP' &&
-			data.value === 'MAIN_ACTION'
-		) {
+		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'MAIN_ACTION') {
 			gameState.mulliganActive = false;
 			gameState.turnStartTime = new Date();
 		}
