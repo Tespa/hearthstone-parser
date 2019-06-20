@@ -1,0 +1,646 @@
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=205
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=205
+
+[*]send echo response
+[Asset] Changing family of sound asset VO_HERO_01_Thinking1_12.wav:3093ab81f975db14b85317538bcc59d8 to OtherMinionSounds
+FSM not Preprocessed: DestroyEvent : FSM
+FSM not Preprocessed: ShowEvent : FSM
+[LoadingScreen] Gameplay.OnPowerHistory() - powerList=30
+[Power] GameState.DebugPrintPowerList() - Count=30
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=RESOURCES_USED value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_RESOURCES_SPENT_THIS_GAME value=14 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_CARDS_PLAYED_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=36 zone=HAND zonePos=6 cardId= player=2] tag=ZONE_POSITION value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=43 zone=HAND zonePos=5 cardId= player=2] tag=ZONE_POSITION value=4 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=56 zone=HAND zonePos=4 cardId= player=2] tag=ZONE_POSITION value=3 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=3 cardId= player=2] tag=ZONE_POSITION value=2 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=39 zone=HAND zonePos=2 cardId= player=2] tag=ZONE_POSITION value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] tag=ZONE_POSITION value=0 
+[Power] GameState.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] CardID=CS2_112
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=WEAPON
+[Power] GameState.DebugPrintPower() -         tag=COST value=5
+[Power] GameState.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] GameState.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] GameState.DebugPrintPower() -         tag=ATK value=5
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=PLAY
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=57
+[Power] GameState.DebugPrintPower() -         tag=DURABILITY value=2
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] GameState.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] GameState.DebugPrintPower() -         tag=CARD_TARGET value=0
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=5
+[Power] GameState.DebugPrintPower() -         tag=478 value=2
+[Power] GameState.DebugPrintPower() -         tag=479 value=5
+[Power] GameState.DebugPrintPower() -         tag=ATTACKABLE_BY_RUSH value=0
+[Power] GameState.DebugPrintPower() -         tag=1037 value=0
+[Power] GameState.DebugPrintPower() -         tag=1043 value=1
+[Power] GameState.DebugPrintPower() -         tag=1068 value=0
+[Power] GameState.DebugPrintPower() -         tag=1196 value=0
+[Power] GameState.DebugPrintPower() -         tag=1254 value=0
+[Power] GameState.DebugPrintPower() -         tag=1271 value=0
+[Power] GameState.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] tag=JUST_PLAYED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=LAST_CARD_PLAYED value=57 
+[Power] GameState.DebugPrintPower() -     BLOCK_START BlockType=POWER Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -     BLOCK_END
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=LAST_AFFECTED_BY value=57 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=TO_BE_DESTROYED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=334 value=57 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=479 value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATK value=5 
+[Power] GameState.DebugPrintPower() -     BLOCK_START BlockType=DEATHS Entity=GameEntity EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -         TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=TO_BE_DESTROYED value=0 
+[Power] GameState.DebugPrintPower() -         TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=1068 value=4 
+[Power] GameState.DebugPrintPower() -         TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() -         TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=ZONE value=GRAVEYARD 
+[Power] GameState.DebugPrintPower() -         TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=DAMAGE value=0 
+[Power] GameState.DebugPrintPower() -     BLOCK_END
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=COMBO_ACTIVE value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] PowerTaskList.DebugDump() - ID=206 ParentID=0 PreviousID=0 TaskCount=12
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=RESOURCES_USED value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_RESOURCES_SPENT_THIS_GAME value=14 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_CARDS_PLAYED_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=36 zone=HAND zonePos=6 cardId= player=2] tag=ZONE_POSITION value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=43 zone=HAND zonePos=5 cardId= player=2] tag=ZONE_POSITION value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=56 zone=HAND zonePos=4 cardId= player=2] tag=ZONE_POSITION value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=3 cardId= player=2] tag=ZONE_POSITION value=2 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=39 zone=HAND zonePos=2 cardId= player=2] tag=ZONE_POSITION value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] tag=ZONE_POSITION value=0 
+[Power] PowerTaskList.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] CardID=CS2_112
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=WEAPON
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=5
+[Power] PowerTaskList.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=ATK value=5
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=PLAY
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=57
+[Power] PowerTaskList.DebugPrintPower() -         tag=DURABILITY value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARD_TARGET value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=5
+[Power] PowerTaskList.DebugPrintPower() -         tag=478 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=479 value=5
+[Power] PowerTaskList.DebugPrintPower() -         tag=ATTACKABLE_BY_RUSH value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1043 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1068 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1196 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1254 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1271 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] tag=JUST_PLAYED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=LAST_CARD_PLAYED value=57 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=206
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2]
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=206 changeListId=19 taskStart=0 taskEnd=11
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=RESOURCES_USED value=5 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=NUM_RESOURCES_SPENT_THIS_GAME value=14 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=NUM_CARDS_PLAYED_THIS_TURN value=1 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=36 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=5 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=36 zone=HAND zonePos=6 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=5
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=43 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=4 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=43 zone=HAND zonePos=5 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=5 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=56 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=3 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=56 zone=HAND zonePos=4 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=3
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=6 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=2 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=3 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=2
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=7 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=39 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=1 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=39 zone=HAND zonePos=2 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=1
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=8 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=9 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=SHOW_ENTITY entity=[id=57 cardId=CS2_112 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=10 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=19 changes=11 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=LAST_CARD_PLAYED value=57 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.ReplaceRemoteWeaponInServerChangeList() - AddChange() serverChangeList: id=19 changes=12 complete=False local=False localTrigger=[], graveyardChange: powerTask=[] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - m_id=19 m_taskList=206 m_changes.Count=13
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=RESOURCES_USED value=5 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=NUM_RESOURCES_SPENT_THIS_GAME value=14 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=NUM_CARDS_PLAYED_THIS_TURN value=1 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=36 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=5 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=36 zone=HAND zonePos=6 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=5
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=UNKNOWN ENTITY [cardType=INVALID] id=36 zone=HAND zonePos=5 cardId= player=2] pos from 6 -> 5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=43 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=4 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=43 zone=HAND zonePos=5 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=4
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=UNKNOWN ENTITY [cardType=INVALID] id=43 zone=HAND zonePos=4 cardId= player=2] pos from 5 -> 4
+[Zone] ZoneChangeList.ProcessChanges() - processing index=5 change=powerTask=[power=[type=TAG_CHANGE entity=[id=56 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=3 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=56 zone=HAND zonePos=4 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=3
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=UNKNOWN ENTITY [cardType=INVALID] id=56 zone=HAND zonePos=3 cardId= player=2] pos from 4 -> 3
+[Zone] ZoneChangeList.ProcessChanges() - processing index=6 change=powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=2 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=3 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=2
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=2 cardId= player=2] pos from 3 -> 2
+[Zone] ZoneChangeList.ProcessChanges() - processing index=7 change=powerTask=[power=[type=TAG_CHANGE entity=[id=39 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=1 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=39 zone=HAND zonePos=2 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=1
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=UNKNOWN ENTITY [cardType=INVALID] id=39 zone=HAND zonePos=1 cardId= player=2] pos from 2 -> 1
+[Zone] ZoneChangeList.ProcessChanges() - processing index=8 change=powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=1 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=9 change=powerTask=[power=[type=SHOW_ENTITY entity=[id=57 cardId=CS2_112 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=57 zone=HAND zonePos=0 cardId= player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] to OPPOSING PLAY (Weapon)
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] zone from OPPOSING HAND -> OPPOSING PLAY (Weapon)
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] pos from 1 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=10 change=powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId=CS2_112 name=Arcanite Reaper] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] to load (powerTask=(not null))
+[Asset] Changing family of overridden asset HistoryCard.prefab:f8193c3e146b62342b8fb2c0494ec447 to Tutorial
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - processing index=11 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=SnarkyPatron] tag=LAST_CARD_PLAYED value=57 ] complete=False] entity=SnarkyPatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=12 change=powerTask=[] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] to OPPOSING GRAVEYARD
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] zone from OPPOSING PLAY (Weapon) -> OPPOSING GRAVEYARD
+[Asset] Changing family of overridden asset Card_Hand_Weapon_Premium.prefab:c7736007f7a350942bbe40e466ac357c to Tutorial
+[Zone] ZoneChangeList.ProcessChanges() - id=19 local=False [entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] pos from 0 -> 0
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 loadingEntities.Count=1 m_dirtyZones.Count=3
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 START waiting for [entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] to load (card=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2])
+[Asset] Changing family of overridden asset Card_Hand_Weapon_Premium.prefab:c7736007f7a350942bbe40e466ac357c to Tutorial
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 END waiting for [entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] to load (card=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2])
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 START waiting for zone OPPOSING HAND
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 START waiting for zone OPPOSING PLAY (Weapon)
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=19 START waiting for zone OPPOSING GRAVEYARD
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=19 END waiting for zone OPPOSING GRAVEYARD
+[Asset] Changing family of sound asset Weapon_Destruction_01.wav:780a0d0d979a7684484209017ab3ddd9 to AudioClip
+[Asset] Changing family of overridden asset Weapon_Destruction_01.wav:780a0d0d979a7684484209017ab3ddd9 to Tutorial
+[Asset] Changing family of sound asset hero_weapon_draw.wav:e6f1e9d2da090c94fb2b0048acb84599 to AudioClip
+[Asset] Changing family of overridden asset hero_weapon_draw.wav:e6f1e9d2da090c94fb2b0048acb84599 to Tutorial
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=19 END waiting for zone OPPOSING HAND
+[LoadingScreen] Gameplay.OnPowerHistory() - powerList=33
+[Power] GameState.DebugPrintPowerList() - Count=33
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=ATTACK Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] EffectCardId= EffectIndex=0 Target=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] SubOption=-1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_ATTACKER value=66 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_DEFENDER value=64 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATTACKING value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DEFENDING value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=1173 value=64 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=1173 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=0 
+[Power] GameState.DebugPrintPower() -     META_DATA - Meta=DAMAGE Data=5 Info=1
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DAMAGE value=14 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=464 value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=NUM_ATTACKS_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=EXHAUSTED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_ATTACKER value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_DEFENDER value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATTACKING value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DEFENDING value=0 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=1173 value=57 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=1173 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=0 
+[Power] GameState.DebugPrintPower() -     META_DATA - Meta=DAMAGE Data=1 Info=1
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=LAST_AFFECTED_BY value=3 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=DAMAGE value=1 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=2 
+[Asset] Changing family of sound asset hero_weapon_unsheathe.wav:e93c84dd0b39e1e4a85c8515ac51ee04 to AudioClip
+[Asset] Changing family of overridden asset hero_weapon_unsheathe.wav:e93c84dd0b39e1e4a85c8515ac51ee04 to Tutorial
+[Asset] Changing family of sound asset hero_weapon_unsheathe.wav:e93c84dd0b39e1e4a85c8515ac51ee04 to AudioClip
+[Asset] Changing family of overridden asset hero_weapon_unsheathe.wav:e93c84dd0b39e1e4a85c8515ac51ee04 to Tutorial
+[LoadingScreen] Gameplay.OnPowerHistory() - powerList=57
+[Power] GameState.DebugPrintPowerList() - Count=57
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_END 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_CLEANUP 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_CLEANUP 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=JUST_PLAYED value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=COMBO_ACTIVE value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_NEXT 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=EXHAUSTED value=1 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_NEXT 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=GameEntity EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=1292 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=1292 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=CURRENT_PLAYER value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=CURRENT_PLAYER value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=TURN value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=479 value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATK value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Armor Up! id=67 zone=PLAY zonePos=0 cardId=CS2_102 player=2] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES value=6 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_DRAWN_THIS_TURN value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=464 value=0 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=1 
+[Power] GameState.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] CardID=CS2_072
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] GameState.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=GRAVEYARD
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=8
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] GameState.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=0
+[Power] GameState.DebugPrintPower() -         tag=478 value=1
+[Power] GameState.DebugPrintPower() -         tag=479 value=0
+[Power] GameState.DebugPrintPower() -         tag=GHOSTLY value=0
+[Power] GameState.DebugPrintPower() -         tag=1037 value=1
+[Power] GameState.DebugPrintPower() -         tag=1043 value=1
+[Power] GameState.DebugPrintPower() -         tag=1068 value=0
+[Power] GameState.DebugPrintPower() -         tag=1196 value=0
+[Power] GameState.DebugPrintPower() -         tag=1254 value=0
+[Power] GameState.DebugPrintPower() -         tag=1271 value=0
+[Power] GameState.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] GameState.DebugPrintPower() -     META_DATA - Meta=BURNED_CARD Data=0 Info=1
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[LoadingScreen] Gameplay.OnAllOptions() - id=21
+[Power] GameState.DebugPrintOptions() - id=21
+[Power] GameState.DebugPrintOptions() -   option 0 type=END_TURN mainEntity= error=INVALID errorParam=
+[Power] GameState.DebugPrintOptions() -   option 1 type=POWER mainEntity=[entityName=Defias Ringleader id=33 zone=HAND zonePos=1 cardId=EX1_131 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 2 type=POWER mainEntity=[entityName=SI:7 Agent id=32 zone=HAND zonePos=2 cardId=EX1_134 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 3 type=POWER mainEntity=[entityName=Argent Squire id=23 zone=HAND zonePos=3 cardId=EX1_008 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 4 type=POWER mainEntity=[entityName=The Coin id=68 zone=HAND zonePos=5 cardId=GAME_005 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 5 type=POWER mainEntity=[entityName=Southsea Deckhand id=20 zone=HAND zonePos=7 cardId=CS2_146 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 6 type=POWER mainEntity=[entityName=Acidic Swamp Ooze id=6 zone=HAND zonePos=8 cardId=EX1_066 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 7 type=POWER mainEntity=[entityName=Spellbreaker id=15 zone=HAND zonePos=9 cardId=EX1_048 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 8 type=POWER mainEntity=[entityName=SI:7 Agent id=9 zone=HAND zonePos=10 cardId=EX1_134 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 9 type=POWER mainEntity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 10 type=POWER mainEntity=[entityName=Cold Blood id=18 zone=HAND zonePos=4 cardId=CS2_073 player=1] error=REQ_TARGET_TO_PLAY errorParam=
+[Power] GameState.DebugPrintOptions() -   option 11 type=POWER mainEntity=[entityName=Sap id=21 zone=HAND zonePos=6 cardId=EX1_581 player=1] error=REQ_TARGET_TO_PLAY errorParam=
+[Power] GameState.DebugPrintOptions() -   option 12 type=POWER mainEntity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_ATTACK_GREATER_THAN_0 errorParam=
+[Power] GameState.DebugPrintOptions() -   option 13 type=POWER mainEntity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 14 type=POWER mainEntity=[entityName=Armor Up! id=67 zone=PLAY zonePos=0 cardId=CS2_102 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 15 type=POWER mainEntity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] error=REQ_YOUR_TURN errorParam=
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=19 END waiting for zone OPPOSING PLAY (Weapon)
+[Zone] ZoneChangeList.Finish() - id=19 changes=13 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=19 m_taskList=206 m_changes.Count=13 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=206
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=207 ParentID=206 PreviousID=0 TaskCount=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=POWER Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=207
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=207
+[Power] PowerTaskList.DebugDump() - ID=208 ParentID=0 PreviousID=206 TaskCount=5
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=LAST_AFFECTED_BY value=57 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=TO_BE_DESTROYED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=334 value=57 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=479 value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATK value=5 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=208
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2]
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=208
+[Power] PowerTaskList.DebugDump() - ID=209 ParentID=206 PreviousID=0 TaskCount=5
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=DEATHS Entity=GameEntity EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=TO_BE_DESTROYED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=1068 value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=ZONE value=GRAVEYARD 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] tag=DAMAGE value=0 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=209
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=209 changeListId=20 taskStart=0 taskEnd=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=20 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=TO_BE_DESTROYED value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=20 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=4 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=20 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=20 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=20 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=DAMAGE value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=20 changes=5 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=TO_BE_DESTROYED value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=20 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=4 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=20 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=20 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=, changeList: id=20 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=DAMAGE value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=20 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=20 m_taskList=209 m_changes.Count=5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=TO_BE_DESTROYED value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=4 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=1068 value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=PLAY zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=34 cardId=CS2_106 name=Fiery War Axe] tag=DAMAGE value=0 ] complete=False] entity=[entityName=Fiery War Axe id=34 zone=GRAVEYARD zonePos=0 cardId=CS2_106 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=20 loadingEntities.Count=0 m_dirtyZones.Count=0
+[Zone] ZoneChangeList.Finish() - id=20 changes=5 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=20 m_taskList=209 m_changes.Count=5 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=209
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=210 ParentID=0 PreviousID=208 TaskCount=2
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=COMBO_ACTIVE value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=210
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2]
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=210
+[Asset] Changing family of overridden asset HistoryCard.prefab:f8193c3e146b62342b8fb2c0494ec447 to Tutorial
+[Power] PowerTaskList.DebugDump() - ID=211 ParentID=0 PreviousID=0 TaskCount=19
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=ATTACK Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] EffectCardId= EffectIndex=0 Target=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_ATTACKER value=66 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_DEFENDER value=64 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATTACKING value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DEFENDING value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=1173 value=64 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=1173 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=PREDAMAGE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     META_DATA - Meta=DAMAGE Data=5 Info=1
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DAMAGE value=14 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=464 value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=NUM_ATTACKS_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=EXHAUSTED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_ATTACKER value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=PROPOSED_DEFENDER value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATTACKING value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=DEFENDING value=0 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=211
+[Asset] Changing family of overridden asset AttackSpellController.prefab:12acecc85ac575e43b87ec141b89269a to Tutorial
+[Asset] Changing family of sound asset Hero_Attack_Generic_Start_01.wav:56b75425e96402544b4a1ec0b721d40e to AudioClip
+[Asset] Changing family of overridden asset Hero_Attack_Generic_Start_01.wav:56b75425e96402544b4a1ec0b721d40e to Tutorial
+[Asset] Changing family of overridden asset HistoryTile_Card.prefab:df3002d4532e4dd40b37101e83202db4 to Tutorial
+[Asset] Changing family of overridden asset History_Arrow.prefab:a9ef1ff267ab0a24c9cdef7f3678b5a4 to Tutorial
+[Asset] Changing family of sound asset Hero_Attack_Large_Whoosh_01.wav:5acb05be92b163b4b9af99542b2e8593 to AudioClip
+[Asset] Changing family of overridden asset Hero_Attack_Large_Whoosh_01.wav:5acb05be92b163b4b9af99542b2e8593 to Tutorial
+[Asset] Changing family of sound asset FX_Minion_AttackImpact.wav:784c4afefc057624fa90cab6478eed93 to AudioClip
+[Asset] Changing family of overridden asset FX_Minion_AttackImpact.wav:784c4afefc057624fa90cab6478eed93 to Tutorial
+[Asset] Changing family of sound asset tavern_crowd_play_reaction_quite_positive_2.wav:ae995375c17fac14099a81743491ab3b to AudioClip
+[Asset] Changing family of overridden asset tavern_crowd_play_reaction_quite_positive_2.wav:ae995375c17fac14099a81743491ab3b to Tutorial
+[Asset] Changing family of sound asset Hero_Attack_Generic_End_01.wav:7df3ca13203bc0a46a31a82903909d91 to AudioClip
+[Asset] Changing family of overridden asset Hero_Attack_Generic_End_01.wav:7df3ca13203bc0a46a31a82903909d91 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=211
+[Asset] Changing family of overridden asset HistoryCard.prefab:f8193c3e146b62342b8fb2c0494ec447 to Tutorial
+[Asset] Changing family of overridden asset HistoryTile_Attack.prefab:816bc6c1f4d8f0c439e981d30bf5b57b to Tutorial
+[Asset] Changing family of overridden asset History_Swords.prefab:361feac100313e443b68055167e5088c to Tutorial
+[Power] PowerTaskList.DebugDump() - ID=212 ParentID=0 PreviousID=0 TaskCount=9
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=1173 value=57 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=1173 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=PREDAMAGE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     META_DATA - Meta=DAMAGE Data=1 Info=1
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=LAST_AFFECTED_BY value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=DAMAGE value=1 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=212
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=212
+[Power] PowerTaskList.DebugDump() - ID=213 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=2 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=213
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=213
+[Power] PowerTaskList.DebugDump() - ID=214 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_END 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=214
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=214
+[Power] PowerTaskList.DebugDump() - ID=215 ParentID=0 PreviousID=0 TaskCount=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=215
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=215
+[Power] PowerTaskList.DebugDump() - ID=216 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_CLEANUP 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=216
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=216
+[Power] PowerTaskList.DebugDump() - ID=217 ParentID=0 PreviousID=0 TaskCount=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=217
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=217
+[Power] PowerTaskList.DebugDump() - ID=218 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_CLEANUP 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=218
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=218
+[Power] PowerTaskList.DebugDump() - ID=219 ParentID=0 PreviousID=0 TaskCount=4
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=SnarkyPatron#1301 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=JUST_PLAYED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=COMBO_ACTIVE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_NEXT 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=EXHAUSTED value=1 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=219
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=219
+[Power] PowerTaskList.DebugDump() - ID=220 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_NEXT 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=220
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=220
+[Power] PowerTaskList.DebugDump() - ID=221 ParentID=0 PreviousID=0 TaskCount=6
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=GameEntity EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=1292 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=1292 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=CURRENT_PLAYER value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=CURRENT_PLAYER value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=TURN value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=221
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=221
+[Power] PowerTaskList.DebugDump() - ID=222 ParentID=0 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=479 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=ATK value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=222
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=222
+[Power] PowerTaskList.DebugDump() - ID=223 ParentID=0 PreviousID=0 TaskCount=12
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=SnarkyPatron#1301 tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Garrosh Hellscream id=66 zone=PLAY zonePos=0 cardId=HERO_01 player=2] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Armor Up! id=67 zone=PLAY zonePos=0 cardId=CS2_102 player=2] tag=NUM_TURNS_IN_PLAY value=12 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Arcanite Reaper id=57 zone=PLAY zonePos=0 cardId=CS2_112 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES value=6 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_DRAWN_THIS_TURN value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=464 value=0 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=223
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=223
+[Power] PowerTaskList.DebugDump() - ID=224 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=224
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=224
+[Power] PowerTaskList.DebugDump() - ID=225 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=225
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=225
+[Power] PowerTaskList.DebugDump() - ID=226 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=226
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=226
+[Power] PowerTaskList.DebugDump() - ID=227 ParentID=0 PreviousID=0 TaskCount=5
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] CardID=CS2_072
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=GRAVEYARD
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=8
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=478 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=479 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=GHOSTLY value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1043 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1068 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1196 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1254 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1271 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] PowerTaskList.DebugPrintPower() -     META_DATA - Meta=BURNED_CARD Data=0 Info=1
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=227
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=227 changeListId=21 taskStart=0 taskEnd=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=21 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=21 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=CS2_072 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=21 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=META_DATA metaType=BURNED_CARD infoCount=1 data=0] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=21 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=21 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=21 changes=5 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=21 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=CS2_072 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=0, changeList: id=21 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=META_DATA metaType=BURNED_CARD infoCount=1 data=0] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=21 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=21 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=21 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=21 m_taskList=227 m_changes.Count=5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=CS2_072 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] to FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.ProcessChanges() - id=21 local=False [entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] zone from FRIENDLY DECK -> FRIENDLY GRAVEYARD
+[Asset] Changing family of overridden asset Card_Hand_Ability_Premium.prefab:5105f461bc4a48e4c8bf452b93cfd772 to Tutorial
+[Zone] ZoneChangeList.ProcessChanges() - id=21 local=False [entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=META_DATA metaType=BURNED_CARD infoCount=1 data=0] complete=False] entity=[entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] to load (powerTask=(not null))
+[Asset] Changing family of sound asset VO_HERO_03_ERROR06_25.wav:427007d364d732c40b2c6eae4fa939e3 to OtherMinionSounds
+FSM not Preprocessed: DestroyEvent : FSM
+FSM not Preprocessed: ShowEvent : FSM
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Backstab id=8 zone=GRAVEYARD zonePos=0 cardId=CS2_072 player=1] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Asset] Changing family of sound asset ALERT_YourTurn_0v2.prefab:201bcb34d33384e48ab226f7e797771f to AudioClip
+[Asset] Changing family of overridden asset ALERT_YourTurn_0v2.prefab:201bcb34d33384e48ab226f7e797771f to Tutorial
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=21 loadingEntities.Count=0 m_dirtyZones.Count=2
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=21 START waiting for zone FRIENDLY DECK
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=21 END waiting for zone FRIENDLY DECK
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=21 START waiting for zone FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=21 END waiting for zone FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.Finish() - id=21 changes=5 complete=True local=False localTrigger=[]
+[Asset] Changing family of sound asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to AudioClip
+[Asset] Changing family of overridden asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to Tutorial
+[Asset] Changing family of sound asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to AudioClip
+[Asset] Changing family of overridden asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to Tutorial
+[Asset] Changing family of sound asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to AudioClip
+[Asset] Changing family of overridden asset ALERT_YourTurn_0v2.wav:ed4d6c88b0ba7d4488c71fe607d87e0e to Tutorial
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=21 m_taskList=227 m_changes.Count=5 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=227
+[Asset] Changing family of overridden asset HistoryCard.prefab:f8193c3e146b62342b8fb2c0494ec447 to Tutorial
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Asset] Changing family of sound asset Weapon_Durability_Hit_01.wav:8cc86918ea7f78f4487be0f430b11119 to AudioClip
+[Asset] Changing family of overridden asset Weapon_Durability_Hit_01.wav:8cc86918ea7f78f4487be0f430b11119 to Tutorial
+[Asset] Changing family of sound asset Weapon_Durability_Hit_01.wav:8cc86918ea7f78f4487be0f430b11119 to AudioClip
+[Asset] Changing family of overridden asset Weapon_Durability_Hit_01.wav:8cc86918ea7f78f4487be0f430b11119 to Tutorial
+[Asset] Changing family of sound asset hero_weapon_sheathe.wav:0798aad4b296dad4db30d87b90a08ac7 to AudioClip
+[Asset] Changing family of overridden asset hero_weapon_sheathe.wav:0798aad4b296dad4db30d87b90a08ac7 to Tutorial
+[Asset] Changing family of sound asset hero_weapon_sheathe.wav:0798aad4b296dad4db30d87b90a08ac7 to AudioClip
+[Asset] Changing family of overridden asset hero_weapon_sheathe.wav:0798aad4b296dad4db30d87b90a08ac7 to Tutorial
+[Asset] Changing family of overridden asset HistoryTile_Card.prefab:df3002d4532e4dd40b37101e83202db4 to Tutorial
+[Asset] Changing family of overridden asset History_Arrow.prefab:a9ef1ff267ab0a24c9cdef7f3678b5a4 to Tutorial
+[Power] PowerTaskList.DebugDump() - ID=228 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_ACTION 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=228
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=228
+[Power] PowerTaskList.DebugDump() - ID=229 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=229
+[Asset] Changing family of overridden asset TriggerSpellController.prefab:e0a2661f98a720d47ad4b85de228f4b4 to Tutorial
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=229
+[Asset] Changing family of overridden asset Resource.prefab:d481f3581f436af43893ba4f88346fce to Tutorial
+FSM not Preprocessed: ManaDestroy : FSM
+FSM not Preprocessed: Temp_ManaDestroy : FSM
+[Asset] Changing family of sound asset mana_crystal_add.prefab:7e89200a9ec52234f8b8cb745d51bc92 to AudioClip
+[Asset] Changing family of overridden asset mana_crystal_add.prefab:7e89200a9ec52234f8b8cb745d51bc92 to Tutorial
+[Asset] Changing family of sound asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to AudioClip
+[Asset] Changing family of overridden asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to Tutorial
+[Asset] Changing family of sound asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to AudioClip
+[Asset] Changing family of overridden asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to Tutorial
+[Asset] Changing family of sound asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to AudioClip
+[Asset] Changing family of overridden asset mana_crystal_add.wav:a3c5197466dd07b44b9d0d9216d27784 to Tutorial
+Finish
+[Asset] Changing family of sound asset FX_EndTurn_Enemy.wav:9ae028e960e00f94d9e7047b1e2f67af to AudioClip
+[Asset] Changing family of overridden asset FX_EndTurn_Enemy.wav:9ae028e960e00f94d9e7047b1e2f67af to Tutorial
+[Asset] Changing family of overridden asset Card_Hand_Ability_HandFull.prefab:d5424d721404d401abb3015c69cdb6c2 to Tutorial
+FSM not Preprocessed: Card_Hand_Ability_HandFull(Clone) : FSM
+[Asset] Changing family of sound asset credits_card_embers_1.wav:f57e5b10b898fcf448c0280bab68e0c8 to AudioClip
+[Asset] Changing family of overridden asset credits_card_embers_1.wav:f57e5b10b898fcf448c0280bab68e0c8 to Tutorial
+[Asset] Changing family of sound asset credits_card_embers_1.wav:f57e5b10b898fcf448c0280bab68e0c8 to AudioClip
+[Asset] Changing family of overridden asset credits_card_embers_1.wav:f57e5b10b898fcf448c0280bab68e0c8 to Tutorial
+[Asset] Changing family of sound asset Fatigue_LastCard_02.wav:758c729626ebdd1408d57195c9ace06c to SpellSounds
+[Asset] Changing family of overridden asset Fatigue_LastCard_02.wav:758c729626ebdd1408d57195c9ace06c to Tutorial

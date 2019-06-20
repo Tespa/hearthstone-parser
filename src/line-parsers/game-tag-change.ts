@@ -17,7 +17,7 @@ function formatParts(parts: string[]): Parts {
 
 // Check for gamestate tag changes.
 export class GameTagChangeLineParser extends AbstractLineParser {
-	regex = /^\[Power\] GameState.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=([a-zA-Z0-9#]*) tag=(.*) value=(.*)/;
+	regex = /^\[Power\] PowerTaskList.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=([a-zA-Z0-9#]*) tag=(.*) value=(.*)/;
 
 	eventName = 'game-tag-change' as const;
 
@@ -27,6 +27,14 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'MAIN_READY') {
 			gameState.mulliganActive = false;
 			gameState.turnStartTime = new Date();
+
+			// Neither of players have turn true which means bottom player is playing first
+			if (gameState.players.every(player => !player.turn)) {
+				const bottomPlayer = gameState.getPlayerByPosition('bottom');
+				if (bottomPlayer) {
+					bottomPlayer.turn = true;
+				}
+			}
 		}
 
 		if (data.tag === 'MULLIGAN_STATE' && data.value === 'DEALING') {

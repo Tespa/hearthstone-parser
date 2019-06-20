@@ -96,11 +96,11 @@ describe('hearthstone-log-watcher', () => {
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
-				'game-tag-change': 2236,
+				'game-tag-change': 2102,
 				'player-joined': 4,
 				'zone-change': 360,
 				'turn-change': 66,
-				'tag-change': 2936
+				'tag-change': 3066
 			});
 		});
 
@@ -199,6 +199,31 @@ describe('hearthstone-log-watcher', () => {
 			expect(gamestate.gameOverCount).to.equal(2);
 			expect(gamestate.players[0].status).to.equal('LOST');
 			expect(gamestate.players[1].status).to.equal('WON');
+		});
+
+		it('should not update turn start time until new turn animation', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/long-animation-end-of-turn.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			expect(gameState.turnStartTime).equal(undefined);
+		});
+
+		it('should correctly handle a new turn', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/new-turn.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const date = new Date();
+			mockdate.set(date);
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			mockdate.reset();
+			expect(gameState.turnStartTime.getTime()).equal(date.getTime());
 		});
 	});
 });

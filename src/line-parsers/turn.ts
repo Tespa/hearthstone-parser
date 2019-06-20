@@ -15,7 +15,7 @@ function formatParts(parts: string[]): Parts {
 
 // Check if the current turn has changed.
 export class TurnLineParser extends AbstractLineParser {
-	regex = /^\[Power\] GameState\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
+	regex = /^\[Power\] PowerTaskList\.DebugPrintPower\(\) -\s*TAG_CHANGE Entity=(.*) tag=CURRENT_PLAYER value=(\d)/;
 
 	eventName = 'turn-change' as const;
 
@@ -44,6 +44,13 @@ export class TurnLineParser extends AbstractLineParser {
 		}
 
 		player.turn = data.turn;
+
+		const opponent = gameState.getPlayerById(3 - player.id); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
+
+		// Turn opponent of the matched player opposite of the turn value
+		if (opponent) {
+			opponent.turn = !data.turn;
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {

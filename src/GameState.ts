@@ -40,7 +40,6 @@ export class GameState {
 	reset(): void {
 		this.players = [];
 		this.gameOverCount = 0;
-		this.turnStartTime = new Date();
 	}
 
 	addPlayer(player: Player): Player {
