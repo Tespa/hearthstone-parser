@@ -36,7 +36,11 @@ export class TurnLineParser extends AbstractLineParser {
 					timeout: 45,
 					cardCount: 0,
 					position: existingPlayerPosition === 'top' ? 'bottom' : 'top',
-					secrets: []
+					secrets: [],
+					discovery: {
+						enabled: false,
+						id: null
+					}
 				});
 			}
 

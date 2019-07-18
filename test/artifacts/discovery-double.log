@@ -1,0 +1,474 @@
+[Power] GameState.DebugPrintPowerList() - Count=22
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] tag=1196 value=0 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES_USED value=3 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_RESOURCES_SPENT_THIS_GAME value=17 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_PLAYED_THIS_TURN value=2 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_MINIONS_PLAYED_THIS_TURN value=2 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1068 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1037 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE_POSITION value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE value=PLAY 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE_POSITION value=3 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1196 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=EXHAUSTED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=JUST_PLAYED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=LAST_CARD_PLAYED value=126 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=COST value=6 
+[Power] GameState.DebugPrintPower() -     BLOCK_START BlockType=POWER Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=128 CardID=CS2_075
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=COST value=1
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=128
+[Power] GameState.DebugPrintPower() -             tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=FREE
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -             tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52900
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=129 CardID=LOOT_214
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=COST value=2
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=129
+[Power] GameState.DebugPrintPower() -             tag=CLASS value=ROGUE
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=EPIC
+[Power] GameState.DebugPrintPower() -             tag=SECRET value=1
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -             tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52900
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=130 CardID=EX1_144
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=130
+[Power] GameState.DebugPrintPower() -             tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugDump() - ID=253 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] tag=1196 value=0 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=253
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=253
+[Power] PowerTaskList.DebugDump() - ID=254 ParentID=0 PreviousID=0 TaskCount=16
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES_USED value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_RESOURCES_SPENT_THIS_GAME value=17 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_PLAYED_THIS_TURN value=2 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_MINIONS_PLAYED_THIS_TURN value=2 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1068 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1037 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE_POSITION value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE value=PLAY 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=ZONE_POSITION value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=1196 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=EXHAUSTED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] tag=JUST_PLAYED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=LAST_CARD_PLAYED value=126 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=COST value=6 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=254
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2]
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=254 changeListId=48 taskStart=0 taskEnd=15
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=3 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=17 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=5 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=6 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1037 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=7 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=8 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=9 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=3 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=3
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=10 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1196 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=11 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=12 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=13 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=126 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=14 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=48 changes=15 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=48 changes=16 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=3 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=17 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1037 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=3 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=3, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1196 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=126 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=48 changes=16 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=48 m_taskList=254 m_changes.Count=16
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=3 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=17 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=2 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=5 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1068 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=6 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1037 value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=7 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=10 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=8 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=HAND zonePos=0 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] to FRIENDLY PLAY
+[Zone] ZoneChangeList.ProcessChanges() - id=48 local=False [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] zone from FRIENDLY HAND -> FRIENDLY PLAY
+[Zone] ZoneChangeList.ProcessChanges() - id=48 local=False [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] pos from 10 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=9 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=ZONE_POSITION value=3 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=3
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=0 cardId=DAL_741 player=2] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - id=48 local=False [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] pos from 0 -> 3
+[Zone] ZoneChangeList.ProcessChanges() - processing index=10 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=1196 value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=11 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=12 change=powerTask=[power=[type=TAG_CHANGE entity=[id=126 cardId=DAL_741 name=Ethereal Lackey] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=13 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=126 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=14 change=powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=15 change=powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=48 loadingEntities.Count=0 m_dirtyZones.Count=2
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=48 START waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=48 START waiting for zone FRIENDLY PLAY
+[Power] GameState.DebugPrintEntityChoices() - id=7 Player=Hoishin#1413 TaskList=255 ChoiceType=GENERAL CountMin=1 CountMax=1
+[Power] GameState.DebugPrintEntityChoices() -   Source=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[0]=[entityName=Sinister Strike id=128 zone=SETASIDE zonePos=0 cardId=CS2_075 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[1]=[entityName=Evasion id=129 zone=SETASIDE zonePos=0 cardId=LOOT_214 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[2]=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2]
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=7 WAIT for taskList 255
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=48 END waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=48 END waiting for zone FRIENDLY PLAY
+[Zone] ZoneChangeList.Finish() - id=48 changes=16 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=48 m_taskList=254 m_changes.Count=16 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=254
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=255 ParentID=254 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=POWER Entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Sinister Strike id=128 zone=SETASIDE zonePos=0 cardId=CS2_075 player=2] CardID=CS2_075
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=128
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Evasion id=129 zone=SETASIDE zonePos=0 cardId=LOOT_214 player=2] CardID=LOOT_214
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=129
+[Power] PowerTaskList.DebugPrintPower() -         tag=CLASS value=ROGUE
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=EPIC
+[Power] PowerTaskList.DebugPrintPower() -         tag=SECRET value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] CardID=EX1_144
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=130
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=255
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=255 changeListId=49 taskStart=0 taskEnd=2
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=49 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=128 cardId=CS2_075 name=Sinister Strike] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sinister Strike id=128 zone=SETASIDE zonePos=0 cardId=CS2_075 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=49 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=129 cardId=LOOT_214 name=Evasion] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Evasion id=129 zone=SETASIDE zonePos=0 cardId=LOOT_214 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=49 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=130 cardId=EX1_144 name=Shadowstep] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=49 changes=3 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=128 cardId=CS2_075 name=Sinister Strike] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sinister Strike id=128 zone=SETASIDE zonePos=0 cardId=CS2_075 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=49 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=129 cardId=LOOT_214 name=Evasion] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Evasion id=129 zone=SETASIDE zonePos=0 cardId=LOOT_214 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=49 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=130 cardId=EX1_144 name=Shadowstep] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=49 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=49 m_taskList=255 m_changes.Count=3
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=FULL_ENTITY entity=[id=128 cardId=CS2_075 name=Sinister Strike] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sinister Strike id=128 zone=SETASIDE zonePos=0 cardId=CS2_075 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=FULL_ENTITY entity=[id=129 cardId=LOOT_214 name=Evasion] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Evasion id=129 zone=SETASIDE zonePos=0 cardId=LOOT_214 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=FULL_ENTITY entity=[id=130 cardId=EX1_144 name=Shadowstep] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=49 loadingEntities.Count=0 m_dirtyZones.Count=0
+[Zone] ZoneChangeList.Finish() - id=49 changes=3 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=49 m_taskList=255 m_changes.Count=3 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=255
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=7 BEGIN
+FSM not Preprocessed: Button_FloatyButton : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+[Power] GameState.DebugPrintEntitiesChosen() - id=7 Player=Hoishin#1413 EntitiesCount=1
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[0]=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2]
+[Power] ChoiceCardMgr.DoesLocalChoiceMatchPacket(): Null list passed in! localChoices=, packetChoices=System.Collections.Generic.List`1[System.Int32].
+[Power] ChoiceCardMgr.WaitThenHideChoicesFromPacket() - id=7 END WAIT
+[Power] GameState.DebugPrintPowerList() - Count=10
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=1068 value=3 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=ZONE value=HAND 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=ZONE_POSITION value=10 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=DISPLAYED_CREATOR value=126 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=POWER Entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -     FULL_ENTITY - Creating ID=131 CardID=EX1_126
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -         tag=COST value=2
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=131
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -         tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] GameState.DebugPrintPower() -         tag=1037 value=2
+[Power] GameState.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] GameState.DebugPrintPower() -     FULL_ENTITY - Creating ID=132 CardID=LOOT_210
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -         tag=COST value=2
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=132
+[Power] GameState.DebugPrintPower() -         tag=CLASS value=ROGUE
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -         tag=SECRET value=1
+[Power] GameState.DebugPrintPower() -         tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] GameState.DebugPrintPower() -         tag=1037 value=2
+[Power] GameState.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] GameState.DebugPrintPower() -     FULL_ENTITY - Creating ID=133 CardID=EX1_278
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -         tag=COST value=2
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=133
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] GameState.DebugPrintPower() -         tag=CREATOR value=126
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] GameState.DebugPrintPower() -         tag=1037 value=2
+[Power] GameState.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugDump() - ID=256 ParentID=0 PreviousID=255 TaskCount=5
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=1068 value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=ZONE value=HAND 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=ZONE_POSITION value=10 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] tag=DISPLAYED_CREATOR value=126 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=256
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=256 changeListId=50 taskStart=0 taskEnd=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=50 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=3 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=50 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=0 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=50 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE value=HAND ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=50 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE_POSITION value=10 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=10
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=50 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=50 changes=5 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=3 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=50 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=0 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=50 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE value=HAND ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=, changeList: id=50 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE_POSITION value=10 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=10, changeList: id=50 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=50 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=50 m_taskList=256 m_changes.Count=5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=3 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=1068 value=0 ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE value=HAND ] complete=False] entity=[entityName=Shadowstep id=130 zone=SETASIDE zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Shadowstep id=130 zone=HAND zonePos=0 cardId=EX1_144 player=2] to FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=50 local=False [entityName=Shadowstep id=130 zone=HAND zonePos=0 cardId=EX1_144 player=2] zone from  -> FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=50 local=False [entityName=Shadowstep id=130 zone=HAND zonePos=0 cardId=EX1_144 player=2] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=ZONE_POSITION value=10 ] complete=False] entity=[entityName=Shadowstep id=130 zone=HAND zonePos=0 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=10
+[Zone] ZoneChangeList.ProcessChanges() - id=50 local=False [entityName=Shadowstep id=130 zone=HAND zonePos=10 cardId=EX1_144 player=2] pos from 0 -> 10
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=130 cardId=EX1_144 name=Shadowstep] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shadowstep id=130 zone=HAND zonePos=10 cardId=EX1_144 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=50 loadingEntities.Count=0 m_dirtyZones.Count=1
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=50 START waiting for zone FRIENDLY HAND
+[Power] GameState.DebugPrintEntityChoices() - id=8 Player=Hoishin#1413 TaskList=258 ChoiceType=GENERAL CountMin=1 CountMax=1
+[Power] GameState.DebugPrintEntityChoices() -   Source=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[0]=[entityName=Betrayal id=131 zone=SETASIDE zonePos=0 cardId=EX1_126 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[1]=[entityName=Sudden Betrayal id=132 zone=SETASIDE zonePos=0 cardId=LOOT_210 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[2]=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2]
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=8 WAIT for taskList 258
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=50 END waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.Finish() - id=50 changes=5 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=50 m_taskList=256 m_changes.Count=5 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=256
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=257 ParentID=0 PreviousID=254 TaskCount=0
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=257
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2]
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=257
+[Power] PowerTaskList.DebugDump() - ID=258 ParentID=254 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=POWER Entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Betrayal id=131 zone=SETASIDE zonePos=0 cardId=EX1_126 player=2] CardID=EX1_126
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=131
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Sudden Betrayal id=132 zone=SETASIDE zonePos=0 cardId=LOOT_210 player=2] CardID=LOOT_210
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=132
+[Power] PowerTaskList.DebugPrintPower() -         tag=CLASS value=ROGUE
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=SECRET value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] CardID=EX1_278
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=133
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=FREE
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=126
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52900
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=258
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=258 changeListId=51 taskStart=0 taskEnd=2
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=51 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=131 cardId=EX1_126 name=Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Betrayal id=131 zone=SETASIDE zonePos=0 cardId=EX1_126 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=51 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=132 cardId=LOOT_210 name=Sudden Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sudden Betrayal id=132 zone=SETASIDE zonePos=0 cardId=LOOT_210 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=51 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=133 cardId=EX1_278 name=Shiv] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=51 changes=3 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=131 cardId=EX1_126 name=Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Betrayal id=131 zone=SETASIDE zonePos=0 cardId=EX1_126 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=51 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=132 cardId=LOOT_210 name=Sudden Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sudden Betrayal id=132 zone=SETASIDE zonePos=0 cardId=LOOT_210 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=51 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=133 cardId=EX1_278 name=Shiv] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=51 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=51 m_taskList=258 m_changes.Count=3
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=FULL_ENTITY entity=[id=131 cardId=EX1_126 name=Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Betrayal id=131 zone=SETASIDE zonePos=0 cardId=EX1_126 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=FULL_ENTITY entity=[id=132 cardId=LOOT_210 name=Sudden Betrayal] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Sudden Betrayal id=132 zone=SETASIDE zonePos=0 cardId=LOOT_210 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=FULL_ENTITY entity=[id=133 cardId=EX1_278 name=Shiv] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=51 loadingEntities.Count=0 m_dirtyZones.Count=0
+[Zone] ZoneChangeList.Finish() - id=51 changes=3 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=51 m_taskList=258 m_changes.Count=3 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=258
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=8 BEGIN
+FSM not Preprocessed: Button_FloatyButton : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+[Power] GameState.DebugPrintEntitiesChosen() - id=8 Player=Hoishin#1413 EntitiesCount=1
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[0]=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2]
+[Power] ChoiceCardMgr.DoesLocalChoiceMatchPacket(): Null list passed in! localChoices=, packetChoices=System.Collections.Generic.List`1[System.Int32].
+[Power] ChoiceCardMgr.WaitThenHideChoicesFromPacket() - id=8 END WAIT
+[Power] GameState.DebugPrintPowerList() - Count=7
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=1068 value=4 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=ZONE value=GRAVEYARD 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=DISPLAYED_CREATOR value=126 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=Hoishin#1413 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=2 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] PowerTaskList.DebugDump() - ID=259 ParentID=0 PreviousID=258 TaskCount=4
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=1068 value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=ZONE value=GRAVEYARD 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] tag=DISPLAYED_CREATOR value=126 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=259
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=259 changeListId=52 taskStart=0 taskEnd=3
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=52 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=4 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=52 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=0 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=52 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=52 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=52 changes=4 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=4 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=52 changes=4 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=0 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=52 changes=4 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=, changeList: id=52 changes=4 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=52 changes=4 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=52 m_taskList=259 m_changes.Count=4
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=4 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=1068 value=0 ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=ZONE value=GRAVEYARD ] complete=False] entity=[entityName=Shiv id=133 zone=SETASIDE zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=GRAVEYARD dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Shiv id=133 zone=GRAVEYARD zonePos=0 cardId=EX1_278 player=2] to FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.ProcessChanges() - id=52 local=False [entityName=Shiv id=133 zone=GRAVEYARD zonePos=0 cardId=EX1_278 player=2] zone from  -> FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.ProcessChanges() - id=52 local=False [entityName=Shiv id=133 zone=GRAVEYARD zonePos=0 cardId=EX1_278 player=2] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=133 cardId=EX1_278 name=Shiv] tag=DISPLAYED_CREATOR value=126 ] complete=False] entity=[entityName=Shiv id=133 zone=GRAVEYARD zonePos=0 cardId=EX1_278 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=52 loadingEntities.Count=0 m_dirtyZones.Count=1
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=52 START waiting for zone FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=52 END waiting for zone FRIENDLY GRAVEYARD
+[Zone] ZoneChangeList.Finish() - id=52 changes=4 complete=True local=False localTrigger=[]
+[Power] GameState.DebugPrintOptions() - id=28
+[Power] GameState.DebugPrintOptions() -   option 0 type=END_TURN mainEntity= error=INVALID errorParam=
+[Power] GameState.DebugPrintOptions() -   option 1 type=POWER mainEntity=[entityName=EVIL Miscreant id=43 zone=HAND zonePos=1 cardId=DAL_415 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 2 type=POWER mainEntity=[entityName=SI:7 Agent id=47 zone=HAND zonePos=3 cardId=EX1_134 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=1 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Spirit of the Shark id=49 zone=PLAY zonePos=1 cardId=TRL_092 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 3 type=POWER mainEntity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=4 cardId=EX1_613 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 4 type=POWER mainEntity=[entityName=Blink Fox id=56 zone=HAND zonePos=6 cardId=GIL_827 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 5 type=POWER mainEntity=[entityName=Jade Blossom id=97 zone=HAND zonePos=7 cardId=CFM_713 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 6 type=POWER mainEntity=[entityName=Vendetta id=44 zone=HAND zonePos=8 cardId=DAL_716 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=1 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Spirit of the Shark id=49 zone=PLAY zonePos=1 cardId=TRL_092 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 7 type=POWER mainEntity=[entityName=Witchy Lackey id=125 zone=HAND zonePos=9 cardId=DAL_615 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Spirit of the Shark id=49 zone=PLAY zonePos=1 cardId=TRL_092 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_FRIENDLY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=1 cardId=DAL_741 player=1] error=REQ_FRIENDLY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 8 type=POWER mainEntity=[entityName=Shadowstep id=130 zone=HAND zonePos=10 cardId=EX1_144 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Spirit of the Shark id=49 zone=PLAY zonePos=1 cardId=TRL_092 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_FRIENDLY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=1 cardId=DAL_741 player=1] error=REQ_FRIENDLY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 9 type=POWER mainEntity=[entityName=Dagger Mastery id=67 zone=PLAY zonePos=0 cardId=CS2_083b player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 10 type=POWER mainEntity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 11 type=POWER mainEntity=[entityName=Shadow Madness id=88 zone=HAND zonePos=5 cardId=EX1_334 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 12 type=POWER mainEntity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 13 type=POWER mainEntity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 14 type=POWER mainEntity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_ATTACK_GREATER_THAN_0 errorParam=
+[Power] GameState.DebugPrintOptions() -   option 15 type=POWER mainEntity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=1 cardId=DAL_741 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 16 type=POWER mainEntity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 17 type=POWER mainEntity=[entityName=Spirit of the Shark id=49 zone=PLAY zonePos=1 cardId=TRL_092 player=2] error=REQ_ATTACK_GREATER_THAN_0 errorParam=
+[Power] GameState.DebugPrintOptions() -   option 18 type=POWER mainEntity=[entityName=EVIL Cable Rat id=63 zone=PLAY zonePos=2 cardId=DAL_400 player=2] error=REQ_NOT_MINION_JUST_PLAYED errorParam=
+[Power] GameState.DebugPrintOptions() -   option 19 type=POWER mainEntity=[entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2] error=REQ_NOT_MINION_JUST_PLAYED errorParam=
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=52 m_taskList=259 m_changes.Count=4 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=259
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=260 ParentID=0 PreviousID=257 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=2 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=260
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Ethereal Lackey id=126 zone=PLAY zonePos=3 cardId=DAL_741 player=2]
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=260

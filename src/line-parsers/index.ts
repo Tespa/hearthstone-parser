@@ -7,6 +7,9 @@ import {ZoneChangeLineParser} from './zone-change';
 import {TagChangeLineParser} from './tag-change';
 import {GameState} from '../GameState';
 import {MulliganStartParser} from './mulligan-start';
+import {ChoiceIdParser} from './choice-id';
+import {DiscoveryEndParser} from './discovery-end';
+import {DiscoveryStartParser} from './discovery-start';
 
 export const lineParsers = [
 	new GameOverLineParser(),
@@ -16,7 +19,10 @@ export const lineParsers = [
 	new ZoneChangeLineParser(),
 	new TagChangeLineParser(),
 	new GameTagChangeLineParser(),
-	new MulliganStartParser()
+	new MulliganStartParser(),
+	new ChoiceIdParser(),
+	new DiscoveryStartParser(),
+	new DiscoveryEndParser()
 ];
 
 export interface Events {
@@ -29,4 +35,7 @@ export interface Events {
 	'tag-change': void;
 	'zone-change': void;
 	'mulligan-start': void;
+	'choice-id': void;
+	'discovery-start': void;
+	'discovery-end': void;
 }

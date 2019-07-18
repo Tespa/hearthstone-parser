@@ -21,7 +21,11 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			timeout: 45,
 			cardCount: 0,
 			position: gameState.numPlayers === 0 ? 'bottom' : 'top',
-			secrets: []
+			secrets: [],
+			discovery: {
+				enabled: false,
+				id: null
+			}
 		});
 	}
 

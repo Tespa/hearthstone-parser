@@ -1,0 +1,624 @@
+[Power] GameState.DebugPrintPowerList() - Count=24
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES_USED value=4 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_RESOURCES_SPENT_THIS_GAME value=10 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_PLAYED_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_MINIONS_PLAYED_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1068 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Blink Fox id=56 zone=HAND zonePos=8 cardId=GIL_827 player=2] tag=ZONE_POSITION value=7 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadow Madness id=88 zone=HAND zonePos=7 cardId=EX1_334 player=2] tag=ZONE_POSITION value=6 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=6 cardId=EX1_613 player=2] tag=ZONE_POSITION value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1037 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE_POSITION value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE value=PLAY 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE_POSITION value=2 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1196 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=EXHAUSTED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=JUST_PLAYED value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=LAST_CARD_PLAYED value=58 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=COST value=6 
+[Power] GameState.DebugPrintPower() -     BLOCK_START BlockType=POWER Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=95 CardID=LOOT_047
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=COST value=1
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=95
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=58
+[Power] GameState.DebugPrintPower() -             tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52112
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=96 CardID=GVG_012
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=COST value=1
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=96
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=RARE
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=58
+[Power] GameState.DebugPrintPower() -             tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52112
+[Power] GameState.DebugPrintPower() -         FULL_ENTITY - Creating ID=97 CardID=CFM_713
+[Power] GameState.DebugPrintPower() -             tag=CONTROLLER value=2
+[Power] GameState.DebugPrintPower() -             tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -             tag=COST value=3
+[Power] GameState.DebugPrintPower() -             tag=ZONE value=SETASIDE
+[Power] GameState.DebugPrintPower() -             tag=ENTITY_ID value=97
+[Power] GameState.DebugPrintPower() -             tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -             tag=CREATOR value=58
+[Power] GameState.DebugPrintPower() -             tag=TAG_LAST_KNOWN_COST_IN_HAND value=3
+[Power] GameState.DebugPrintPower() -             tag=1037 value=2
+[Power] GameState.DebugPrintPower() -             tag=CREATOR_DBID value=52112
+[Power] PowerTaskList.DebugDump() - ID=164 ParentID=0 PreviousID=0 TaskCount=19
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=PLAY Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES_USED value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_RESOURCES_SPENT_THIS_GAME value=10 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_PLAYED_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_MINIONS_PLAYED_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1068 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Blink Fox id=56 zone=HAND zonePos=8 cardId=GIL_827 player=2] tag=ZONE_POSITION value=7 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Shadow Madness id=88 zone=HAND zonePos=7 cardId=EX1_334 player=2] tag=ZONE_POSITION value=6 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=6 cardId=EX1_613 player=2] tag=ZONE_POSITION value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1037 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE_POSITION value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE value=PLAY 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=ZONE_POSITION value=2 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=1196 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=EXHAUSTED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] tag=JUST_PLAYED value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=LAST_CARD_PLAYED value=58 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] tag=COST value=6 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=164
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2]
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=164 changeListId=31 taskStart=0 taskEnd=18
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=4 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=10 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=5 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=6 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=56 cardId=GIL_827 name=Blink Fox] tag=ZONE_POSITION value=7 ] complete=False] entity=[entityName=Blink Fox id=56 zone=HAND zonePos=8 cardId=GIL_827 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=7
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=7 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=88 cardId=EX1_334 name=Shadow Madness] tag=ZONE_POSITION value=6 ] complete=False] entity=[entityName=Shadow Madness id=88 zone=HAND zonePos=7 cardId=EX1_334 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=6
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=8 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId=EX1_613 name=Edwin VanCleef] tag=ZONE_POSITION value=5 ] complete=False] entity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=6 cardId=EX1_613 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=5
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=9 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1037 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=10 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=11 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=12 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=2 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=2
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=13 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1196 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=14 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=15 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=16 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=58 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=17 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=31 changes=18 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=31 changes=19 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=4 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=10 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=56 cardId=GIL_827 name=Blink Fox] tag=ZONE_POSITION value=7 ] complete=False] entity=[entityName=Blink Fox id=56 zone=HAND zonePos=8 cardId=GIL_827 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=7, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=88 cardId=EX1_334 name=Shadow Madness] tag=ZONE_POSITION value=6 ] complete=False] entity=[entityName=Shadow Madness id=88 zone=HAND zonePos=7 cardId=EX1_334 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=6, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId=EX1_613 name=Edwin VanCleef] tag=ZONE_POSITION value=5 ] complete=False] entity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=6 cardId=EX1_613 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=5, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1037 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=2 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=2, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1196 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=58 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=31 changes=19 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=31 m_taskList=164 m_changes.Count=19
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=RESOURCES_USED value=4 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_RESOURCES_SPENT_THIS_GAME value=10 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_CARDS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=NUM_MINIONS_PLAYED_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=5 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1068 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=6 change=powerTask=[power=[type=TAG_CHANGE entity=[id=56 cardId=GIL_827 name=Blink Fox] tag=ZONE_POSITION value=7 ] complete=False] entity=[entityName=Blink Fox id=56 zone=HAND zonePos=8 cardId=GIL_827 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=7
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Blink Fox id=56 zone=HAND zonePos=7 cardId=GIL_827 player=2] pos from 8 -> 7
+[Zone] ZoneChangeList.ProcessChanges() - processing index=7 change=powerTask=[power=[type=TAG_CHANGE entity=[id=88 cardId=EX1_334 name=Shadow Madness] tag=ZONE_POSITION value=6 ] complete=False] entity=[entityName=Shadow Madness id=88 zone=HAND zonePos=7 cardId=EX1_334 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=6
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Shadow Madness id=88 zone=HAND zonePos=6 cardId=EX1_334 player=2] pos from 7 -> 6
+[Zone] ZoneChangeList.ProcessChanges() - processing index=8 change=powerTask=[power=[type=TAG_CHANGE entity=[id=57 cardId=EX1_613 name=Edwin VanCleef] tag=ZONE_POSITION value=5 ] complete=False] entity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=6 cardId=EX1_613 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=5
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Edwin VanCleef id=57 zone=HAND zonePos=5 cardId=EX1_613 player=2] pos from 6 -> 5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=9 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1037 value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=10 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=0 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=5 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=11 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE value=PLAY ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=HAND zonePos=0 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=PLAY dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] to FRIENDLY PLAY
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] zone from FRIENDLY HAND -> FRIENDLY PLAY
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] pos from 5 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=12 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=ZONE_POSITION value=2 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=2
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] to load (powerTask=(not null))
+[Power] GameState.DebugPrintEntityChoices() - id=6 Player=Hoishin#1413 TaskList=165 ChoiceType=GENERAL CountMin=1 CountMax=1
+[Power] GameState.DebugPrintEntityChoices() -   Source=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[0]=[entityName=Barkskin id=95 zone=SETASIDE zonePos=0 cardId=LOOT_047 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[1]=[entityName=Light of the Naaru id=96 zone=SETASIDE zonePos=0 cardId=GVG_012 player=2]
+[Power] GameState.DebugPrintEntityChoices() -   Entities[2]=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2]
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=6 WAIT for taskList 165
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=0 cardId=DAL_416 player=2] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - id=31 local=False [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] pos from 0 -> 2
+[Zone] ZoneChangeList.ProcessChanges() - processing index=13 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=1196 value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=14 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=EXHAUSTED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=15 change=powerTask=[power=[type=TAG_CHANGE entity=[id=58 cardId=DAL_416 name=Hench-Clan Burglar] tag=JUST_PLAYED value=1 ] complete=False] entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=16 change=powerTask=[power=[type=TAG_CHANGE entity=[id=3 cardId= name=Hoishin] tag=LAST_CARD_PLAYED value=58 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=17 change=powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=TAG_LAST_KNOWN_COST_IN_HAND value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=18 change=powerTask=[power=[type=TAG_CHANGE entity=[id=42 cardId=EX1_586 name=Sea Giant] tag=COST value=6 ] complete=False] entity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=31 loadingEntities.Count=0 m_dirtyZones.Count=2
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=31 START waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=31 START waiting for zone FRIENDLY PLAY
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=31 END waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=31 END waiting for zone FRIENDLY PLAY
+[Zone] ZoneChangeList.Finish() - id=31 changes=19 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=31 m_taskList=164 m_changes.Count=19 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=164
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=165 ParentID=164 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=POWER Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] EffectCardId= EffectIndex=0 Target=0 SubOption=-1 
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Barkskin id=95 zone=SETASIDE zonePos=0 cardId=LOOT_047 player=2] CardID=LOOT_047
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=95
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=58
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52112
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Light of the Naaru id=96 zone=SETASIDE zonePos=0 cardId=GVG_012 player=2] CardID=GVG_012
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=96
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=RARE
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=58
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52112
+[Power] PowerTaskList.DebugPrintPower() -     FULL_ENTITY - Updating [entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] CardID=CFM_713
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=3
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=SETASIDE
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=97
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR value=58
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=3
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=CREATOR_DBID value=52112
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=165
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=165 changeListId=32 taskStart=0 taskEnd=2
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=32 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=95 cardId=LOOT_047 name=Barkskin] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Barkskin id=95 zone=SETASIDE zonePos=0 cardId=LOOT_047 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=32 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=96 cardId=GVG_012 name=Light of the Naaru] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Light of the Naaru id=96 zone=SETASIDE zonePos=0 cardId=GVG_012 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=32 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=FULL_ENTITY entity=[id=97 cardId=CFM_713 name=Jade Blossom] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=32 changes=3 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=95 cardId=LOOT_047 name=Barkskin] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Barkskin id=95 zone=SETASIDE zonePos=0 cardId=LOOT_047 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=32 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=96 cardId=GVG_012 name=Light of the Naaru] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Light of the Naaru id=96 zone=SETASIDE zonePos=0 cardId=GVG_012 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=32 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=FULL_ENTITY entity=[id=97 cardId=CFM_713 name=Jade Blossom] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=, changeList: id=32 changes=3 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=32 m_taskList=165 m_changes.Count=3
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=FULL_ENTITY entity=[id=95 cardId=LOOT_047 name=Barkskin] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Barkskin id=95 zone=SETASIDE zonePos=0 cardId=LOOT_047 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=FULL_ENTITY entity=[id=96 cardId=GVG_012 name=Light of the Naaru] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Light of the Naaru id=96 zone=SETASIDE zonePos=0 cardId=GVG_012 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=FULL_ENTITY entity=[id=97 cardId=CFM_713 name=Jade Blossom] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=SETASIDE dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=32 loadingEntities.Count=0 m_dirtyZones.Count=0
+[Zone] ZoneChangeList.Finish() - id=32 changes=3 complete=True local=False localTrigger=[]
+Finish
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=32 m_taskList=165 m_changes.Count=3 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=165
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] ChoiceCardMgr.WaitThenShowChoices() - id=6 BEGIN
+FSM not Preprocessed: Button_FloatyButton : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+FSM not Preprocessed: Choice_Discover_FX(Clone) : FSM
+[Power] GameState.DebugPrintEntitiesChosen() - id=6 Player=Hoishin#1413 EntitiesCount=1
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[0]=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2]
+[Power] ChoiceCardMgr.DoesLocalChoiceMatchPacket(): Null list passed in! localChoices=, packetChoices=System.Collections.Generic.List`1[System.Int32].
+[Power] ChoiceCardMgr.WaitThenHideChoicesFromPacket() - id=6 END WAIT
+[Power] GameState.DebugPrintPowerList() - Count=9
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=1068 value=3 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=1068 value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=ZONE value=HAND 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=ZONE_POSITION value=8 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=DISPLAYED_CREATOR value=58 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=Hoishin#1413 tag=COMBO_ACTIVE value=1 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=Hoishin#1413 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] PowerTaskList.DebugDump() - ID=166 ParentID=0 PreviousID=165 TaskCount=5
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=1068 value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=1068 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=ZONE value=HAND 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=ZONE_POSITION value=8 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] tag=DISPLAYED_CREATOR value=58 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=166
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=166 changeListId=33 taskStart=0 taskEnd=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=33 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=3 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=33 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=0 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=33 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE value=HAND ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=33 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=33 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=DISPLAYED_CREATOR value=58 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=33 changes=5 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=3 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=33 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=0 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=33 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE value=HAND ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=, changeList: id=33 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8, changeList: id=33 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=DISPLAYED_CREATOR value=58 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=33 changes=5 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=33 m_taskList=166 m_changes.Count=5
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=3 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=1068 value=0 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE value=HAND ] complete=False] entity=[entityName=Jade Blossom id=97 zone=SETASIDE zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Jade Blossom id=97 zone=HAND zonePos=0 cardId=CFM_713 player=2] to FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=33 local=False [entityName=Jade Blossom id=97 zone=HAND zonePos=0 cardId=CFM_713 player=2] zone from  -> FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=33 local=False [entityName=Jade Blossom id=97 zone=HAND zonePos=0 cardId=CFM_713 player=2] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=HAND zonePos=0 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8
+[Zone] ZoneChangeList.ProcessChanges() - id=33 local=False [entityName=Jade Blossom id=97 zone=HAND zonePos=8 cardId=CFM_713 player=2] pos from 0 -> 8
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=97 cardId=CFM_713 name=Jade Blossom] tag=DISPLAYED_CREATOR value=58 ] complete=False] entity=[entityName=Jade Blossom id=97 zone=HAND zonePos=8 cardId=CFM_713 player=2] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=33 loadingEntities.Count=0 m_dirtyZones.Count=1
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=33 START waiting for zone FRIENDLY HAND
+[Power] GameState.DebugPrintOptions() - id=18
+[Power] GameState.DebugPrintOptions() -   option 0 type=END_TURN mainEntity= error=INVALID errorParam=
+[Power] GameState.DebugPrintOptions() -   option 1 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 2 type=POWER mainEntity=[entityName=EVIL Miscreant id=43 zone=HAND zonePos=1 cardId=DAL_415 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 3 type=POWER mainEntity=[entityName=Sea Giant id=42 zone=HAND zonePos=2 cardId=EX1_586 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 4 type=POWER mainEntity=[entityName=SI:7 Agent id=47 zone=HAND zonePos=3 cardId=EX1_134 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 5 type=POWER mainEntity=[entityName=Spirit of the Shark id=49 zone=HAND zonePos=4 cardId=TRL_092 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 6 type=POWER mainEntity=[entityName=Edwin VanCleef id=57 zone=HAND zonePos=5 cardId=EX1_613 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 7 type=POWER mainEntity=[entityName=Shadow Madness id=88 zone=HAND zonePos=6 cardId=EX1_334 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 8 type=POWER mainEntity=[entityName=Blink Fox id=56 zone=HAND zonePos=7 cardId=GIL_827 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 9 type=POWER mainEntity=[entityName=Jade Blossom id=97 zone=HAND zonePos=8 cardId=CFM_713 player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 10 type=POWER mainEntity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 11 type=POWER mainEntity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 12 type=POWER mainEntity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_ATTACK_GREATER_THAN_0 errorParam=
+[Power] GameState.DebugPrintOptions() -   option 13 type=POWER mainEntity=[entityName=Dagger Mastery id=67 zone=PLAY zonePos=0 cardId=CS2_083b player=2] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 14 type=POWER mainEntity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 15 type=POWER mainEntity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 16 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 17 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=REQ_NOT_MINION_JUST_PLAYED errorParam=
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=33 END waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.Finish() - id=33 changes=5 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=33 m_taskList=166 m_changes.Count=5 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=166
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=167 ParentID=0 PreviousID=164 TaskCount=2
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=COMBO_ACTIVE value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=167
+[Power] PowerProcessor.DoTaskListForCard() - unhandled BlockType PLAY for sourceEntity [entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2]
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=167
+[Power] GameState.DebugPrintPowerList() - Count=68
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=1196 value=0 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_END 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_CLEANUP 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_CLEANUP 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=JUST_PLAYED value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=COMBO_ACTIVE value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_NEXT 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_NEXT 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=GameEntity EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=1292 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=1292 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=CURRENT_PLAYER value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=CURRENT_PLAYER value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=TURN value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=479 value=1 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=ATK value=1 
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=67 zone=PLAY zonePos=0 cardId=CS2_083b player=2] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] tag=NUM_TURNS_IN_PLAY value=4 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] tag=NUM_TURNS_IN_PLAY value=4 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] tag=NUM_TURNS_IN_PLAY value=3 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] tag=NUM_TURNS_IN_PLAY value=2 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=RESOURCES value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=RESOURCES_USED value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_PLAYED_THIS_TURN value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_MINIONS_PLAYED_THIS_TURN value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] tag=EXHAUSTED value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] tag=EXHAUSTED value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_DRAWN_THIS_TURN value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=467 value=1 
+[Power] GameState.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] CardID=EX1_124
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] GameState.DebugPrintPower() -         tag=COST value=2
+[Power] GameState.DebugPrintPower() -         tag=PREMIUM value=0
+[Power] GameState.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=HAND
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=8
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -         tag=COMBO value=1
+[Power] GameState.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] GameState.DebugPrintPower() -         tag=478 value=1
+[Power] GameState.DebugPrintPower() -         tag=479 value=0
+[Power] GameState.DebugPrintPower() -         tag=1037 value=1
+[Power] GameState.DebugPrintPower() -         tag=1043 value=1
+[Power] GameState.DebugPrintPower() -         tag=1068 value=0
+[Power] GameState.DebugPrintPower() -         tag=1196 value=0
+[Power] GameState.DebugPrintPower() -         tag=1254 value=0
+[Power] GameState.DebugPrintPower() -         tag=1271 value=0
+[Power] GameState.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] tag=ZONE_POSITION value=8 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_DRAWN_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=995 value=5 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=467 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] PowerTaskList.DebugDump() - ID=168 ParentID=0 PreviousID=0 TaskCount=2
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=1196 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_END 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=168
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=168
+[Power] PowerTaskList.DebugDump() - ID=169 ParentID=0 PreviousID=0 TaskCount=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=169
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=169
+[Power] PowerTaskList.DebugDump() - ID=170 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_CLEANUP 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=170
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=170
+[Power] PowerTaskList.DebugDump() - ID=171 ParentID=0 PreviousID=0 TaskCount=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=171
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=171
+[Power] PowerTaskList.DebugDump() - ID=172 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_CLEANUP 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=172
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=172
+[Power] PowerTaskList.DebugDump() - ID=173 ParentID=0 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=JUST_PLAYED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=COMBO_ACTIVE value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_NEXT 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=173
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=173
+[Power] PowerTaskList.DebugDump() - ID=174 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_NEXT 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=174
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=174
+[Power] PowerTaskList.DebugDump() - ID=175 ParentID=0 PreviousID=0 TaskCount=6
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=GameEntity EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=1292 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=1292 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=CURRENT_PLAYER value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=CURRENT_PLAYER value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=TURN value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=175
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=175
+[Power] PowerTaskList.DebugDump() - ID=176 ParentID=0 PreviousID=0 TaskCount=3
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=479 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=ATK value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=176
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=176
+[Power] PowerTaskList.DebugDump() - ID=177 ParentID=0 PreviousID=0 TaskCount=21
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Dagger Mastery id=67 zone=PLAY zonePos=0 cardId=CS2_083b player=2] tag=NUM_TURNS_IN_PLAY value=9 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] tag=NUM_TURNS_IN_PLAY value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] tag=NUM_TURNS_IN_PLAY value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] tag=NUM_TURNS_IN_PLAY value=3 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] tag=NUM_TURNS_IN_PLAY value=2 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=RESOURCES value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=RESOURCES_USED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_PLAYED_THIS_TURN value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_MINIONS_PLAYED_THIS_TURN value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_OPTIONS_PLAYED_THIS_TURN value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Wicked Knife id=84 zone=PLAY zonePos=0 cardId=CS2_082 player=1] tag=EXHAUSTED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] tag=EXHAUSTED value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_DRAWN_THIS_TURN value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=177
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=177
+[Power] PowerTaskList.DebugDump() - ID=178 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=178
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=178
+[Power] PowerTaskList.DebugDump() - ID=179 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=179
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=179
+[Power] PowerTaskList.DebugDump() - ID=180 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=180
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=180
+[Power] PowerTaskList.DebugDump() - ID=181 ParentID=0 PreviousID=0 TaskCount=7
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=467 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] CardID=EX1_124
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=SPELL
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=PREMIUM value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=HAND
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=8
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=COMBO value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=478 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=479 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1043 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1068 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1196 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1254 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1271 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=COPIED_BY_KHADGAR value=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] tag=ZONE_POSITION value=8 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_CARDS_DRAWN_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=995 value=5 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=467 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=181
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=181 changeListId=34 taskStart=0 taskEnd=6
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=EX1_124 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=8 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=995 value=5 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=5 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=0 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=34 changes=6 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=34 changes=7 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=EX1_124 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=8 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=995 value=5 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=0 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=34 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=34 m_taskList=181 m_changes.Count=7
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=SHOW_ENTITY entity=[id=8 cardId=EX1_124 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=8 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] to OPPOSING HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=34 local=False [entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] zone from OPPOSING DECK -> OPPOSING HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=34 local=False [entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=8 cardId=EX1_124 name=Eviscerate] tag=ZONE_POSITION value=8 ] complete=False] entity=[entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=8
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Eviscerate id=8 zone=HAND zonePos=0 cardId=EX1_124 player=1] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - id=34 local=False [entityName=Eviscerate id=8 zone=HAND zonePos=8 cardId=EX1_124 player=1] pos from 0 -> 8
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=995 value=5 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=5 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=BronzePatron] tag=467 value=0 ] complete=False] entity=BronzePatron srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=6 change=powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=34 loadingEntities.Count=0 m_dirtyZones.Count=2
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=34 START waiting for zone OPPOSING DECK
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=34 END waiting for zone OPPOSING DECK
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=34 START waiting for zone OPPOSING HAND
+[Power] GameState.DebugPrintOptions() - id=19
+[Power] GameState.DebugPrintOptions() -   option 0 type=END_TURN mainEntity= error=INVALID errorParam=
+[Power] GameState.DebugPrintOptions() -   option 1 type=POWER mainEntity=[entityName=Edwin VanCleef id=31 zone=HAND zonePos=1 cardId=EX1_613 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 2 type=POWER mainEntity=[entityName=Blink Fox id=4 zone=HAND zonePos=2 cardId=GIL_827 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 3 type=POWER mainEntity=[entityName=Blink Fox id=5 zone=HAND zonePos=4 cardId=GIL_827 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 4 type=POWER mainEntity=[entityName=Backstab id=81 zone=HAND zonePos=5 cardId=CS2_072 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_MINION_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 5 type=POWER mainEntity=[entityName=Eviscerate id=28 zone=HAND zonePos=6 cardId=EX1_124 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 6 type=POWER mainEntity=[entityName=Explore Un'Goro id=93 zone=HAND zonePos=7 cardId=UNG_922 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 7 type=POWER mainEntity=[entityName=Eviscerate id=8 zone=HAND zonePos=8 cardId=EX1_124 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 8 type=POWER mainEntity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 9 type=POWER mainEntity=[entityName=Dagger Mastery id=65 zone=PLAY zonePos=0 cardId=CS2_083b player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 10 type=POWER mainEntity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 11 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 0 entity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 1 entity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 2 entity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -     target 3 entity=[entityName=Valeera Sanguinar id=64 zone=PLAY zonePos=0 cardId=HERO_03 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 4 entity=[entityName=Ethereal Lackey id=78 zone=PLAY zonePos=2 cardId=DAL_741 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -     target 5 entity=[entityName=Hench-Clan Burglar id=9 zone=PLAY zonePos=1 cardId=DAL_416 player=1] error=REQ_ENEMY_TARGET errorParam=
+[Power] GameState.DebugPrintOptions() -   option 12 type=POWER mainEntity=[entityName=Heistbaron Togwaggle id=29 zone=HAND zonePos=3 cardId=DAL_417 player=1] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 13 type=POWER mainEntity=[entityName=Valeera Sanguinar id=66 zone=PLAY zonePos=0 cardId=HERO_03 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 14 type=POWER mainEntity=[entityName=Dagger Mastery id=67 zone=PLAY zonePos=0 cardId=CS2_083b player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 15 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=48 zone=PLAY zonePos=1 cardId=DAL_416 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 16 type=POWER mainEntity=[entityName=Hench-Clan Burglar id=58 zone=PLAY zonePos=2 cardId=DAL_416 player=2] error=REQ_YOUR_TURN errorParam=
