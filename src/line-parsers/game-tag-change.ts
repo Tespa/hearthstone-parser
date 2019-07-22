@@ -24,21 +24,22 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
-		if (data.entity === 'GameEntity' && data.tag === 'STEP' && data.value === 'MAIN_READY') {
-			gameState.mulliganActive = false;
-			gameState.turnStartTime = new Date();
+		if (data.entity === 'GameEntity' && data.value === 'MAIN_READY') {
+			if (data.tag === 'NEXT_STEP') {
+				gameState.mulliganActive = false;
+			}
 
-			// Neither of players have turn true which means bottom player is playing first
-			if (gameState.players.every(player => !player.turn)) {
-				const bottomPlayer = gameState.getPlayerByPosition('bottom');
-				if (bottomPlayer) {
-					bottomPlayer.turn = true;
+			if (data.tag === 'STEP') {
+				gameState.turnStartTime = new Date();
+
+				// Neither of players have turn true which means bottom player is playing first
+				if (gameState.players.every(player => !player.turn)) {
+					const bottomPlayer = gameState.getPlayerByPosition('bottom');
+					if (bottomPlayer) {
+						bottomPlayer.turn = true;
+					}
 				}
 			}
-		}
-
-		if (data.tag === 'MULLIGAN_STATE' && data.value === 'DEALING') {
-			gameState.mulliganActive = true;
 		}
 
 		if (data.tag === 'TIMEOUT') {
