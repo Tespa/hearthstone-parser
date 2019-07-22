@@ -42,77 +42,55 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			return;
 		}
 
+		const player = gameState.getPlayerById(data.playerId);
+		const otherPlayer = gameState.getPlayerById(3 - data.playerId);
+		if (!player || !otherPlayer) {
+			return;
+		}
+
 		if (data.toZone === 'DECK' && data.fromZone === 'DECK' && data.fromTeam !== data.toTeam) {
 			// Handle the Togwaggle swap case
-			const toPlayer = gameState.getPlayerById(data.playerId);
-			const fromPlayer = gameState.getPlayerById(3 - data.playerId); // Player 1's opponent is Player 2
-			if (fromPlayer) {
-				fromPlayer.cardCount--;
-			}
-
-			if (toPlayer) {
-				toPlayer.cardCount++;
-			}
+			player.cardCount++;
+			otherPlayer.cardCount--;
 
 			return;
 		}
 
 		if (data.toZone === 'DECK') {
 			// If entering the deck, increment deck count
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.cardCount++;
-				const position = data.toTeam === 'FRIENDLY' ? 'bottom' : 'top';
-				if (player.position !== position) {
-					player.position = position;
-				}
+			player.cardCount++;
+			const position = data.toTeam === 'FRIENDLY' ? 'bottom' : 'top';
+			if (player.position !== position) {
+				player.position = position;
 			}
 		}
 
 		if (data.fromZone === 'DECK') {
 			// If drawn from deck, decrement deck count
-			const player = gameState.getPlayerById(data.playerId);
-			if (player) {
-				player.cardCount--;
-			}
+			player.cardCount--;
 		}
 
 		if (data.toZone === 'SECRET') {
 			if (quests.find(cardId => cardId === data.cardId)) {
-				const player = gameState.getPlayerById(data.playerId);
-				if (player) {
-					player.questCounter = 0;
-				}
+				player.questCounter = 0;
 			} else {
-				const player = gameState.getPlayerById(data.playerId);
-				if (player) {
-					const cardClass = secretToClass[data.cardId];
-					if (cardClass) {
-						player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
-					}
+				const cardClass = secretToClass[data.cardId];
+				if (cardClass) {
+					player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
 				}
 			}
 		}
 
 		if (data.fromZone === 'SECRET') {
 			if (quests.find(cardId => cardId === data.cardId)) {
-				const player = gameState.getPlayerById(data.playerId);
-				if (player) {
-					player.questCounter = -1;
-				}
+				player.questCounter = -1;
 			} else {
-				const player = gameState.getPlayerById(data.playerId);
-				if (player) {
-					player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
-				}
+				player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
 			}
 		}
 
 		if (gameState.mulliganActive && data.cardName === 'The Coin' && data.toZone === 'HAND') {
-			const player = gameState.getPlayerById(3 - data.playerId); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
-			if (player) {
-				player.turn = true;
-			}
+			otherPlayer.turn = true;
 		}
 	}
 
