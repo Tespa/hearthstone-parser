@@ -1,8 +1,9 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
+import {DECK_CARD_COUNT} from '../data/meta';
 
 const calcCardsReplaced = (cardsLeft: number, cardCount: number): number => {
-	return 	30 - cardCount - cardsLeft;
+	return 	DECK_CARD_COUNT - cardCount - cardsLeft;
 };
 
 // Detect how many cards are replaced in mulligan
