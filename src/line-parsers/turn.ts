@@ -22,38 +22,15 @@ export class TurnLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 		const player = gameState.getPlayerByName(data.playerName);
-		if (!player) {
-			if (gameState.numPlayers === 1) {
-				const allPlayers = gameState.getAllPlayers();
-				const existingPlayerId = allPlayers[0].id;
-				const existingPlayerPosition = allPlayers[0].position;
-				gameState.addPlayer({
-					id: existingPlayerId === 1 ? 2 : 1,
-					name: data.playerName,
-					status: '',
-					turn: data.turn,
-					questCounter: -1,
-					timeout: 45,
-					cardCount: 0,
-					position: existingPlayerPosition === 'top' ? 'bottom' : 'top',
-					secrets: [],
-					discovery: {
-						enabled: false,
-						id: null
-					}
-				});
+		if (player) {
+			player.turn = data.turn;
+
+			const opponent = gameState.getPlayerById(3 - player.id); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
+
+			// Turn opponent of the matched player opposite of the turn value
+			if (opponent) {
+				opponent.turn = !data.turn;
 			}
-
-			return;
-		}
-
-		player.turn = data.turn;
-
-		const opponent = gameState.getPlayerById(3 - player.id); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
-
-		// Turn opponent of the matched player opposite of the turn value
-		if (opponent) {
-			opponent.turn = !data.turn;
 		}
 	}
 
