@@ -10,6 +10,7 @@ import {MulliganStartParser} from './mulligan-start';
 import {ChoiceIdParser} from './choice-id';
 import {DiscoveryEndParser} from './discovery-end';
 import {DiscoveryStartParser} from './discovery-start';
+import {MullinganResultParser} from './mulligan-result';
 
 export const lineParsers = [
 	new GameOverLineParser(),
@@ -22,7 +23,8 @@ export const lineParsers = [
 	new MulliganStartParser(),
 	new ChoiceIdParser(),
 	new DiscoveryStartParser(),
-	new DiscoveryEndParser()
+	new DiscoveryEndParser(),
+	new MullinganResultParser()
 ];
 
 export interface Events {
@@ -38,4 +40,5 @@ export interface Events {
 	'choice-id': void;
 	'discovery-start': void;
 	'discovery-end': void;
+	'mulligan-result': void;
 }

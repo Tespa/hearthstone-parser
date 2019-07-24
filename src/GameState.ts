@@ -20,6 +20,7 @@ export interface Player {
 		enabled: boolean;
 		id: string | null;
 	};
+	cardsReplacedInMulligan: number;
 }
 
 export class GameState {

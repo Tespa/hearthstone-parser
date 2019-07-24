@@ -25,7 +25,8 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			discovery: {
 				enabled: false,
 				id: null
-			}
+			},
+			cardsReplacedInMulligan: 0
 		});
 	}
 

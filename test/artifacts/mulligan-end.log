@@ -1,0 +1,215 @@
+[Power] GameState.DebugPrintEntitiesChosen() - id=2 Player=BronzePatron#1260 EntitiesCount=4
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[0]=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=40 zone=HAND zonePos=1 cardId= player=2]
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[1]=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=42 zone=HAND zonePos=2 cardId= player=2]
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[2]=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=46 zone=HAND zonePos=3 cardId= player=2]
+[Power] GameState.DebugPrintEntitiesChosen() -   Entities[3]=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=48 zone=HAND zonePos=4 cardId= player=2]
+[Power] GameState.DebugPrintPowerList() - Count=38
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=DEALING 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=WAITING 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=DONE 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Gul'dan id=64 zone=PLAY zonePos=0 cardId=HERO_07 player=1] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Life Tap id=65 zone=PLAY zonePos=0 cardId=CS2_056 player=1] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Gul'dan id=66 zone=PLAY zonePos=0 cardId=HERO_07 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Life Tap id=67 zone=PLAY zonePos=0 cardId=CS2_056 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=1 
+[Power] GameState.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] CardID=LOOT_014
+[Power] GameState.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] GameState.DebugPrintPower() -         tag=CARDTYPE value=MINION
+[Power] GameState.DebugPrintPower() -         tag=COST value=1
+[Power] GameState.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] GameState.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] GameState.DebugPrintPower() -         tag=HEALTH value=1
+[Power] GameState.DebugPrintPower() -         tag=ATK value=2
+[Power] GameState.DebugPrintPower() -         tag=ZONE value=HAND
+[Power] GameState.DebugPrintPower() -         tag=ENTITY_ID value=30
+[Power] GameState.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] GameState.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] GameState.DebugPrintPower() -         tag=BATTLECRY value=1
+[Power] GameState.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] GameState.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] GameState.DebugPrintPower() -         tag=478 value=1
+[Power] GameState.DebugPrintPower() -         tag=479 value=2
+[Power] GameState.DebugPrintPower() -         tag=1037 value=1
+[Power] GameState.DebugPrintPower() -         tag=1043 value=1
+[Power] GameState.DebugPrintPower() -         tag=1068 value=0
+[Power] GameState.DebugPrintPower() -         tag=1254 value=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] tag=ZONE_POSITION value=4 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_DRAWN_THIS_TURN value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=995 value=1 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=0 
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_ACTION 
+[Power] GameState.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] GameState.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] GameState.DebugPrintPower() - BLOCK_END
+[Power] PowerTaskList.DebugDump() - ID=6 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=DEALING 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=6
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=6
+[Power] PowerTaskList.DebugDump() - ID=7 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=WAITING 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=7
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=7
+[Power] PowerTaskList.DebugDump() - ID=8 ParentID=0 PreviousID=0 TaskCount=2
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=BronzePatron#1260 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=MULLIGAN_STATE value=DONE 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=8
+[Power] GameState.DebugPrintOptions() - id=1
+[Power] GameState.DebugPrintOptions() -   option 0 type=END_TURN mainEntity= error=INVALID errorParam=
+[Power] GameState.DebugPrintOptions() -   option 1 type=POWER mainEntity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] error=NONE errorParam=
+[Power] GameState.DebugPrintOptions() -   option 2 type=POWER mainEntity=[entityName=Nat Pagle id=6 zone=HAND zonePos=1 cardId=EX1_557 player=1] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 3 type=POWER mainEntity=[entityName=Siphon Soul id=7 zone=HAND zonePos=2 cardId=EX1_309 player=1] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 4 type=POWER mainEntity=[entityName=Jepetto Joybuzz id=17 zone=HAND zonePos=3 cardId=DAL_752 player=1] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 5 type=POWER mainEntity=[entityName=Gul'dan id=64 zone=PLAY zonePos=0 cardId=HERO_07 player=1] error=REQ_ATTACK_GREATER_THAN_0 errorParam=
+[Power] GameState.DebugPrintOptions() -   option 6 type=POWER mainEntity=[entityName=Life Tap id=65 zone=PLAY zonePos=0 cardId=CS2_056 player=1] error=REQ_ENOUGH_MANA errorParam=
+[Power] GameState.DebugPrintOptions() -   option 7 type=POWER mainEntity=[entityName=Gul'dan id=66 zone=PLAY zonePos=0 cardId=HERO_07 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] GameState.DebugPrintOptions() -   option 8 type=POWER mainEntity=[entityName=Life Tap id=67 zone=PLAY zonePos=0 cardId=CS2_056 player=2] error=REQ_YOUR_TURN errorParam=
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=8
+[Power] PowerTaskList.DebugDump() - ID=9 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_READY 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=9
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=9
+[Power] PowerTaskList.DebugDump() - ID=10 ParentID=0 PreviousID=0 TaskCount=9
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=BronzePatron#1260 tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Gul'dan id=64 zone=PLAY zonePos=0 cardId=HERO_07 player=1] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Life Tap id=65 zone=PLAY zonePos=0 cardId=CS2_056 player=1] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Gul'dan id=66 zone=PLAY zonePos=0 cardId=HERO_07 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=Life Tap id=67 zone=PLAY zonePos=0 cardId=CS2_056 player=2] tag=NUM_TURNS_IN_PLAY value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=RESOURCES value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=10
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=10
+[Power] PowerTaskList.DebugDump() - ID=11 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START_TRIGGERS 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=11
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=11
+[Power] PowerTaskList.DebugDump() - ID=12 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_START 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=12
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=12
+[Power] PowerTaskList.DebugDump() - ID=13 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_START 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=13
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=13
+[Power] PowerTaskList.DebugDump() - ID=14 ParentID=0 PreviousID=0 TaskCount=7
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] CardID=LOOT_014
+[Power] PowerTaskList.DebugPrintPower() -         tag=CONTROLLER value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=CARDTYPE value=MINION
+[Power] PowerTaskList.DebugPrintPower() -         tag=COST value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=PREMIUM value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=DAMAGE value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=HEALTH value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ATK value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE value=HAND
+[Power] PowerTaskList.DebugPrintPower() -         tag=ENTITY_ID value=30
+[Power] PowerTaskList.DebugPrintPower() -         tag=FACTION value=NEUTRAL
+[Power] PowerTaskList.DebugPrintPower() -         tag=RARITY value=COMMON
+[Power] PowerTaskList.DebugPrintPower() -         tag=BATTLECRY value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=ZONE_POSITION value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=TAG_LAST_KNOWN_COST_IN_HAND value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=478 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=479 value=2
+[Power] PowerTaskList.DebugPrintPower() -         tag=1037 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1043 value=1
+[Power] PowerTaskList.DebugPrintPower() -         tag=1068 value=0
+[Power] PowerTaskList.DebugPrintPower() -         tag=1254 value=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] tag=ZONE_POSITION value=4 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=NUM_CARDS_DRAWN_THIS_TURN value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=995 value=1 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=Hoishin#1413 tag=467 value=0 
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_ACTION 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=14
+[Zone] ZoneMgr.AddServerZoneChanges() - taskListId=14 changeListId=2 taskStart=0 taskEnd=6
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=0 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=1 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=SHOW_ENTITY entity=[id=30 cardId=LOOT_014 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=2 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=30 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=4 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=4
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=3 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=4 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=995 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=5 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.AddServerZoneChanges() - AddChange() changeList: id=2 changes=6 complete=False local=False localTrigger=[],  change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneMgr.MergeServerChangeList() Start - serverChangeList: id=2 changes=7 complete=False local=False localTrigger=[], m_tempZoneMap.Count: 0, m_tempEntityMap.Count: 0
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=SHOW_ENTITY entity=[id=30 cardId=LOOT_014 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=30 cardId= name=UNKNOWN ENTITY [cardType=INVALID]] tag=ZONE_POSITION value=4 ] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=4, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=995 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneMgr.TempApplyZoneChange() - change: powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=, changeList: id=2 changes=7 complete=False local=False localTrigger=[]
+[Zone] ZoneChangeList.ProcessChanges() - m_id=2 m_taskList=14 m_changes.Count=7
+[Zone] ZoneChangeList.ProcessChanges() - processing index=0 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=1 change=powerTask=[power=[type=SHOW_ENTITY entity=[id=30 cardId=LOOT_014 name=UNKNOWN ENTITY [cardType=INVALID]] tags=System.Collections.Generic.List`1[Network+Entity+Tag]] complete=False] entity=[entityName=UNKNOWN ENTITY [cardType=INVALID] id=30 zone=DECK zonePos=0 cardId= player=1] srcZoneTag=INVALID srcPos= dstZoneTag=HAND dstPos=0
+[Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] to FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=2 local=False [entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] zone from FRIENDLY DECK -> FRIENDLY HAND
+[Zone] ZoneChangeList.ProcessChanges() - id=2 local=False [entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] pos from 0 -> 0
+[Zone] ZoneChangeList.ProcessChanges() - processing index=2 change=powerTask=[power=[type=TAG_CHANGE entity=[id=30 cardId=LOOT_014 name=Kobold Librarian] tag=ZONE_POSITION value=4 ] complete=False] entity=[entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=4
+[Zone] ZoneChangeList.ProcessChanges() - START waiting for [entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - END waiting for [entityName=Kobold Librarian id=30 zone=HAND zonePos=0 cardId=LOOT_014 player=1] to load (powerTask=(not null))
+[Zone] ZoneChangeList.ProcessChanges() - id=2 local=False [entityName=Kobold Librarian id=30 zone=HAND zonePos=4 cardId=LOOT_014 player=1] pos from 0 -> 4
+[Zone] ZoneChangeList.ProcessChanges() - processing index=3 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=NUM_CARDS_DRAWN_THIS_TURN value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=4 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=995 value=1 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=5 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=Hoishin] tag=467 value=0 ] complete=False] entity=Hoishin srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.ProcessChanges() - processing index=6 change=powerTask=[power=[type=TAG_CHANGE entity=[id=1 cardId= name=GameEntity] tag=NEXT_STEP value=MAIN_ACTION ] complete=False] entity=GameEntity srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=2 loadingEntities.Count=0 m_dirtyZones.Count=2
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=2 START waiting for zone FRIENDLY DECK
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=2 END waiting for zone FRIENDLY DECK
+[Zone] ZoneChangeList.UpdateDirtyZones() - m_id=2 START waiting for zone FRIENDLY HAND
+FSM not Preprocessed: ManaDestroy : FSM
+FSM not Preprocessed: Temp_ManaDestroy : FSM
+[Zone] ZoneChangeList.OnUpdateLayoutComplete() - m_id=2 END waiting for zone FRIENDLY HAND
+[Zone] ZoneChangeList.Finish() - id=2 changes=7 complete=True local=False localTrigger=[]
+[Zone] ZoneChangeList.FireCompleteCallback() - m_id=2 m_taskList=14 m_changes.Count=7 m_complete=True m_completeCallback=(not null)
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=14
+[Zone] ZoneMgr.AutoCorrectZonesAfterServerChange()
+[Power] PowerTaskList.DebugDump() - ID=15 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugDump() - Block Start=(null)
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=STEP value=MAIN_ACTION 
+[Power] PowerTaskList.DebugDump() - Block End=(null)
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=15
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=15
+[Power] PowerTaskList.DebugDump() - ID=16 ParentID=0 PreviousID=0 TaskCount=1
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_START BlockType=TRIGGER Entity=Hoishin#1413 EffectCardId= EffectIndex=-1 Target=0 SubOption=-1 TriggerKeyword=0
+[Power] PowerTaskList.DebugPrintPower() -     TAG_CHANGE Entity=GameEntity tag=NEXT_STEP value=MAIN_END 
+[Power] PowerTaskList.DebugPrintPower() - BLOCK_END
+[Power] PowerProcessor.PrepareHistoryForCurrentTaskList() - m_currentTaskList=16
+[Power] PowerProcessor.EndCurrentTaskList() - m_currentTaskList=16
