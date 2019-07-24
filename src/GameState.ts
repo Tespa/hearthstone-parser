@@ -16,6 +16,7 @@ export interface Player {
 	cardCount: number;
 	position: 'top' | 'bottom';
 	secrets: Secret[];
+	cardsReplacedInMulligan: number;
 }
 
 export class GameState {

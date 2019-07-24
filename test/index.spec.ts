@@ -71,8 +71,8 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom'},
-					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top'}
+					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0},
+					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top', cardsReplacedInMulligan: 0}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -117,8 +117,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom'},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top'}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top', cardsReplacedInMulligan: 0}
 				],
 				gameOverCount: 0,
 				mulliganActive: false,
@@ -139,8 +139,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: []},
-					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom',
+					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: [], cardsReplacedInMulligan: 0},
+					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 0,
 						secrets: [{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_132',
@@ -224,6 +224,45 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 			expect(gameState.turnStartTime.getTime()).equal(date.getTime());
+		});
+
+		it('should correctly handle a new game', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/new-game.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			expect(gameState.players.length).to.equal(2);
+			expect(gameState.mulliganActive).to.equal(true);
+			expect(gameState.players[0].status).to.equal('');
+			expect(gameState.players[1].status).to.equal('');
+			expect(gameState.players[0].position).not.to.equal(gameState.players[1].position);
+		});
+
+		it('should correctly end mulligan', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/mulligan-end.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			expect(gameState.mulliganActive).to.equal(false);
+		});
+
+		it('should correctly count cards replaced in mulligan', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/mulligan-card-count.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			const gameState = logWatcher.parseBuffer(logBuffer);
+			// 2, 4
+			expect(gameState.getPlayerByPosition('bottom')!.cardsReplacedInMulligan).to.equal(2);
+			expect(gameState.getPlayerByPosition('top')!.cardsReplacedInMulligan).to.equal(4);
 		});
 	});
 });
