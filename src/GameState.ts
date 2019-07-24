@@ -16,6 +16,10 @@ export interface Player {
 	cardCount: number;
 	position: 'top' | 'bottom';
 	secrets: Secret[];
+	discovery: {
+		enabled: boolean;
+		id: string | null;
+	};
 	cardsReplacedInMulligan: number;
 }
 

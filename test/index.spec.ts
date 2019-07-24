@@ -71,8 +71,8 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0},
-					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top', cardsReplacedInMulligan: 0}
+					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0, discovery: {enabled: false, id: '3'}},
+					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top', cardsReplacedInMulligan: 0, discovery: {enabled: false, id: null}}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -93,6 +93,8 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				'discovery-end': 2,
+				'discovery-start': 2,
 				'gamestate-changed': 1,
 				'game-over': 2,
 				'game-start': 2,
@@ -117,8 +119,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top', cardsReplacedInMulligan: 0}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom', cardsReplacedInMulligan: 0, discovery: {enabled: false, id: null}},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top', cardsReplacedInMulligan: 0, discovery: {enabled: false, id: '7'}}
 				],
 				gameOverCount: 0,
 				mulliganActive: false,
@@ -139,8 +141,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: [], cardsReplacedInMulligan: 0},
-					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 0,
+					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: [], cardsReplacedInMulligan: 0, discovery: {enabled: false, id: null}},
+					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 0, discovery: {enabled: false, id: null},
 						secrets: [{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_132',
@@ -224,6 +226,69 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 			expect(gameState.turnStartTime.getTime()).equal(date.getTime());
+		});
+
+		it('should correctly handle discovery of bottom', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/discovery-bottom.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const eventCounters: EventCounters = {};
+			logWatcher.onAny((event: string) => {
+				if (!(event in eventCounters)) {
+					eventCounters[event] = 0;
+				}
+
+				eventCounters[event]++;
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			logWatcher.parseBuffer(logBuffer);
+
+			expect(eventCounters['discovery-start']).to.equal(1);
+			expect(eventCounters['discovery-end']).to.equal(1);
+		});
+
+		it('should correctly handle discovery of top', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/discovery-top.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const eventCounters: EventCounters = {};
+			logWatcher.onAny((event: string) => {
+				if (!(event in eventCounters)) {
+					eventCounters[event] = 0;
+				}
+
+				eventCounters[event]++;
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			logWatcher.parseBuffer(logBuffer);
+
+			expect(eventCounters['discovery-start']).to.equal(1);
+			expect(eventCounters['discovery-end']).to.equal(1);
+		});
+
+		it('should correctly handle discovery with Spirit of the Shark', () => {
+			const logFilePath = path.resolve(__dirname, 'artifacts/discovery-double.log');
+			const logWatcher = new LogWatcher({
+				logFile: logFilePath,
+				configFile: configFileFixture
+			});
+			const eventCounters: EventCounters = {};
+			logWatcher.onAny((event: string) => {
+				if (!(event in eventCounters)) {
+					eventCounters[event] = 0;
+				}
+
+				eventCounters[event]++;
+			});
+			const logBuffer = fs.readFileSync(logFilePath);
+			logWatcher.parseBuffer(logBuffer);
+
+			expect(eventCounters['discovery-start']).to.equal(2);
+			expect(eventCounters['discovery-end']).to.equal(2);
 		});
 
 		it('should correctly handle a new game', () => {
