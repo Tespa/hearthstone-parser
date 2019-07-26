@@ -49,6 +49,10 @@ export class GameTagChangeLineParser extends AbstractLineParser {
 				player.timeout = timeout;
 			}
 		}
+
+		if (data.tag === 'MULLIGAN_STATE' && data.value === 'INPUT') {
+			gameState.mulliganActive = true;
+		}
 	}
 
 	formatLogMessage(parts: string[]): string {
