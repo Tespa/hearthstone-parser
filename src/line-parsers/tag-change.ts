@@ -35,8 +35,8 @@ export class TagChangeLineParser extends AbstractLineParser {
 		}
 
 		const player = gameState.getPlayerById(data.playerId);
-		if (player) {
-			player.questCounter = data.value;
+		if (player && player.quest) {
+			player.quest.progress = data.value;
 		}
 	}
 

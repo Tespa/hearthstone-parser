@@ -12,7 +12,8 @@
 			"*": [
 				"./src/types/*"
 			]
-		}
+		},
+		"resolveJsonModule": true
 	},
 	"include": [
 		"./src/**/*.ts"
