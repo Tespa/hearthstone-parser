@@ -17,7 +17,6 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			name: parts[2],
 			status: '',
 			turn: false,
-			questCounter: -1,
 			timeout: 45,
 			cardCount: 0,
 			position: gameState.numPlayers === 0 ? 'bottom' : 'top',

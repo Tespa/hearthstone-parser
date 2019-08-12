@@ -1,9 +1,7 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 import {secretToClass} from '../data/secrets';
-
-// For now, we hard code quest ids, as there are a limited number of unique quests.
-const quests = ['UNG_028', 'UNG_067', 'UNG_116', 'UNG_829', 'UNG_920', 'UNG_934', 'UNG_940', 'UNG_942', 'UNG_954'];
+import {questToRequirement} from '../data/quests';
 
 interface Parts {
 	cardName: string;
@@ -71,19 +69,23 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 		}
 
 		if (data.toZone === 'SECRET') {
-			if (quests.find(cardId => cardId === data.cardId)) {
-				player.questCounter = 0;
-			} else {
+			const questRequirement = questToRequirement.get(data.cardId);
+			if (questRequirement === undefined) {
 				const cardClass = secretToClass[data.cardId];
 				if (cardClass) {
 					player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
 				}
+			} else {
+				player.quest = {
+					progress: 0,
+					requirement: questRequirement
+				};
 			}
 		}
 
 		if (data.fromZone === 'SECRET') {
-			if (quests.find(cardId => cardId === data.cardId)) {
-				player.questCounter = -1;
+			if (questToRequirement.has(data.cardId)) {
+				player.quest = undefined;
 			} else {
 				player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
 			}

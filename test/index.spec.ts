@@ -71,8 +71,8 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, questCounter: 6, timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 1, discovery: {enabled: false, id: '3'}},
-					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, questCounter: -1, timeout: 75, cardCount: 18, secrets: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: null}}
+					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, quest: {progress: 6, requirement: 7}, timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 1, discovery: {enabled: false, id: '3'}},
+					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, timeout: 75, cardCount: 18, secrets: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: null}}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -120,8 +120,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, questCounter: -1, timeout: 75, cardCount: 10, secrets: [], position: 'bottom', cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, questCounter: -1, timeout: 75, cardCount: 16, secrets: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: '7'}}
+					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, timeout: 75, cardCount: 10, secrets: [], position: 'bottom', cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
+					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, timeout: 75, cardCount: 16, secrets: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: '7'}}
 				],
 				gameOverCount: 0,
 				mulliganActive: false,
@@ -142,8 +142,8 @@ describe('hearthstone-log-watcher', () => {
 			mockdate.reset();
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, questCounter: -1, timeout: 75, cardCount: 15, position: 'top', secrets: [], cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, questCounter: -1, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 2, discovery: {enabled: false, id: null},
+					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, timeout: 75, cardCount: 15, position: 'top', secrets: [], cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
+					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 2, discovery: {enabled: false, id: null},
 						secrets: [{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_132',

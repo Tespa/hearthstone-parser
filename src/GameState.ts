@@ -11,7 +11,10 @@ export interface Player {
 	name: string;
 	status: 'LOST' | 'WON' | 'TIED' | '';
 	turn: boolean;
-	questCounter: number;
+	quest?: {
+		progress: number;
+		requirement: number;
+	};
 	timeout: number;
 	cardCount: number;
 	position: 'top' | 'bottom';
