@@ -50,5 +50,7 @@ export const secretToClass: {[id: string]: SecretClass} =
 	LOOT_214: SecretClass.Rogue,
 	TRL_400: SecretClass.Mage,
 	tt_010: SecretClass.Mage, // eslint-disable-line @typescript-eslint/camelcase
+	ULD_152: SecretClass.Hunter,
+	ULD_239: SecretClass.Mage,
 	UNG_024: SecretClass.Mage
 };
