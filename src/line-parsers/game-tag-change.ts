@@ -17,7 +17,7 @@ function formatParts(parts: string[]): Parts {
 
 // Check for gamestate tag changes.
 export class GameTagChangeLineParser extends AbstractLineParser {
-	regex = /^\[Power\] PowerTaskList.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=([a-zA-Z0-9#]*) tag=(.*) value=(.*)/;
+	regex = /^\[Power\] PowerTaskList.DebugPrintPower\(\) -\s+TAG_CHANGE Entity=(.*) tag=(.*) value=(.*)/;
 
 	eventName = 'game-tag-change' as const;
 
