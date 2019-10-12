@@ -79,7 +79,6 @@ workflows:
             - Checkout Code
       - Send Coverage:
           requires:
-            - Check for vulnerabilities
             - Test node-10
       - Build:
           requires:
