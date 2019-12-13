@@ -1,9 +1,19 @@
-import {SecretClass} from './data/secrets';
+import {Class} from './data/meta';
 
 export interface Secret {
 	cardId: string;
-	cardClass: SecretClass;
+	cardClass: Class;
 	cardName: string;
+	timestamp: number;
+}
+
+export interface Quest {
+	cardName: string;
+	class: Class;
+	progress: number;
+	requirement: number;
+	sidequest: boolean;
+	timestamp: number;
 }
 
 export interface Player {
@@ -11,10 +21,7 @@ export interface Player {
 	name: string;
 	status: 'LOST' | 'WON' | 'TIED' | '';
 	turn: boolean;
-	quest?: {
-		progress: number;
-		requirement: number;
-	};
+	quests: Quest[];
 	timeout: number;
 	cardCount: number;
 	position: 'top' | 'bottom';
