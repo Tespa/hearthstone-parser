@@ -72,7 +72,7 @@ describe('hearthstone-log-watcher', () => {
 			gameState.should.deep.equal({
 				players: [
 					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, quests: [
-						{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false}
+						{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false, timestamp: date.getTime()}
 					], timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 1, discovery: {enabled: false, id: '3'}},
 					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, timeout: 75, cardCount: 18, secrets: [], quests: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: null}}
 				],
@@ -142,6 +142,7 @@ describe('hearthstone-log-watcher', () => {
 			const logBuffer = fs.readFileSync(logFilePath);
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
+			const timestamp = date.getTime();
 			gameState.should.deep.equal({
 				players: [
 					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, timeout: 75, cardCount: 15, position: 'top', secrets: [], quests: [], cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
@@ -150,27 +151,32 @@ describe('hearthstone-log-watcher', () => {
 						secrets: [{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_132',
-							cardName: 'Eye for an Eye'
+							cardName: 'Eye for an Eye',
+							timestamp
 						},
 						{
 							cardClass: 'PALADIN',
 							cardId: 'DAL_570',
-							cardName: 'Never Surrender!'
+							cardName: 'Never Surrender!',
+							timestamp
 						},
 						{
 							cardClass: 'PALADIN',
 							cardId: 'GIL_903',
-							cardName: 'Hidden Wisdom'
+							cardName: 'Hidden Wisdom',
+							timestamp
 						},
 						{
 							cardClass: 'PALADIN',
 							cardId: 'EX1_379',
-							cardName: 'Repentance'
+							cardName: 'Repentance',
+							timestamp
 						},
 						{
 							cardClass: 'PALADIN',
 							cardId: 'BOT_908',
-							cardName: 'Autodefense Matrix'
+							cardName: 'Autodefense Matrix',
+							timestamp
 						}]}
 				],
 				gameOverCount: 2,
