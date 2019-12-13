@@ -31,12 +31,10 @@ const log = debug('hlp');
 // Determine the default location of the config and log files.
 if (/^win/.test(os.platform())) {
 	log('Windows platform detected.');
-	let programFiles = 'Program Files';
-	if (/64/.test(os.arch())) {
-		programFiles += ' (x86)';
-	}
 
-	defaultOptions.logFile = path.join('C:', programFiles, 'Hearthstone', 'Hearthstone_Data', 'output_log.txt');
+	if (process.env.UserProfile) {
+		defaultOptions.logFile = path.join(process.env.UserProfile, 'AppData', 'LocalLow', 'Blizzard Entertainment', 'Hearthstone', 'output_log.txt');
+	}
 
 	if (process.env.LOCALAPPDATA) {
 		defaultOptions.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
