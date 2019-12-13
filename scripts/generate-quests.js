@@ -53,7 +53,7 @@ const main = async () => {
 		})
 		.sort((a, b) => a.id.localeCompare(b.id))
 		.forEach(card => {
-			questTexts[card.id] = card.text;
+			questTexts[card.id] = `${card.cardClass}: ${card.text}`;
 		});
 	await writeJson(
 		path.resolve(__dirname, "../src/data/quest-text-map.json"),

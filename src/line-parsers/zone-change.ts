@@ -1,7 +1,7 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 import {secretToClass} from '../data/secrets';
-import {questToRequirement} from '../data/quests';
+import {questMap} from '../data/quests';
 
 interface Parts {
 	cardName: string;
@@ -69,24 +69,35 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 		}
 
 		if (data.toZone === 'SECRET') {
-			const questRequirement = questToRequirement.get(data.cardId);
-			if (questRequirement === undefined) {
+			const quest = questMap.get(data.cardId);
+			if (quest) {
+				// It's a quest or sidequest
+				player.quests.push({
+					...quest,
+					cardName: data.cardName,
+					progress: 0,
+					timestamp: Date.now()
+				});
+			} else {
+				// It's a secret
 				const cardClass = secretToClass[data.cardId];
 				if (cardClass) {
-					player.secrets.push({cardId: data.cardId, cardClass: cardClass, cardName: data.cardName});
+					player.secrets.push({
+						cardId: data.cardId,
+						cardClass: cardClass,
+						cardName: data.cardName,
+						timestamp: Date.now()
+					});
 				}
-			} else {
-				player.quest = {
-					progress: 0,
-					requirement: questRequirement
-				};
 			}
 		}
 
 		if (data.fromZone === 'SECRET') {
-			if (questToRequirement.has(data.cardId)) {
-				player.quest = undefined;
+			if (questMap.has(data.cardId)) {
+				// It's a quest or sidequest
+				player.quests = player.quests.filter(q => q.cardName !== data.cardId);
 			} else {
+				// It's a secret
 				player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
 			}
 		}
