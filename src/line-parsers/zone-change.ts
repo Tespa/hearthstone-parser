@@ -95,7 +95,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 		if (data.fromZone === 'SECRET') {
 			if (questMap.has(data.cardId)) {
 				// It's a quest or sidequest
-				player.quests = player.quests.filter(q => q.cardName !== data.cardId);
+				player.quests = player.quests.filter(q => q.cardName !== data.cardName);
 			} else {
 				// It's a secret
 				player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
