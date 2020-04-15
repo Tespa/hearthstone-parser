@@ -1,10 +1,13 @@
 import {Class} from './meta';
 
+/* eslint-disable @typescript-eslint/camelcase */
 export const secretToClass: { [id: string]: Class } = {
 	AT_002: Class.Mage,
 	AT_060: Class.Hunter,
 	AT_073: Class.Paladin,
 	BOT_908: Class.Paladin,
+	BT_003: Class.Mage,
+	BT_203: Class.Hunter,
 	CFM_026: Class.Hunter,
 	CFM_620: Class.Mage,
 	CFM_800: Class.Paladin,
@@ -34,11 +37,10 @@ export const secretToClass: { [id: string]: Class } = {
 	LOE_027: Class.Paladin,
 	LOOT_079: Class.Hunter,
 	LOOT_101: Class.Mage,
-	LOOT_204: Class.Rogue,
-	LOOT_214: Class.Rogue,
 	TRL_400: Class.Mage,
-	tt_010: Class.Mage, // eslint-disable-line @typescript-eslint/camelcase
+	tt_010: Class.Mage,
 	ULD_152: Class.Hunter,
 	ULD_239: Class.Mage,
 	UNG_024: Class.Mage
 };
+/* eslint-enable @typescript-eslint/camelcase */
