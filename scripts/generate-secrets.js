@@ -27,6 +27,7 @@ const getAllQuests = async accessToken => {
 		query: {
 			locale: "en_US",
 			textFilter: "<b>Secret:</b>",
+			pageSize: 1000,
 			access_token: accessToken
 		}
 	});

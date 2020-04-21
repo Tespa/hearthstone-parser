@@ -93,7 +93,7 @@ const quests: {[TK in keyof typeof questData]: {
 	},
 	UNG_028: {
 		class: Class.Mage,
-		requirement: 6,
+		requirement: 8,
 		sidequest: false
 	},
 	UNG_067: {

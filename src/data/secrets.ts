@@ -7,7 +7,10 @@ export const secretToClass: { [id: string]: Class } = {
 	AT_073: Class.Paladin,
 	BOT_908: Class.Paladin,
 	BT_003: Class.Mage,
+	BT_042: Class.Rogue,
 	BT_203: Class.Hunter,
+	BT_707: Class.Rogue,
+	BT_709: Class.Rogue,
 	CFM_026: Class.Hunter,
 	CFM_620: Class.Mage,
 	CFM_800: Class.Paladin,
@@ -37,10 +40,14 @@ export const secretToClass: { [id: string]: Class } = {
 	LOE_027: Class.Paladin,
 	LOOT_079: Class.Hunter,
 	LOOT_101: Class.Mage,
+	LOOT_204: Class.Rogue,
+	LOOT_210: Class.Rogue,
+	LOOT_214: Class.Rogue,
 	TRL_400: Class.Mage,
 	tt_010: Class.Mage,
 	ULD_152: Class.Hunter,
 	ULD_239: Class.Mage,
-	UNG_024: Class.Mage
+	UNG_024: Class.Mage,
+	WE1_025: Class.Paladin
 };
 /* eslint-enable @typescript-eslint/camelcase */

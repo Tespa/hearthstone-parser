@@ -9,5 +9,6 @@ export const enum Class {
 	Rogue = 'ROGUE',
 	Shaman = 'SHAMAN',
 	Warlock = 'WARLOCK',
-	Warrior = 'WARRIOR'
+	Warrior = 'WARRIOR',
+	DemonHunter = 'DEMONHUNTER'
 }
