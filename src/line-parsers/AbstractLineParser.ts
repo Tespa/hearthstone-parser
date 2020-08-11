@@ -1,10 +1,11 @@
 import {GameState} from '../GameState';
 import * as debug from 'debug';
-import {Events} from './index';
+import {Events, HspEventsEmitter} from './index';
 
-export abstract class AbstractLineParser {
-	abstract readonly regex: RegExp;
-
+/**
+ * Root class of all classes that read lines and emit events.
+ */
+export abstract class LineParser {
 	abstract readonly eventName: keyof Events;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
@@ -16,6 +17,40 @@ export abstract class AbstractLineParser {
 		}
 
 		return this._logger;
+	}
+
+	abstract handleLine(
+		emitter: HspEventsEmitter,
+		gameState: GameState,
+		line: string,
+	): boolean;
+}
+
+/**
+ * Regex based parser class that exists for backwards compatibility.
+ * Not a recommended way of solving it.
+ */
+export abstract class AbstractLineParser extends LineParser {
+	abstract readonly regex: RegExp;
+
+	// eslint-disable-next-line @typescript-eslint/member-ordering
+	handleLine(emitter: HspEventsEmitter, gameState: GameState, line: string): boolean {
+		const parts = this.parseLine(line);
+		if (!parts || parts.length <= 0) {
+			return false;
+		}
+
+		this.lineMatched(parts, gameState);
+		const logMessage = this.formatLogMessage(parts, gameState);
+		if (logMessage) {
+			this.logger(logMessage);
+		}
+
+		if (this.shouldEmit(gameState)) {
+			emitter.emit(this.eventName);
+		}
+
+		return true;
 	}
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering

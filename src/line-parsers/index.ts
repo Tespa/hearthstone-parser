@@ -1,3 +1,6 @@
+import StrictEventEmitter from 'strict-event-emitter-types/types/src';
+import {EventEmitter2} from 'eventemitter2';
+
 import {GameOverLineParser} from './game-over';
 import {GameStartLineParser} from './game-start';
 import {GameTagChangeLineParser} from './game-tag-change';
@@ -42,3 +45,5 @@ export interface Events {
 	'discovery-end': void;
 	'mulligan-result': void;
 }
+
+export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;
