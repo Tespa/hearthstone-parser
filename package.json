@@ -37,7 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "chai": "^4.2.0",
     "codecov": "^3.3.0",
-    "dtslint": "^0.6.1",
+    "dtslint": "^3.6.14",
     "eslint": "^7.6.0",
     "eslint-config-xo": "^0.32.1",
     "eslint-config-xo-typescript": "^0.32.0",

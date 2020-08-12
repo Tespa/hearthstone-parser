@@ -73,7 +73,7 @@ export class BlockParser extends LineParser {
 		})
 	);
 
-	handleLine(emitter: HspEventsEmitter, gameState: GameState, line: string): boolean {
+	handleLine(emitter: HspEventsEmitter, _gameState: GameState, line: string): boolean {
 		if (!line.startsWith(this.prefix)) {
 			return false;
 		}
@@ -92,12 +92,20 @@ export class BlockParser extends LineParser {
 			const blockData: BlockData = {
 				type: 'block',
 				entries: [],
-				blockType: blockStart.entityString,
+				blockType: blockStart.blockType,
 				entity
 			};
 
 			this.stack.push(blockData);
 			return true;
+		}
+
+		const tagData = this.tagReader(line);
+		if (tagData && this.stack.length > 0) {
+			this.stack[this.stack.length - 1].entries.push({type: 'tag'});
+
+			// False for now to not hurt backwards compatibility...just in case
+			return false;
 		}
 
 		// If a block has ended, return it
@@ -109,9 +117,13 @@ export class BlockParser extends LineParser {
 			}
 
 			// Check if its the highest block. If so, emit it if the type is correct
-			if (this.stack.length === 0 && mostRecentBlock?.blockType === 'PLAY') {
-				this.logger(`Played card ${mostRecentBlock.entity?.cardName ?? 'UNKNOWN'}`);
-				emitter.emit('card-played', mostRecentBlock);
+			if (this.stack.length === 0) {
+				if (mostRecentBlock.blockType === 'PLAY') {
+					const entity = mostRecentBlock.entity;
+					const cardName = entity ? entity.cardName : 'UNKNOWN';
+					this.logger(`Played card ${cardName}`);
+					emitter.emit('card-played', mostRecentBlock);
+				}
 			} else {
 				this.stack[this.stack.length - 1].entries.push(mostRecentBlock);
 			}
