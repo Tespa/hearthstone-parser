@@ -1,6 +1,6 @@
 import {Class} from './meta';
 
-/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/naming-convention */
 export const secretToClass: { [id: string]: Class } = {
 	AT_002: Class.Mage,
 	AT_060: Class.Hunter,
@@ -50,4 +50,4 @@ export const secretToClass: { [id: string]: Class } = {
 	UNG_024: Class.Mage,
 	WE1_025: Class.Paladin
 };
-/* eslint-enable @typescript-eslint/camelcase */
+/* eslint-enable @typescript-eslint/naming-convention */

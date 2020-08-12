@@ -14,8 +14,10 @@ import {ChoiceIdParser} from './choice-id';
 import {DiscoveryEndParser} from './discovery-end';
 import {DiscoveryStartParser} from './discovery-start';
 import {MullinganResultParser} from './mulligan-result';
+import {BlockData, BlockParser} from './block-parser';
 
 export const lineParsers = [
+	new BlockParser(),
 	new GameOverLineParser(),
 	new GameStartLineParser(),
 	new NewPlayerLineParser(),
@@ -44,6 +46,7 @@ export interface Events {
 	'discovery-start': void;
 	'discovery-end': void;
 	'mulligan-result': void;
+	'card-played': BlockData;
 }
 
 export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;
