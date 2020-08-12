@@ -71,10 +71,41 @@ describe('hearthstone-log-watcher', () => {
 
 			gameState.should.deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, quests: [
-						{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false, timestamp: date.getTime()}
-					], timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 1, discovery: {enabled: false, id: '3'}},
-					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, timeout: 75, cardCount: 18, secrets: [], quests: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: null}}
+					{
+						id: 1,
+						name: 'SpookyPatron#1959',
+						status: 'WON',
+						turn: false,
+						quests: [{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false, timestamp: date.getTime()}],
+						timeout: 75,
+						cardCount: 16,
+						secrets: [],
+						position: 'bottom',
+						cardsReplacedInMulligan: 1,
+						discovery: {enabled: false, id: '3'},
+						handCards: [
+							{id: 75, name: 'Brawl'},
+							{id: 1023, name: 'Shield Block'},
+							{id: 47133, name: 'Town Crier'},
+							{id: 50776, name: 'Amani War Bear'},
+							{id: 49184, name: 'Zilliax'},
+							{id: 41243, name: 'Stonehill Defender'}
+						]
+					},
+					{
+						id: 2,
+						name: 'SnarkyPatron#1301',
+						status: 'LOST',
+						turn: true,
+						timeout: 75,
+						cardCount: 18,
+						secrets: [],
+						quests: [],
+						position: 'top',
+						cardsReplacedInMulligan: 3,
+						discovery: {enabled: false, id: null},
+						handCards: []
+					}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -95,6 +126,7 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				'card-played': 56,
 				'discovery-end': 2,
 				'discovery-start': 2,
 				'gamestate-changed': 1,
@@ -120,15 +152,8 @@ describe('hearthstone-log-watcher', () => {
 			const logBuffer = fs.readFileSync(logFilePath);
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
-			gameState.should.deep.equal({
-				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, timeout: 75, cardCount: 10, secrets: [], quests: [], position: 'bottom', cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, timeout: 75, cardCount: 16, secrets: [], quests: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: '7'}}
-				],
-				gameOverCount: 0,
-				mulliganActive: false,
-				turnStartTime: date
-			});
+			expect(gameState.players[0].cardCount).to.equal(10);
+			expect(gameState.players[1].cardCount).to.equal(16);
 		});
 
 		it('should correctly handle secrets', () => {
@@ -143,46 +168,37 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 			const timestamp = date.getTime();
-			gameState.should.deep.equal({
-				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, timeout: 75, cardCount: 15, position: 'top', secrets: [], quests: [], cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 2, discovery: {enabled: false, id: null},
-						quests: [],
-						secrets: [{
-							cardClass: 'PALADIN',
-							cardId: 'EX1_132',
-							cardName: 'Eye for an Eye',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'DAL_570',
-							cardName: 'Never Surrender!',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'GIL_903',
-							cardName: 'Hidden Wisdom',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'EX1_379',
-							cardName: 'Repentance',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'BOT_908',
-							cardName: 'Autodefense Matrix',
-							timestamp
-						}]}
-				],
-				gameOverCount: 2,
-				mulliganActive: false,
-				turnStartTime: date
-			});
+			expect(gameState.players[1].quests).to.deep.equal([]);
+			expect(gameState.players[1].secrets).to.deep.equal([{
+				cardClass: 'PALADIN',
+				cardId: 'EX1_132',
+				cardName: 'Eye for an Eye',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'DAL_570',
+				cardName: 'Never Surrender!',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'GIL_903',
+				cardName: 'Hidden Wisdom',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'EX1_379',
+				cardName: 'Repentance',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'BOT_908',
+				cardName: 'Autodefense Matrix',
+				timestamp
+			}]);
 		});
 
 		it('should correctly handle tied game', () => {

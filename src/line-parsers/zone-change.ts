@@ -3,15 +3,21 @@ import {GameState} from '../GameState';
 import {secretToClass} from '../data/secrets';
 import {questMap} from '../data/quests';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const cardsJson: Array<{dbfId: number; id: string}> = require('../data/cards.json');
+
+const FRIENDLY = 'FRIENDLY';
+const OPPOSING = 'OPPOSING';
+
 interface Parts {
 	cardName: string;
 	entityId: number;
 	cardId: string;
 	playerId: number;
-	fromTeam: string;
-	fromZone: string;
-	toTeam: string;
-	toZone: string;
+	fromTeam?: typeof FRIENDLY | typeof OPPOSING;
+	fromZone?: 'DECK' | 'HAND' | 'SECRET';
+	toTeam?: typeof FRIENDLY | typeof OPPOSING;
+	toZone?: 'DECK' | 'HAND' | 'SECRET';
 }
 
 function formatParts(parts: string[]): Parts {
@@ -20,10 +26,10 @@ function formatParts(parts: string[]): Parts {
 		entityId: parseInt(parts[2], 10),
 		cardId: parts[3],
 		playerId: parseInt(parts[4], 10),
-		fromTeam: parts[5],
-		fromZone: parts[6],
-		toTeam: parts[7],
-		toZone: parts[8]
+		fromTeam: parts[5] as any,
+		fromZone: parts[6] as any,
+		toTeam: parts[7] as any,
+		toZone: parts[8] as any
 	};
 }
 
@@ -36,43 +42,67 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
-		if (data.toZone === data.fromZone && data.toTeam === data.fromTeam) {
-			return;
-		}
+		if (gameState.mulliganActive) {
+			const player = gameState.getPlayerById(data.playerId);
+			const otherPlayer = gameState.getPlayerById(data.playerId);
+			if (!player || !otherPlayer) {
+				return;
+			}
 
-		const player = gameState.getPlayerById(data.playerId);
-		const otherPlayer = gameState.getPlayerById(3 - data.playerId);
-		if (!player || !otherPlayer) {
-			return;
-		}
+			// Player getting coin is second, other player is first
+			if (data.cardName === 'The Coin' && data.toZone === 'HAND') {
+				otherPlayer.turn = true;
+			}
 
-		if (data.toZone === 'DECK' && data.fromZone === 'DECK' && data.fromTeam !== data.toTeam) {
-			// Handle the Togwaggle swap case
-			player.cardCount++;
-			otherPlayer.cardCount--;
+			if (data.toTeam === FRIENDLY) {
+				player.position = 'bottom';
+			}
 
-			return;
-		}
-
-		if (data.toZone === 'DECK') {
-			// If entering the deck, increment deck count
-			player.cardCount++;
-			const position = data.toTeam === 'FRIENDLY' ? 'bottom' : 'top';
-			if (player.position !== position) {
-				player.position = position;
+			if (data.toTeam === OPPOSING) {
+				player.position = 'top';
 			}
 		}
 
-		if (data.fromZone === 'DECK') {
-			// If drawn from deck, decrement deck count
-			player.cardCount--;
+		const friendlyPlayer = gameState.getPlayerByPosition('bottom');
+		const opposingPlayer = gameState.getPlayerByPosition('top');
+		const fromPlayer = data.fromTeam === FRIENDLY ? friendlyPlayer : opposingPlayer;
+		const toPlayer = data.toTeam === FRIENDLY ? friendlyPlayer : opposingPlayer;
+
+		if (!fromPlayer || !toPlayer) {
+			return;
 		}
 
+		const cardRawData = cardsJson.find(card => card.id === data.cardId);
+
+		// Card moved from HAND
+		if (data.fromZone === 'HAND' && cardRawData) {
+			const cardIndex = fromPlayer.handCards.findIndex(card => card.id === cardRawData.dbfId);
+			fromPlayer.handCards.splice(cardIndex, 1);
+		}
+
+		// Card moved to HAND
+		if (data.toZone === 'HAND' && cardRawData) {
+			toPlayer.handCards = [...toPlayer.handCards, {id: cardRawData.dbfId, name: data.cardName}];
+		}
+
+		// Card moved from DECK
+		if (data.fromZone === 'DECK') {
+			fromPlayer.cardCount -= 1;
+			// TODO: Also notify card is removed from deck
+		}
+
+		// Card moved from DECK
+		if (data.toZone === 'DECK') {
+			toPlayer.cardCount += 1;
+			// TODO: Also notify card is removed from deck
+		}
+
+		// Secret played
 		if (data.toZone === 'SECRET') {
 			const quest = questMap.get(data.cardId);
 			if (quest) {
 				// It's a quest or sidequest
-				player.quests.push({
+				toPlayer.quests.push({
 					...quest,
 					cardName: data.cardName,
 					progress: 0,
@@ -82,7 +112,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 				// It's a secret
 				const cardClass = secretToClass[data.cardId];
 				if (cardClass) {
-					player.secrets.push({
+					toPlayer.secrets.push({
 						cardId: data.cardId,
 						cardClass: cardClass,
 						cardName: data.cardName,
@@ -92,18 +122,15 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			}
 		}
 
+		// Secret triggered
 		if (data.fromZone === 'SECRET') {
 			if (questMap.has(data.cardId)) {
 				// It's a quest or sidequest
-				player.quests = player.quests.filter(q => q.cardName !== data.cardName);
+				fromPlayer.quests = fromPlayer.quests.filter(q => q.cardName !== data.cardName);
 			} else {
 				// It's a secret
-				player.secrets = player.secrets.filter(secret => secret.cardId !== data.cardId);
+				fromPlayer.secrets = fromPlayer.secrets.filter(secret => secret.cardId !== data.cardId);
 			}
-		}
-
-		if (gameState.mulliganActive && data.cardName === 'The Coin' && data.toZone === 'HAND') {
-			otherPlayer.turn = true;
 		}
 	}
 

@@ -24,6 +24,7 @@ export interface Player {
 	quests: Quest[];
 	timeout: number;
 	cardCount: number;
+	handCards: Array<{id: number; name: string}>;
 	position: 'top' | 'bottom';
 	secrets: Secret[];
 	discovery: {
