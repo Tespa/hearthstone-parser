@@ -8,7 +8,7 @@ import * as debug from 'debug';
 import {EventEmitter2} from 'eventemitter2';
 import * as extend from 'extend';
 import * as chokidar from 'chokidar';
-import throttle = require('lodash.throttle'); // eslint-disable-line @typescript-eslint/no-require-imports
+import {chunk, throttle} from 'lodash';
 import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
 import {FSWatcher} from 'chokidar';
 
@@ -19,6 +19,16 @@ import {lineParsers, HspEventsEmitter} from './line-parsers';
 export interface Options {
 	logFile: string;
 	configFile: string;
+
+	/**
+	 * The number of lines in each parsing group.
+	 */
+	linesPerUpdate?: number;
+
+	/**
+	 * Whether an update event should be sent out when the turn has changed
+	 */
+	updateEveryTurn?: boolean;
 }
 
 const defaultOptions: Options = {
@@ -135,10 +145,16 @@ export class LogWatcher extends HspEventsEmitterClass {
 	}
 
 	parseBuffer(buffer: Buffer, gameState: GameState = new GameState()): GameState {
+		const lines = splitLines(buffer.toString());
+		return this.parseLines(lines, gameState);
+	}
+
+	private parseLines(lines: string[], gameState: GameState): GameState {
 		let updated = false;
 
-		// Iterate over each line in the buffer.
-		splitLines(buffer.toString()).forEach(line => {
+		let lastTurnTime = gameState.turnStartTime;
+
+		lines.forEach(line => {
 			// Run each line through our entire array of line parsers.
 			for (const lineParser of lineParsers) {
 				const handled = lineParser.handleLine(this, gameState, line);
@@ -149,6 +165,13 @@ export class LogWatcher extends HspEventsEmitterClass {
 				// Stop after the first match we get.
 				updated = true;
 				break;
+			}
+
+			// If an update is sent when the turn changes, check so here
+			if (updated && this.options.updateEveryTurn && gameState.turnStartTime !== lastTurnTime) {
+				lastTurnTime = gameState.turnStartTime;
+				this.emit('gamestate-changed', gameState);
+				updated = false;
 			}
 		});
 
@@ -173,6 +196,13 @@ export class LogWatcher extends HspEventsEmitterClass {
 		fs.closeSync(fileDescriptor);
 		this._lastFileSize = newFileSize;
 
-		this.parseBuffer(buffer, this.gameState);
+		const lines = splitLines(buffer.toString());
+		if (this.options.linesPerUpdate) {
+			for (const group of chunk(lines, this.options.linesPerUpdate)) {
+				this.parseLines(group, this.gameState);
+			}
+		} else {
+			this.parseLines(lines, this.gameState);
+		}
 	}
 }
