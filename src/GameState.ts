@@ -36,7 +36,7 @@ export interface Card {
 	/**
 	 * If card is originally from the deck
 	 */
-	isSpawnedCard: boolean;
+	readonly isSpawnedCard: boolean;
 }
 
 export interface Player {
