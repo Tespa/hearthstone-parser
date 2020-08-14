@@ -16,6 +16,29 @@ export interface Quest {
 	timestamp: number;
 }
 
+export type CardState = 'DECK' | 'HAND' | 'OTHERS';
+
+export interface Card {
+	/**
+	 * ID used by logs to distinguish same cards
+	 */
+	cardEntityId: number;
+	/**
+	 * Numeric ID for the card (same for same card)
+	 * Unknown card has this undefined
+	 */
+	cardId?: number;
+	/**
+	 * Unknown card has this undefined
+	 */
+	cardName?: string;
+	state: CardState;
+	/**
+	 * If card is originally from the deck
+	 */
+	isSpawnedCard: boolean;
+}
+
 export interface Player {
 	id: number;
 	name: string;
@@ -24,6 +47,7 @@ export interface Player {
 	quests: Quest[];
 	timeout: number;
 	cardCount: number;
+	cards: Card[];
 	position: 'top' | 'bottom';
 	secrets: Secret[];
 	discovery: {

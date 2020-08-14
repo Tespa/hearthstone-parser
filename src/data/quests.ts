@@ -1,5 +1,5 @@
 import * as questData from './quest-text-map.json';
-import {Class} from './meta.js';
+import {Class} from './meta';
 
 const quests: {[TK in keyof typeof questData]: {
 	class: Class;

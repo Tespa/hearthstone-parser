@@ -1,6 +1,16 @@
 {
+	"parserOptions": {
+		"project": "./tsconfig.lint.json"
+	},
 	"extends": [
 		"xo",
 		"xo-typescript"
-	]
+	],
+	"rules": {
+		"complexity": 0,
+		// compatibility with codebase (added post eslint update)
+		"@typescript-eslint/prefer-optional-chain": "off",
+		"@typescript-eslint/prefer-string-starts-ends-with": "off",
+		"@typescript-eslint/restrict-template-expressions": "off",
+	}
 }

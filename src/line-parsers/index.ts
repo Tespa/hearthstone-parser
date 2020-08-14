@@ -1,3 +1,6 @@
+import StrictEventEmitter from 'strict-event-emitter-types/types/src';
+import {EventEmitter2} from 'eventemitter2';
+
 import {GameOverLineParser} from './game-over';
 import {GameStartLineParser} from './game-start';
 import {GameTagChangeLineParser} from './game-tag-change';
@@ -11,8 +14,10 @@ import {ChoiceIdParser} from './choice-id';
 import {DiscoveryEndParser} from './discovery-end';
 import {DiscoveryStartParser} from './discovery-start';
 import {MullinganResultParser} from './mulligan-result';
+import {BlockData, BlockParser} from './block-parser';
 
 export const lineParsers = [
+	new BlockParser(),
 	new GameOverLineParser(),
 	new GameStartLineParser(),
 	new NewPlayerLineParser(),
@@ -41,4 +46,7 @@ export interface Events {
 	'discovery-start': void;
 	'discovery-end': void;
 	'mulligan-result': void;
+	'card-played': BlockData;
 }
+
+export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;

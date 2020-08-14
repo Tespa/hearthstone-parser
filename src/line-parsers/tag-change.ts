@@ -1,7 +1,7 @@
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState} from '../GameState';
 
-interface Parts {
+export interface Parts {
 	cardName: string;
 	entityId: number;
 	cardId: string;

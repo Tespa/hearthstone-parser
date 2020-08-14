@@ -69,12 +69,37 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 
-			gameState.should.deep.equal({
+			expect(gameState).deep.equal({
 				players: [
-					{id: 1, name: 'SpookyPatron#1959', status: 'WON', turn: false, quests: [
-						{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false, timestamp: date.getTime()}
-					], timeout: 75, cardCount: 16, secrets: [], position: 'bottom', cardsReplacedInMulligan: 1, discovery: {enabled: false, id: '3'}},
-					{id: 2, name: 'SnarkyPatron#1301', status: 'LOST', turn: true, timeout: 75, cardCount: 18, secrets: [], quests: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: null}}
+					{
+						id: 1,
+						name: 'SpookyPatron#1959',
+						status: 'WON',
+						turn: false,
+						quests: [{cardName: 'Fire Plume\'s Heart', class: 'WARRIOR', progress: 6, requirement: 7, sidequest: false, timestamp: date.getTime()}],
+						timeout: 75,
+						cardCount: 16,
+						secrets: [],
+						position: 'bottom',
+						cardsReplacedInMulligan: 1,
+						discovery: {enabled: false, id: '3'},
+						cards: [{cardEntityId: 4, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 5, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 6, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 7, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 8, cardId: 47825, cardName: 'Militia Commander', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 9, cardId: 47133, cardName: 'Town Crier', state: 'HAND', isSpawnedCard: true}, {cardEntityId: 10, cardId: 41406, cardName: 'Cornered Sentry', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 11, cardId: 49184, cardName: 'Zilliax', state: 'HAND', isSpawnedCard: true}, {cardEntityId: 12, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 13, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 14, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 15, cardId: 41427, cardName: 'Fire Plume\'s Heart', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 16, cardId: 75, cardName: 'Brawl', state: 'HAND', isSpawnedCard: true}, {cardEntityId: 17, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 18, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 19, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 20, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 21, cardId: 1023, cardName: 'Shield Block', state: 'HAND', isSpawnedCard: true}, {cardEntityId: 22, cardId: 41243, cardName: 'Stonehill Defender', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 23, cardId: 46031, cardName: 'Drywhisker Armorer', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 24, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 25, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 26, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 27, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 28, cardId: 50776, cardName: 'Amani War Bear', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 29, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 30, cardId: 41243, cardName: 'Stonehill Defender', state: 'HAND', isSpawnedCard: true}, {cardEntityId: 31, cardId: 1659, cardName: 'Acolyte of Pain', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 32, cardId: 47133, cardName: 'Town Crier', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 33, cardId: 46634, cardName: 'Phantom Militia', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 80, cardId: 1746, cardName: 'The Coin', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 102, cardId: 38738, cardName: 'Bloodhoof Brave', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 155, cardId: 46634, cardName: 'Phantom Militia', state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 157, cardId: 46634, cardName: 'Phantom Militia', state: 'OTHERS', isSpawnedCard: true}]
+					},
+					{
+						id: 2,
+						name: 'SnarkyPatron#1301',
+						status: 'LOST',
+						turn: true,
+						timeout: 75,
+						cardCount: 18,
+						secrets: [],
+						quests: [],
+						position: 'top',
+						cardsReplacedInMulligan: 3,
+						discovery: {enabled: false, id: null},
+						cards: [{cardEntityId: 34, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 37, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 38, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 39, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 40, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 41, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 42, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 43, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 44, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 45, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 46, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 47, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 48, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 49, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 50, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 51, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 54, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 55, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 56, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 57, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 58, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 61, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 62, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 65, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 66, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 67, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 68, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 69, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 72, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 75, cardId: undefined, cardName: undefined, state: 'DECK', isSpawnedCard: true}, {cardEntityId: 106, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 107, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 124, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 125, cardId: undefined, cardName: undefined, state: 'OTHERS', isSpawnedCard: true}, {cardEntityId: 128, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}, {cardEntityId: 148, cardId: undefined, cardName: undefined, state: 'HAND', isSpawnedCard: true}]
+
+					}
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
@@ -95,6 +120,7 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				'card-played': 56,
 				'discovery-end': 2,
 				'discovery-start': 2,
 				'gamestate-changed': 1,
@@ -120,15 +146,8 @@ describe('hearthstone-log-watcher', () => {
 			const logBuffer = fs.readFileSync(logFilePath);
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
-			gameState.should.deep.equal({
-				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: '', turn: false, timeout: 75, cardCount: 10, secrets: [], quests: [], position: 'bottom', cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'SpookyPatron#1959', status: '', turn: true, timeout: 75, cardCount: 16, secrets: [], quests: [], position: 'top', cardsReplacedInMulligan: 3, discovery: {enabled: false, id: '7'}}
-				],
-				gameOverCount: 0,
-				mulliganActive: false,
-				turnStartTime: date
-			});
+			expect(gameState.players[0].cardCount).to.equal(10);
+			expect(gameState.players[1].cardCount).to.equal(16);
 		});
 
 		it('should correctly handle secrets', () => {
@@ -143,46 +162,37 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 			const timestamp = date.getTime();
-			gameState.should.deep.equal({
-				players: [
-					{id: 1, name: 'SnarkyPatron#1301', status: 'WON', turn: true, timeout: 75, cardCount: 15, position: 'top', secrets: [], quests: [], cardsReplacedInMulligan: 4, discovery: {enabled: false, id: null}},
-					{id: 2, name: 'YAYtears#1552', status: 'LOST', turn: false, timeout: 75, cardCount: 12, position: 'bottom', cardsReplacedInMulligan: 2, discovery: {enabled: false, id: null},
-						quests: [],
-						secrets: [{
-							cardClass: 'PALADIN',
-							cardId: 'EX1_132',
-							cardName: 'Eye for an Eye',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'DAL_570',
-							cardName: 'Never Surrender!',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'GIL_903',
-							cardName: 'Hidden Wisdom',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'EX1_379',
-							cardName: 'Repentance',
-							timestamp
-						},
-						{
-							cardClass: 'PALADIN',
-							cardId: 'BOT_908',
-							cardName: 'Autodefense Matrix',
-							timestamp
-						}]}
-				],
-				gameOverCount: 2,
-				mulliganActive: false,
-				turnStartTime: date
-			});
+			expect(gameState.players[1].quests).to.deep.equal([]);
+			expect(gameState.players[1].secrets).to.deep.equal([{
+				cardClass: 'PALADIN',
+				cardId: 'EX1_132',
+				cardName: 'Eye for an Eye',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'DAL_570',
+				cardName: 'Never Surrender!',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'GIL_903',
+				cardName: 'Hidden Wisdom',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'EX1_379',
+				cardName: 'Repentance',
+				timestamp
+			},
+			{
+				cardClass: 'PALADIN',
+				cardId: 'BOT_908',
+				cardName: 'Autodefense Matrix',
+				timestamp
+			}]);
 		});
 
 		it('should correctly handle tied game', () => {
