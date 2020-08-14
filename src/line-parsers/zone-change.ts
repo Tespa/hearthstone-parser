@@ -1,10 +1,16 @@
+import * as path from 'path';
+import * as fs from 'fs';
 import {AbstractLineParser} from './AbstractLineParser';
 import {GameState, Card} from '../GameState';
 import {secretToClass} from '../data/secrets';
 import {questMap} from '../data/quests';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const cardsJson: Array<{dbfId: number; id: string; name: string}> = require('../../data/cards.json');
+const cardsJson: Array<{dbfId: number; id: string; name: string}> = JSON.parse(
+	fs.readFileSync(path.join(__dirname, '../../data/cards.json'), {
+		encoding: 'utf8'
+	})
+);
 
 export type Team = 'FRIENDLY' | 'OPPOSING';
 
