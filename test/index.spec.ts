@@ -119,6 +119,7 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				attack: 65,
 				'card-played': 56,
 				'discovery-end': 2,
 				'discovery-start': 2,

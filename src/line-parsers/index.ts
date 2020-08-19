@@ -47,6 +47,7 @@ export interface Events {
 	'discovery-end': void;
 	'mulligan-result': void;
 	'card-played': BlockData;
+	'attack': BlockData;
 }
 
 export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;

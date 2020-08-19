@@ -6,14 +6,18 @@ interface TagData {
 	type: 'tag';
 }
 
+interface Entity {
+	cardName: string;
+	entityId: number;
+	playerIndex: number;
+}
+
 export interface BlockData {
 	type: 'block';
 	entries: Array<BlockData | TagData>;
 	blockType: string;
-	entity?: {
-		cardName: string;
-		entityId: number;
-	};
+	entity?: Entity;
+	target?: Entity;
 }
 
 function createSimpleRegexParser<T>(
@@ -30,13 +34,7 @@ function createSimpleRegexParser<T>(
 	};
 }
 
-/**
- * Handles events associated with BLOCK_START and BLOCK_END.
- * Currently its just the card-played event.
- */
-export class BlockParser extends LineParser {
-	eventName = 'card-played' as const;
-
+class BlockReader {
 	private readonly prefix = '[Power] GameState.DebugPrintPower()' as const;
 
 	/**
@@ -48,7 +46,8 @@ export class BlockParser extends LineParser {
 		/-\s+BLOCK_START BlockType=([A-Z]*) Entity=(.*) EffectCardId=(.*) EffectIndex=(.*) Target=(.*) SubOption=(.*) (?:TriggerKeyword=(.*))?/,
 		parts => ({
 			blockType: parts[1],
-			entityString: parts[2]
+			entityString: parts[2],
+			targetString: parts[5]
 		})
 	);
 
@@ -73,9 +72,13 @@ export class BlockParser extends LineParser {
 		})
 	);
 
-	handleLine(emitter: HspEventsEmitter, _gameState: GameState, line: string): boolean {
+	get processing(): boolean {
+		return this.stack.length > 0;
+	}
+
+	readLine(line: string): BlockData | null {
 		if (!line.startsWith(this.prefix)) {
-			return false;
+			return null;
 		}
 
 		line = line.substring(this.prefix.length).trimLeft();
@@ -83,53 +86,83 @@ export class BlockParser extends LineParser {
 		// Create a new block if we're starting one
 		const blockStart = this.blockStartReader(line);
 		if (blockStart) {
+			// The source (if one is given)
 			const parsedEntity = this.entityReader(blockStart.entityString);
-			const entity: BlockData['entity'] | undefined = (parsedEntity) ? {
+			const entity: Entity | undefined = (parsedEntity) ? {
 				cardName: parsedEntity.cardName,
-				entityId: parsedEntity.entityId
+				entityId: parsedEntity.entityId,
+				playerIndex: parsedEntity.player
+			} : undefined;
+
+			// The target (if one is given)
+			const parsedTarget = this.entityReader(blockStart.targetString);
+			const target: Entity | undefined = (parsedTarget) ? {
+				cardName: parsedTarget.cardName,
+				entityId: parsedTarget.entityId,
+				playerIndex: parsedTarget.player
 			} : undefined;
 
 			const blockData: BlockData = {
 				type: 'block',
 				entries: [],
 				blockType: blockStart.blockType,
-				entity
+				entity, target
 			};
 
 			this.stack.push(blockData);
-			return true;
+			return null;
 		}
 
 		const tagData = this.tagReader(line);
 		if (tagData && this.stack.length > 0) {
 			this.stack[this.stack.length - 1].entries.push({type: 'tag'});
-
-			// False for now to not hurt backwards compatibility...just in case
-			return false;
+			return null;
 		}
 
 		// If a block has ended, return it
 		if (line.includes('BLOCK_END')) {
 			const mostRecentBlock = this.stack.pop();
 			if (!mostRecentBlock) {
-				this.logger('ERROR - BLOCK_END with no active block');
-				return true;
+				// This shouldn't ever happen
+				return null;
 			}
 
-			// Check if its the highest block. If so, emit it if the type is correct
+			// Check if its the highest block. If so, return it
 			if (this.stack.length === 0) {
-				if (mostRecentBlock.blockType === 'PLAY') {
-					const entity = mostRecentBlock.entity;
-					const cardName = entity ? entity.cardName : 'UNKNOWN';
-					this.logger(`Played card ${cardName}`);
-					emitter.emit('card-played', mostRecentBlock);
-				}
-			} else {
-				this.stack[this.stack.length - 1].entries.push(mostRecentBlock);
+				return mostRecentBlock;
+			}
+
+			this.stack[this.stack.length - 1].entries.push(mostRecentBlock);
+		}
+
+		return null;
+	}
+}
+
+/**
+ * Handles events associated with BLOCK_START and BLOCK_END.
+ * Currently its just the card-played event.
+ */
+export class BlockParser extends LineParser {
+	eventName = 'card-played' as const;
+
+	private readonly reader = new BlockReader();
+
+	handleLine(emitter: HspEventsEmitter, _gameState: GameState, line: string): boolean {
+		const block = this.reader.readLine(line);
+		if (block) {
+			const entity = block.entity;
+			const cardName = entity ? entity.cardName : 'UNKNOWN';
+			if (block.blockType === 'PLAY') {
+				this.logger(`Played card ${cardName}`);
+				emitter.emit('card-played', block);
+			} else if (block.blockType === 'ATTACK') {
+				this.logger(`Attack initiated by ${cardName}`);
+				emitter.emit('attack', block);
 			}
 		}
 
-		// Stop all other parsers if we're in a stack
-		return this.stack.length > 0;
+		// Stop all other parsers if the block has ended
+		return Boolean(block);
 	}
 }
