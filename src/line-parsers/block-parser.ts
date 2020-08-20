@@ -9,7 +9,7 @@ interface TagData {
 interface Entity {
 	cardName: string;
 	entityId: number;
-	playerIndex: number;
+	player: 'top' | 'bottom';
 }
 
 export interface BlockData {
@@ -34,6 +34,25 @@ function createSimpleRegexParser<T>(
 	};
 }
 
+function identifyPlayer(gamestate: GameState, playerIndex: number) {
+	const player = gamestate.getPlayerById(playerIndex);
+	if (player) {
+		return player.position;
+	}
+
+	// If there is a player and we didn't retrieve it, load the opposite player
+	if (gamestate.playerCount === 1) {
+		return (gamestate.players[0].position === 'bottom') ? 'top' : 'bottom';
+	}
+
+	// Lie and say its the bottom player otherwise (should never happen)
+	return 'bottom';
+}
+
+/**
+ * Class designed to read block data.
+ * Does not emit actual events or use the block data for anything, for that use the BlockParser.
+ */
 class BlockReader {
 	private readonly prefix = '[Power] GameState.DebugPrintPower()' as const;
 
@@ -76,31 +95,29 @@ class BlockReader {
 		return this.stack.length > 0;
 	}
 
-	readLine(line: string): BlockData | null {
+	readLine(line: string, gameState: GameState): BlockData | null {
 		if (!line.startsWith(this.prefix)) {
 			return null;
 		}
 
 		line = line.substring(this.prefix.length).trimLeft();
 
+		// Internal function to resolve an entity string
+		const readEntity = (str: string): Entity | undefined => {
+			const parsedEntity = this.entityReader(str);
+			return (parsedEntity) ? {
+				cardName: parsedEntity.cardName,
+				entityId: parsedEntity.entityId,
+				player: identifyPlayer(gameState, parsedEntity.player)
+			} : undefined;
+		};
+
 		// Create a new block if we're starting one
 		const blockStart = this.blockStartReader(line);
 		if (blockStart) {
-			// The source (if one is given)
-			const parsedEntity = this.entityReader(blockStart.entityString);
-			const entity: Entity | undefined = (parsedEntity) ? {
-				cardName: parsedEntity.cardName,
-				entityId: parsedEntity.entityId,
-				playerIndex: parsedEntity.player
-			} : undefined;
-
-			// The target (if one is given)
-			const parsedTarget = this.entityReader(blockStart.targetString);
-			const target: Entity | undefined = (parsedTarget) ? {
-				cardName: parsedTarget.cardName,
-				entityId: parsedTarget.entityId,
-				playerIndex: parsedTarget.player
-			} : undefined;
+			// Read source and target (if given)
+			const entity = readEntity(blockStart.entityString);
+			const target = readEntity(blockStart.targetString);
 
 			const blockData: BlockData = {
 				type: 'block',
@@ -140,16 +157,18 @@ class BlockReader {
 }
 
 /**
- * Handles events associated with BLOCK_START and BLOCK_END.
+ * Handles events associated with BLOCK_START and BLOCK_END and those inbetween.
  * Currently its just the card-played event.
+ * It does not block execution of other events until the final BLOCK_END, however it can be
+ * blocked by other parsers. So its best to run this one first.
  */
 export class BlockParser extends LineParser {
 	eventName = 'card-played' as const;
 
 	private readonly reader = new BlockReader();
 
-	handleLine(emitter: HspEventsEmitter, _gameState: GameState, line: string): boolean {
-		const block = this.reader.readLine(line);
+	handleLine(emitter: HspEventsEmitter, gameState: GameState, line: string): boolean {
+		const block = this.reader.readLine(line, gameState);
 		if (block) {
 			const entity = block.entity;
 			const cardName = entity ? entity.cardName : 'UNKNOWN';
