@@ -102,7 +102,8 @@ describe('hearthstone-log-watcher', () => {
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
-				turnStartTime: date
+				turnStartTime: date,
+				matchLog: []
 			});
 		});
 

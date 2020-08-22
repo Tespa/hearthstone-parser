@@ -57,6 +57,19 @@ export interface Player {
 	cardsReplacedInMulligan: number;
 }
 
+export interface EntityProps {
+	cardName: string;
+	entityId: number;
+	player: 'top' | 'bottom';
+	damage?: number;
+}
+
+export interface MatchLogEntry {
+	type: 'attack' | 'play';
+	source: EntityProps;
+	targets: EntityProps[];
+}
+
 export class GameState {
 	playerCount: number;
 
@@ -68,6 +81,8 @@ export class GameState {
 
 	turnStartTime: Date;
 
+	matchLog: MatchLogEntry[];
+
 	constructor() {
 		this.reset();
 	}
@@ -78,6 +93,7 @@ export class GameState {
 
 	reset(): void {
 		this.players = [];
+		this.matchLog = [];
 		this.gameOverCount = 0;
 	}
 
@@ -100,5 +116,31 @@ export class GameState {
 
 	getAllPlayers(): Player[] {
 		return this.players.slice(0);
+	}
+
+	/**
+	 * Updates any unresolved entities in any sub-data.
+	 * @param entity
+	 */
+	resolveEntity(entity: {cardName: string; entityId: number}) {
+		// A better algorithm requires caching which will affect tests...
+		const {cardName, entityId} = entity;
+
+		const empty = 'UNKNOWN ENTITY [cardType=INVALID]';
+		if (cardName === empty) {
+			return;
+		}
+
+		for (const entry of this.matchLog) {
+			if (entry.source.cardName === empty && entry.source.entityId === entityId) {
+				entry.source = {...entry.source, entityId, cardName};
+			}
+
+			for (const [idx, target] of entry.targets.entries()) {
+				if (target.cardName === empty && target.entityId === entityId) {
+					entry.targets[idx] = {...target, entityId, cardName};
+				}
+			}
+		}
 	}
 }

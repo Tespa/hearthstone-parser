@@ -8,13 +8,13 @@ import {NewPlayerLineParser} from './new-player';
 import {TurnLineParser} from './turn';
 import {ZoneChangeLineParser} from './zone-change';
 import {TagChangeLineParser} from './tag-change';
-import {GameState} from '../GameState';
+import {GameState, MatchLogEntry} from '../GameState';
 import {MulliganStartParser} from './mulligan-start';
 import {ChoiceIdParser} from './choice-id';
 import {DiscoveryEndParser} from './discovery-end';
 import {DiscoveryStartParser} from './discovery-start';
 import {MullinganResultParser} from './mulligan-result';
-import {BlockData, BlockParser} from './block-parser';
+import {BlockParser} from './block-parser';
 
 export const lineParsers = [
 	new BlockParser(),
@@ -46,8 +46,8 @@ export interface Events {
 	'discovery-start': void;
 	'discovery-end': void;
 	'mulligan-result': void;
-	'card-played': BlockData;
-	'attack': BlockData;
+	'card-played': MatchLogEntry;
+	'attack': MatchLogEntry;
 }
 
 export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;

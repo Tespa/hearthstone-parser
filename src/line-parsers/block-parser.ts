@@ -1,9 +1,18 @@
 import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
-import {GameState} from '../GameState';
+import {GameState, MatchLogEntry} from '../GameState';
 
 interface TagData {
 	type: 'tag';
+	entity?: Entity;
+	tag: string;
+	value: string;
+}
+
+interface MetaData {
+	type: 'meta';
+	key: string;
+	value: number;
 }
 
 interface Entity {
@@ -14,7 +23,7 @@ interface Entity {
 
 export interface BlockData {
 	type: 'block';
-	entries: Array<BlockData | TagData>;
+	entries: Array<BlockData | TagData | MetaData>;
 	blockType: string;
 	entity?: Entity;
 	target?: Entity;
@@ -71,14 +80,19 @@ class BlockReader {
 	);
 
 	private readonly tagReader = createSimpleRegexParser(
-		/-\s+TAG_CHANGE Entity=\[entityName=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] tag=(.*) value=(\d*)/,
+		/-\s+TAG_CHANGE Entity=(.*) tag=(.*) value=(\d*)/,
 		parts => ({
-			cardName: parts[1],
-			entityId: parseInt(parts[2], 10),
-			cardId: parts[3],
-			playerId: parseInt(parts[4], 10),
-			tag: parts[5],
-			value: parseInt(parts[6], 10)
+			entityString: parts[1],
+			tag: parts[2],
+			value: parts[3]
+		})
+	);
+
+	private readonly metaReader = createSimpleRegexParser(
+		/-\s+META_DATA - Meta=([A-Z]+) Data=(\d*) Info(?:Count)?=(.*)/,
+		parts => ({
+			key: parts[1],
+			value: parseInt(parts[2], 10)
 		})
 	);
 
@@ -130,12 +144,6 @@ class BlockReader {
 			return null;
 		}
 
-		const tagData = this.tagReader(line);
-		if (tagData && this.stack.length > 0) {
-			this.stack[this.stack.length - 1].entries.push({type: 'tag'});
-			return null;
-		}
-
 		// If a block has ended, return it
 		if (line.includes('BLOCK_END')) {
 			const mostRecentBlock = this.stack.pop();
@@ -150,6 +158,32 @@ class BlockReader {
 			}
 
 			this.stack[this.stack.length - 1].entries.push(mostRecentBlock);
+		}
+
+		// For the rest, skip if we're not in a block
+		if (this.stack.length === 0) {
+			return null;
+		}
+
+		const mostRecentBlock = this.stack[this.stack.length - 1];
+
+		const tagData = this.tagReader(line);
+		if (tagData) {
+			mostRecentBlock.entries.push({
+				type: 'tag',
+				entity: readEntity(tagData.entityString),
+				tag: tagData.tag,
+				value: tagData.value
+			});
+		}
+
+		const metaData = this.metaReader(line);
+		if (metaData) {
+			mostRecentBlock.entries.push({
+				type: 'meta',
+				key: metaData.key,
+				value: metaData.value
+			});
 		}
 
 		return null;
@@ -170,18 +204,66 @@ export class BlockParser extends LineParser {
 	handleLine(emitter: HspEventsEmitter, gameState: GameState, line: string): boolean {
 		const block = this.reader.readLine(line, gameState);
 		if (block) {
-			const entity = block.entity;
-			const cardName = entity ? entity.cardName : 'UNKNOWN';
-			if (block.blockType === 'PLAY') {
-				this.logger(`Played card ${cardName}`);
-				emitter.emit('card-played', block);
-			} else if (block.blockType === 'ATTACK') {
-				this.logger(`Attack initiated by ${cardName}`);
-				emitter.emit('attack', block);
+			this._handleMatchLog(emitter, gameState, block);
+			return true;
+		}
+
+		return false;
+	}
+
+	private _handleMatchLog(emitter: HspEventsEmitter, gameState: GameState, block: BlockData) {
+		const source = block.entity;
+		const cardName = source ? source.cardName : 'UNKNOWN ENTITY [cardType=INVALID]';
+		const type = block.blockType.toLowerCase();
+
+		// Exit out if its not a match log relevant
+		if (!source || !['play', 'attack'].includes(type)) {
+			return;
+		}
+
+		const targets = new Array<Entity>();
+		if (block.target) {
+			targets.push(block.target);
+		}
+
+		const damageData = this._resolveDamage(block);
+
+		const entry: MatchLogEntry = {
+			type: type as MatchLogEntry['type'],
+			source: {...source, damage: damageData[source.entityId]},
+			targets: targets.map(t => ({...t, damage: damageData[t.entityId]}))
+		};
+
+		gameState.matchLog.push(entry);
+
+		if (block.blockType === 'PLAY') {
+			this.logger(`Played card ${cardName}`);
+			emitter.emit('card-played', entry);
+		} else if (block.blockType === 'ATTACK') {
+			this.logger(`Attack initiated by ${cardName}`);
+			emitter.emit('attack', entry);
+		}
+	}
+
+	/**
+	 * Resolves damage numbers for a block of type ATTACK
+	 * @param block
+	 */
+	private _resolveDamage(block: BlockData): { [key: number]: number } {
+		const damageByEntity: { [key: number]: number } = {};
+
+		let nextEntityId = -1;
+		for (const data of block.entries) {
+			if (data.type === 'tag') {
+				const value = parseInt(data.value, 10);
+				if (data.entity && data.tag === 'PREDAMAGE' && value !== 0) {
+					nextEntityId = data.entity?.entityId;
+				}
+			} else if (data.type === 'meta' && data.key === 'DAMAGE') {
+				damageByEntity[nextEntityId] = data.value;
 			}
 		}
 
-		// Stop all other parsers if the block has ended
-		return Boolean(block);
+		return damageByEntity;
 	}
 }
