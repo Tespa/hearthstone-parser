@@ -82,6 +82,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
 
+		// This may have "revealed" an entity, so register it
 		gameState.resolveEntity(data);
 
 		// Mulligan is good time to know specific info about the game

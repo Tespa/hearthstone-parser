@@ -1,6 +1,6 @@
 import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
-import {GameState, MatchLogEntry} from '../GameState';
+import {GameState, MatchLogEntry, EntityProps} from '../GameState';
 
 interface TagData {
 	type: 'tag';
@@ -25,6 +25,7 @@ export interface BlockData {
 	type: 'block';
 	entries: Array<BlockData | TagData | MetaData>;
 	blockType: string;
+	trigger?: string;
 	entity?: Entity;
 	target?: Entity;
 }
@@ -75,7 +76,8 @@ class BlockReader {
 		parts => ({
 			blockType: parts[1],
 			entityString: parts[2],
-			targetString: parts[5]
+			targetString: parts[5],
+			trigger: parts[7]
 		})
 	);
 
@@ -137,6 +139,7 @@ class BlockReader {
 				type: 'block',
 				entries: [],
 				blockType: blockStart.blockType,
+				trigger: blockStart.trigger,
 				entity, target
 			};
 
@@ -221,6 +224,20 @@ export class BlockParser extends LineParser {
 			return;
 		}
 
+		/**
+		 * Internal function to convert a parsed entity to something for the match log.
+		 * This allows us to add new properties to the entity later without affecting the match log.
+		 * @param entity
+		 */
+		const entityToMatchLog = (entity: Entity, damage = 0): EntityProps => {
+			return {
+				cardName: entity.cardName,
+				entityId: entity.entityId,
+				player: entity.player,
+				damage
+			};
+		};
+
 		const targets = new Array<Entity>();
 		if (block.target) {
 			targets.push(block.target);
@@ -230,11 +247,35 @@ export class BlockParser extends LineParser {
 
 		const entry: MatchLogEntry = {
 			type: type as MatchLogEntry['type'],
-			source: {...source, damage: damageData[source.entityId]},
-			targets: targets.map(t => ({...t, damage: damageData[t.entityId]}))
+			source: entityToMatchLog(source, damageData[source.entityId]),
+			targets: targets.map(t =>
+				entityToMatchLog(t, damageData[t.entityId]))
 		};
 
 		gameState.matchLog.push(entry);
+
+		// Check for triggers
+		for (const trigger of block.entries) {
+			if (trigger.type !== 'block' || trigger.blockType !== 'TRIGGER') {
+				continue;
+			}
+
+			if (trigger.trigger === 'SECRET' && trigger.entity) {
+				const triggerSource = entityToMatchLog(trigger.entity);
+
+				// If it was a play entry, add it as a target of the play
+				// An example of this effect is Mirror Entity
+				if (entry.type === 'play') {
+					entry.targets.push(triggerSource);
+				}
+
+				gameState.matchLog.push({
+					type: 'trigger',
+					source: triggerSource,
+					targets: []
+				});
+			}
+		}
 
 		if (block.blockType === 'PLAY') {
 			this.logger(`Played card ${cardName}`);

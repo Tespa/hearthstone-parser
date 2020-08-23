@@ -65,7 +65,7 @@ export interface EntityProps {
 }
 
 export interface MatchLogEntry {
-	type: 'attack' | 'play';
+	type: 'attack' | 'play' | 'trigger';
 	source: EntityProps;
 	targets: EntityProps[];
 }
@@ -124,6 +124,7 @@ export class GameState {
 	 */
 	resolveEntity(entity: {cardName: string; entityId: number}) {
 		// A better algorithm requires caching which will affect tests...
+		// If performance is a problem, updates tests to ignore props starting with _
 		const {cardName, entityId} = entity;
 
 		const empty = 'UNKNOWN ENTITY [cardType=INVALID]';
