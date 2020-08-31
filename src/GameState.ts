@@ -98,7 +98,18 @@ export class GameState {
 	}
 
 	addPlayer(player: Player): Player {
+		const existingIdx = this.players.findIndex(p => p.id === player.id);
+		if (existingIdx > -1) {
+			const existingPlayer = this.players[existingIdx];
+			if (existingPlayer.name === 'UNKNOWN HUMAN PLAYER') {
+				existingPlayer.name = player.name;
+			}
+
+			return existingPlayer;
+		}
+
 		this.players.push(player);
+		this.playerCount = this.numPlayers;
 		return player;
 	}
 

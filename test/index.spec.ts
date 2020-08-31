@@ -9,7 +9,7 @@ import {should, expect} from 'chai';
 import * as mockdate from 'mockdate';
 
 // Ours
-import {LogWatcher} from '../src';
+import {LogWatcher, GameState, Player} from '../src';
 
 should(); // Initialize chai's "should" interface.
 
@@ -349,6 +349,37 @@ describe('hearthstone-log-watcher', () => {
 			// 2, 4
 			expect(gameState.getPlayerByPosition('bottom')!.cardsReplacedInMulligan).to.equal(2);
 			expect(gameState.getPlayerByPosition('top')!.cardsReplacedInMulligan).to.equal(4);
+		});
+	});
+});
+
+describe('Gamestate', () => {
+	describe('addPlayer', () => {
+		it('should update names', () => {
+			const basePlayer: Player = {
+				id: 0,
+				name: 'UNKNOWN HUMAN PLAYER',
+				status: '',
+				turn: false,
+				timeout: 45,
+				cardCount: 0,
+				cards: [],
+				position: 'bottom',
+				secrets: [],
+				quests: [],
+				discovery: {
+					enabled: false,
+					id: null
+				},
+				cardsReplacedInMulligan: 0
+			};
+
+			const state = new GameState();
+			state.addPlayer({...basePlayer, id: 1, name: 'hello'});
+			state.addPlayer({...basePlayer, id: 2});
+			state.addPlayer({...basePlayer, id: 2, name: 'world'});
+			state.playerCount.should.equal(2, 'expected 2 players');
+			state.getPlayerById(2)?.name.should.equal('world', 'expected name to update');
 		});
 	});
 });
