@@ -134,22 +134,24 @@ export class GameState {
 	 * @param entity
 	 */
 	resolveEntity(entity: {cardName: string; entityId: number}) {
-		// A better algorithm requires caching which will affect tests...
-		// If performance is a problem, updates tests to ignore props starting with _
+		// A better algorithm requires caching to a private property
 		const {cardName, entityId} = entity;
 
-		const empty = 'UNKNOWN ENTITY [cardType=INVALID]';
-		if (cardName === empty) {
+		const isEmpty = (cardName: string) => {
+			return !cardName || cardName === 'UNKNOWN ENTITY [cardType=INVALID]';
+		};
+
+		if (isEmpty(cardName)) {
 			return;
 		}
 
 		for (const entry of this.matchLog) {
-			if (entry.source.cardName === empty && entry.source.entityId === entityId) {
+			if (isEmpty(entry.source.cardName) && entry.source.entityId === entityId) {
 				entry.source = {...entry.source, entityId, cardName};
 			}
 
 			for (const [idx, target] of entry.targets.entries()) {
-				if (target.cardName === empty && target.entityId === entityId) {
+				if (isEmpty(target.cardName) && target.entityId === entityId) {
 					entry.targets[idx] = {...target, entityId, cardName};
 				}
 			}
