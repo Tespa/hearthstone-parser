@@ -476,7 +476,8 @@ export class BlockParser extends LineParser {
 				entityToMatchLog(t, damageData[t.entityId]))
 		};
 
-		// Match Log entries that will be added after the core one (currently triggers)
+		// Match Log entries added before/after the core one (triggers)
+		const logPreExtras = new Array<MatchLogEntry>();
 		const logExtras = new Array<MatchLogEntry>();
 
 		// Resolve triggers (those with entity data)
@@ -489,12 +490,15 @@ export class BlockParser extends LineParser {
 
 			// If it was a play trigger, add it as a target of the play
 			// An example of this effect is Mirror Entity
+			// NOTE: This is not universal for some reason,
+			// Example: Apexis Smuggler doesn't show it. What's the difference?
 			if (logEntry.type === 'play') {
 				logEntry.targets.push(tSource);
 			}
 
 			const triggerDamage = this._resolveDamage(trigger);
 			const tags = trigger.entries.filter(e => e.type === 'tag') as TagData[];
+
 			const triggerLogEntry: MatchLogEntry = {
 				type: 'trigger',
 				source: {...tSource, damage: triggerDamage[tSource.entityId]},
@@ -507,6 +511,12 @@ export class BlockParser extends LineParser {
 					};
 				})
 			};
+
+			// Handle card draws / discovery / creation
+			const draws = this._resolveDraws(trigger);
+			for (const draw of draws) {
+				triggerLogEntry.targets.push(draw);
+			}
 
 			// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
 			const redirectTag = tags.find(t => t.tag === 'PROPOSED_DEFENDER');
@@ -526,37 +536,23 @@ export class BlockParser extends LineParser {
 					damage: damageData[newTargetId]
 				}];
 
-				gameState.matchLog.push(triggerLogEntry);
+				logPreExtras.push(triggerLogEntry);
 				continue;
 			}
 
 			logExtras.push(triggerLogEntry);
 		}
 
-		// Resolve power entries (sources of additional damage)
+		// Resolve power entries (sources of additional damage/draws)
+		// These merge into the main log entry
 		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
 		for (const entry of powers) {
-			// Note: card draw seems to be either tag change or show_entity. Verify with other power types
-			// We may also want to push this to a method?
-			for (const subEntry of entry.entries) {
-				if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
-					const target = entityToMatchLog(subEntry.entity);
-					logEntry.targets.push(target);
-				}
-
-				if (subEntry.type === 'embedded_entity') {
-					// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
-					if (subEntry.action === 'Creating' && subEntry.tags.ZONE !== 'SETASIDE') {
-						logEntry.targets.push({
-							cardName: '',
-							entityId: subEntry.entityId,
-							player: subEntry.player ?? 'bottom'
-						});
-					}
-				}
+			const draws = this._resolveDraws(entry);
+			for (const draw of draws) {
+				logEntry.targets.push(draw);
 			}
 
-			// Merge damage
+			// Merge damage into MAIN entry
 			const damageEntries = this._resolveDamage(entry);
 			for (const target of logEntry.targets) {
 				if (target.entityId in damageEntries) {
@@ -565,10 +561,10 @@ export class BlockParser extends LineParser {
 			}
 		}
 
-		const allEntries = [logEntry, ...logExtras];
+		const allEntries = [...logPreExtras, logEntry, ...logExtras];
 
-		// Apply deaths, reverse order
-		for (const entry of allEntries.reverse()) {
+		// Apply deaths, reverse order (not in place)
+		for (const entry of [...allEntries].reverse()) {
 			entry.source.dead = deaths.has(entry.source.entityId);
 			for (const target of entry.targets) {
 				target.dead = deaths.has(target.entityId);
@@ -625,6 +621,33 @@ export class BlockParser extends LineParser {
 		}
 
 		return damageByEntity;
+	}
+
+	private _resolveDraws(entry: BlockData): Entity[] {
+		// Note: card draw/creation seems to be either tag change or show_entity. Verify with other power types
+		// We may also want to push this to a method?
+		// Discover is 3 embedded entities followed by a ZONE=HAND and ZONE_POSITION=number
+		// But ZONE is sometimes used for enchantments (has no ZONE_POSITION with it).
+		const drawn: Entity[] = [];
+
+		for (const subEntry of entry.entries) {
+			if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
+				drawn.push(subEntry.entity);
+			}
+
+			if (subEntry.type === 'embedded_entity') {
+				// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
+				if (subEntry.action === 'Creating' && subEntry.tags.ZONE !== 'SETASIDE') {
+					drawn.push({
+						cardName: '',
+						entityId: subEntry.entityId,
+						player: subEntry.player ?? 'bottom'
+					});
+				}
+			}
+		}
+
+		return drawn;
 	}
 
 	/**
