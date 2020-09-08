@@ -62,6 +62,7 @@ export interface EntityProps {
 	entityId: number;
 	player: 'top' | 'bottom';
 	damage?: number;
+	dead?: boolean;
 }
 
 export interface MatchLogEntry {
@@ -131,6 +132,8 @@ export class GameState {
 
 	/**
 	 * Updates any unresolved entities in any sub-data.
+	 * Very often hearthstone won't assign a name to an entity until later,
+	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
 	 * @param entity
 	 */
 	resolveEntity(entity: {cardName: string; entityId: number}) {

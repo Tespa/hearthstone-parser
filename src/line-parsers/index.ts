@@ -48,6 +48,7 @@ export interface Events {
 	'mulligan-result': void;
 	'card-played': MatchLogEntry;
 	'attack': MatchLogEntry;
+	'trigger': MatchLogEntry;
 }
 
 export type HspEventsEmitter = StrictEventEmitter<EventEmitter2, Events>;

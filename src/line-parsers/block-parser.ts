@@ -50,7 +50,7 @@ interface FullEntity {
 export interface BlockData {
 	type: 'block';
 	blockType: string;
-	trigger?: string;
+	triggerKeyword?: string;
 	entity?: Entity;
 	target?: Entity;
 	entries: Array<BlockData | TagData | MetaData | FullEntity>;
@@ -242,7 +242,7 @@ class BlockReader {
 	);
 
 	private readonly tagReader = createSimpleRegexParser(
-		/\s*TAG_CHANGE Entity=(.*) tag=(.*) value=(\d*)/,
+		/\s*TAG_CHANGE Entity=(.*) tag=(.*) value=([\w\d_.-]*)/,
 		parts => ({
 			entityString: parts[1],
 			tag: parts[2],
@@ -288,7 +288,7 @@ class BlockReader {
 			const blockData: BlockData = {
 				type: 'block',
 				blockType: blockStart.blockType,
-				trigger: blockStart.trigger,
+				triggerKeyword: blockStart.trigger,
 				entity, target,
 				entries: []
 			};
@@ -355,15 +355,13 @@ class BlockReader {
 				entity = readEntityString(tagData.entityString, gameState);
 			}
 
-			if (entity) {
-				mostRecentBlock.entries.push({
-					type: 'tag',
-					entity,
-					tag: tagData.tag,
-					value: tagData.value
-				});
-				return true;
-			}
+			mostRecentBlock.entries.push({
+				type: 'tag',
+				entity,
+				tag: tagData.tag,
+				value: tagData.value
+			});
+			return true;
 		}
 
 		return false;
@@ -421,7 +419,8 @@ const entityToMatchLog = (entity: Entity, damage = 0): EntityProps => {
 		cardName: entity.cardName,
 		entityId: entity.entityId,
 		player: entity.player,
-		damage
+		damage,
+		dead: false
 	};
 };
 
@@ -449,7 +448,6 @@ export class BlockParser extends LineParser {
 
 	private _handleMatchLog(emitter: HspEventsEmitter, gameState: GameState, block: BlockData) {
 		const source = block.entity;
-		const cardName = source?.cardName;
 		const type = block.blockType.toLowerCase();
 
 		// Exit out if its not a match log relevant
@@ -462,8 +460,15 @@ export class BlockParser extends LineParser {
 			targets.push(block.target);
 		}
 
-		const damageData = this._resolveDamage(block);
+		const entities = this._extractEntities(block);
+		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
 
+		// Identify deaths
+		const deathBlock = subBlocks.find(b => b.type === 'block' && b.blockType === 'DEATHS');
+		const deaths = this._resolveDeaths(deathBlock as BlockData);
+
+		// Create core damage entry
+		const damageData = this._resolveDamage(block);
 		const logEntry: MatchLogEntry = {
 			type: type as MatchLogEntry['type'],
 			source: entityToMatchLog(source, damageData[source.entityId]),
@@ -471,80 +476,147 @@ export class BlockParser extends LineParser {
 				entityToMatchLog(t, damageData[t.entityId]))
 		};
 
-		// Check for powers or triggers
-		for (const entry of block.entries) {
-			if (entry.type !== 'block' || !entry.entity) {
+		// Match Log entries that will be added after the core one (currently triggers)
+		const logExtras = new Array<MatchLogEntry>();
+
+		// Resolve triggers (those with entity data)
+		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER' && b.entity);
+		for (const trigger of triggers) {
+			const tSource = entityToMatchLog(trigger.entity!);
+			if (!['TRIGGER_VISUAL', 'SECRET'].includes(trigger.triggerKeyword ?? '')) {
 				continue;
 			}
 
-			const entity = entityToMatchLog(entry.entity);
-
-			if (entry.blockType === 'POWER') {
-				this._processPower(logEntry, entry);
+			// If it was a play trigger, add it as a target of the play
+			// An example of this effect is Mirror Entity
+			if (logEntry.type === 'play') {
+				logEntry.targets.push(tSource);
 			}
 
-			if (entry.blockType === 'TRIGGER' && entry.trigger === 'SECRET' && entry.entity) {
-				// If it was a play entry, add it as a target of the play
-				// An example of this effect is Mirror Entity
-				if (logEntry.type === 'play') {
-					logEntry.targets.push(entity);
+			const triggerDamage = this._resolveDamage(trigger);
+			const tags = trigger.entries.filter(e => e.type === 'tag') as TagData[];
+			const triggerLogEntry: MatchLogEntry = {
+				type: 'trigger',
+				source: {...tSource, damage: triggerDamage[tSource.entityId]},
+				targets: Object.entries(triggerDamage).map(([eid, value]) => {
+					// If the target died here, then it didn't die earlier
+					const targetId = parseInt(eid, 10);
+					return {
+						...entities[targetId],
+						damage: value
+					};
+				})
+			};
+
+			// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
+			const redirectTag = tags.find(t => t.tag === 'PROPOSED_DEFENDER');
+			if (logEntry.type === 'attack' && redirectTag) {
+				const newTargetId = parseInt(redirectTag.value, 10);
+				const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
+				for (const id of triggerTargets) {
+					const target = entities[id ?? -1];
+					if (target) {
+						triggerLogEntry.targets.push({...target});
+					}
 				}
 
-				gameState.matchLog.push({
-					type: 'trigger',
-					source: entity,
-					targets: []
-				});
-			}
-		}
+				// Update the core entry to redirect
+				logEntry.targets = [{
+					...entities[newTargetId],
+					damage: damageData[newTargetId]
+				}];
 
-		// Add to Match Log
-		gameState.matchLog.push(logEntry);
-
-		// Emit event depending on block type
-		if (block.blockType === 'PLAY') {
-			this.logger(`Played card ${cardName}`);
-			emitter.emit('card-played', logEntry);
-		} else if (block.blockType === 'ATTACK') {
-			this.logger(`Attack initiated by ${cardName}`);
-			emitter.emit('attack', logEntry);
-		}
-	}
-
-	private _processPower(logEntry: MatchLogEntry, entry: BlockData) {
-		// Note: card draw seems to be either tag change or show_entity. Verify with other power types
-		// We may also want to push this to a method?
-		for (const subEntry of entry.entries) {
-			if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
-				const target = entityToMatchLog(subEntry.entity);
-				logEntry.targets.push(target);
+				gameState.matchLog.push(triggerLogEntry);
+				continue;
 			}
 
-			if (subEntry.type === 'embedded_entity') {
-				// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
-				if (subEntry.action === 'Creating' && subEntry.tags.ZONE !== 'SETASIDE') {
-					logEntry.targets.push({
-						cardName: '',
-						entityId: subEntry.entityId,
-						player: subEntry.player ?? 'bottom'
-					});
+			logExtras.push(triggerLogEntry);
+		}
+
+		// Resolve power entries (sources of additional damage)
+		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
+		for (const entry of powers) {
+			// Note: card draw seems to be either tag change or show_entity. Verify with other power types
+			// We may also want to push this to a method?
+			for (const subEntry of entry.entries) {
+				if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
+					const target = entityToMatchLog(subEntry.entity);
+					logEntry.targets.push(target);
+				}
+
+				if (subEntry.type === 'embedded_entity') {
+					// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
+					if (subEntry.action === 'Creating' && subEntry.tags.ZONE !== 'SETASIDE') {
+						logEntry.targets.push({
+							cardName: '',
+							entityId: subEntry.entityId,
+							player: subEntry.player ?? 'bottom'
+						});
+					}
+				}
+			}
+
+			// Merge damage
+			const damageEntries = this._resolveDamage(entry);
+			for (const target of logEntry.targets) {
+				if (target.entityId in damageEntries) {
+					target.damage = damageEntries[target.entityId];
 				}
 			}
 		}
+
+		const allEntries = [logEntry, ...logExtras];
+
+		// Apply deaths, reverse order
+		for (const entry of allEntries.reverse()) {
+			entry.source.dead = deaths.has(entry.source.entityId);
+			for (const target of entry.targets) {
+				target.dead = deaths.has(target.entityId);
+			}
+
+			deaths.delete(entry.source.entityId);
+			entry.targets.forEach(t => deaths.delete(t.entityId));
+		}
+
+		// Add to Match Log and emit events
+		gameState.matchLog.push(...allEntries);
+		this._emitEvents(emitter, allEntries);
 	}
 
 	/**
-	 * Resolves damage numbers for a block of type ATTACK
+	 * Recursively extracts all entity objects referenced by entity id
+	 * @param block
+	 * @param data
+	 */
+	private _extractEntities(block: BlockData, data: {[key: number]: Entity} = {}) {
+		for (const entry of block.entries) {
+			if ('entity' in entry && entry.entity) {
+				data[entry.entity.entityId] = entry.entity;
+			}
+
+			if (entry.type === 'block') {
+				if (entry.target) {
+					data[entry.target.entityId] = entry.target;
+				}
+
+				this._extractEntities(entry, data);
+			}
+		}
+
+		return data;
+	}
+
+	/**
+	 * Resolves damage numbers for any block type
 	 * @param block
 	 */
-	private _resolveDamage(block: BlockData): { [key: number]: number } {
+	private _resolveDamage(block: BlockData): {[key: number]: number} {
 		const damageByEntity: { [key: number]: number } = {};
 
 		let nextEntityId = -1;
 		for (const data of block.entries) {
 			if (data.type === 'tag') {
-				const value = parseInt(data.value, 10);
-				if (data.entity && data.tag === 'PREDAMAGE' && value !== 0) {
+				if (data.entity && data.tag === 'PREDAMAGE' && data.value !== '0') {
 					nextEntityId = data.entity?.entityId;
 				}
 			} else if (data.type === 'meta' && data.key === 'DAMAGE') {
@@ -553,5 +625,40 @@ export class BlockParser extends LineParser {
 		}
 
 		return damageByEntity;
+	}
+
+	/**
+	 * Determines the id of all entities that died in a block with BlockType=DEATHS.
+	 * @param deathBlock
+	 */
+	private _resolveDeaths(deathBlock: BlockData | null | undefined): Set<number> {
+		const deadEntities = new Set<number>();
+		if (!deathBlock) {
+			return deadEntities;
+		}
+
+		for (const data of deathBlock.entries) {
+			if (data.type === 'tag' && data.entity && data.tag === 'ZONE' && data.value === 'GRAVEYARD') {
+				deadEntities.add(data.entity.entityId);
+			}
+		}
+
+		return deadEntities;
+	}
+
+	private _emitEvents(emitter: HspEventsEmitter, entries: MatchLogEntry[]) {
+		for (const logEntry of entries) {
+			const cardName = logEntry.source?.cardName;
+			if (logEntry.type === 'play') {
+				this.logger(`Played card ${cardName}`);
+				emitter.emit('card-played', logEntry);
+			} else if (logEntry.type === 'attack') {
+				this.logger(`Attack initiated by ${cardName}`);
+				emitter.emit('attack', logEntry);
+			} else if (logEntry.type === 'trigger') {
+				this.logger(`Trigger activated on ${cardName}`);
+				emitter.emit('trigger', logEntry);
+			}
+		}
 	}
 }
