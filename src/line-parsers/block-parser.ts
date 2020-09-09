@@ -455,25 +455,27 @@ export class BlockParser extends LineParser {
 			return;
 		}
 
+		const entities = this._extractEntities(block);
+		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
+
+		// Get death and damage data
+		const deathBlock = subBlocks.find(b => b.type === 'block' && b.blockType === 'DEATHS');
+		const deaths = this._resolveDeaths(deathBlock as BlockData);
+		const damageData = this._resolveDamage(block);
+
+		// Get targets. Currently only the main one since we assume that damage targets
+		// come in POWER. If that changes, add the entries from damageData here.
 		const targets = new Array<Entity>();
 		if (block.target) {
 			targets.push(block.target);
 		}
 
-		const entities = this._extractEntities(block);
-		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
-
-		// Identify deaths
-		const deathBlock = subBlocks.find(b => b.type === 'block' && b.blockType === 'DEATHS');
-		const deaths = this._resolveDeaths(deathBlock as BlockData);
-
-		// Create core damage entry
-		const damageData = this._resolveDamage(block);
+		// Create main log entry
 		const logEntry: MatchLogEntry = {
 			type: type as MatchLogEntry['type'],
-			source: entityToMatchLog(source, damageData[source.entityId]),
+			source: entityToMatchLog(source, damageData.get(source.entityId)),
 			targets: targets.map(t =>
-				entityToMatchLog(t, damageData[t.entityId]))
+				entityToMatchLog(t, damageData.get(t.entityId)))
 		};
 
 		// Match Log entries added before/after the core one (triggers)
@@ -501,7 +503,7 @@ export class BlockParser extends LineParser {
 
 			const triggerLogEntry: MatchLogEntry = {
 				type: 'trigger',
-				source: {...tSource, damage: triggerDamage[tSource.entityId]},
+				source: {...tSource, damage: triggerDamage.get(tSource.entityId)},
 				targets: Object.entries(triggerDamage).map(([eid, value]) => {
 					// If the target died here, then it didn't die earlier
 					const targetId = parseInt(eid, 10);
@@ -530,11 +532,9 @@ export class BlockParser extends LineParser {
 					}
 				}
 
-				// Update the core entry to redirect
-				logEntry.targets = [{
-					...entities[newTargetId],
-					damage: damageData[newTargetId]
-				}];
+				// Update the core entry to use the redirect
+				const damage = damageData.get(newTargetId);
+				logEntry.targets = [{...entities[newTargetId], damage}];
 
 				logPreExtras.push(triggerLogEntry);
 				continue;
@@ -552,11 +552,14 @@ export class BlockParser extends LineParser {
 				logEntry.targets.push(draw);
 			}
 
-			// Merge damage into MAIN entry
+			// Merge damage (and add new targets) into MAIN entry
 			const damageEntries = this._resolveDamage(entry);
-			for (const target of logEntry.targets) {
-				if (target.entityId in damageEntries) {
-					target.damage = damageEntries[target.entityId];
+			for (const [targetId, damage] of damageEntries.entries()) {
+				const existing = logEntry.targets.find(t => t.entityId === targetId);
+				if (existing) {
+					existing.damage = (existing.damage ?? 0) + damage;
+				} else {
+					logEntry.targets.push({...entities[targetId], damage});
 				}
 			}
 		}
@@ -603,11 +606,13 @@ export class BlockParser extends LineParser {
 	}
 
 	/**
-	 * Resolves damage numbers for any block type
+	 * Resolves damage numbers for any block type.
+	 * Returns a Map to guarantee insertion order, which in ES2015 is not preserved
+	 * for integer keys for objects.
 	 * @param block
 	 */
-	private _resolveDamage(block: BlockData): {[key: number]: number} {
-		const damageByEntity: { [key: number]: number } = {};
+	private _resolveDamage(block: BlockData): Map<number, number> {
+		const damageByEntity = new Map<number, number>();
 
 		let nextEntityId = -1;
 		for (const data of block.entries) {
@@ -616,7 +621,8 @@ export class BlockParser extends LineParser {
 					nextEntityId = data.entity?.entityId;
 				}
 			} else if (data.type === 'meta' && data.key === 'DAMAGE') {
-				damageByEntity[nextEntityId] = data.value;
+				const currentDamage = damageByEntity.get(nextEntityId) ?? 0;
+				damageByEntity.set(nextEntityId, currentDamage + data.value);
 			}
 		}
 
