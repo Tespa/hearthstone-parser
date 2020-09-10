@@ -28,7 +28,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - run: npm audit
+      - run: npm audit --production
   Test node-10:
     <<: *defaults
     steps:
