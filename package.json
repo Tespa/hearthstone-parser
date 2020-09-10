@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "@types/mockdate": "^2.0.0",
-    "chokidar": "^2.1.5",
+    "chokidar": "^3.0.0",
     "debug": "^4.1.1",
     "eventemitter2": "^5.0.1",
     "extend": "^3.0.2",
