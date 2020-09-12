@@ -31,10 +31,26 @@ export class BlockParser extends LineParser {
 	private readonly prefix = '[Power] GameState.DebugPrintPower() -' as const;
 	private readonly reader = new BlockReader(this.prefix);
 
+	private readonly powerPrefix = '[Power] PowerTaskList.DebugPrintPower() -' as const;
+	private readonly powerReader = new BlockReader(this.powerPrefix);
+
 	handleLine(emitter: HspEventsEmitter, gameState: GameState, line: string): boolean {
+		// Read GameState blocks. These are used to build the Match Log.
 		const block = this.reader.readLine(line, gameState);
 		if (block) {
 			this._handleMatchLog(emitter, gameState, block);
+			return true;
+		}
+
+		// Read the PowerTaskList block variant.
+		// These are bad for identifying card flow, but great for resolving card names.
+		const powerBlock = this.powerReader.readLine(line, gameState);
+		if (powerBlock) {
+			const entities = this._extractEntities(powerBlock);
+			for (const entity of Object.values(entities)) {
+				gameState.resolveEntity(entity);
+			}
+
 			return true;
 		}
 
@@ -50,7 +66,12 @@ export class BlockParser extends LineParser {
 			return;
 		}
 
-		const entities = this._extractEntities(block);
+		/** Retrieves an entity from anywhere in this block, or a default blank entry */
+		const getEntity = (() => {
+			const entities = this._extractEntities(block);
+			return (entityId: number) => entities[entityId] ?? {cardName: '', entityId};
+		})() as (id: number) => Entity;
+
 		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
 
 		// Get death and damage data
@@ -77,19 +98,19 @@ export class BlockParser extends LineParser {
 		const logPreExtras = new Array<MatchLogEntry>();
 		const logExtras = new Array<MatchLogEntry>();
 
-		// Resolve triggers (those with entity data)
-		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER' && b.entity);
-		for (const trigger of triggers) {
-			const tSource = entityToMatchLog(trigger.entity!);
-			if (!['TRIGGER_VISUAL', 'SECRET'].includes(trigger.triggerKeyword ?? '')) {
-				continue;
+		/** Internal function to resolve a trigger, which can be standalone or nested */
+		const handleTrigger = (trigger: BlockData) => {
+			const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE'];
+			if (!trigger.entity || !validTriggerTypes.includes(trigger.triggerKeyword ?? '')) {
+				return;
 			}
+
+			const tSource = entityToMatchLog(trigger.entity);
 
 			// If it was a play trigger, add it as a target of the play
 			// An example of this effect is Mirror Entity
-			// NOTE: This is not universal for some reason,
-			// Example: Apexis Smuggler doesn't show it. What's the difference?
-			if (logEntry.type === 'play') {
+			// This isn't universal (Apexis Smuggler doesn't shot this) but we can't differentiate here
+			if (trigger.triggerKeyword !== 'DEATHRATTLE' && logEntry.type === 'play') {
 				logEntry.targets.push(tSource);
 			}
 
@@ -99,13 +120,9 @@ export class BlockParser extends LineParser {
 			const triggerLogEntry: MatchLogEntry = {
 				type: 'trigger',
 				source: {...tSource, damage: triggerDamage.get(tSource.entityId)},
-				targets: Object.entries(triggerDamage).map(([eid, value]) => {
+				targets: [...triggerDamage.entries()].map(([eid, value]) => {
 					// If the target died here, then it didn't die earlier
-					const targetId = parseInt(eid, 10);
-					return {
-						...entities[targetId],
-						damage: value
-					};
+					return {...getEntity(eid), damage: value};
 				})
 			};
 
@@ -115,46 +132,91 @@ export class BlockParser extends LineParser {
 				triggerLogEntry.targets.push(draw);
 			}
 
+			// Handle Counterspell
+			const cancelTag = tags.find(t => t.tag === 'CANT_PLAY' && t.value === '1');
+			if (cancelTag && cancelTag.entity) {
+				triggerLogEntry.targets.push(getEntity(cancelTag.entity.entityId));
+			}
+
 			// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
 			const redirectTag = tags.find(t => t.tag === 'PROPOSED_DEFENDER');
 			if (logEntry.type === 'attack' && redirectTag) {
 				const newTargetId = parseInt(redirectTag.value, 10);
 				const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
-				for (const id of triggerTargets) {
-					const target = entities[id ?? -1];
-					if (target) {
-						triggerLogEntry.targets.push({...target});
-					}
+				for (const id of compact(triggerTargets)) {
+					triggerLogEntry.targets.push(getEntity(id));
 				}
 
 				// Update the core entry to use the redirect
 				const damage = damageData.get(newTargetId);
-				logEntry.targets = [{...entities[newTargetId], damage}];
+				logEntry.targets = [{...getEntity(newTargetId), damage}];
 
 				logPreExtras.push(triggerLogEntry);
-				continue;
+				return;
 			}
 
 			logExtras.push(triggerLogEntry);
-		}
+		};
 
-		// Resolve power entries (sources of additional damage/draws)
+		// Resolve "TRIGGER" entries
+		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER');
+		triggers.forEach(handleTrigger);
+
+		// Resolve "POWER" entries (sources of additional damage/draws)
 		// These merge into the main log entry
+		// Power entries sometimes have nested triggers, we may need to handle those too
 		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
-		for (const entry of powers) {
-			const draws = this._resolveDraws(entry);
+		for (const power of powers) {
+			const draws = this._resolveDraws(power);
 			for (const draw of draws) {
 				logEntry.targets.push(draw);
 			}
 
+			for (const subEntry of power.entries) {
+				// Handle nested triggers (such as in Puzzle Box)
+				if (subEntry.type === 'block' && subEntry.blockType === 'TRIGGER') {
+					handleTrigger(subEntry);
+				}
+
+				// Handle Updates (transformed targets)
+				if (subEntry.type === 'embedded_entity') {
+					const entity = getEntity(subEntry.entityId);
+					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === subEntry.entityId) >= 0;
+					if (subEntry.action === 'Updating' && !alreadyExists) {
+						logEntry.targets.push(entity);
+					}
+				}
+
+				// Handle Revealed entries and elements that become Secrets.
+				// ZONE=PLAY is sometimes used for buffs, so we have to ignore those.
+				if (subEntry.type === 'tag' && subEntry.entity && (
+					(subEntry.tag === 'REVEALED' && subEntry.value === '1') ||
+					(subEntry.tag === 'ZONE' && ['SECRET'].includes(subEntry.value)))) {
+					const entity = getEntity(subEntry.entity?.entityId);
+					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === entity.entityId) >= 0;
+					if (!alreadyExists) {
+						logEntry.targets.push(entity);
+					}
+				}
+
+				// Handle recursive POWER blocks (Puzzle Box) by adding it as a target
+				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && subEntry.entity) {
+					const entity = getEntity(subEntry.entity?.entityId);
+					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === entity.entityId) >= 0;
+					if (!alreadyExists) {
+						logEntry.targets.push(entity);
+					}
+				}
+			}
+
 			// Merge damage (and add new targets) into MAIN entry
-			const damageEntries = this._resolveDamage(entry);
+			const damageEntries = this._resolveDamage(power);
 			for (const [targetId, damage] of damageEntries.entries()) {
 				const existing = logEntry.targets.find(t => t.entityId === targetId);
 				if (existing) {
 					existing.damage = (existing.damage ?? 0) + damage;
 				} else {
-					logEntry.targets.push({...entities[targetId], damage});
+					logEntry.targets.push({...getEntity(targetId), damage});
 				}
 			}
 		}
@@ -173,7 +235,7 @@ export class BlockParser extends LineParser {
 		}
 
 		// Add to Match Log and emit events
-		gameState.matchLog.push(...allEntries);
+		gameState.addMatchLogEntry(...allEntries);
 		this._emitEvents(emitter, allEntries);
 	}
 
@@ -224,6 +286,12 @@ export class BlockParser extends LineParser {
 		return damageByEntity;
 	}
 
+	/**
+	 * Resolves all card draws and discovers in a block.
+	 * NOTE: We might want to make this work on individual sub-entries, to
+	 * maintain event order. Consider doing this in a refactor.
+	 * @param entry
+	 */
 	private _resolveDraws(entry: BlockData): Entity[] {
 		// Note: card draw/creation seems to be either tag change or show_entity. Verify with other power types
 		// We may also want to push this to a method?

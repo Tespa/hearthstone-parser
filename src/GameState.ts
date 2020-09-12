@@ -1,5 +1,7 @@
 import {Class} from './data/meta';
 
+const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
+
 export interface Secret {
 	cardId: string;
 	cardClass: Class;
@@ -84,6 +86,11 @@ export class GameState {
 
 	matchLog: MatchLogEntry[];
 
+	/**
+	 * Internal set used to optimize card reveals
+	 */
+	private readonly missingEntityIds = new Set<number>();
+
 	constructor() {
 		this.reset();
 	}
@@ -131,6 +138,31 @@ export class GameState {
 	}
 
 	/**
+	 * Adds match log entries to the gamestate, and flags any entities
+	 * that need filling out by future events.
+	 * @param entries
+	 */
+	addMatchLogEntry(...entries: MatchLogEntry[]) {
+		const isEmpty = (cardName: string) => {
+			return !cardName || cardName === UNKNOWN_CARDNAME;
+		};
+
+		for (const entry of entries) {
+			if (isEmpty(entry.source?.cardName)) {
+				this.missingEntityIds.add(entry.source.entityId);
+			}
+
+			for (const target of entry.targets) {
+				if (isEmpty(target.cardName)) {
+					this.missingEntityIds.add(target.entityId);
+				}
+			}
+		}
+
+		this.matchLog.push(...entries);
+	}
+
+	/**
 	 * Updates any unresolved entities in any sub-data.
 	 * Very often hearthstone won't assign a name to an entity until later,
 	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
@@ -141,10 +173,10 @@ export class GameState {
 		const {cardName, entityId} = entity;
 
 		const isEmpty = (cardName: string) => {
-			return !cardName || cardName === 'UNKNOWN ENTITY [cardType=INVALID]';
+			return !cardName || cardName === UNKNOWN_CARDNAME;
 		};
 
-		if (isEmpty(cardName)) {
+		if (isEmpty(cardName) || !this.missingEntityIds.has(entityId)) {
 			return;
 		}
 

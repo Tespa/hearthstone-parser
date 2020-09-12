@@ -71,6 +71,7 @@ export const identifyPlayer = (gameState: GameState, playerIndex: number) => {
 
 /**
  * Function that can be used to parse entity strings (common occurence in logs)
+ * If the entity string is a number, it will have no card name and be player 'bottom".
  */
 export const readEntityString = (() => {
 	// Raw parser used by readEntityString (encapsulate this somehow)
@@ -85,6 +86,11 @@ export const readEntityString = (() => {
 
 	// Returned function (the actual function)
 	return (str: string, gameState: GameState): Entity | undefined => {
+		const entityId = parseInt(str, 10);
+		if (entityId) {
+			return {entityId, cardName: '', player: 'bottom'};
+		}
+
 		const parsedEntity = entityParser(str);
 		return (parsedEntity) ? {
 			cardName: (parsedEntity.cardName === UNKNOWN_CARDNAME) ? '' : parsedEntity.cardName,
