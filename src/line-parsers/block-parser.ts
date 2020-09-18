@@ -102,9 +102,7 @@ export class BlockParser extends LineParser {
 			return (entityId: number) => entities[entityId] ?? {cardName: '', entityId};
 		})() as (id: number) => Entity;
 
-		// Get death and damage data
-		const deathBlock = subBlocks.find(b => b.type === 'block' && b.blockType === 'DEATHS');
-		const deaths = this._resolveDeaths(deathBlock as BlockData);
+		// Get damage data
 		const damageData = this._resolveDamage(block);
 		const tags = block.entries.filter(e => e.type === 'tag') as TagData[];
 
@@ -261,29 +259,36 @@ export class BlockParser extends LineParser {
 			}
 		};
 
-		// Resolve "TRIGGER" entries
-		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER');
-		triggers.forEach(handleTrigger);
-
-		// Resolve "POWER" entries (sources of additional damage/draws)
-		// These merge into the main log entry
-		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
-		powers.forEach(handlePower);
-
-		const allEntries = [...logPreExtras, logEntry, ...logExtras];
-
-		// Apply deaths, reverse order (not in place)
-		for (const entry of [...allEntries].reverse()) {
-			entry.source.dead = deaths.has(entry.source.entityId);
-			for (const target of entry.targets) {
-				target.dead = deaths.has(target.entityId);
+		// Handle sub blocks
+		for (const block of subBlocks) {
+			// Resolve "TRIGGER" entries
+			if (block.blockType === 'TRIGGER') {
+				handleTrigger(block);
 			}
 
-			deaths.delete(entry.source.entityId);
-			entry.targets.forEach(t => deaths.delete(t.entityId));
+			// Resolve "POWER" entries (sources of additional damage/draws)
+			// These merge into the main log entry
+			if (block.blockType === 'POWER') {
+				handlePower(block);
+			}
+
+			// Resolve DEATH entries, reverse order
+			if (block.blockType === 'DEATHS') {
+				const deaths = this._resolveDeaths(block);
+				for (const entry of [...logPreExtras, logEntry, ...logExtras].reverse()) {
+					entry.source.dead = deaths.has(entry.source.entityId);
+					for (const target of entry.targets) {
+						target.dead = deaths.has(target.entityId);
+					}
+
+					deaths.delete(entry.source.entityId);
+					entry.targets.forEach(t => deaths.delete(t.entityId));
+				}
+			}
 		}
 
 		// Add to Match Log and emit events
+		const allEntries = [...logPreExtras, logEntry, ...logExtras];
 		gameState.addMatchLogEntry(...allEntries);
 		this._emitEvents(emitter, allEntries);
 	}
