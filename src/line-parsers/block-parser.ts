@@ -2,7 +2,7 @@ import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
 import {GameState, MatchLogEntry, EntityProps} from '../GameState';
 import {compact, concat} from 'lodash';
-import {BlockData, BlockReader, Entity, Entry, TagData} from './readers';
+import {BlockData, BlockReader, Entity, Entry, FullEntity, TagData} from './readers';
 
 /**
  * Internal function to convert a parsed entity to something for the match log.
@@ -123,6 +123,7 @@ export class BlockParser extends LineParser {
 		};
 
 		// Match Log entries added before/after the core one (triggers)
+		// Later parts of this function add to these lists
 		const logPreExtras = new Array<MatchLogEntry>();
 		const logExtras = new Array<MatchLogEntry>();
 
@@ -133,18 +134,19 @@ export class BlockParser extends LineParser {
 				return;
 			}
 
+			// Create Entry List, flatten subpower blocks, resolve trigger source
+			const entryParts = trigger.entries.map(e => e.type === 'subspell' ? e.entries : e);
+			const entries = concat([], ...entryParts);
 			const tSource = entityToMatchLog(trigger.entity);
 
-			// If it was a play trigger, add it as a target of the play
+			// If it was a trigger caused by a PLAY, add the trigger source as a target of the PLAY
 			// An example of this effect is Mirror Entity
-			// This isn't universal (Apexis Smuggler doesn't shot this) but we can't differentiate here
-			if (trigger.triggerKeyword !== 'DEATHRATTLE' && logEntry.type === 'play') {
+			// This isn't universal (Apexis Smuggler doesn't show this) but we can't differentiate here
+			if (logEntry.type === 'play' && trigger.triggerKeyword !== 'DEATHRATTLE') {
 				logEntry.targets.push(tSource);
 			}
 
 			const triggerDamage = this._resolveDamage(trigger);
-			const tags = trigger.entries.filter(e => e.type === 'tag') as TagData[];
-
 			const triggerLogEntry: MatchLogEntry = {
 				type: 'trigger',
 				source: {...tSource, damage: triggerDamage.get(tSource.entityId)},
@@ -154,35 +156,56 @@ export class BlockParser extends LineParser {
 				})
 			};
 
-			// Handle card draws / discovery / creation
-			const draws = this._resolveDraws(trigger.entries);
-			for (const draw of draws) {
-				triggerLogEntry.targets.push(draw);
-			}
+			/** Internal function to check that a target does not already exist */
+			const doesNotExist = (entityId: number) => {
+				return triggerLogEntry.targets.findIndex(t => t.entityId === entityId) === -1;
+			};
 
-			// Handle Counterspell
-			const cancelTag = tags.find(t => t.tag === 'CANT_PLAY' && t.value === '1');
-			if (cancelTag && cancelTag.entity) {
-				triggerLogEntry.targets.push(getEntity(cancelTag.entity.entityId));
-			}
-
-			// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
-			const redirectTag = tags.find(t => t.tag === 'PROPOSED_DEFENDER');
-			if (logEntry.type === 'attack' && redirectTag) {
-				const newTargetId = parseInt(redirectTag.value, 10);
-				const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
-				for (const id of compact(triggerTargets)) {
-					triggerLogEntry.targets.push(getEntity(id));
+			for (const subEntry of entries) {
+				// Handle card draws / discovery / creation
+				const draw = this._resolveDraw(subEntry, entries);
+				if (draw && doesNotExist(draw.entityId)) {
+					triggerLogEntry.targets.push(draw);
 				}
 
-				// Update the core entry to use the redirect
-				const damage = damageData.get(newTargetId);
-				logEntry.targets = [{...getEntity(newTargetId), damage}];
+				// Nested death block, mark existing targets as dead or add new ones
+				if (subEntry.type === 'block' && subEntry.blockType === 'DEATHS') {
+					const deaths = this._resolveDeaths(subEntry);
+					for (const id of deaths) {
+						const existingTarget = triggerLogEntry.targets.find(t => t.entityId === id);
+						if (existingTarget) {
+							existingTarget.dead = true;
+						} else {
+							triggerLogEntry.targets.push({...getEntity(id), dead: true});
+						}
+					}
+				}
 
-				logPreExtras.push(triggerLogEntry);
-				return;
+				if (subEntry.type === 'tag') {
+					// Handle Counterspell
+					if (subEntry.entity && subEntry.tag === 'CANT_PLAY' && subEntry.value === '1') {
+						triggerLogEntry.targets.push(getEntity(subEntry.entity.entityId));
+					}
+
+					// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
+					if (logEntry.type === 'attack' && subEntry.tag === 'PROPOSED_DEFENDER') {
+						const newTargetId = parseInt(subEntry.value, 10);
+						const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
+						for (const id of compact(triggerTargets)) {
+							triggerLogEntry.targets.push(getEntity(id));
+						}
+
+						// Update the core entry to use the redirect
+						const damage = damageData.get(newTargetId);
+						logEntry.targets = [{...getEntity(newTargetId), damage}];
+
+						logPreExtras.push(triggerLogEntry);
+						return;
+					}
+				}
 			}
 
+			// Add as new match log entry
 			logExtras.push(triggerLogEntry);
 		};
 
@@ -197,13 +220,13 @@ export class BlockParser extends LineParser {
 				return logEntry.targets.findIndex(t => t.entityId === entityId) === -1;
 			};
 
-			// Resolve Draws/Discover/Zone Swaps (stealing)
-			const draws = this._resolveDraws(entries);
-			for (const draw of draws.filter(d => doesNotExist(d.entityId))) {
-				logEntry.targets.push(draw);
-			}
-
 			for (const subEntry of entries) {
+				// Resolve Draws/Discover/Zone Swaps (stealing)
+				const draw = this._resolveDraw(subEntry, entries);
+				if (draw && doesNotExist(draw.entityId)) {
+					logEntry.targets.push(getEntity(draw.entityId));
+				}
+
 				// Handle nested triggers (such as in Puzzle Box)
 				if (subEntry.type === 'block' && subEntry.blockType === 'TRIGGER') {
 					handleTrigger(subEntry);
@@ -345,36 +368,42 @@ export class BlockParser extends LineParser {
 	}
 
 	/**
-	 * Resolves all card draws and discovers in a block.
-	 * NOTE: We might want to make this work on individual sub-entries, to
-	 * maintain event order. Consider doing this in a refactor.
-	 * @param entry
+	 * Resolves a card draw, discover, or creation in a block.
+	 * @param entry the entry being analyzed
+	 * @param entries All sibling entries (used to establish context)
 	 */
-	private _resolveDraws(entries: Entry[]): Entity[] {
+	private _resolveDraw(entry: Entry, entries: Entry[]): Entity | null {
 		// Note: card draw/creation seems to be either tag change or show_entity. Verify with other power types
 		// We may also want to push this to a method?
 		// Discover is 3 embedded entities followed by a ZONE=HAND and ZONE_POSITION=number
 		// But ZONE is sometimes used for enchantments (has no ZONE_POSITION with it).
-		const drawn: Entity[] = [];
+		// ZONE_POSITION without ZONE can happen when cards are moved around (Cabal Shadow Priest)
+		const entityId = 'entity' in entry ? entry.entity?.entityId : null;
 
-		for (const subEntry of entries) {
-			if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
-				drawn.push(subEntry.entity);
-			}
+		// ZONE_POSITION + ZONE is required
+		// Just ZONE_POSITION false flags board shifting
+		// Just ZONE false flags enchantments
+		if (entry.type === 'tag' && entry.entity && entry.tag === 'ZONE_POSITION') {
+			const zoneTag = entries.find(e => e.type === 'tag' && e.tag === 'ZONE' && e.entity?.entityId === entityId) as TagData;
+			const embedded = entries.find(e => e.type === 'embedded_entity' && e.entityId === entityId) as FullEntity;
 
-			if (subEntry.type === 'embedded_entity') {
-				// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
-				if (subEntry.action === 'Creating' && subEntry.tags.ZONE !== 'SETASIDE') {
-					drawn.push({
-						cardName: '',
-						entityId: subEntry.entityId,
-						player: subEntry.player ?? 'bottom'
-					});
-				}
+			if ((embedded?.tags.ZONE && embedded?.tags.ZONE !== 'SETASIDE') || zoneTag) {
+				return entry.entity;
 			}
 		}
 
-		return drawn;
+		if (entry.type === 'embedded_entity') {
+			// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
+			if (entry.action === 'Creating' && entry.tags.ZONE !== 'SETASIDE') {
+				return {
+					cardName: '',
+					entityId: entry.entityId,
+					player: entry.player ?? 'bottom'
+				};
+			}
+		}
+
+		return null;
 	}
 
 	/**

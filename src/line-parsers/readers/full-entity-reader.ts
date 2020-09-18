@@ -38,6 +38,18 @@ export class FullEntityReader {
 		}
 	);
 
+	private readonly showStartReader = createSimpleRegexParser(
+		/^(\s*)SHOW_ENTITY - Updating Entity=(\[.*\]) CardID=(.*)/,
+		parts => {
+			return {
+				indentation: parts[1],
+				type: 'Updating' as const, // Note: Typescript is weird
+				entityIdOrString: parts[2],
+				cardId: parts[3]
+			};
+		}
+	);
+
 	private readonly tagReader = createSimpleRegexParser(
 		/^(\s*)tag=(.*) value=(.*)/,
 		parts => ({
@@ -75,7 +87,7 @@ export class FullEntityReader {
 		let result: FullEntity | undefined;
 
 		// Read block start data
-		const startData = this.fullStartReader(line) ?? this.changeStartReader(line);
+		const startData = this.fullStartReader(line) ?? this.changeStartReader(line) ?? this.showStartReader(line);
 		if (startData) {
 			handled = true;
 
