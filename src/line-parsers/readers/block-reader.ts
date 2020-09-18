@@ -13,13 +13,13 @@ export interface BlockData {
 	triggerKeyword?: string;
 	entity?: Entity;
 	target?: Entity;
-	entries: Array<Entry>;
+	entries: Entry[];
 }
 
 export interface SubSpell {
 	type: 'subspell';
 	spell: string;
-	entries: Array<Entry>;
+	entries: Entry[];
 }
 
 /**
@@ -129,7 +129,7 @@ export class BlockReader {
 
 		const subSpellStart = this.subSpellReader(line);
 		if (subSpellStart) {
-			const { spell } = subSpellStart;
+			const {spell} = subSpellStart;
 			this.stack.push({type: 'subspell', spell, entries: []});
 		}
 

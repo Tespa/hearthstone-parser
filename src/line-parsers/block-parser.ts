@@ -59,10 +59,40 @@ export class BlockParser extends LineParser {
 
 	private _handleMatchLog(emitter: HspEventsEmitter, gameState: GameState, block: BlockData) {
 		const source = block.entity;
-		const type = block.blockType.toLowerCase();
+		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
+
+		// Main block TRIGGER but only for nested ATTACK blocks
+		// Current known example is Trueaim Crescent
+		if (block.blockType === 'TRIGGER' && block.entity) {
+			const attacks = subBlocks.filter(b => b.blockType === 'ATTACK');
+			attacks.forEach(a => this._handleMatchLog(emitter, gameState, a));
+			return;
+		}
+
+		// Main block DEATHS updates old match log 'attack' entries
+		if (block.blockType === 'DEATHS') {
+			const deaths = this._resolveDeaths(block);
+			for (let i = gameState.matchLog.length - 1; i >= 0; i--) {
+				if (deaths.size === 0) {
+					return;
+				}
+
+				const entry = gameState.matchLog[i];
+				if (entry.type === 'attack') {
+					const props = [entry.source, ...entry.targets];
+					const propsToKill = props.filter(p => deaths.has(p.entityId));
+					propsToKill.forEach(p => {
+						p.dead = true;
+						deaths.delete(p.entityId);
+					});
+				}
+			}
+
+			return;
+		}
 
 		// Exit out if its not a match log relevant
-		if (!source || !['play', 'attack'].includes(type)) {
+		if (!source || !['PLAY', 'ATTACK'].includes(block.blockType)) {
 			return;
 		}
 
@@ -72,26 +102,26 @@ export class BlockParser extends LineParser {
 			return (entityId: number) => entities[entityId] ?? {cardName: '', entityId};
 		})() as (id: number) => Entity;
 
-		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
-
 		// Get death and damage data
 		const deathBlock = subBlocks.find(b => b.type === 'block' && b.blockType === 'DEATHS');
 		const deaths = this._resolveDeaths(deathBlock as BlockData);
 		const damageData = this._resolveDamage(block);
+		const tags = block.entries.filter(e => e.type === 'tag') as TagData[];
 
 		// Get targets. Currently only the main one since we assume that damage targets
 		// come in POWER. If that changes, add the entries from damageData here.
-		const targets = new Array<Entity>();
-		if (block.target) {
-			targets.push(block.target);
-		}
+		const proposedDefender = tags.find(t => t.tag === 'PROPOSED_DEFENDER')?.value;
+		const mainTarget = (block.blockType === 'ATTACK' && proposedDefender) ?
+			getEntity(parseInt(proposedDefender, 10)) :
+			block.target;
 
 		// Create main log entry
 		const logEntry: MatchLogEntry = {
-			type: type as MatchLogEntry['type'],
+			type: block.blockType.toLowerCase() as MatchLogEntry['type'],
 			source: entityToMatchLog(source, damageData.get(source.entityId)),
-			targets: targets.map(t =>
-				entityToMatchLog(t, damageData.get(t.entityId)))
+			targets: mainTarget ?
+				[entityToMatchLog(mainTarget, damageData.get(mainTarget.entityId))] :
+				[]
 		};
 
 		// Match Log entries added before/after the core one (triggers)
@@ -164,10 +194,10 @@ export class BlockParser extends LineParser {
 			const entryParts = power.entries.map(e => e.type === 'subspell' ? e.entries : e);
 			const entries = concat([], ...entryParts);
 
-			// Internal function to check that a target does not already exist
+			/** Internal function to check that a target does not already exist */
 			const doesNotExist = (entityId: number) => {
 				return logEntry.targets.findIndex(t => t.entityId === entityId) === -1;
-			}
+			};
 
 			// Resolve Draws/Discover/Zone Swaps (stealing)
 			const draws = this._resolveDraws(entries);
@@ -210,7 +240,7 @@ export class BlockParser extends LineParser {
 
 					// Check if this was a hero power that was invoked
 					const heroPower = entries.find(
-						e => e.type === 'embedded_entity' && 
+						e => e.type === 'embedded_entity' &&
 						e.entityId === subEntry.entity?.entityId &&
 						e.tags.CARDTYPE === 'HERO_POWER');
 					if (heroPower) {
@@ -264,16 +294,20 @@ export class BlockParser extends LineParser {
 	 * @param data
 	 */
 	private _extractEntities(block: BlockData, data: {[key: number]: Entity} = {}) {
+		if (block.entity) {
+			data[block.entity.entityId] = block.entity;
+		}
+
+		if (block.target) {
+			data[block.target.entityId] = block.target;
+		}
+
 		for (const entry of block.entries) {
 			if ('entity' in entry && entry.entity) {
 				data[entry.entity.entityId] = entry.entity;
 			}
 
 			if (entry.type === 'block') {
-				if (entry.target) {
-					data[entry.target.entityId] = entry.target;
-				}
-
 				this._extractEntities(entry, data);
 			}
 		}
