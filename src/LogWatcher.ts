@@ -8,8 +8,7 @@ import * as debug from 'debug';
 import {EventEmitter2} from 'eventemitter2';
 import * as extend from 'extend';
 import * as chokidar from 'chokidar';
-import chunk = require('lodash.chunk');
-import throttle = require('lodash.throttle');
+import {chunk, throttle} from 'lodash';
 import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
 import {FSWatcher} from 'chokidar';
 

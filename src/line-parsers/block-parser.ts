@@ -1,8 +1,8 @@
 import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
 import {GameState, MatchLogEntry, EntityProps} from '../GameState';
-import compact = require('lodash.compact');
-import {BlockData, BlockReader, Entity, TagData} from './readers';
+import {compact, concat} from 'lodash';
+import {BlockData, BlockReader, Entity, Entry, TagData} from './readers';
 
 /**
  * Internal function to convert a parsed entity to something for the match log.
@@ -127,7 +127,7 @@ export class BlockParser extends LineParser {
 			};
 
 			// Handle card draws / discovery / creation
-			const draws = this._resolveDraws(trigger);
+			const draws = this._resolveDraws(trigger.entries);
 			for (const draw of draws) {
 				triggerLogEntry.targets.push(draw);
 			}
@@ -158,21 +158,24 @@ export class BlockParser extends LineParser {
 			logExtras.push(triggerLogEntry);
 		};
 
-		// Resolve "TRIGGER" entries
-		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER');
-		triggers.forEach(handleTrigger);
-
-		// Resolve "POWER" entries (sources of additional damage/draws)
-		// These merge into the main log entry
 		// Power entries sometimes have nested triggers, we may need to handle those too
-		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
-		for (const power of powers) {
-			const draws = this._resolveDraws(power);
-			for (const draw of draws) {
+		const handlePower = (power: BlockData) => {
+			// Create Entry List, flatten subpower blocks
+			const entryParts = power.entries.map(e => e.type === 'subspell' ? e.entries : e);
+			const entries = concat([], ...entryParts);
+
+			// Internal function to check that a target does not already exist
+			const doesNotExist = (entityId: number) => {
+				return logEntry.targets.findIndex(t => t.entityId === entityId) === -1;
+			}
+
+			// Resolve Draws/Discover/Zone Swaps (stealing)
+			const draws = this._resolveDraws(entries);
+			for (const draw of draws.filter(d => doesNotExist(d.entityId))) {
 				logEntry.targets.push(draw);
 			}
 
-			for (const subEntry of power.entries) {
+			for (const subEntry of entries) {
 				// Handle nested triggers (such as in Puzzle Box)
 				if (subEntry.type === 'block' && subEntry.blockType === 'TRIGGER') {
 					handleTrigger(subEntry);
@@ -181,20 +184,19 @@ export class BlockParser extends LineParser {
 				// Handle Updates (transformed targets)
 				if (subEntry.type === 'embedded_entity') {
 					const entity = getEntity(subEntry.entityId);
-					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === subEntry.entityId) >= 0;
-					if (subEntry.action === 'Updating' && !alreadyExists) {
+					if (subEntry.action === 'Updating' && doesNotExist(subEntry.entityId)) {
 						logEntry.targets.push(entity);
 					}
 				}
 
 				// Handle Revealed entries and elements that become Secrets.
 				// ZONE=PLAY is sometimes used for buffs, so we have to ignore those.
+				// REVEALED is inconsistent, but better to have more data.
 				if (subEntry.type === 'tag' && subEntry.entity && (
 					(subEntry.tag === 'REVEALED' && subEntry.value === '1') ||
 					(subEntry.tag === 'ZONE' && ['SECRET'].includes(subEntry.value)))) {
 					const entity = getEntity(subEntry.entity?.entityId);
-					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === entity.entityId) >= 0;
-					if (!alreadyExists) {
+					if (doesNotExist(entity.entityId)) {
 						logEntry.targets.push(entity);
 					}
 				}
@@ -202,9 +204,17 @@ export class BlockParser extends LineParser {
 				// Handle recursive POWER blocks (Puzzle Box) by adding it as a target
 				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && subEntry.entity) {
 					const entity = getEntity(subEntry.entity?.entityId);
-					const alreadyExists = logEntry.targets.findIndex(t => t.entityId === entity.entityId) >= 0;
-					if (!alreadyExists) {
+					if (doesNotExist(entity.entityId)) {
 						logEntry.targets.push(entity);
+					}
+
+					// Check if this was a hero power that was invoked
+					const heroPower = entries.find(
+						e => e.type === 'embedded_entity' && 
+						e.entityId === subEntry.entity?.entityId &&
+						e.tags.CARDTYPE === 'HERO_POWER');
+					if (heroPower) {
+						handlePower(subEntry);
 					}
 				}
 			}
@@ -219,7 +229,16 @@ export class BlockParser extends LineParser {
 					logEntry.targets.push({...getEntity(targetId), damage});
 				}
 			}
-		}
+		};
+
+		// Resolve "TRIGGER" entries
+		const triggers = subBlocks.filter(b => b.blockType === 'TRIGGER');
+		triggers.forEach(handleTrigger);
+
+		// Resolve "POWER" entries (sources of additional damage/draws)
+		// These merge into the main log entry
+		const powers = subBlocks.filter(b => b.blockType === 'POWER' && b.entity);
+		powers.forEach(handlePower);
 
 		const allEntries = [...logPreExtras, logEntry, ...logExtras];
 
@@ -292,14 +311,14 @@ export class BlockParser extends LineParser {
 	 * maintain event order. Consider doing this in a refactor.
 	 * @param entry
 	 */
-	private _resolveDraws(entry: BlockData): Entity[] {
+	private _resolveDraws(entries: Entry[]): Entity[] {
 		// Note: card draw/creation seems to be either tag change or show_entity. Verify with other power types
 		// We may also want to push this to a method?
 		// Discover is 3 embedded entities followed by a ZONE=HAND and ZONE_POSITION=number
 		// But ZONE is sometimes used for enchantments (has no ZONE_POSITION with it).
 		const drawn: Entity[] = [];
 
-		for (const subEntry of entry.entries) {
+		for (const subEntry of entries) {
 			if (subEntry.type === 'tag' && subEntry.entity && subEntry.tag === 'ZONE_POSITION') {
 				drawn.push(subEntry.entity);
 			}

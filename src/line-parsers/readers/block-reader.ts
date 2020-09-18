@@ -2,6 +2,8 @@ import {GameState} from '../../GameState';
 import {createSimpleRegexParser, Entity, MetaData, readEntityString, TagData} from '.';
 import {FullEntity, FullEntityReader} from './full-entity-reader';
 
+export type Entry = BlockData | SubSpell | TagData | MetaData | FullEntity;
+
 /**
  * Object derived from the combination of elements between BLOCK_START and BLOCK_END
  */
@@ -11,7 +13,13 @@ export interface BlockData {
 	triggerKeyword?: string;
 	entity?: Entity;
 	target?: Entity;
-	entries: Array<BlockData | TagData | MetaData | FullEntity>;
+	entries: Array<Entry>;
+}
+
+export interface SubSpell {
+	type: 'subspell';
+	spell: string;
+	entries: Array<Entry>;
 }
 
 /**
@@ -22,7 +30,7 @@ export class BlockReader {
 	/**
 	 * Contains ongoing block stack data.
 	 */
-	private readonly stack = Array<BlockData>();
+	private readonly stack = Array<BlockData | SubSpell>();
 
 	private readonly blockStartReader = createSimpleRegexParser(
 		/\s*BLOCK_START BlockType=([A-Z]*) Entity=(.*) EffectCardId=(.*) EffectIndex=(.*) Target=(.*) SubOption=(.*) (?:TriggerKeyword=(.*))?/,
@@ -48,6 +56,13 @@ export class BlockReader {
 		parts => ({
 			key: parts[1],
 			value: parseInt(parts[2], 10)
+		})
+	);
+
+	private readonly subSpellReader = createSimpleRegexParser(
+		/\s*SUB_SPELL_START - SpellPrefabGUID=(.*):(.*) Source=(.*) TargetCount=(.*)/,
+		parts => ({
+			spell: parts[1]
 		})
 	);
 
@@ -91,7 +106,7 @@ export class BlockReader {
 		}
 
 		// If a block has ended, return it
-		if (line.includes('BLOCK_END')) {
+		if (line.includes('BLOCK_END') || line.includes('SUB_SPELL_END')) {
 			const mostRecentBlock = this.stack.pop();
 			if (!mostRecentBlock) {
 				// This shouldn't ever happen
@@ -99,8 +114,9 @@ export class BlockReader {
 			}
 
 			// Check if its the highest block. If so, return it
+			// The first one is forced to be a block by algorithm design, so its ok to cast it.
 			if (this.stack.length === 0) {
-				return mostRecentBlock;
+				return mostRecentBlock as BlockData;
 			}
 
 			this.stack[this.stack.length - 1].entries.push(mostRecentBlock);
@@ -109,6 +125,12 @@ export class BlockReader {
 		// For the rest, skip if we're not in a block
 		if (this.stack.length === 0) {
 			return null;
+		}
+
+		const subSpellStart = this.subSpellReader(line);
+		if (subSpellStart) {
+			const { spell } = subSpellStart;
+			this.stack.push({type: 'subspell', spell, entries: []});
 		}
 
 		this._readTagChange(line, gameState);
