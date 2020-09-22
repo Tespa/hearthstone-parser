@@ -1,4 +1,6 @@
+import {merge} from 'lodash';
 import {Class} from './data/meta';
+import {Entity} from './line-parsers/readers';
 
 const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
 
@@ -64,13 +66,51 @@ export interface EntityProps {
 	entityId: number;
 	player: 'top' | 'bottom';
 	damage?: number;
+	healing?: number;
 	dead?: boolean;
 }
 
-export interface MatchLogEntry {
-	type: 'attack' | 'play' | 'trigger';
+type MatchLogType = 'attack' | 'play' | 'trigger';
+
+export class MatchLogEntry {
+	type: MatchLogType;
 	source: EntityProps;
-	targets: EntityProps[];
+	targets: EntityProps[] = [];
+
+	constructor(type: MatchLogType) {
+		this.type = type;
+	}
+
+	/**
+	 * Sets the source of this match log entry, with the ability to specify
+	 * additional merge properties.
+	 * @param entity
+	 */
+	setSource(entity: Entity, ...props: Array<Partial<EntityProps> | undefined>) {
+		this.source = this.createProps(entity, ...props);
+	}
+
+	/**
+	 * Adds a target to this match log entry, with the ability to specify
+	 * additional merge properties. Ignored if the entity is falsey
+	 * or if it is already added.
+	 * @param entity entity to add. If undefined or null, it will be ignored
+	 */
+	addTarget(entity: Entity | undefined | null, ...props: Array<Partial<EntityProps> | undefined>) {
+		if (!entity || this.targets.findIndex(t => t.entityId === entity.entityId) !== -1) {
+			return;
+		}
+
+		this.targets.push(this.createProps(entity, ...props));
+	}
+
+	private createProps(entity: Entity, ...props: Array<Partial<EntityProps> | undefined>) {
+		return merge({
+			cardName: entity.cardName,
+			entityId: entity.entityId,
+			player: entity.player
+		}, ...props);
+	}
 }
 
 export class GameState {

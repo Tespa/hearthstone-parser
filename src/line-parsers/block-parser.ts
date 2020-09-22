@@ -1,23 +1,13 @@
 import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
-import {GameState, MatchLogEntry, EntityProps} from '../GameState';
+import {GameState, MatchLogEntry} from '../GameState';
 import {compact, concat} from 'lodash';
 import {BlockData, BlockReader, Entity, Entry, FullEntity, TagData} from './readers';
 
-/**
- * Internal function to convert a parsed entity to something for the match log.
- * This allows us to add new properties to the entity later without affecting the match log.
- * @param entity
- */
-const entityToMatchLog = (entity: Entity, damage = 0): EntityProps => {
-	return {
-		cardName: entity.cardName,
-		entityId: entity.entityId,
-		player: entity.player,
-		damage,
-		dead: false
-	};
-};
+interface DamageValues {
+	damage?: number;
+	healing?: number;
+}
 
 /**
  * Handles events associated with BLOCK_START and BLOCK_END and those inbetween.
@@ -103,24 +93,23 @@ export class BlockParser extends LineParser {
 		})() as (id: number) => Entity;
 
 		// Get damage data
-		const damageData = this._resolveDamage(block);
+		const damageData = this._resolveDamageAndHealing(block);
 		const tags = block.entries.filter(e => e.type === 'tag') as TagData[];
 
 		// Get targets. Currently only the main one since we assume that damage targets
 		// come in POWER. If that changes, add the entries from damageData here.
+		// Attack targets via Trueaim are sometimes odd, so use PROPOSED_DEFENDER if given.
 		const proposedDefender = tags.find(t => t.tag === 'PROPOSED_DEFENDER')?.value;
 		const mainTarget = (block.blockType === 'ATTACK' && proposedDefender) ?
 			getEntity(parseInt(proposedDefender, 10)) :
 			block.target;
 
 		// Create main log entry
-		const logEntry: MatchLogEntry = {
-			type: block.blockType.toLowerCase() as MatchLogEntry['type'],
-			source: entityToMatchLog(source, damageData.get(source.entityId)),
-			targets: mainTarget ?
-				[entityToMatchLog(mainTarget, damageData.get(mainTarget.entityId))] :
-				[]
-		};
+		const logEntry = new MatchLogEntry(block.blockType.toLowerCase() as MatchLogEntry['type']);
+		logEntry.setSource(source, damageData.get(source.entityId));
+		if (mainTarget) {
+			logEntry.addTarget(mainTarget, damageData.get(mainTarget.entityId));
+		}
 
 		// Match Log entries added before/after the core one (triggers)
 		// Later parts of this function add to these lists
@@ -134,39 +123,29 @@ export class BlockParser extends LineParser {
 				return;
 			}
 
-			// Create Entry List, flatten subpower blocks, resolve trigger source
+			// Create Entry List, flatten subpower blocks
 			const entryParts = trigger.entries.map(e => e.type === 'subspell' ? e.entries : e);
 			const entries = concat([], ...entryParts);
-			const tSource = entityToMatchLog(trigger.entity);
 
 			// If it was a trigger caused by a PLAY, add the trigger source as a target of the PLAY
 			// An example of this effect is Mirror Entity
 			// This isn't universal (Apexis Smuggler doesn't show this) but we can't differentiate here
 			if (logEntry.type === 'play' && trigger.triggerKeyword !== 'DEATHRATTLE') {
-				logEntry.targets.push(tSource);
+				logEntry.addTarget(trigger.entity);
 			}
 
-			const triggerDamage = this._resolveDamage(trigger);
-			const triggerLogEntry: MatchLogEntry = {
-				type: 'trigger',
-				source: {...tSource, damage: triggerDamage.get(tSource.entityId)},
-				targets: [...triggerDamage.entries()].map(([eid, value]) => {
-					// If the target died here, then it didn't die earlier
-					return {...getEntity(eid), damage: value};
-				})
-			};
-
-			/** Internal function to check that a target does not already exist */
-			const doesNotExist = (entityId: number) => {
-				return triggerLogEntry.targets.findIndex(t => t.entityId === entityId) === -1;
-			};
+			// Create new entry for the trigger, start off with entries that were damaged or healed
+			const triggerDamage = this._resolveDamageAndHealing(trigger);
+			const triggerLogEntry = new MatchLogEntry('trigger');
+			triggerLogEntry.setSource(trigger.entity, triggerDamage.get(trigger.entity.entityId));
+			for (const [eid, value] of triggerDamage.entries()) {
+				triggerLogEntry.addTarget(getEntity(eid), value);
+			}
 
 			for (const subEntry of entries) {
 				// Handle card draws / discovery / creation
 				const draw = this._resolveDraw(subEntry, entries);
-				if (draw && doesNotExist(draw.entityId)) {
-					triggerLogEntry.targets.push(draw);
-				}
+				triggerLogEntry.addTarget(draw);
 
 				// Nested death block, mark existing targets as dead or add new ones
 				if (subEntry.type === 'block' && subEntry.blockType === 'DEATHS') {
@@ -176,15 +155,16 @@ export class BlockParser extends LineParser {
 						if (existingTarget) {
 							existingTarget.dead = true;
 						} else {
-							triggerLogEntry.targets.push({...getEntity(id), dead: true});
+							const entity = getEntity(id);
+							triggerLogEntry.addTarget(entity, {dead: true});
 						}
 					}
 				}
 
 				if (subEntry.type === 'tag') {
-					// Handle Counterspell
-					if (subEntry.entity && subEntry.tag === 'CANT_PLAY' && subEntry.value === '1') {
-						triggerLogEntry.targets.push(getEntity(subEntry.entity.entityId));
+					// Handle most common tag types
+					if (subEntry.entity && this._isTargetTag(subEntry)) {
+						triggerLogEntry.addTarget(getEntity(subEntry.entity.entityId));
 					}
 
 					// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
@@ -192,12 +172,13 @@ export class BlockParser extends LineParser {
 						const newTargetId = parseInt(subEntry.value, 10);
 						const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
 						for (const id of compact(triggerTargets)) {
-							triggerLogEntry.targets.push(getEntity(id));
+							triggerLogEntry.addTarget(getEntity(id));
 						}
 
 						// Update the core entry to use the redirect
 						const damage = damageData.get(newTargetId);
-						logEntry.targets = [{...getEntity(newTargetId), damage}];
+						logEntry.targets = [];
+						logEntry.addTarget(getEntity(newTargetId), damage);
 
 						logPreExtras.push(triggerLogEntry);
 						return;
@@ -215,16 +196,14 @@ export class BlockParser extends LineParser {
 			const entryParts = power.entries.map(e => e.type === 'subspell' ? e.entries : e);
 			const entries = concat([], ...entryParts);
 
-			/** Internal function to check that a target does not already exist */
-			const doesNotExist = (entityId: number) => {
-				return logEntry.targets.findIndex(t => t.entityId === entityId) === -1;
-			};
-
 			for (const subEntry of entries) {
 				// Resolve Draws/Discover/Zone Swaps (stealing)
 				const draw = this._resolveDraw(subEntry, entries);
-				if (draw && doesNotExist(draw.entityId)) {
-					logEntry.targets.push(getEntity(draw.entityId));
+				logEntry.addTarget(draw ? getEntity(draw.entityId) : null);
+
+				// Handle most common tag types
+				if (subEntry.type === 'tag' && subEntry.entity && this._isTargetTag(subEntry)) {
+					logEntry.addTarget(getEntity(subEntry.entity.entityId));
 				}
 
 				// Handle nested triggers (such as in Puzzle Box)
@@ -233,11 +212,9 @@ export class BlockParser extends LineParser {
 				}
 
 				// Handle Updates (transformed targets)
-				if (subEntry.type === 'embedded_entity') {
+				if (subEntry.type === 'embedded_entity' && subEntry.action === 'Updating') {
 					const entity = getEntity(subEntry.entityId);
-					if (subEntry.action === 'Updating' && doesNotExist(subEntry.entityId)) {
-						logEntry.targets.push(entity);
-					}
+					logEntry.addTarget(entity);
 				}
 
 				// Handle Revealed entries and elements that become Secrets.
@@ -247,17 +224,13 @@ export class BlockParser extends LineParser {
 					(subEntry.tag === 'REVEALED' && subEntry.value === '1') ||
 					(subEntry.tag === 'ZONE' && ['SECRET'].includes(subEntry.value)))) {
 					const entity = getEntity(subEntry.entity?.entityId);
-					if (doesNotExist(entity.entityId)) {
-						logEntry.targets.push(entity);
-					}
+					logEntry.addTarget(entity);
 				}
 
 				// Handle recursive POWER blocks (Puzzle Box) by adding it as a target
 				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && subEntry.entity) {
 					const entity = getEntity(subEntry.entity?.entityId);
-					if (doesNotExist(entity.entityId)) {
-						logEntry.targets.push(entity);
-					}
+					logEntry.addTarget(entity);
 
 					// Check if this was a hero power that was invoked
 					const heroPower = entries.find(
@@ -271,13 +244,15 @@ export class BlockParser extends LineParser {
 			}
 
 			// Merge damage (and add new targets) into MAIN entry
-			const damageEntries = this._resolveDamage(power);
+			const damageEntries = this._resolveDamageAndHealing(power);
 			for (const [targetId, damage] of damageEntries.entries()) {
 				const existing = logEntry.targets.find(t => t.entityId === targetId);
 				if (existing) {
-					existing.damage = (existing.damage ?? 0) + damage;
+					existing.damage = (existing.damage ?? 0) + (damage.damage ?? 0);
+					existing.healing = (existing.healing ?? 0) + (damage.healing ?? 0);
 				} else {
-					logEntry.targets.push({...getEntity(targetId), damage});
+					const entity = getEntity(targetId);
+					logEntry.addTarget(entity, damage);
 				}
 			}
 		};
@@ -349,18 +324,28 @@ export class BlockParser extends LineParser {
 	 * for integer keys for objects.
 	 * @param block
 	 */
-	private _resolveDamage(block: BlockData): Map<number, number> {
-		const damageByEntity = new Map<number, number>();
+	private _resolveDamageAndHealing(block: BlockData): Map<number, DamageValues> {
+		// Note: We could reduce LOC by being clever....but keeping it simple
+		const damageByEntity = new Map<number, DamageValues>();
 
-		let nextEntityId = -1;
+		let nextDamageEntityId = -1;
+		let nextHealingEntityId = -1;
 		for (const data of block.entries) {
-			if (data.type === 'tag') {
-				if (data.entity && data.tag === 'PREDAMAGE' && data.value !== '0') {
-					nextEntityId = data.entity?.entityId;
+			if (data.type === 'tag' && data.entity && data.value !== '0') {
+				if (data.tag === 'PREDAMAGE') {
+					nextDamageEntityId = data.entity?.entityId;
+				} else if (data.tag === 'PREHEALING') {
+					nextHealingEntityId = data.entity?.entityId;
 				}
-			} else if (data.type === 'meta' && data.key === 'DAMAGE') {
-				const currentDamage = damageByEntity.get(nextEntityId) ?? 0;
-				damageByEntity.set(nextEntityId, currentDamage + data.value);
+			} else if (data.type === 'meta' && ['DAMAGE', 'HEALING'].includes(data.key)) {
+				const currentValues = damageByEntity.get(nextDamageEntityId) ?? {};
+				if (data.key === 'DAMAGE') {
+					const currentValue = currentValues.damage ?? 0;
+					damageByEntity.set(nextDamageEntityId, {...currentValues, damage: currentValue + data.value});
+				} else if (data.key === 'HEALING') {
+					const currentValue = currentValues.healing ?? 0;
+					damageByEntity.set(nextHealingEntityId, {...currentValues, healing: currentValue + data.value});
+				}
 			}
 		}
 
@@ -423,6 +408,20 @@ export class BlockParser extends LineParser {
 		}
 
 		return deadEntities;
+	}
+
+	/**
+	 * Returns true if the tag denotes a target. False otherwise.
+	 * Handles the cases where the tag is the only thing needed to determine if its a target.
+	 * @param tag
+	 */
+	private _isTargetTag(tag: TagData): boolean {
+		// Counterspell and silenced
+		if (['CANT_PLAY', 'SILENCED'].includes(tag.tag) && tag.value === '1') {
+			return true;
+		}
+
+		return false;
 	}
 
 	private _emitEvents(emitter: HspEventsEmitter, entries: MatchLogEntry[]) {
