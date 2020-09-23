@@ -23,7 +23,8 @@ export class NewPlayerLineParser extends AbstractLineParser {
 				enabled: false,
 				id: null
 			},
-			cardsReplacedInMulligan: 0
+			cardsReplacedInMulligan: 0,
+			manaSpent: 0
 		});
 	}
 

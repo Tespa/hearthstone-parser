@@ -3,6 +3,27 @@ import {GameState} from '../../GameState';
 const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
 
 /**
+ * Object derived from [entityName=XXX ...] strings.
+ */
+export type Entity = CardEntity | GameEntity | PlayerEntity;
+
+export interface CardEntity {
+	readonly type: 'card';
+	cardName: string;
+	entityId: number;
+	player: 'top' | 'bottom';
+}
+
+export interface GameEntity {
+	readonly type: 'game';
+}
+
+export interface PlayerEntity {
+	readonly type: 'player';
+	player: 'top' | 'bottom';
+}
+
+/**
  * Object derived from TAG_CHANGE Entity=[ENTITYSTRING] tag=X value=Y lines.
  */
 export interface TagData {
@@ -19,15 +40,6 @@ export interface MetaData {
 	type: 'meta';
 	key: string;
 	value: number;
-}
-
-/**
- * Object derived from [entityName=XXX ...] strings.
- */
-export interface Entity {
-	cardName: string;
-	entityId: number;
-	player: 'top' | 'bottom';
 }
 
 /**
@@ -86,13 +98,24 @@ export const readEntityString = (() => {
 
 	// Returned function (the actual function)
 	return (str: string, gameState: GameState): Entity | undefined => {
+		if (str === 'GameEntity') {
+			return {type: 'game'};
+		}
+
+		// Check if its a player, otherwise parse it as a regular entity string
+		const player = gameState.players.find(p => p.name === str);
+		if (player) {
+			return {type: 'player', player: player.position};
+		}
+
 		const entityId = parseInt(str, 10);
 		if (entityId) {
-			return {entityId, cardName: '', player: 'bottom'};
+			return {type: 'card', entityId, cardName: '', player: 'bottom'};
 		}
 
 		const parsedEntity = entityParser(str);
 		return (parsedEntity) ? {
+			type: 'card',
 			cardName: (parsedEntity.cardName === UNKNOWN_CARDNAME) ? '' : parsedEntity.cardName,
 			entityId: parsedEntity.entityId,
 			player: identifyPlayer(gameState, parsedEntity.player)

@@ -1,6 +1,6 @@
 import {merge} from 'lodash';
 import {Class} from './data/meta';
-import {Entity} from './line-parsers/readers';
+import {CardEntity} from './line-parsers/readers';
 
 const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
 
@@ -59,6 +59,7 @@ export interface Player {
 		id: string | null;
 	};
 	cardsReplacedInMulligan: number;
+	manaSpent: number;
 }
 
 export interface EntityProps {
@@ -74,6 +75,7 @@ type MatchLogType = 'attack' | 'play' | 'trigger';
 
 export class MatchLogEntry {
 	type: MatchLogType;
+	manaSpent = 0;
 	source: EntityProps;
 	targets: EntityProps[] = [];
 
@@ -86,7 +88,7 @@ export class MatchLogEntry {
 	 * additional merge properties.
 	 * @param entity
 	 */
-	setSource(entity: Entity, ...props: Array<Partial<EntityProps> | undefined>) {
+	setSource(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
 		this.source = this.createProps(entity, ...props);
 	}
 
@@ -96,7 +98,7 @@ export class MatchLogEntry {
 	 * or if it is already added.
 	 * @param entity entity to add. If undefined or null, it will be ignored
 	 */
-	addTarget(entity: Entity | undefined | null, ...props: Array<Partial<EntityProps> | undefined>) {
+	addTarget(entity: CardEntity | undefined | null, ...props: Array<Partial<EntityProps> | undefined>) {
 		if (!entity || this.targets.findIndex(t => t.entityId === entity.entityId) !== -1) {
 			return;
 		}
@@ -104,7 +106,7 @@ export class MatchLogEntry {
 		this.targets.push(this.createProps(entity, ...props));
 	}
 
-	private createProps(entity: Entity, ...props: Array<Partial<EntityProps> | undefined>) {
+	private createProps(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
 		return merge({
 			cardName: entity.cardName,
 			entityId: entity.entityId,

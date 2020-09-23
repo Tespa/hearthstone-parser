@@ -149,37 +149,34 @@ export class BlockReader {
 	 * @param gameState
 	 */
 	private _readTagChange(line: string, gameState: GameState): boolean {
-		const mostRecentBlock = this.mostRecentBlock;
-
 		const tagData = this.tagReader(line);
-		if (tagData) {
-			let entity: Entity | undefined;
-			const entityId = parseInt(tagData.entityString, 10);
-			if (entityId) {
-				// Try to get some more data from the current block
-				const existing = mostRecentBlock.entries.find(e =>
-					e.type === 'embedded_entity' && e.entityId === entityId) as FullEntity;
-				if (existing) {
-					entity = {
-						entityId,
-						cardName: '',
-						player: existing.player ?? 'bottom'
-					};
-				}
-			} else {
-				entity = readEntityString(tagData.entityString, gameState);
-			}
-
-			mostRecentBlock.entries.push({
-				type: 'tag',
-				entity,
-				tag: tagData.tag,
-				value: tagData.value
-			});
-			return true;
+		if (!tagData) {
+			return false;
 		}
 
-		return false;
+		const mostRecentBlock = this.mostRecentBlock;
+		const {tag, value, entityString} = tagData;
+		let entity: Entity | undefined;
+
+		const entityId = parseInt(entityString, 10);
+		if (entityId) {
+			// Try to get some more data from the current block (like the player)
+			const existing = mostRecentBlock.entries.find(e =>
+				e.type === 'embedded_entity' && e.entityId === entityId) as FullEntity;
+			if (existing) {
+				entity = {
+					type: 'card',
+					entityId,
+					cardName: '',
+					player: existing.player ?? 'bottom'
+				};
+			}
+		} else {
+			entity = readEntityString(entityString, gameState);
+		}
+
+		mostRecentBlock.entries.push({type: 'tag', entity, tag, value});
+		return true;
 	}
 
 	/**

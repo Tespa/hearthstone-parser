@@ -2,12 +2,50 @@ import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
 import {GameState, MatchLogEntry} from '../GameState';
 import {compact, concat} from 'lodash';
-import {BlockData, BlockReader, Entity, Entry, FullEntity, TagData} from './readers';
+import {BlockData, BlockReader, CardEntity, Entity, Entry, FullEntity, TagData} from './readers';
 
 interface DamageValues {
 	damage?: number;
 	healing?: number;
 }
+
+/**
+ * Tests if the entity is non-null and pertains to a card
+ * @param entity the entity to test.
+ */
+const isCard = (entity: Entity | null | undefined): entity is CardEntity => {
+	return entity?.type === 'card';
+};
+
+/**
+ * Filters a list of entities to only contains the ones pertaining to cards
+ * @param items a list of entities to filter
+ */
+const cardsOnly = (items: Entity[]): CardEntity[] => {
+	return items.filter(i => i.type === 'card') as CardEntity[];
+};
+
+/**
+ * Tests if the entry is a tag with a particular tag or tag/value combo.
+ * @param entry The entry to test
+ * @param tag The value entry.tag should have
+ * @param value An optional value to test.
+ */
+const testTag = (entry: Entry, tag: string, value: string | null = null): entry is TagData => {
+	return entry.type === 'tag' &&
+		entry.tag === tag &&
+		((value === null) ? true : entry.value === value);
+};
+
+/**
+ * Filters a list of Entries to filter only to tags, with optional tag/value filtering
+ * @param entries The entries to filter
+ * @param tag The tag to filter the entries by (optional)
+ * @param value The tag value to filter the entries by (optional)
+ */
+const filterTags = (entries: Entry[], tag: string | null = null, value: string | null = null): TagData[] => {
+	return entries.filter(e => (tag) ? testTag(e, tag, value) : e.type === 'tag') as TagData[];
+};
 
 /**
  * Handles events associated with BLOCK_START and BLOCK_END and those inbetween.
@@ -37,7 +75,7 @@ export class BlockParser extends LineParser {
 		const powerBlock = this.powerReader.readLine(line, gameState);
 		if (powerBlock) {
 			const entities = this._extractEntities(powerBlock);
-			for (const entity of Object.values(entities)) {
+			for (const entity of cardsOnly(Object.values(entities))) {
 				gameState.resolveEntity(entity);
 			}
 
@@ -82,7 +120,7 @@ export class BlockParser extends LineParser {
 		}
 
 		// Exit out if its not a match log relevant
-		if (!source || !['PLAY', 'ATTACK'].includes(block.blockType)) {
+		if (!isCard(source) || !['PLAY', 'ATTACK'].includes(block.blockType)) {
 			return;
 		}
 
@@ -90,24 +128,24 @@ export class BlockParser extends LineParser {
 		const getEntity = (() => {
 			const entities = this._extractEntities(block);
 			return (entityId: number) => entities[entityId] ?? {cardName: '', entityId};
-		})() as (id: number) => Entity;
+		})() as (id: number) => CardEntity;
 
 		// Get damage data
 		const damageData = this._resolveDamageAndHealing(block);
-		const tags = block.entries.filter(e => e.type === 'tag') as TagData[];
 
 		// Get targets. Currently only the main one since we assume that damage targets
 		// come in POWER. If that changes, add the entries from damageData here.
 		// Attack targets via Trueaim are sometimes odd, so use PROPOSED_DEFENDER if given.
-		const proposedDefender = tags.find(t => t.tag === 'PROPOSED_DEFENDER')?.value;
+		const proposedDefender = filterTags(block.entries, 'PROPOSED_DEFENDER')[0]?.value;
 		const mainTarget = (block.blockType === 'ATTACK' && proposedDefender) ?
 			getEntity(parseInt(proposedDefender, 10)) :
 			block.target;
 
 		// Create main log entry
 		const logEntry = new MatchLogEntry(block.blockType.toLowerCase() as MatchLogEntry['type']);
+		logEntry.manaSpent = this._determineManaCost(block, gameState);
 		logEntry.setSource(source, damageData.get(source.entityId));
-		if (mainTarget) {
+		if (isCard(mainTarget)) {
 			logEntry.addTarget(mainTarget, damageData.get(mainTarget.entityId));
 		}
 
@@ -119,7 +157,7 @@ export class BlockParser extends LineParser {
 		/** Internal function to resolve a trigger, which can be standalone or nested */
 		const handleTrigger = (trigger: BlockData) => {
 			const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE'];
-			if (!trigger.entity || !validTriggerTypes.includes(trigger.triggerKeyword ?? '')) {
+			if (!isCard(trigger.entity) || !validTriggerTypes.includes(trigger.triggerKeyword ?? '')) {
 				return;
 			}
 
@@ -163,14 +201,14 @@ export class BlockParser extends LineParser {
 
 				if (subEntry.type === 'tag') {
 					// Handle most common tag types
-					if (subEntry.entity && this._isTargetTag(subEntry)) {
+					if (isCard(subEntry.entity) && this._isTargetTag(subEntry)) {
 						triggerLogEntry.addTarget(getEntity(subEntry.entity.entityId));
 					}
 
 					// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
-					if (logEntry.type === 'attack' && subEntry.tag === 'PROPOSED_DEFENDER') {
+					if (logEntry.type === 'attack' && subEntry.tag === 'PROPOSED_DEFENDER' && isCard(mainTarget)) {
 						const newTargetId = parseInt(subEntry.value, 10);
-						const triggerTargets = [newTargetId, block.entity?.entityId, block.target?.entityId];
+						const triggerTargets = [newTargetId, source.entityId, mainTarget.entityId];
 						for (const id of compact(triggerTargets)) {
 							triggerLogEntry.addTarget(getEntity(id));
 						}
@@ -196,13 +234,16 @@ export class BlockParser extends LineParser {
 			const entryParts = power.entries.map(e => e.type === 'subspell' ? e.entries : e);
 			const entries = concat([], ...entryParts);
 
+			// Add to the mana spent. Its sometimes here for power flexible cards
+			logEntry.manaSpent += this._determineManaCost(power, gameState);
+
 			for (const subEntry of entries) {
 				// Resolve Draws/Discover/Zone Swaps (stealing)
 				const draw = this._resolveDraw(subEntry, entries);
 				logEntry.addTarget(draw ? getEntity(draw.entityId) : null);
 
 				// Handle most common tag types
-				if (subEntry.type === 'tag' && subEntry.entity && this._isTargetTag(subEntry)) {
+				if (subEntry.type === 'tag' && isCard(subEntry.entity) && this._isTargetTag(subEntry)) {
 					logEntry.addTarget(getEntity(subEntry.entity.entityId));
 				}
 
@@ -217,26 +258,16 @@ export class BlockParser extends LineParser {
 					logEntry.addTarget(entity);
 				}
 
-				// Handle Revealed entries and elements that become Secrets.
-				// ZONE=PLAY is sometimes used for buffs, so we have to ignore those.
-				// REVEALED is inconsistent, but better to have more data.
-				if (subEntry.type === 'tag' && subEntry.entity && (
-					(subEntry.tag === 'REVEALED' && subEntry.value === '1') ||
-					(subEntry.tag === 'ZONE' && ['SECRET'].includes(subEntry.value)))) {
-					const entity = getEntity(subEntry.entity?.entityId);
-					logEntry.addTarget(entity);
-				}
-
 				// Handle recursive POWER blocks (Puzzle Box) by adding it as a target
-				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && subEntry.entity) {
-					const entity = getEntity(subEntry.entity?.entityId);
+				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && isCard(subEntry.entity)) {
+					const entity = getEntity(subEntry.entity.entityId);
 					logEntry.addTarget(entity);
 
 					// Check if this was a hero power that was invoked
-					const heroPower = entries.find(
-						e => e.type === 'embedded_entity' &&
-						e.entityId === subEntry.entity?.entityId &&
-						e.tags.CARDTYPE === 'HERO_POWER');
+					const heroPower = entries.find(e => (
+						e.type === 'embedded_entity' &&
+						e.entityId === entity.entityId &&
+						e.tags.CARDTYPE === 'HERO_POWER'));
 					if (heroPower) {
 						handlePower(subEntry);
 					}
@@ -296,17 +327,17 @@ export class BlockParser extends LineParser {
 	 * @param block
 	 * @param data
 	 */
-	private _extractEntities(block: BlockData, data: {[key: number]: Entity} = {}) {
-		if (block.entity) {
+	private _extractEntities(block: BlockData, data: {[key: number]: CardEntity} = {}) {
+		if (isCard(block.entity)) {
 			data[block.entity.entityId] = block.entity;
 		}
 
-		if (block.target) {
+		if (isCard(block.target)) {
 			data[block.target.entityId] = block.target;
 		}
 
 		for (const entry of block.entries) {
-			if ('entity' in entry && entry.entity) {
+			if ('entity' in entry && isCard(entry.entity)) {
 				data[entry.entity.entityId] = entry.entity;
 			}
 
@@ -316,6 +347,21 @@ export class BlockParser extends LineParser {
 		}
 
 		return data;
+	}
+
+	private _determineManaCost(block: BlockData, gameState: GameState) {
+		const manaTag = filterTags(block.entries, 'NUM_RESOURCES_SPENT_THIS_GAME')[0];
+		if (manaTag && manaTag.entity?.type === 'player') {
+			const totalMana = parseInt(manaTag.value, 10);
+			const player = gameState.getPlayerByPosition(manaTag.entity.player);
+			if (player) {
+				const spentMana = totalMana - player.manaSpent;
+				player.manaSpent = totalMana;
+				return spentMana;
+			}
+		}
+
+		return 0;
 	}
 
 	/**
@@ -331,7 +377,7 @@ export class BlockParser extends LineParser {
 		let nextDamageEntityId = -1;
 		let nextHealingEntityId = -1;
 		for (const data of block.entries) {
-			if (data.type === 'tag' && data.entity && data.value !== '0') {
+			if (data.type === 'tag' && isCard(data.entity) && data.value !== '0') {
 				if (data.tag === 'PREDAMAGE') {
 					nextDamageEntityId = data.entity?.entityId;
 				} else if (data.tag === 'PREHEALING') {
@@ -357,19 +403,19 @@ export class BlockParser extends LineParser {
 	 * @param entry the entry being analyzed
 	 * @param entries All sibling entries (used to establish context)
 	 */
-	private _resolveDraw(entry: Entry, entries: Entry[]): Entity | null {
+	private _resolveDraw(entry: Entry, entries: Entry[]): CardEntity | null {
 		// Note: card draw/creation seems to be either tag change or show_entity. Verify with other power types
 		// We may also want to push this to a method?
 		// Discover is 3 embedded entities followed by a ZONE=HAND and ZONE_POSITION=number
 		// But ZONE is sometimes used for enchantments (has no ZONE_POSITION with it).
 		// ZONE_POSITION without ZONE can happen when cards are moved around (Cabal Shadow Priest)
-		const entityId = 'entity' in entry ? entry.entity?.entityId : null;
+		const entityId = 'entity' in entry && isCard(entry.entity) ? entry.entity.entityId : null;
 
 		// ZONE_POSITION + ZONE is required
 		// Just ZONE_POSITION false flags board shifting
 		// Just ZONE false flags enchantments
-		if (entry.type === 'tag' && entry.entity && entry.tag === 'ZONE_POSITION') {
-			const zoneTag = entries.find(e => e.type === 'tag' && e.tag === 'ZONE' && e.entity?.entityId === entityId) as TagData;
+		if (testTag(entry, 'ZONE_POSITION') && isCard(entry.entity)) {
+			const zoneTag = filterTags(entries, 'ZONE').find(e => isCard(e.entity) && e.entity.entityId === entityId);
 			const embedded = entries.find(e => e.type === 'embedded_entity' && e.entityId === entityId) as FullEntity;
 
 			if ((embedded?.tags.ZONE && embedded?.tags.ZONE !== 'SETASIDE') || zoneTag) {
@@ -381,6 +427,7 @@ export class BlockParser extends LineParser {
 			// NOTE: for "clones", there is a COPIED_FROM_ENTITY_ID which can be used as additional data
 			if (entry.action === 'Creating' && entry.tags.ZONE !== 'SETASIDE') {
 				return {
+					type: 'card',
 					cardName: '',
 					entityId: entry.entityId,
 					player: entry.player ?? 'bottom'
@@ -402,7 +449,7 @@ export class BlockParser extends LineParser {
 		}
 
 		for (const data of deathBlock.entries) {
-			if (data.type === 'tag' && data.entity && data.tag === 'ZONE' && data.value === 'GRAVEYARD') {
+			if (data.type === 'tag' && isCard(data.entity) && data.tag === 'ZONE' && data.value === 'GRAVEYARD') {
 				deadEntities.add(data.entity.entityId);
 			}
 		}
@@ -416,12 +463,20 @@ export class BlockParser extends LineParser {
 	 * @param tag
 	 */
 	private _isTargetTag(tag: TagData): boolean {
-		// Counterspell and silenced
-		if (['CANT_PLAY', 'SILENCED'].includes(tag.tag) && tag.value === '1') {
-			return true;
+		if (!isCard(tag.entity)) {
+			return false;
 		}
 
-		return false;
+		// Counterspell, Silenced, Revealed Cards, and created secrets.
+		// ZONE=PLAY is sometimes used for buffs, so that's relegated to handleDraws
+		// REVEALED is inconsistent (semi-common false positives), but its the only way to get certain things,
+		// 			and its better to have more data.
+		return (
+			testTag(tag, 'CANT_PLAY', '1') ||
+			testTag(tag, 'SILENCED', '1') ||
+			testTag(tag, 'REVEALED', '1') ||
+			testTag(tag, 'ZONE', 'SECRET')
+		);
 	}
 
 	private _emitEvents(emitter: HspEventsEmitter, entries: MatchLogEntry[]) {

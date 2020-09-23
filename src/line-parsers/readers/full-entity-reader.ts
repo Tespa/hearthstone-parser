@@ -97,16 +97,13 @@ export class FullEntityReader {
 				this._entity = null;
 			}
 
-			const entityId = (startData.type === 'Creating') ?
-				parseInt(startData.entityIdOrString, 10) :
-				readEntityString(startData.entityIdOrString, gameState)?.entityId;
-
-			if (entityId) {
+			const entity = readEntityString(startData.entityIdOrString, gameState);
+			if (entity?.type === 'card') {
 				this._entity = {
 					type: 'embedded_entity',
 					action: startData.type,
 					cardId: startData.cardId,
-					entityId,
+					entityId: entity.entityId,
 					tags: {}
 				};
 			}
