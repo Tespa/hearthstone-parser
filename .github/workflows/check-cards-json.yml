@@ -1,12 +1,18 @@
-name: Check cards.json
+name: Check cards data
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0/5 * * * *'
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: bash scripts/update-cards.bash
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm ci
+      - run: node scripts/update-cards.js
+      - run: bash scripts/create-pr.bash
