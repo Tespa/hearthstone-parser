@@ -43,11 +43,11 @@ export const secretToClass: { [id: string]: Class } = {
 	LOOT_204: Class.Rogue,
 	LOOT_210: Class.Rogue,
 	LOOT_214: Class.Rogue,
+	SCH_706: Class.Rogue,
 	TRL_400: Class.Mage,
 	tt_010: Class.Mage,
 	ULD_152: Class.Hunter,
 	ULD_239: Class.Mage,
-	UNG_024: Class.Mage,
-	WE1_025: Class.Paladin
+	UNG_024: Class.Mage
 };
 /* eslint-enable @typescript-eslint/naming-convention */
