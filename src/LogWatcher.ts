@@ -10,7 +10,7 @@ import * as extend from 'extend';
 import * as chokidar from 'chokidar';
 import chunk = require('lodash.chunk');
 import throttle = require('lodash.throttle');
-import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
+import splitLines = require('split-lines');
 import {FSWatcher} from 'chokidar';
 
 // Ours
