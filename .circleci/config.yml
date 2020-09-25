@@ -7,13 +7,25 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
+
       - run: npm ci
+
+      - restore_cache:
+          keys:
+            - dts-cache
       - run: npm t
+      - save_cache:
+          key: dts-cache
+          paths:
+            - ~/.dts
+
       - run: npm run report-coverage
       - store_artifacts:
           path: ./nyc_output
           prefix: coverage
+
       - run: npm run build
+
       - run: npm run semantic-release || true
 
 workflows:
