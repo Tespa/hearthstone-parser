@@ -6,6 +6,7 @@ on:
     - cron: '0 * * * *'
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - run: bash scripts/update-cards.bash
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash scripts/update-cards.bash
