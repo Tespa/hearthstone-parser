@@ -11,15 +11,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/project
-      - restore_cache:
-          keys:
-            - npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-cache-{{ .Branch }}
-            - npm-cache-
       - run: npm ci
-      - save_cache:
-          key: npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths: [node_modules]
       - persist_to_workspace:
           root: .
           paths: [.]
