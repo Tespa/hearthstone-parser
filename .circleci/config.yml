@@ -8,28 +8,38 @@ jobs:
     steps:
       - checkout
 
-      - run: npm ci
+      - run:
+          name: Install dependencies
+          command: npm ci
 
       - restore_cache:
           keys:
             - dts-cache
-      - run: npm t
+      - run:
+          name: Test
+          command: npm t
       - save_cache:
           key: dts-cache
           paths:
             - ~/.dts
 
-      - run: npm run report-coverage
+      - run:
+          name: Send coverage
+          command: npm run report-coverage
       - store_artifacts:
           path: ./nyc_output
           prefix: coverage
 
-      - run: npm run build
+      - run:
+          name: Build
+          command: npm run build
 
-      - run: npm run semantic-release || true
+      - run:
+          name: Release
+          command: npm run semantic-release || true
 
 workflows:
   version: 2
-  Test build and deploy(master only):
+  CI:
     jobs:
       - Build and Test
