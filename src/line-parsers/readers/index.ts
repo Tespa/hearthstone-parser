@@ -12,6 +12,11 @@ export interface CardEntity {
 	cardName: string;
 	entityId: number;
 	player: 'top' | 'bottom';
+
+	/**
+	 * All tags marked for this entity.
+	 */
+	tags: {[key: string]: string};
 }
 
 export interface GameEntity {
@@ -21,6 +26,17 @@ export interface GameEntity {
 export interface PlayerEntity {
 	readonly type: 'player';
 	player: 'top' | 'bottom';
+}
+
+/**
+ * Object derived from FULL_ENTITY or SHOW_ENTITY sub-blocks.
+ */
+export interface FullEntity {
+	type: 'embedded_entity';
+	action: 'Creating' | 'Updating';
+	entity: CardEntity;
+	cardId: string;
+	player?: 'top' | 'bottom';
 }
 
 /**
@@ -110,7 +126,7 @@ export const readEntityString = (() => {
 
 		const entityId = parseInt(str, 10);
 		if (entityId) {
-			return {type: 'card', entityId, cardName: '', player: 'bottom'};
+			return {type: 'card', entityId, cardName: '', player: 'bottom', tags: {}};
 		}
 
 		const parsedEntity = entityParser(str);
@@ -118,7 +134,8 @@ export const readEntityString = (() => {
 			type: 'card',
 			cardName: (parsedEntity.cardName === UNKNOWN_CARDNAME) ? '' : parsedEntity.cardName,
 			entityId: parsedEntity.entityId,
-			player: identifyPlayer(gameState, parsedEntity.player)
+			player: identifyPlayer(gameState, parsedEntity.player),
+			tags: {}
 		} : undefined;
 	};
 })();

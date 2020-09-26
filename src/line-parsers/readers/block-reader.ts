@@ -1,6 +1,6 @@
 import {GameState} from '../../GameState';
-import {createSimpleRegexParser, Entity, MetaData, readEntityString, TagData} from '.';
-import {FullEntity, FullEntityReader} from './full-entity-reader';
+import {createSimpleRegexParser, Entity, MetaData, readEntityString, TagData, FullEntity} from '.';
+import {FullEntityReader} from './full-entity-reader';
 
 export type Entry = BlockData | SubSpell | TagData | MetaData | FullEntity;
 
@@ -162,14 +162,9 @@ export class BlockReader {
 		if (entityId) {
 			// Try to get some more data from the current block (like the player)
 			const existing = mostRecentBlock.entries.find(e =>
-				e.type === 'embedded_entity' && e.entityId === entityId) as FullEntity;
+				e.type === 'embedded_entity' && e.entity.entityId === entityId) as FullEntity;
 			if (existing) {
-				entity = {
-					type: 'card',
-					entityId,
-					cardName: '',
-					player: existing.player ?? 'bottom'
-				};
+				entity = existing.entity;
 			}
 		} else {
 			entity = readEntityString(entityString, gameState);

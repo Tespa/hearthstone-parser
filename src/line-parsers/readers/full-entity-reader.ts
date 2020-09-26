@@ -1,17 +1,5 @@
 import {GameState} from '../../GameState';
-import {createSimpleRegexParser, identifyPlayer, readEntityString} from '.';
-
-/**
- * Object derived from FULL_ENTITY or SHOW_ENTITY sub-blocks.
- */
-export interface FullEntity {
-	type: 'embedded_entity';
-	action: 'Creating' | 'Updating';
-	entityId: number;
-	cardId: string;
-	player?: 'top' | 'bottom';
-	tags: {[key: string]: string};
-}
+import {createSimpleRegexParser, FullEntity, identifyPlayer, readEntityString} from '.';
 
 export class FullEntityReader {
 	private readonly fullStartReader = createSimpleRegexParser(
@@ -39,7 +27,7 @@ export class FullEntityReader {
 	);
 
 	private readonly showStartReader = createSimpleRegexParser(
-		/^(\s*)SHOW_ENTITY - Updating Entity=(\[.*\]) CardID=(.*)/,
+		/^(\s*)SHOW_ENTITY - Updating Entity=(.*) CardID=(.*)/,
 		parts => {
 			return {
 				indentation: parts[1],
@@ -103,8 +91,7 @@ export class FullEntityReader {
 					type: 'embedded_entity',
 					action: startData.type,
 					cardId: startData.cardId,
-					entityId: entity.entityId,
-					tags: {}
+					entity
 				};
 			}
 
@@ -117,7 +104,7 @@ export class FullEntityReader {
 			if (tagData) {
 				handled = true;
 
-				this._entity.tags[tagData.tag] = tagData.value;
+				this._entity.entity.tags[tagData.tag] = tagData.value;
 
 				if (tagData.tag === 'CONTROLLER') {
 					this._entity.player = identifyPlayer(gameState, parseInt(tagData.value, 10));

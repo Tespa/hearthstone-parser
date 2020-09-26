@@ -79,8 +79,9 @@ export class MatchLogEntry {
 	source: EntityProps;
 	targets: EntityProps[] = [];
 
-	constructor(type: MatchLogType) {
+	constructor(type: MatchLogType, source: CardEntity) {
 		this.type = type;
+		this.source = source;
 	}
 
 	/**
@@ -127,6 +128,8 @@ export class GameState {
 	turnStartTime: Date;
 
 	matchLog: MatchLogEntry[];
+
+	private entities: {[id: number]: CardEntity} = {};
 
 	/**
 	 * Internal set used to optimize card reveals
@@ -210,7 +213,9 @@ export class GameState {
 	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
 	 * @param entity
 	 */
-	resolveEntity(entity: {cardName: string; entityId: number}) {
+	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId'> & Partial<CardEntity>) {
+		this.entities[entity.entityId] = merge(this.entities[entity.entityId], entity);
+
 		// A better algorithm requires caching to a private property
 		const {cardName, entityId} = entity;
 
@@ -233,5 +238,9 @@ export class GameState {
 				}
 			}
 		}
+	}
+
+	getEntity(id: number): CardEntity | undefined {
+		return this.entities[id];
 	}
 }
