@@ -14,6 +14,9 @@ if [[ $(gh pr list --label ${PR_LABEL} --state open) ]]; then
 	exit 0
 fi
 
+git config user.email "tespa@example.com"
+git config user.name "Tespa"
+
 git switch -c "${BRANCH_NAME}"
 git add .
 git commit -m "${COMMIT_MSG}"
