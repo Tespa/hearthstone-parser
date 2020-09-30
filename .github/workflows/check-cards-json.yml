@@ -16,3 +16,5 @@ jobs:
       - run: npm ci
       - run: node scripts/update-cards.js
       - run: bash scripts/create-pr.bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
