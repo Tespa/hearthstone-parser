@@ -20,6 +20,7 @@ git config user.name "Tespa"
 git switch -c "${BRANCH_NAME}"
 git add .
 git commit -m "${COMMIT_MSG}"
+git push -u origin ${BRANCH_NAME}
 gh pr create \
 	--title "${COMMIT_MSG}" \
 	--body "automatically opened PR to update data" \
