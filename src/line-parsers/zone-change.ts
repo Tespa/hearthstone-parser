@@ -2,9 +2,7 @@ import {AbstractLineParser} from './AbstractLineParser';
 import {GameState, Card} from '../GameState';
 import {secretToClass} from '../data/secrets';
 import {questMap} from '../data/quests';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const cardsJson: Array<{dbfId: number; id: string; name: string}> = require('../../data/cards.json');
+import cards from '../data/cards';
 
 export type Team = 'FRIENDLY' | 'OPPOSING';
 
@@ -81,9 +79,10 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 
 	lineMatched(parts: string[], gameState: GameState): void {
 		const data = formatParts(parts);
+		const cardRawData = cards[data.cardId];
 
 		// This may have "revealed" an entity, so register it
-		gameState.resolveEntity(data);
+		gameState.resolveEntity({...data, cardId: cardRawData?.dbfId});
 
 		// Mulligan is good time to know specific info about the game
 		if (gameState.mulliganActive) {
@@ -124,8 +123,6 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 
 			return undefined;
 		};
-
-		const cardRawData = cardsJson.find(card => card.id === data.cardId);
 
 		// Handle origin
 		const fromPlayer = getPlayerFromTeam(data.fromTeam);

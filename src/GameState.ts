@@ -63,6 +63,7 @@ export interface Player {
 }
 
 export interface EntityProps {
+	cardId?: number;
 	cardName: string;
 	entityId: number;
 	player: 'top' | 'bottom';
@@ -217,7 +218,8 @@ export class GameState {
 		this.entities[entity.entityId] = merge(this.entities[entity.entityId], entity);
 
 		// A better algorithm requires caching to a private property
-		const {cardName, entityId} = entity;
+		const {cardName, entityId, cardId} = entity;
+		const newProps = {entityId, cardName, cardId};
 
 		const isEmpty = (cardName: string) => {
 			return !cardName || cardName === UNKNOWN_CARDNAME;
@@ -229,12 +231,12 @@ export class GameState {
 
 		for (const entry of this.matchLog) {
 			if (isEmpty(entry.source.cardName) && entry.source.entityId === entityId) {
-				entry.source = {...entry.source, entityId, cardName};
+				entry.source = {...entry.source, ...newProps};
 			}
 
 			for (const [idx, target] of entry.targets.entries()) {
 				if (isEmpty(target.cardName) && target.entityId === entityId) {
-					entry.targets[idx] = {...target, entityId, cardName};
+					entry.targets[idx] = {...target, ...newProps};
 				}
 			}
 		}

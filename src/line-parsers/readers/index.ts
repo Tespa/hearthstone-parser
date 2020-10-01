@@ -1,4 +1,5 @@
 import {GameState} from '../../GameState';
+import cards from '../../data/cards';
 
 const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
 
@@ -9,6 +10,11 @@ export type Entity = CardEntity | GameEntity | PlayerEntity;
 
 export interface CardEntity {
 	readonly type: 'card';
+
+	/**
+	 * Numeric id of the card in the database.
+	 */
+	cardId?: number;
 	cardName: string;
 	entityId: number;
 	player: 'top' | 'bottom';
@@ -108,6 +114,7 @@ export const readEntityString = (() => {
 		parts => ({
 			cardName: parts[1],
 			entityId: parseInt(parts[3], 10),
+			rawCardId: parts[4],
 			player: parseInt(parts[5], 10)
 		})
 	);
@@ -132,6 +139,7 @@ export const readEntityString = (() => {
 		const parsedEntity = entityParser(str);
 		return (parsedEntity) ? {
 			type: 'card',
+			cardId: cards[parsedEntity.rawCardId]?.dbfId,
 			cardName: (parsedEntity.cardName === UNKNOWN_CARDNAME) ? '' : parsedEntity.cardName,
 			entityId: parsedEntity.entityId,
 			player: identifyPlayer(gameState, parsedEntity.player),

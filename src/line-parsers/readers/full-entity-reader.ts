@@ -1,4 +1,5 @@
 import {GameState} from '../../GameState';
+import cards from '../../data/cards';
 import {createSimpleRegexParser, FullEntity, identifyPlayer, readEntityString} from '.';
 
 export class FullEntityReader {
@@ -91,7 +92,7 @@ export class FullEntityReader {
 					type: 'embedded_entity',
 					action: startData.type,
 					cardId: startData.cardId,
-					entity
+					entity: {...entity, cardId: cards[startData.cardId]?.dbfId}
 				};
 			}
 
