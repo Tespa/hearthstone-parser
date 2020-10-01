@@ -313,33 +313,41 @@ export class BlockParser extends LineParser {
 			}
 		};
 
-		// Handle sub blocks
-		for (const subBlock of subBlocks) {
-			// Resolve "TRIGGER" entries
-			if (subBlock.blockType === 'TRIGGER') {
-				handleTrigger(subBlock);
+		// Handle entries of the main block entry. These mostly delegate to other handlers.
+		for (const entry of block.entries) {
+			// Special Case - Twinspells. All other created entities should ONLY come from POWER/TRIGGER blocks.
+			// If this assumption proves to be false, handle it here.
+			if (entry.type === 'embedded_entity' && entry.action === 'Creating' && entry.entity.tags.ZONE === 'HAND') {
+				logEntry.addTarget(getEntity(entry.entity.entityId));
 			}
 
-			// Resolve "POWER" entries (sources of additional damage/draws)
-			// These merge into the main log entry
-			if (subBlock.blockType === 'POWER') {
-				handlePower(subBlock);
-			}
-
-			// Resolve DEATH entries, reverse order
-			if (subBlock.blockType === 'DEATHS') {
-				const entries = [...logPreExtras, logEntry, ...logExtras].reverse();
-				const deaths = this._resolveDeaths(subBlock);
-				for (const entry of entries) {
-					const handled = this._markDeaths(entry, deaths);
-					handled.forEach(h => deaths.delete(h));
+			if (entry.type === 'block') {
+				// Resolve "TRIGGER" entries
+				if (entry.blockType === 'TRIGGER') {
+					handleTrigger(entry);
 				}
 
-				// Add leftovers to most recent block.
-				// If this is wrong, use a tag=TO_BE_DESTROYED priority system
-				const mostRecent = entries[0];
-				for (const death of deaths.values()) {
-					mostRecent.addTarget(getEntity(death), {dead: true});
+				// Resolve "POWER" entries (sources of additional damage/draws)
+				// These merge into the main log entry
+				if (entry.blockType === 'POWER') {
+					handlePower(entry);
+				}
+
+				// Resolve DEATH entries, reverse order
+				if (entry.blockType === 'DEATHS') {
+					const entries = [...logPreExtras, logEntry, ...logExtras].reverse();
+					const deaths = this._resolveDeaths(entry);
+					for (const entry of entries) {
+						const handled = this._markDeaths(entry, deaths);
+						handled.forEach(h => deaths.delete(h));
+					}
+
+					// Add leftovers to most recent block.
+					// If this is wrong, use a tag=TO_BE_DESTROYED priority system
+					const mostRecent = entries[0];
+					for (const death of deaths.values()) {
+						mostRecent.addTarget(getEntity(death), {dead: true});
+					}
 				}
 			}
 		}
