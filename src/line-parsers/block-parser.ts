@@ -200,7 +200,7 @@ export class BlockParser extends LineParser {
 
 		/** Internal function to resolve a trigger, which can be standalone or nested */
 		const handleTrigger = (trigger: BlockData) => {
-			const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE', 'SIDEQUEST'];
+			const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE', 'SIDEQUEST', 'SPELLBURST'];
 			if (!isCard(trigger.entity) || !validTriggerTypes.includes(trigger.triggerKeyword ?? '')) {
 				return;
 			}
