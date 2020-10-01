@@ -123,19 +123,11 @@ export class BlockParser extends LineParser {
 		// Main block DEATHS updates old match log 'attack' entries (source not required)
 		if (block.blockType === 'DEATHS') {
 			const deaths = this._resolveDeaths(block);
-			for (let i = gameState.matchLog.length - 1; i >= 0; i--) {
-				if (deaths.size === 0) {
-					return;
-				}
-
+			for (let i = gameState.matchLog.length - 1; i >= 0 && deaths.size; i--) {
 				const entry = gameState.matchLog[i];
 				if (entry.type === 'attack') {
-					const props = [entry.source, ...entry.targets];
-					const propsToKill = props.filter(p => deaths.has(p.entityId));
-					propsToKill.forEach(p => {
-						p.dead = true;
-						deaths.delete(p.entityId);
-					});
+					const marked = this._markDeaths(entry, deaths);
+					marked.forEach(m => deaths.delete(m));
 				}
 			}
 
@@ -242,14 +234,11 @@ export class BlockParser extends LineParser {
 				// Nested death block, mark existing targets as dead or add new ones
 				if (subEntry.type === 'block' && subEntry.blockType === 'DEATHS') {
 					const deaths = this._resolveDeaths(subEntry);
-					for (const id of deaths) {
-						const existingTarget = triggerLogEntry.targets.find(t => t.entityId === id);
-						if (existingTarget) {
-							existingTarget.dead = true;
-						} else {
-							const entity = getEntity(id);
-							triggerLogEntry.addTarget(entity, {dead: true});
-						}
+					const marked = this._markDeaths(triggerLogEntry, deaths);
+					marked.forEach(m => deaths.delete(m));
+					for (const unmarked of deaths) {
+						const entity = getEntity(unmarked);
+						triggerLogEntry.addTarget(entity, {dead: true});
 					}
 				}
 
@@ -325,29 +314,32 @@ export class BlockParser extends LineParser {
 		};
 
 		// Handle sub blocks
-		for (const block of subBlocks) {
+		for (const subBlock of subBlocks) {
 			// Resolve "TRIGGER" entries
-			if (block.blockType === 'TRIGGER') {
-				handleTrigger(block);
+			if (subBlock.blockType === 'TRIGGER') {
+				handleTrigger(subBlock);
 			}
 
 			// Resolve "POWER" entries (sources of additional damage/draws)
 			// These merge into the main log entry
-			if (block.blockType === 'POWER') {
-				handlePower(block);
+			if (subBlock.blockType === 'POWER') {
+				handlePower(subBlock);
 			}
 
 			// Resolve DEATH entries, reverse order
-			if (block.blockType === 'DEATHS') {
-				const deaths = this._resolveDeaths(block);
-				for (const entry of [...logPreExtras, logEntry, ...logExtras].reverse()) {
-					entry.source.dead = deaths.has(entry.source.entityId);
-					for (const target of entry.targets) {
-						target.dead = deaths.has(target.entityId);
-					}
+			if (subBlock.blockType === 'DEATHS') {
+				const entries = [...logPreExtras, logEntry, ...logExtras].reverse();
+				const deaths = this._resolveDeaths(subBlock);
+				for (const entry of entries) {
+					const handled = this._markDeaths(entry, deaths);
+					handled.forEach(h => deaths.delete(h));
+				}
 
-					deaths.delete(entry.source.entityId);
-					entry.targets.forEach(t => deaths.delete(t.entityId));
+				// Add leftovers to most recent block.
+				// If this is wrong, use a tag=TO_BE_DESTROYED priority system
+				const mostRecent = entries[0];
+				for (const death of deaths.values()) {
+					mostRecent.addTarget(getEntity(death), {dead: true});
 				}
 			}
 		}
@@ -546,6 +538,30 @@ export class BlockParser extends LineParser {
 		}
 
 		return deadEntities;
+	}
+
+	/**
+	 * Marks targets/sources that exist in the entry using the death entries.
+	 * Returns the entries that were successfully marked.
+	 * @param entry Entry to update targets for
+	 * @param deaths Entity IDs that need to be marked
+	 */
+	private _markDeaths(entry: MatchLogEntry, deaths: Set<number>): Set<number> {
+		const marked = new Set<number>();
+
+		if (deaths.has(entry.source.entityId)) {
+			entry.source.dead = true;
+			marked.add(entry.source.entityId);
+		}
+
+		for (const target of entry.targets) {
+			if (deaths.has(target.entityId)) {
+				target.dead = true;
+				marked.add(target.entityId);
+			}
+		}
+
+		return marked;
 	}
 
 	private _emitEvents(emitter: HspEventsEmitter, entries: MatchLogEntry[]) {
