@@ -1,88 +1,45 @@
 defaults: &defaults
-  docker:
-    - image: circleci/node:10
-  working_directory: ~/project
 
 version: 2
 jobs:
-  Checkout Code:
-    <<: *defaults
+  Build and Test:
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/project
+
+      - run:
+          name: Install dependencies
+          command: npm ci
+
       - restore_cache:
           keys:
-            - npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
-            - npm-cache-{{ .Branch }}
-            - npm-cache-
-      - run: npm ci
+            - dts-cache
+      - run:
+          name: Test
+          command: npm t
       - save_cache:
-          key: npm-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths: [node_modules]
-      - persist_to_workspace:
-          root: .
-          paths: [.]
-  Check for vulnerabilities:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm audit
-  Test node-10:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm t
-      - persist_to_workspace:
-          root: .
+          key: dts-cache
           paths:
-            - .nyc_output
-  Send Coverage:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm run report-coverage
+            - ~/.dts
+
+      - run:
+          name: Send coverage
+          command: npm run report-coverage
       - store_artifacts:
           path: ./nyc_output
           prefix: coverage
 
-  Build:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm run build
-      - persist_to_workspace:
-          root: .
-          paths: [.]
+      - run:
+          name: Build
+          command: npm run build
 
-  Release:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: npm run semantic-release || true
+      - run:
+          name: Release
+          command: npm run semantic-release || true
 
 workflows:
   version: 2
-  Test build and deploy(master only):
+  CI:
     jobs:
-      - Checkout Code
-      - Check for vulnerabilities:
-          requires:
-            - Checkout Code
-      - Test node-10:
-          requires:
-            - Checkout Code
-      - Send Coverage:
-          requires:
-            - Test node-10
-      - Build:
-          requires:
-            - Send Coverage
-      - Release:
-          requires:
-            - Build
+      - Build and Test

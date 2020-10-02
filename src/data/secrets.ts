@@ -1,10 +1,10 @@
 import {Class} from './meta';
 
-/* eslint-disable @typescript-eslint/naming-convention */
 export const secretToClass: { [id: string]: Class } = {
 	AT_002: Class.Mage,
 	AT_060: Class.Hunter,
 	AT_073: Class.Paladin,
+	BCON_012: Class.Paladin,
 	BOT_908: Class.Paladin,
 	BT_003: Class.Mage,
 	BT_042: Class.Rogue,
@@ -15,6 +15,7 @@ export const secretToClass: { [id: string]: Class } = {
 	CFM_620: Class.Mage,
 	CFM_800: Class.Paladin,
 	DAL_570: Class.Paladin,
+	DRGA_BOSS_03t: Class.Paladin,
 	EX1_130: Class.Paladin,
 	EX1_132: Class.Paladin,
 	EX1_136: Class.Paladin,
@@ -36,6 +37,8 @@ export const secretToClass: { [id: string]: Class } = {
 	ICC_082: Class.Mage,
 	ICC_200: Class.Hunter,
 	KAR_004: Class.Hunter,
+	KARA_12_03: Class.Mage,
+	KARA_12_03H: Class.Mage,
 	LOE_021: Class.Hunter,
 	LOE_027: Class.Paladin,
 	LOOT_079: Class.Hunter,
@@ -43,6 +46,26 @@ export const secretToClass: { [id: string]: Class } = {
 	LOOT_204: Class.Rogue,
 	LOOT_210: Class.Rogue,
 	LOOT_214: Class.Rogue,
+	SCH_706: Class.Rogue,
+	TB_Bacon_Secrets_01: Class.Hunter,
+	TB_Bacon_Secrets_02: Class.Hunter,
+	TB_Bacon_Secrets_04: Class.Mage,
+	TB_Bacon_Secrets_05: Class.Mage,
+	TB_Bacon_Secrets_07: Class.Paladin,
+	TB_Bacon_Secrets_08: Class.Paladin,
+	TB_Bacon_Secrets_10: Class.Paladin,
+	TB_Bacon_Secrets_11: Class.Paladin,
+	TB_Bacon_Secrets_12: Class.Mage,
+	TB_SPT_DPromoSecre8: Class.Warrior,
+	TB_SPT_DPromoSecret1: Class.Warrior,
+	TB_SPT_DPromoSecret10: Class.Warrior,
+	TB_SPT_DPromoSecret2: Class.Warrior,
+	TB_SPT_DPromoSecret3: Class.Warrior,
+	TB_SPT_DPromoSecret4: Class.Warrior,
+	TB_SPT_DPromoSecret5: Class.Warrior,
+	TB_SPT_DPromoSecret6: Class.Warrior,
+	TB_SPT_DPromoSecret7: Class.Warrior,
+	TB_SPT_DPromoSecret9: Class.Warrior,
 	TRL_400: Class.Mage,
 	tt_010: Class.Mage,
 	ULD_152: Class.Hunter,
@@ -50,4 +73,3 @@ export const secretToClass: { [id: string]: Class } = {
 	UNG_024: Class.Mage,
 	WE1_025: Class.Paladin
 };
-/* eslint-enable @typescript-eslint/naming-convention */

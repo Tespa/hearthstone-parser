@@ -9,7 +9,7 @@ import {EventEmitter2} from 'eventemitter2';
 import * as extend from 'extend';
 import * as chokidar from 'chokidar';
 import {chunk, throttle} from 'lodash';
-import splitLines = require('split-lines'); // eslint-disable-line @typescript-eslint/no-require-imports
+import splitLines = require('split-lines');
 import {FSWatcher} from 'chokidar';
 
 // Ours
