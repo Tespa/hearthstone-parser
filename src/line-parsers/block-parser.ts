@@ -5,15 +5,29 @@ import {compact, concat, merge} from 'lodash';
 import {BlockData, BlockReader, CardEntity, Entity, Entry, FullEntity, SubSpell, TagData} from './readers';
 
 /**
- * Partial data of a match log entry for damage and healing values.
+ * List of valid trigger keywords.
  */
-interface DamageValues {
-	damage?: number;
-	healing?: number;
+const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE', 'SIDEQUEST', 'SPELLBURST'];
+
+/**
+ * Used to receive full entity data from the full block scope or the game state.
+ */
+class EntityCollection {
+	constructor(
+		private readonly gameState: GameState,
+		private readonly entities: {[key: number]: CardEntity}) {}
+
+	get(entityId: number) {
+		return this.entities[entityId] ??
+			this.gameState.getEntity(entityId) ??
+			{cardName: '', entityId};
+	}
 }
 
 /**
- * Class used to perform pre-processing of a block and store the results
+ * Class used to perform pre-processing of a block and store the results.
+ * The intention is to cache and pass around certain groups of properties,
+ * while also maintaining a context of what has already been processed.
  */
 class BlockContext {
 	/**
@@ -21,7 +35,10 @@ class BlockContext {
 	 */
 	public flattenedEntries: Entry[];
 
-	constructor(public block: BlockData) {
+	public nextDamageEntityId: number;
+	public nextHealingEntityId: number;
+
+	constructor(public block: BlockData, public entities: EntityCollection) {
 		// Create Entry List, flatten subpower blocks
 		const entryParts = block.entries.map(e => e.type === 'subspell' ? e.entries : e);
 		this.flattenedEntries = concat([], ...entryParts);
@@ -37,6 +54,37 @@ class BlockContext {
 			e => e.type === 'embedded_entity' && e.entity.entityId === entityId) as FullEntity[];
 		if (allEmbedded.length) {
 			return merge(allEmbedded[0], ...allEmbedded.slice(1)) as FullEntity;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Detects instances of an entry taking damage or healing.
+	 * Run on every entry inside of the list of damage entries for procs.
+	 * @param data
+	 */
+	detectHealthChange(data: Entry) {
+		if (data.type === 'tag' && isCard(data.entity) && data.value !== '0') {
+			if (data.tag === 'PREDAMAGE') {
+				this.nextDamageEntityId = data.entity?.entityId;
+			} else if (data.tag === 'PREHEALING') {
+				this.nextHealingEntityId = data.entity?.entityId;
+			}
+		}
+
+		if (data.type === 'meta' && data.key === 'DAMAGE') {
+			return {
+				entityId: this.nextDamageEntityId,
+				values: {damage: data.value}
+			};
+		}
+
+		if (data.type === 'meta' && data.key === 'HEALING') {
+			return {
+				entityId: this.nextHealingEntityId,
+				values: {healing: data.value}
+			};
 		}
 
 		return null;
@@ -120,52 +168,42 @@ export class BlockParser extends LineParser {
 	}
 
 	private _handleMatchLog(emitter: HspEventsEmitter, gameState: GameState, block: BlockData) {
-		// Main block DEATHS updates old match log 'attack' entries (source not required)
+		// Handle non-nested death blocks, which have special behavior
 		if (block.blockType === 'DEATHS') {
-			const deaths = this._resolveDeaths(block);
-			for (let i = gameState.matchLog.length - 1; i >= 0 && deaths.size; i--) {
-				const entry = gameState.matchLog[i];
-				if (entry.type === 'attack') {
-					const marked = this._markDeaths(entry, deaths);
-					marked.forEach(m => deaths.delete(m));
-				}
-			}
-
+			this._handleTopLevelDeaths(gameState, block);
 			return;
 		}
 
+		// Check that there is a valid source.
 		const source = block.entity;
-		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
-
-		// Exit out if its not a match log relevant
-		const validTypes = ['PLAY', 'ATTACK', 'TRIGGER'];
-		if (!isCard(source) || !validTypes.includes(block.blockType)) {
+		if (!isCard(source)) {
 			return;
 		}
 
-		/** Retrieves an entity from anywhere in this block, or a default blank entry */
-		const entities = this._extractEntities(block);
-		const getEntity = (() => {
-			return (entityId: number) => entities[entityId] ?? {cardName: '', entityId};
-		})() as (id: number) => CardEntity;
+		const subBlocks = block.entries.filter(b => b.type === 'block') as BlockData[];
+		const entities = new EntityCollection(gameState, this._extractEntities(block));
+		const context = new BlockContext(block, entities);
 
 		// Main block TRIGGER but only for nested ATTACK blocks
 		// Current known example is Trueaim Crescent
-		if (block.blockType === 'TRIGGER') {
+		if (block.blockType === 'TRIGGER' && validTriggerTypes.includes(block.triggerKeyword ?? '')) {
 			// Handle Nested attack entries
 			const attacks = subBlocks.filter(b => b.blockType === 'ATTACK');
 			attacks.forEach(a => this._handleMatchLog(emitter, gameState, a));
 
 			// Resolve trigger normally (only publish if there are targets)
-			const context = new BlockContext(block);
+			const context = new BlockContext(block, entities);
 			const logEntry = new MatchLogEntry('trigger', source);
 			for (const subEntry of block.entries) {
 				// Resolve common target types (draw/discover/tag/etc)
 				const draw = this._resolveTarget(context, subEntry, gameState);
-				logEntry.addTarget(draw ? getEntity(draw) : null);
+				logEntry.addTarget(draw ? entities.get(draw) : null);
+
+				// Handle damage and healing
+				this._handleHealthChange(logEntry, context, subEntry);
 			}
 
-			if (logEntry.targets.length > 0) {
+			if (logEntry.targets.length || !attacks.length) {
 				gameState.addMatchLogEntry(logEntry);
 				this._emitEvents(emitter, [logEntry]);
 			}
@@ -173,24 +211,24 @@ export class BlockParser extends LineParser {
 			return;
 		}
 
-		// Get damage data
-		const damageData = this._resolveDamageAndHealing(block.entries);
+		// From here on, only PLAY/ATTACK are valid types
+		if (!['PLAY', 'ATTACK'].includes(block.blockType)) {
+			return;
+		}
 
 		// Get targets. Currently only the main one since we assume that damage targets
 		// come in POWER. If that changes, add the entries from damageData here.
 		// Attack targets via Trueaim are sometimes odd, so use PROPOSED_DEFENDER if given.
 		const proposedDefender = filterTags(block.entries, 'PROPOSED_DEFENDER')[0]?.value;
 		const mainTarget = (block.blockType === 'ATTACK' && proposedDefender) ?
-			getEntity(parseInt(proposedDefender, 10)) :
+			entities.get(Number(proposedDefender)) :
 			block.target;
 
 		// Create main log entry
-		const logEntry = new MatchLogEntry(
-			block.blockType.toLowerCase() as MatchLogEntry['type'],
-			{...source, ...damageData.get(source.entityId)});
+		const logEntry = new MatchLogEntry(block.blockType.toLowerCase() as MatchLogEntry['type'], source);
 		logEntry.manaSpent = this._determineManaCost(block, gameState);
 		if (isCard(mainTarget)) {
-			logEntry.addTarget(mainTarget, damageData.get(mainTarget.entityId));
+			logEntry.addTarget(mainTarget);
 		}
 
 		// Match Log entries added before/after the core one (triggers)
@@ -200,7 +238,6 @@ export class BlockParser extends LineParser {
 
 		/** Internal function to resolve a trigger, which can be standalone or nested */
 		const handleTrigger = (trigger: BlockData) => {
-			const validTriggerTypes = ['TRIGGER_VISUAL', 'SECRET', 'DEATHRATTLE', 'SIDEQUEST', 'SPELLBURST'];
 			if (!isCard(trigger.entity) || !validTriggerTypes.includes(trigger.triggerKeyword ?? '')) {
 				return;
 			}
@@ -212,24 +249,20 @@ export class BlockParser extends LineParser {
 				logEntry.addTarget(trigger.entity);
 			}
 
-			const context = new BlockContext(trigger);
+			const context = new BlockContext(trigger, entities);
 			const entries = context.flattenedEntries;
 
-			// Create new entry for the trigger, start off with entries that were damaged or healed
-			const triggerDamage = this._resolveDamageAndHealing(entries);
-			const triggerLogEntry = new MatchLogEntry('trigger', {
-				...trigger.entity, ...triggerDamage.get(trigger.entity.entityId)
-			});
-			for (const [eid, value] of triggerDamage.entries()) {
-				triggerLogEntry.addTarget(getEntity(eid), value);
-			}
-
+			// Create new entry for the trigger
+			const triggerLogEntry = new MatchLogEntry('trigger', trigger.entity);
 			let addBefore = false;
 
 			for (const subEntry of entries) {
 				// Resolve common target types (draw/discover/tag/etc)
 				const draw = this._resolveTarget(context, subEntry, gameState);
-				triggerLogEntry.addTarget(draw ? getEntity(draw) : null);
+				triggerLogEntry.addTarget(draw ? entities.get(draw) : null);
+
+				// Resolve damage and healing
+				this._handleHealthChange(triggerLogEntry, context, subEntry);
 
 				// Nested death block, mark existing targets as dead or add new ones
 				if (subEntry.type === 'block' && subEntry.blockType === 'DEATHS') {
@@ -237,23 +270,22 @@ export class BlockParser extends LineParser {
 					const marked = this._markDeaths(triggerLogEntry, deaths);
 					marked.forEach(m => deaths.delete(m));
 					for (const unmarked of deaths) {
-						const entity = getEntity(unmarked);
+						const entity = entities.get(unmarked);
 						triggerLogEntry.addTarget(entity, {dead: true});
 					}
 				}
 
 				// Handle redirections, if redirected, it goes before the attack, otherwise it goes after
 				if (subEntry.type === 'tag' && logEntry.type === 'attack' && subEntry.tag === 'PROPOSED_DEFENDER' && isCard(mainTarget)) {
-					const newTargetId = parseInt(subEntry.value, 10);
+					const newTargetId = Number(subEntry.value);
 					const triggerTargets = [newTargetId, source.entityId, mainTarget.entityId];
 					for (const id of compact(triggerTargets)) {
-						triggerLogEntry.addTarget(getEntity(id));
+						triggerLogEntry.addTarget(entities.get(id));
 					}
 
 					// Update the core entry to use the redirect
-					const damage = damageData.get(newTargetId);
 					logEntry.targets = [];
-					logEntry.addTarget(getEntity(newTargetId), damage);
+					logEntry.addTarget(entities.get(newTargetId));
 
 					// Needs to go before the main entry
 					addBefore = true;
@@ -267,7 +299,7 @@ export class BlockParser extends LineParser {
 
 		// Power entries sometimes have nested triggers, we may need to handle those too
 		const handlePower = (power: BlockData) => {
-			const context = new BlockContext(power);
+			const context = new BlockContext(power, entities);
 			const entries = context.flattenedEntries;
 
 			// Add to the mana spent. Its sometimes here for power flexible cards
@@ -276,7 +308,10 @@ export class BlockParser extends LineParser {
 			for (const subEntry of entries) {
 				// Resolve common target types (draw/discover/tag/etc)
 				const draw = this._resolveTarget(context, subEntry, gameState);
-				logEntry.addTarget(draw ? getEntity(draw) : null);
+				logEntry.addTarget(draw ? entities.get(draw) : null);
+
+				// Resolve damage and healing
+				this._handleHealthChange(logEntry, context, subEntry);
 
 				// Handle nested triggers (such as in Puzzle Box)
 				if (subEntry.type === 'block' && subEntry.blockType === 'TRIGGER') {
@@ -285,7 +320,7 @@ export class BlockParser extends LineParser {
 
 				// Handle recursive POWER blocks (Puzzle Box) by adding it as a target
 				if (subEntry.type === 'block' && subEntry.blockType === 'POWER' && isCard(subEntry.entity)) {
-					const entity = getEntity(subEntry.entity.entityId);
+					const entity = entities.get(subEntry.entity.entityId);
 					logEntry.addTarget(entity);
 
 					// Check if this was a hero power that was invoked
@@ -298,19 +333,6 @@ export class BlockParser extends LineParser {
 					}
 				}
 			}
-
-			// Merge damage (and add new targets) into MAIN entry
-			const damageEntries = this._resolveDamageAndHealing(entries);
-			for (const [targetId, damage] of damageEntries.entries()) {
-				const existing = logEntry.targets.find(t => t.entityId === targetId);
-				if (existing) {
-					existing.damage = (existing.damage ?? 0) + (damage.damage ?? 0);
-					existing.healing = (existing.healing ?? 0) + (damage.healing ?? 0);
-				} else {
-					const entity = getEntity(targetId);
-					logEntry.addTarget(entity, damage);
-				}
-			}
 		};
 
 		// Handle entries of the main block entry. These mostly delegate to other handlers.
@@ -318,8 +340,11 @@ export class BlockParser extends LineParser {
 			// Special Case - Twinspells. All other created entities should ONLY come from POWER/TRIGGER blocks.
 			// If this assumption proves to be false, handle it here.
 			if (entry.type === 'embedded_entity' && entry.action === 'Creating' && entry.entity.tags.ZONE === 'HAND') {
-				logEntry.addTarget(getEntity(entry.entity.entityId));
+				logEntry.addTarget(entities.get(entry.entity.entityId));
 			}
+
+			// Resolve damage and healing
+			this._handleHealthChange(logEntry, context, entry);
 
 			if (entry.type === 'block') {
 				// Resolve "TRIGGER" entries
@@ -346,7 +371,7 @@ export class BlockParser extends LineParser {
 					// If this is wrong, use a tag=TO_BE_DESTROYED priority system
 					const mostRecent = entries[0];
 					for (const death of deaths.values()) {
-						mostRecent.addTarget(getEntity(death), {dead: true});
+						mostRecent.addTarget(entities.get(death), {dead: true});
 					}
 				}
 			}
@@ -397,10 +422,56 @@ export class BlockParser extends LineParser {
 		return data;
 	}
 
+	/**
+	 * Handle main block DEATHS, which updates old match log 'attack' entries.
+	 * @param gameState
+	 * @param block
+	 */
+	private _handleTopLevelDeaths(gameState: GameState, block: BlockData) {
+		const deaths = this._resolveDeaths(block);
+		for (let i = gameState.matchLog.length - 1; i >= 0 && deaths.size; i--) {
+			const entry = gameState.matchLog[i];
+			if (entry.type === 'attack') {
+				const marked = this._markDeaths(entry, deaths);
+				marked.forEach(m => deaths.delete(m));
+			}
+		}
+	}
+
+	/**
+	 * Handles health changes (damage or healing) on a log entry for a single line.
+	 * If the entry is not in the match log, it is added automatically.
+	 * @param logEntry
+	 * @param context
+	 * @param line
+	 */
+	private _handleHealthChange(logEntry: MatchLogEntry, context: BlockContext, line: Entry) {
+		const entities = context.entities;
+		const values = context.detectHealthChange(line);
+
+		if (values) {
+			const entries = [logEntry.source, ...logEntry.targets].filter(p => p.entityId === values.entityId);
+			if (!entries.length) {
+				logEntry.addTarget(entities.get(values.entityId), values.values);
+				return;
+			}
+
+			for (const entry of entries) {
+				if (values.values.damage) {
+					entry.damage = (entry.damage ?? 0) + values.values.damage;
+				}
+
+				if (values.values.healing) {
+					entry.healing = (entry.healing ?? 0) + values.values.healing;
+				}
+			}
+		}
+	}
+
 	private _determineManaCost(block: BlockData, gameState: GameState) {
 		const manaTag = filterTags(block.entries, 'NUM_RESOURCES_SPENT_THIS_GAME')[0];
 		if (manaTag && manaTag.entity?.type === 'player') {
-			const totalMana = parseInt(manaTag.value, 10);
+			const totalMana = Number(manaTag.value);
 			const player = gameState.getPlayerByPosition(manaTag.entity.player);
 			if (player) {
 				const spentMana = totalMana - player.manaSpent;
@@ -410,40 +481,6 @@ export class BlockParser extends LineParser {
 		}
 
 		return 0;
-	}
-
-	/**
-	 * Resolves damage numbers for any block type.
-	 * Returns a Map to guarantee insertion order, which in ES2015 is not preserved
-	 * for integer keys for objects.
-	 * @param block
-	 */
-	private _resolveDamageAndHealing(entries: Entry[]): Map<number, DamageValues> {
-		// Note: We could reduce LOC by being clever....but keeping it simple
-		const damageByEntity = new Map<number, DamageValues>();
-
-		let nextDamageEntityId = -1;
-		let nextHealingEntityId = -1;
-		for (const data of entries) {
-			if (data.type === 'tag' && isCard(data.entity) && data.value !== '0') {
-				if (data.tag === 'PREDAMAGE') {
-					nextDamageEntityId = data.entity?.entityId;
-				} else if (data.tag === 'PREHEALING') {
-					nextHealingEntityId = data.entity?.entityId;
-				}
-			} else if (data.type === 'meta' && ['DAMAGE', 'HEALING'].includes(data.key)) {
-				const currentValues = damageByEntity.get(nextDamageEntityId) ?? {};
-				if (data.key === 'DAMAGE') {
-					const currentValue = currentValues.damage ?? 0;
-					damageByEntity.set(nextDamageEntityId, {...currentValues, damage: currentValue + data.value});
-				} else if (data.key === 'HEALING') {
-					const currentValue = currentValues.healing ?? 0;
-					damageByEntity.set(nextHealingEntityId, {...currentValues, healing: currentValue + data.value});
-				}
-			}
-		}
-
-		return damageByEntity;
 	}
 
 	/**
@@ -496,14 +533,16 @@ export class BlockParser extends LineParser {
 		}
 
 		// Test for enchantments, and return what its attached to
-		if (testTag(entry, 'ZONE', 'PLAY') && isCard(entry.entity)) {
+		// Enchantments to 2 or 3 are on a player, and are nonsense.
+		if (testTag(entry, 'ZONE', 'PLAY') && isCard(entry.entity) && isCard(block.entity)) {
 			// Get all full_entities and merge them (handles Create > Update)
 			const fullEntity = context.getMergedEntity(entry.entity.entityId);
 			const tags = fullEntity?.entity.tags ?? {};
 			const isEnchantment = tags.CARDTYPE === 'ENCHANTMENT';
-			const creator = parseInt(tags.CREATOR, 10);
-			if (isEnchantment && tags.ATTACHED && isCard(block.entity) && creator === block.entity.entityId) {
-				return parseInt(tags.ATTACHED, 10);
+			const creator = Number(tags.CREATOR);
+			const attached = Number(tags.ATTACHED);
+			if (isEnchantment && attached > 3 && creator === block.entity.entityId) {
+				return attached;
 			}
 		}
 
@@ -511,7 +550,7 @@ export class BlockParser extends LineParser {
 		if (testTag(entry, 'SPAWN_TIME_COUNT') && isCard(entry.entity)) {
 			const existing = gameState.getEntity(entry.entity.entityId);
 			if (existing && existing.tags.CARDTYPE === 'ENCHANTMENT' && existing.tags.ATTACHED) {
-				return parseInt(existing.tags.ATTACHED, 10);
+				return Number(existing.tags.ATTACHED);
 			}
 		}
 
