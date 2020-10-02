@@ -2,7 +2,7 @@ import {LineParser} from './AbstractLineParser';
 import {HspEventsEmitter} from './index';
 import {GameState, MatchLogEntry} from '../GameState';
 import {compact, concat, merge} from 'lodash';
-import {BlockData, BlockReader, CardEntity, Entity, Entry, FullEntity, TagData} from './readers';
+import {BlockData, BlockReader, CardEntity, Entity, Entry, FullEntity, SubSpell, TagData} from './readers';
 
 /**
  * Partial data of a match log entry for damage and healing values.
@@ -368,13 +368,15 @@ export class BlockParser extends LineParser {
 	 * @param block
 	 * @param data
 	 */
-	private _extractEntities(block: BlockData, data: {[key: number]: CardEntity} = {}) {
-		if (isCard(block.entity)) {
-			data[block.entity.entityId] = block.entity;
-		}
+	private _extractEntities(block: BlockData | SubSpell, data: {[key: number]: CardEntity} = {}) {
+		if (block.type === 'block') {
+			if (isCard(block.entity)) {
+				data[block.entity.entityId] = block.entity;
+			}
 
-		if (isCard(block.target)) {
-			data[block.target.entityId] = block.target;
+			if (isCard(block.target)) {
+				data[block.target.entityId] = block.target;
+			}
 		}
 
 		for (const entry of block.entries) {
@@ -387,7 +389,7 @@ export class BlockParser extends LineParser {
 				}
 			}
 
-			if (entry.type === 'block') {
+			if (entry.type === 'block' || entry.type === 'subspell') {
 				this._extractEntities(entry, data);
 			}
 		}

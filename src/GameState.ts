@@ -78,11 +78,12 @@ export class MatchLogEntry {
 	type: MatchLogType;
 	manaSpent = 0;
 	source: EntityProps;
-	targets: EntityProps[] = [];
+	targets: EntityProps[];
 
 	constructor(type: MatchLogType, source: CardEntity) {
 		this.type = type;
-		this.source = source;
+		this.setSource(source);
+		this.targets = [];
 	}
 
 	/**
@@ -110,6 +111,7 @@ export class MatchLogEntry {
 
 	private createProps(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
 		return merge({
+			cardId: entity.cardId,
 			cardName: entity.cardName,
 			entityId: entity.entityId,
 			player: entity.player
