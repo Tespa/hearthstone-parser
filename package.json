@@ -22,7 +22,7 @@
     "require-all": "^3.0.0",
     "split-lines": "^2.0.0",
     "strict-event-emitter-types": "^2.0.0",
-    "tslib": "^1.9.3"
+    "tslib": "^2.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
@@ -38,7 +38,7 @@
     "@typescript-eslint/parser": "^3.9.0",
     "chai": "^4.2.0",
     "codecov": "^3.3.0",
-    "dtslint": "^3.6.14",
+    "dtslint": "^4.0.4",
     "eslint": "^7.6.0",
     "eslint-config-xo": "^0.32.1",
     "eslint-config-xo-typescript": "^0.32.0",

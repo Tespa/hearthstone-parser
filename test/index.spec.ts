@@ -69,10 +69,16 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 
+			// This is being tested elsewhere, so clear it out here
+			// Removed as a judgement call because this tests way too much.
+			gameState.matchLog = [];
+
 			expect(gameState).deep.equal({
+				playerCount: 2,
 				players: [
 					{
 						id: 1,
+						manaSpent: 37,
 						name: 'SpookyPatron#1959',
 						status: 'WON',
 						turn: false,
@@ -87,6 +93,7 @@ describe('hearthstone-log-watcher', () => {
 					},
 					{
 						id: 2,
+						manaSpent: 35,
 						name: 'SnarkyPatron#1301',
 						status: 'LOST',
 						turn: true,
@@ -132,6 +139,7 @@ describe('hearthstone-log-watcher', () => {
 				'zone-change': 360,
 				'turn-change': 66,
 				'tag-change': 3066,
+				trigger: 9,
 				'mulligan-result': 4
 			});
 		});
@@ -350,6 +358,24 @@ describe('hearthstone-log-watcher', () => {
 			expect(gameState.getPlayerByPosition('bottom')!.cardsReplacedInMulligan).to.equal(2);
 			expect(gameState.getPlayerByPosition('top')!.cardsReplacedInMulligan).to.equal(4);
 		});
+
+		const testMatchLog = (artifact: string) => {
+			it(`handles matchlog ${artifact}`, () => {
+				const logFilePath = path.resolve(__dirname, `artifacts/${artifact}.log`);
+				const logWatcher = new LogWatcher({
+					logFile: logFilePath,
+					configFile: configFileFixture
+				});
+				const logBuffer = fs.readFileSync(logFilePath);
+				const gameState = logWatcher.parseBuffer(logBuffer);
+				const resultPath = path.resolve(__dirname, `artifacts/match-log-results/${artifact}.json`);
+				const expected = JSON.parse(fs.readFileSync(resultPath, 'utf8') ?? '[]');
+				expect(gameState.matchLog).deep.equal(expected);
+			});
+		};
+
+		testMatchLog('matchlog-healing-and-procs');
+		testMatchLog('matchlog-secrets');
 	});
 });
 

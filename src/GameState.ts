@@ -132,12 +132,12 @@ export class GameState {
 
 	matchLog: MatchLogEntry[];
 
-	private entities: {[id: number]: CardEntity} = {};
+	#entities: {[id: number]: CardEntity} = {};
 
 	/**
 	 * Internal set used to optimize card reveals
 	 */
-	private readonly missingEntityIds = new Set<number>();
+	readonly #missingEntityIds = new Set<number>();
 
 	constructor() {
 		this.reset();
@@ -197,12 +197,12 @@ export class GameState {
 
 		for (const entry of entries) {
 			if (isEmpty(entry.source?.cardName)) {
-				this.missingEntityIds.add(entry.source.entityId);
+				this.#missingEntityIds.add(entry.source.entityId);
 			}
 
 			for (const target of entry.targets) {
 				if (isEmpty(target.cardName)) {
-					this.missingEntityIds.add(target.entityId);
+					this.#missingEntityIds.add(target.entityId);
 				}
 			}
 		}
@@ -217,7 +217,7 @@ export class GameState {
 	 * @param entity
 	 */
 	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId'> & Partial<CardEntity>) {
-		this.entities[entity.entityId] = merge(this.entities[entity.entityId], entity);
+		this.#entities[entity.entityId] = merge(this.#entities[entity.entityId], entity);
 
 		// A better algorithm requires caching to a private property
 		const {cardName, entityId, cardId} = entity;
@@ -227,7 +227,7 @@ export class GameState {
 			return !cardName || cardName === UNKNOWN_CARDNAME;
 		};
 
-		if (isEmpty(cardName) || !this.missingEntityIds.has(entityId)) {
+		if (isEmpty(cardName) || !this.#missingEntityIds.has(entityId)) {
 			return;
 		}
 
@@ -245,6 +245,6 @@ export class GameState {
 	}
 
 	getEntity(id: number): CardEntity | undefined {
-		return this.entities[id];
+		return this.#entities[id];
 	}
 }
