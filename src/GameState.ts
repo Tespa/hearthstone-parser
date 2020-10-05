@@ -4,6 +4,14 @@ import {CardEntity} from './line-parsers/readers';
 
 const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
 
+/**
+ * Tests if a card name is empty or the "empty string"
+ * @param cardName
+ */
+const isEmpty = (cardName: string) => {
+	return !cardName || cardName === UNKNOWN_CARDNAME;
+};
+
 export interface Secret {
 	cardId: string;
 	cardClass: Class;
@@ -132,7 +140,7 @@ export class GameState {
 
 	matchLog: MatchLogEntry[];
 
-	#entities: {[id: number]: CardEntity} = {};
+	#entities: {[id: number]: CardEntity | undefined} = {};
 
 	/**
 	 * Internal set used to optimize card reveals
@@ -151,12 +159,13 @@ export class GameState {
 		this.players = [];
 		this.matchLog = [];
 		this.gameOverCount = 0;
+		this.#entities = {};
+		this.#missingEntityIds.clear();
 	}
 
 	addPlayer(player: Player): Player {
-		const existingIdx = this.players.findIndex(p => p.id === player.id);
-		if (existingIdx > -1) {
-			const existingPlayer = this.players[existingIdx];
+		const existingPlayer = this.players.find(p => p.id === player.id);
+		if (existingPlayer) {
 			if (existingPlayer.name === 'UNKNOWN HUMAN PLAYER') {
 				existingPlayer.name = player.name;
 			}
@@ -191,10 +200,6 @@ export class GameState {
 	 * @param entries
 	 */
 	addMatchLogEntry(...entries: MatchLogEntry[]) {
-		const isEmpty = (cardName: string) => {
-			return !cardName || cardName === UNKNOWN_CARDNAME;
-		};
-
 		for (const entry of entries) {
 			if (isEmpty(entry.source?.cardName)) {
 				this.#missingEntityIds.add(entry.source.entityId);
@@ -216,16 +221,12 @@ export class GameState {
 	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
 	 * @param entity
 	 */
-	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId'> & Partial<CardEntity>) {
+	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId' | 'cardId'> & Partial<CardEntity>) {
 		this.#entities[entity.entityId] = merge(this.#entities[entity.entityId], entity);
 
 		// A better algorithm requires caching to a private property
 		const {cardName, entityId, cardId} = entity;
 		const newProps = {entityId, cardName, cardId};
-
-		const isEmpty = (cardName: string) => {
-			return !cardName || cardName === UNKNOWN_CARDNAME;
-		};
 
 		if (isEmpty(cardName) || !this.#missingEntityIds.has(entityId)) {
 			return;

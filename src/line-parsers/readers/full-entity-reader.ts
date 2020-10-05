@@ -1,6 +1,17 @@
 import {GameState} from '../../GameState';
 import cards from '../../data/cards';
-import {createSimpleRegexParser, FullEntity, identifyPlayer, readEntityString} from '.';
+import {CardEntity, createSimpleRegexParser, identifyPlayer, readEntityString} from './base';
+
+/**
+ * Object derived from FULL_ENTITY or SHOW_ENTITY sub-blocks.
+ */
+export interface FullEntity {
+	type: 'embedded_entity';
+	action: 'Creating' | 'Updating';
+	entity: CardEntity;
+	cardId: string;
+	player?: 'top' | 'bottom';
+}
 
 export class FullEntityReader {
 	private readonly fullStartReader = createSimpleRegexParser(

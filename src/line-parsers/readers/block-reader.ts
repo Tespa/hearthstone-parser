@@ -1,6 +1,7 @@
 import {GameState} from '../../GameState';
-import {createSimpleRegexParser, Entity, MetaData, readEntityString, TagData, FullEntity} from '.';
+import {FullEntity} from '.';
 import {FullEntityReader} from './full-entity-reader';
+import {createSimpleRegexParser, Entity, MetaData, readEntityString, TagData} from './base';
 
 export type Entry = BlockData | SubSpell | TagData | MetaData | FullEntity;
 
