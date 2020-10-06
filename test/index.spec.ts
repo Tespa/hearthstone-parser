@@ -9,7 +9,7 @@ import {should, expect} from 'chai';
 import * as mockdate from 'mockdate';
 
 // Ours
-import {LogWatcher} from '../src';
+import {LogWatcher, GameState, Player} from '../src';
 
 should(); // Initialize chai's "should" interface.
 
@@ -69,10 +69,16 @@ describe('hearthstone-log-watcher', () => {
 			const gameState = this.logWatcher.parseBuffer(logBuffer);
 			mockdate.reset();
 
+			// This is being tested elsewhere, so clear it out here
+			// Removed as a judgement call because this tests way too much.
+			gameState.matchLog = [];
+
 			expect(gameState).deep.equal({
+				playerCount: 2,
 				players: [
 					{
 						id: 1,
+						manaSpent: 37,
 						name: 'SpookyPatron#1959',
 						status: 'WON',
 						turn: false,
@@ -87,6 +93,7 @@ describe('hearthstone-log-watcher', () => {
 					},
 					{
 						id: 2,
+						manaSpent: 35,
 						name: 'SnarkyPatron#1301',
 						status: 'LOST',
 						turn: true,
@@ -102,7 +109,8 @@ describe('hearthstone-log-watcher', () => {
 				],
 				gameOverCount: 2,
 				mulliganActive: false,
-				turnStartTime: date
+				turnStartTime: date,
+				matchLog: []
 			});
 		});
 
@@ -119,6 +127,7 @@ describe('hearthstone-log-watcher', () => {
 			this.logWatcher.parseBuffer(logBuffer);
 
 			eventCounters.should.deep.equal({
+				attack: 65,
 				'card-played': 56,
 				'discovery-end': 2,
 				'discovery-start': 2,
@@ -130,6 +139,7 @@ describe('hearthstone-log-watcher', () => {
 				'zone-change': 360,
 				'turn-change': 66,
 				'tag-change': 3066,
+				trigger: 9,
 				'mulligan-result': 4
 			});
 		});
@@ -347,6 +357,56 @@ describe('hearthstone-log-watcher', () => {
 			// 2, 4
 			expect(gameState.getPlayerByPosition('bottom')!.cardsReplacedInMulligan).to.equal(2);
 			expect(gameState.getPlayerByPosition('top')!.cardsReplacedInMulligan).to.equal(4);
+		});
+
+		const testMatchLog = (artifact: string) => {
+			it(`handles matchlog ${artifact}`, () => {
+				const logFilePath = path.resolve(__dirname, `artifacts/${artifact}.log`);
+				const logWatcher = new LogWatcher({
+					logFile: logFilePath,
+					configFile: configFileFixture
+				});
+				const logBuffer = fs.readFileSync(logFilePath);
+				const gameState = logWatcher.parseBuffer(logBuffer);
+				const resultPath = path.resolve(__dirname, `artifacts/match-log-results/${artifact}.json`);
+				const expected = JSON.parse(fs.readFileSync(resultPath, 'utf8') ?? '[]');
+				expect(gameState.matchLog).deep.equal(expected);
+			});
+		};
+
+		testMatchLog('matchlog-healing-and-procs');
+		testMatchLog('matchlog-secrets');
+	});
+});
+
+describe('Gamestate', () => {
+	describe('addPlayer', () => {
+		it('should update names', () => {
+			const basePlayer: Player = {
+				id: 0,
+				name: 'UNKNOWN HUMAN PLAYER',
+				status: '',
+				turn: false,
+				timeout: 45,
+				cardCount: 0,
+				cards: [],
+				position: 'bottom',
+				secrets: [],
+				quests: [],
+				discovery: {
+					enabled: false,
+					id: null
+				},
+				cardsReplacedInMulligan: 0,
+				manaSpent: 0
+			};
+
+			const state = new GameState();
+			state.addPlayer({...basePlayer, id: 1, name: 'hello'});
+			state.addPlayer({...basePlayer, id: 2});
+			state.addPlayer({...basePlayer, id: 2, name: 'world'});
+			state.playerCount.should.equal(2, 'expected 2 players');
+			state.getPlayerById(2)?.name.should.equal('world', 'expected name to update');
 		});
 	});
 });

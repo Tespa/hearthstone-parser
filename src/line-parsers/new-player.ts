@@ -8,10 +8,6 @@ export class NewPlayerLineParser extends AbstractLineParser {
 	eventName = 'player-joined' as const;
 
 	lineMatched(parts: string[], gameState: GameState): void {
-		if (parts[2] === 'UNKNOWN HUMAN PLAYER') {
-			return;
-		}
-
 		gameState.addPlayer({
 			id: parseInt(parts[1], 10),
 			name: parts[2],
@@ -27,7 +23,8 @@ export class NewPlayerLineParser extends AbstractLineParser {
 				enabled: false,
 				id: null
 			},
-			cardsReplacedInMulligan: 0
+			cardsReplacedInMulligan: 0,
+			manaSpent: 0
 		});
 	}
 

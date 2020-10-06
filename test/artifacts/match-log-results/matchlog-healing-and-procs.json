@@ -1,0 +1,1682 @@
+[
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 54874,
+        "cardName": "Disciple of Galakrond",
+        "entityId": 53,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 57416,
+          "cardName": "Galakrond, the Unspeakable",
+          "entityId": 79,
+          "player": "bottom"
+        },
+        {
+          "cardId": 55810,
+          "cardName": "Galakrond's Wit",
+          "entityId": 80,
+          "player": "bottom"
+        },
+        {
+          "cardId": 56681,
+          "cardName": "Dragonmaw Overseer",
+          "entityId": 81,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 613,
+        "cardName": "Power Word: Shield",
+        "entityId": 56,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 53,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 59233,
+        "cardName": "Trueaim Crescent",
+        "entityId": 26,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 30,
+        "cardName": "Thoughtsteal",
+        "entityId": 52,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom"
+        },
+        {
+          "cardId": 1144,
+          "cardName": "King Krush",
+          "entityId": 87,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 1746,
+        "cardName": "The Coin",
+        "entityId": 69,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 8,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 220,
+        "cardName": "Shadow Madness",
+        "entityId": 50,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 8,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 8,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 31,
+          "cardName": "Rexxar",
+          "entityId": 65,
+          "player": "top",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 55292,
+        "cardName": "Dwarven Sharpshooter",
+        "entityId": 15,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top",
+        "damage": 1
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 53,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 8,
+        "player": "top",
+        "damage": 1
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 53,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 55292,
+        "cardName": "Dwarven Sharpshooter",
+        "entityId": 15,
+        "player": "top",
+        "damage": 1
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 53,
+          "player": "bottom",
+          "damage": 1,
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 55301,
+        "cardName": "Toxic Reinforcements",
+        "entityId": 32,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 59223,
+        "cardName": "Raise Dead ",
+        "entityId": 64,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 3
+        },
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 95,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 52632,
+        "cardName": "Forbidden Words",
+        "entityId": 62,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 8,
+          "player": "top",
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 8,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 51376,
+        "cardName": "Lazul's Scheme",
+        "entityId": 63,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 55292,
+          "cardName": "Dwarven Sharpshooter",
+          "entityId": 15,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 54874,
+        "cardName": "Disciple of Galakrond",
+        "entityId": 95,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 57416,
+          "cardName": "Galakrond, the Unspeakable",
+          "entityId": 100,
+          "player": "bottom"
+        },
+        {
+          "cardId": 55810,
+          "cardName": "Galakrond's Wit",
+          "entityId": 103,
+          "player": "bottom"
+        },
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 86,
+        "player": "bottom"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 229,
+        "cardName": "Steady Shot",
+        "entityId": 66,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top",
+        "damage": 1
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 95,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 55292,
+        "cardName": "Dwarven Sharpshooter",
+        "entityId": 15,
+        "player": "top",
+        "damage": 1
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 95,
+          "player": "bottom",
+          "damage": 1,
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 1189,
+        "cardName": "Silence",
+        "entityId": 58,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 55292,
+          "cardName": "Dwarven Sharpshooter",
+          "entityId": 15,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 59579,
+        "cardName": "Frazzled Freshman",
+        "entityId": 104,
+        "player": "bottom"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 479,
+        "cardName": "Lesser Heal",
+        "entityId": 68,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56681,
+          "cardName": "Dragonmaw Overseer",
+          "entityId": 81,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 5,
+      "type": "play",
+      "source": {
+        "cardId": 53099,
+        "cardName": "Hunting Party",
+        "entityId": 17,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 111,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top",
+        "damage": 2
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 55292,
+        "cardName": "Dwarven Sharpshooter",
+        "entityId": 15,
+        "player": "top",
+        "damage": 2,
+        "dead": true
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 1362,
+        "cardName": "Circle of Healing",
+        "entityId": 48,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom",
+          "healing": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 54874,
+        "cardName": "Disciple of Galakrond",
+        "entityId": 60,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 57417,
+          "cardName": "Galakrond, the Apocalypse",
+          "entityId": 114,
+          "player": "bottom"
+        },
+        {
+          "cardId": 55810,
+          "cardName": "Galakrond's Wit",
+          "entityId": 115,
+          "player": "bottom"
+        },
+        {
+          "cardId": 59585,
+          "cardName": "Flesh Giant",
+          "entityId": 116,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 21,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 53860,
+        "cardName": "Desert Spear",
+        "entityId": 29,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 437,
+        "cardName": "Animal Companion",
+        "entityId": 10,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 226,
+          "cardName": "Leokk",
+          "entityId": 120,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 229,
+        "cardName": "Steady Shot",
+        "entityId": 66,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 111,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 9,
+      "type": "play",
+      "source": {
+        "cardId": 52632,
+        "cardName": "Forbidden Words",
+        "entityId": 46,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 226,
+          "cardName": "Leokk",
+          "entityId": 120,
+          "player": "top",
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 6,
+      "type": "play",
+      "source": {
+        "cardId": 55640,
+        "cardName": "Veranus",
+        "entityId": 11,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom"
+        },
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom"
+        },
+        {
+          "cardId": 56681,
+          "cardName": "Dragonmaw Overseer",
+          "entityId": 81,
+          "player": "bottom"
+        },
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 60,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 229,
+        "cardName": "Steady Shot",
+        "entityId": 66,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 813,
+          "cardName": "Anduin Wrynn",
+          "entityId": 67,
+          "player": "bottom",
+          "damage": 2
+        },
+        {
+          "cardId": 55301,
+          "cardName": "Toxic Reinforcements",
+          "entityId": 32,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 55301,
+        "cardName": "Toxic Reinforcements",
+        "entityId": 32,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 658,
+          "cardName": "Leper Gnome",
+          "entityId": 131,
+          "player": "bottom"
+        },
+        {
+          "cardId": 658,
+          "cardName": "Leper Gnome",
+          "entityId": 132,
+          "player": "bottom"
+        },
+        {
+          "cardId": 658,
+          "cardName": "Leper Gnome",
+          "entityId": 133,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 7,
+      "type": "play",
+      "source": {
+        "cardId": 57417,
+        "cardName": "Galakrond, the Apocalypse",
+        "entityId": 41,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 21,
+          "player": "top",
+          "dead": true
+        },
+        {
+          "cardId": 658,
+          "cardName": "Leper Gnome",
+          "entityId": 131,
+          "player": "top",
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 21,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 59579,
+          "cardName": "Frazzled Freshman",
+          "entityId": 104,
+          "player": "bottom",
+          "damage": 1,
+          "dead": true
+        },
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 86,
+          "player": "bottom",
+          "damage": 1,
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 658,
+        "cardName": "Leper Gnome",
+        "entityId": 131,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57417,
+          "cardName": "Galakrond, the Apocalypse",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56398,
+        "cardName": "Augmented Porcupine",
+        "entityId": 86,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 111,
+          "player": "top",
+          "damage": 1
+        },
+        {
+          "cardId": 31,
+          "cardName": "Rexxar",
+          "entityId": 65,
+          "player": "top",
+          "damage": 2
+        },
+        {
+          "cardId": 658,
+          "cardName": "Leper Gnome",
+          "entityId": 133,
+          "player": "top",
+          "damage": 1,
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 658,
+        "cardName": "Leper Gnome",
+        "entityId": 133,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57417,
+          "cardName": "Galakrond, the Apocalypse",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 55810,
+        "cardName": "Galakrond's Wit",
+        "entityId": 138,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 52109,
+          "cardName": "EVIL Conscripter",
+          "entityId": 139,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 56681,
+        "cardName": "Dragonmaw Overseer",
+        "entityId": 81,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 60,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 58980,
+        "cardName": "Krolusk Barkstripper",
+        "entityId": 13,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 6,
+      "type": "play",
+      "source": {
+        "cardId": 52089,
+        "cardName": "Unleash the Beast",
+        "entityId": 28,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 54145,
+          "cardName": "Unleash the Beast",
+          "entityId": 143,
+          "player": "bottom"
+        },
+        {
+          "cardId": 54146,
+          "cardName": "Wyvern",
+          "entityId": 144,
+          "player": "bottom"
+        },
+        {
+          "cardId": 58980,
+          "cardName": "Krolusk Barkstripper",
+          "entityId": 13,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 58980,
+        "cardName": "Krolusk Barkstripper",
+        "entityId": 13,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 56681,
+          "cardName": "Dragonmaw Overseer",
+          "entityId": 81,
+          "player": "bottom",
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57418,
+          "cardName": "Galakrond, Azeroth's End",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 53860,
+        "cardName": "Desert Spear",
+        "entityId": 29,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 53921,
+          "cardName": "Locust",
+          "entityId": 145,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 1362,
+        "cardName": "Circle of Healing",
+        "entityId": 55,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 111,
+          "player": "top",
+          "healing": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 658,
+        "cardName": "Leper Gnome",
+        "entityId": 132,
+        "player": "top",
+        "damage": 3,
+        "dead": true
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 60,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 658,
+        "cardName": "Leper Gnome",
+        "entityId": 132,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57418,
+          "cardName": "Galakrond, Azeroth's End",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57418,
+          "cardName": "Galakrond, Azeroth's End",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 53860,
+        "cardName": "Desert Spear",
+        "entityId": 29,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 53921,
+          "cardName": "Locust",
+          "entityId": 147,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 56697,
+        "cardName": "Scrap Shot",
+        "entityId": 25,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 57418,
+          "cardName": "Galakrond, Azeroth's End",
+          "entityId": 41,
+          "player": "bottom",
+          "damage": 3
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 1366,
+        "cardName": "Mass Dispel",
+        "entityId": 57,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 56398,
+          "cardName": "Augmented Porcupine",
+          "entityId": 111,
+          "player": "top"
+        },
+        {
+          "cardId": 55640,
+          "cardName": "Veranus",
+          "entityId": 11,
+          "player": "top"
+        },
+        {
+          "cardId": 58980,
+          "cardName": "Krolusk Barkstripper",
+          "entityId": 13,
+          "player": "top"
+        },
+        {
+          "cardId": 54146,
+          "cardName": "Wyvern",
+          "entityId": 144,
+          "player": "top"
+        },
+        {
+          "cardId": 53921,
+          "cardName": "Locust",
+          "entityId": 145,
+          "player": "top"
+        },
+        {
+          "cardId": 53921,
+          "cardName": "Locust",
+          "entityId": 147,
+          "player": "top"
+        },
+        {
+          "cardId": 51376,
+          "cardName": "Lazul's Scheme",
+          "entityId": 36,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 5,
+      "type": "play",
+      "source": {
+        "cardId": 699,
+        "cardName": "Tundra Rhino",
+        "entityId": 27,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 10,
+      "type": "play",
+      "source": {
+        "cardId": 8,
+        "cardName": "Mind Control",
+        "entityId": 37,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 55640,
+          "cardName": "Veranus",
+          "entityId": 11,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 51376,
+        "cardName": "Lazul's Scheme",
+        "entityId": 36,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 54146,
+          "cardName": "Wyvern",
+          "entityId": 144,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 51715,
+        "cardName": "Hench-Clan Shadequill",
+        "entityId": 39,
+        "player": "bottom"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "play",
+      "source": {
+        "cardId": 613,
+        "cardName": "Power Word: Shield",
+        "entityId": 44,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 54874,
+          "cardName": "Disciple of Galakrond",
+          "entityId": 60,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 52070,
+        "cardName": "Marked Shot",
+        "entityId": 7,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 51715,
+          "cardName": "Hench-Clan Shadequill",
+          "entityId": 39,
+          "player": "bottom",
+          "damage": 4
+        },
+        {
+          "cardId": 56703,
+          "cardName": "Scavenger's Ingenuity",
+          "entityId": 165,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 2,
+      "type": "play",
+      "source": {
+        "cardId": 56703,
+        "cardName": "Scavenger's Ingenuity",
+        "entityId": 165,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 58980,
+          "cardName": "Krolusk Barkstripper",
+          "entityId": 18,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 1,
+      "type": "play",
+      "source": {
+        "cardId": 55292,
+        "cardName": "Dwarven Sharpshooter",
+        "entityId": 6,
+        "player": "top"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 53921,
+        "cardName": "Locust",
+        "entityId": 145,
+        "player": "top",
+        "damage": 4,
+        "dead": true
+      },
+      "targets": [
+        {
+          "cardId": 51715,
+          "cardName": "Hench-Clan Shadequill",
+          "entityId": 39,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 53921,
+        "cardName": "Locust",
+        "entityId": 147,
+        "player": "top",
+        "damage": 4,
+        "dead": true
+      },
+      "targets": [
+        {
+          "cardId": 51715,
+          "cardName": "Hench-Clan Shadequill",
+          "entityId": 39,
+          "player": "bottom",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 699,
+        "cardName": "Tundra Rhino",
+        "entityId": 27,
+        "player": "top",
+        "damage": 4
+      },
+      "targets": [
+        {
+          "cardId": 51715,
+          "cardName": "Hench-Clan Shadequill",
+          "entityId": 39,
+          "player": "bottom",
+          "damage": 2,
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 51715,
+        "cardName": "Hench-Clan Shadequill",
+        "entityId": 39,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 31,
+          "cardName": "Rexxar",
+          "entityId": 65,
+          "player": "top",
+          "healing": 5
+        }
+      ]
+    },
+    {
+      "manaSpent": 3,
+      "type": "play",
+      "source": {
+        "cardId": 437,
+        "cardName": "Animal Companion",
+        "entityId": 20,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 226,
+          "cardName": "Leokk",
+          "entityId": 171,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 59623,
+        "cardName": "Disciplinarian Gandling",
+        "entityId": 34,
+        "player": "bottom"
+      },
+      "targets": []
+    },
+    {
+      "manaSpent": 5,
+      "type": "play",
+      "source": {
+        "cardId": 59585,
+        "cardName": "Flesh Giant",
+        "entityId": 116,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 59623,
+          "cardName": "Disciplinarian Gandling",
+          "entityId": 34,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 59623,
+        "cardName": "Disciplinarian Gandling",
+        "entityId": 34,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 59585,
+          "cardName": "Flesh Giant",
+          "entityId": 116,
+          "player": "bottom",
+          "dead": true
+        },
+        {
+          "cardId": 61092,
+          "cardName": "Failed Student",
+          "entityId": 180,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 4,
+      "type": "play",
+      "source": {
+        "cardId": 56697,
+        "cardName": "Scrap Shot",
+        "entityId": 22,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 59623,
+          "cardName": "Disciplinarian Gandling",
+          "entityId": 34,
+          "player": "bottom",
+          "damage": 3
+        },
+        {
+          "cardId": 58980,
+          "cardName": "Krolusk Barkstripper",
+          "entityId": 18,
+          "player": "top"
+        }
+      ]
+    },
+    {
+      "manaSpent": 6,
+      "type": "play",
+      "source": {
+        "cardId": 272,
+        "cardName": "Cabal Shadow Priest",
+        "entityId": 45,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 55292,
+          "cardName": "Dwarven Sharpshooter",
+          "entityId": 6,
+          "player": "top"
+        },
+        {
+          "cardId": 59623,
+          "cardName": "Disciplinarian Gandling",
+          "entityId": 34,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 59623,
+        "cardName": "Disciplinarian Gandling",
+        "entityId": 34,
+        "player": "bottom"
+      },
+      "targets": [
+        {
+          "cardId": 272,
+          "cardName": "Cabal Shadow Priest",
+          "entityId": 45,
+          "player": "bottom",
+          "dead": true
+        },
+        {
+          "cardId": 61092,
+          "cardName": "Failed Student",
+          "entityId": 184,
+          "player": "bottom"
+        }
+      ]
+    },
+    {
+      "manaSpent": 7,
+      "type": "play",
+      "source": {
+        "cardId": 52091,
+        "cardName": "Vereesa Windrunner",
+        "entityId": 33,
+        "player": "top"
+      },
+      "targets": [
+        {
+          "cardId": 53860,
+          "cardName": "Desert Spear",
+          "entityId": 29,
+          "player": "top",
+          "dead": true
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "attack",
+      "source": {
+        "cardId": 31,
+        "cardName": "Rexxar",
+        "entityId": 65,
+        "player": "top",
+        "damage": 4
+      },
+      "targets": [
+        {
+          "cardId": 61092,
+          "cardName": "Failed Student",
+          "entityId": 180,
+          "player": "bottom",
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "manaSpent": 0,
+      "type": "trigger",
+      "source": {
+        "cardId": 54157,
+        "cardName": "Thori'dal, the Stars' Fury",
+        "entityId": 187,
+        "player": "top"
+      },
+      "targets": []
+    }
+  ]

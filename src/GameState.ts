@@ -1,4 +1,16 @@
+import {merge} from 'lodash';
 import {Class} from './data/meta';
+import {CardEntity} from './line-parsers/readers';
+
+const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
+
+/**
+ * Tests if a card name is empty or the "empty string"
+ * @param cardName
+ */
+const isEmpty = (cardName: string) => {
+	return !cardName || cardName === UNKNOWN_CARDNAME;
+};
 
 export interface Secret {
 	cardId: string;
@@ -55,6 +67,64 @@ export interface Player {
 		id: string | null;
 	};
 	cardsReplacedInMulligan: number;
+	manaSpent: number;
+}
+
+export interface EntityProps {
+	cardId?: number;
+	cardName: string;
+	entityId: number;
+	player: 'top' | 'bottom';
+	damage?: number;
+	healing?: number;
+	dead?: boolean;
+}
+
+type MatchLogType = 'attack' | 'play' | 'trigger';
+
+export class MatchLogEntry {
+	type: MatchLogType;
+	manaSpent = 0;
+	source: EntityProps;
+	targets: EntityProps[];
+
+	constructor(type: MatchLogType, source: CardEntity) {
+		this.type = type;
+		this.setSource(source);
+		this.targets = [];
+	}
+
+	/**
+	 * Sets the source of this match log entry, with the ability to specify
+	 * additional merge properties.
+	 * @param entity
+	 */
+	setSource(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
+		this.source = this.createProps(entity, ...props);
+	}
+
+	/**
+	 * Adds a target to this match log entry, with the ability to specify
+	 * additional merge properties. Ignored if the entity is falsey
+	 * or if it is already added.
+	 * @param entity entity to add. If undefined or null, it will be ignored
+	 */
+	addTarget(entity: CardEntity | undefined | null, ...props: Array<Partial<EntityProps> | undefined>) {
+		if (!entity || this.targets.findIndex(t => t.entityId === entity.entityId) !== -1) {
+			return;
+		}
+
+		this.targets.push(this.createProps(entity, ...props));
+	}
+
+	private createProps(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
+		return merge({
+			cardId: entity.cardId,
+			cardName: entity.cardName,
+			entityId: entity.entityId,
+			player: entity.player
+		}, ...props);
+	}
 }
 
 export class GameState {
@@ -68,6 +138,15 @@ export class GameState {
 
 	turnStartTime: Date;
 
+	matchLog: MatchLogEntry[];
+
+	#entities: {[id: number]: CardEntity | undefined} = {};
+
+	/**
+	 * Internal set used to optimize card reveals
+	 */
+	readonly #missingEntityIds = new Set<number>();
+
 	constructor() {
 		this.reset();
 	}
@@ -78,11 +157,24 @@ export class GameState {
 
 	reset(): void {
 		this.players = [];
+		this.matchLog = [];
 		this.gameOverCount = 0;
+		this.#entities = {};
+		this.#missingEntityIds.clear();
 	}
 
 	addPlayer(player: Player): Player {
+		const existingPlayer = this.players.find(p => p.id === player.id);
+		if (existingPlayer) {
+			if (existingPlayer.name === 'UNKNOWN HUMAN PLAYER') {
+				existingPlayer.name = player.name;
+			}
+
+			return existingPlayer;
+		}
+
 		this.players.push(player);
+		this.playerCount = this.numPlayers;
 		return player;
 	}
 
@@ -100,5 +192,60 @@ export class GameState {
 
 	getAllPlayers(): Player[] {
 		return this.players.slice(0);
+	}
+
+	/**
+	 * Adds match log entries to the gamestate, and flags any entities
+	 * that need filling out by future events.
+	 * @param entries
+	 */
+	addMatchLogEntry(...entries: MatchLogEntry[]) {
+		for (const entry of entries) {
+			if (isEmpty(entry.source?.cardName)) {
+				this.#missingEntityIds.add(entry.source.entityId);
+			}
+
+			for (const target of entry.targets) {
+				if (isEmpty(target.cardName)) {
+					this.#missingEntityIds.add(target.entityId);
+				}
+			}
+		}
+
+		this.matchLog.push(...entries);
+	}
+
+	/**
+	 * Updates any unresolved entities in any sub-data.
+	 * Very often hearthstone won't assign a name to an entity until later,
+	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
+	 * @param entity
+	 */
+	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId' | 'cardId'> & Partial<CardEntity>) {
+		this.#entities[entity.entityId] = merge(this.#entities[entity.entityId], entity);
+
+		// A better algorithm requires caching to a private property
+		const {cardName, entityId, cardId} = entity;
+		const newProps = {entityId, cardName, cardId};
+
+		if (isEmpty(cardName) || !this.#missingEntityIds.has(entityId)) {
+			return;
+		}
+
+		for (const entry of this.matchLog) {
+			if (isEmpty(entry.source.cardName) && entry.source.entityId === entityId) {
+				entry.source = {...entry.source, ...newProps};
+			}
+
+			for (const [idx, target] of entry.targets.entries()) {
+				if (isEmpty(target.cardName) && target.entityId === entityId) {
+					entry.targets[idx] = {...target, ...newProps};
+				}
+			}
+		}
+	}
+
+	getEntity(id: number): CardEntity | undefined {
+		return this.#entities[id];
 	}
 }
