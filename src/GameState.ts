@@ -222,9 +222,13 @@ export class GameState {
 	 * @param entity
 	 */
 	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId' | 'cardId'> & Partial<CardEntity>) {
-		this.#entities[entity.entityId] = merge(this.#entities[entity.entityId], entity);
+		const existing = this.#entities[entity.entityId];
+		this.#entities[entity.entityId] = merge({
+			type: 'card',
+			tags: {},
+			player: 'bottom'
+		}, existing, entity);
 
-		// A better algorithm requires caching to a private property
 		const {cardName, entityId, cardId} = entity;
 		const newProps = {entityId, cardName, cardId};
 
@@ -232,6 +236,7 @@ export class GameState {
 			return;
 		}
 
+		// Update entities for each log entry
 		for (const entry of this.matchLog) {
 			if (isEmpty(entry.source.cardName) && entry.source.entityId === entityId) {
 				entry.source = {...entry.source, ...newProps};
