@@ -17,6 +17,10 @@ class EntityCollection {
 		private readonly gameState: GameState,
 		private readonly entities: {[key: number]: CardEntity}) {}
 
+	values() {
+		return Object.values(this.entities);
+	}
+
 	get(entityId: number) {
 		return this.entities[entityId] ??
 			this.gameState.getEntity(entityId) ??
@@ -148,7 +152,16 @@ export class BlockParser extends LineParser {
 		// Read GameState blocks. These are used to build the Match Log.
 		const block = this.reader.readLine(line, gameState);
 		if (block) {
-			this._handleMatchLog(emitter, gameState, block);
+			try {
+				this._handleMatchLog(emitter, gameState, block);
+			} catch (err) {
+				const source = isCard(block.entity) && block.entity.cardName;
+				const target = isCard(block.target) && block.target.cardName;
+				console.error(`\nFailed to process block: Type=${block.blockType} Source=${source} Target=${target}`);
+				console.trace(err.toString());
+				console.error();
+			}
+
 			return true;
 		}
 
@@ -378,7 +391,7 @@ export class BlockParser extends LineParser {
 		}
 
 		// Merge these entities into the match log (before, for perf)
-		for (const entity of Object.values(entities)) {
+		for (const entity of entities.values()) {
 			gameState.resolveEntity(entity);
 		}
 
