@@ -128,6 +128,8 @@ export class MatchLogEntry {
 }
 
 export class GameState {
+	startTime: number;
+
 	playerCount: number;
 
 	gameOverCount: number;
@@ -155,12 +157,37 @@ export class GameState {
 		return this.players.length;
 	}
 
+	/**
+	 * Returns true if the game state is active for an ongoing game
+	 */
+	get active(): boolean {
+		return Boolean(this.startTime) && !this.complete;
+	}
+
+	/**
+	 * Returns true if the gamestate is representing a completed game.
+	 */
+	get complete(): boolean {
+		return this.gameOverCount === 2;
+	}
+
+	/**
+	 * Resets the game state to default conditions.
+	 */
 	reset(): void {
 		this.players = [];
 		this.matchLog = [];
 		this.gameOverCount = 0;
 		this.#entities = {};
 		this.#missingEntityIds.clear();
+	}
+
+	/**
+	 * Resets the game state to default conditions and marks it as a game that has begun.
+	 */
+	start(): void {
+		this.reset();
+		this.startTime = Date.now();
 	}
 
 	addPlayer(player: Player): Player {

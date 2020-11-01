@@ -8,7 +8,7 @@ export class GameStartLineParser extends AbstractLineParser {
 	eventName = 'game-start' as const;
 
 	lineMatched(_: string[], gameState: GameState): void {
-		gameState.reset();
+		gameState.start();
 	}
 
 	formatLogMessage(): string {
