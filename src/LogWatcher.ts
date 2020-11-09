@@ -21,6 +21,11 @@ export interface Options {
 	configFile: string;
 
 	/**
+	 * Path to save any log files
+	 */
+	logDirectory?: string;
+
+	/**
 	 * The number of lines in each parsing group.
 	 */
 	linesPerUpdate?: number;
@@ -71,6 +76,9 @@ export class LogWatcher extends HspEventsEmitterClass {
 
 	private _updateDebouncer: (filePath: string, stats: fs.Stats) => void;
 
+	private _logStream: fs.WriteStream | null = null;
+	private _linesQueued = new Array<string>();
+
 	constructor(options?: Partial<Options>) {
 		super();
 
@@ -87,6 +95,11 @@ export class LogWatcher extends HspEventsEmitterClass {
 
 		if (!fs.existsSync(path.parse(this.options.logFile).dir)) {
 			throw new Error('Log file path does not exist.');
+		}
+
+		if (this.options.logDirectory) {
+			log('output log directory: %s', this.options.logDirectory);
+			fs.mkdirSync(this.options.logDirectory, {recursive: true});
 		}
 
 		// Copy local config file to the correct location.
@@ -173,6 +186,8 @@ export class LogWatcher extends HspEventsEmitterClass {
 				this.emit('gamestate-changed', gameState);
 				updated = false;
 			}
+
+			this._handleLogging(line, gameState);
 		});
 
 		if (updated) {
@@ -180,6 +195,55 @@ export class LogWatcher extends HspEventsEmitterClass {
 		}
 
 		return gameState;
+	}
+
+	/**
+	 * Internal method to potentially write a line to the output log (if enabled).
+	 * @param line
+	 * @param gameState
+	 */
+	private _handleLogging(line: string, gameState: GameState) {
+		const activeOrComplete = gameState.active || gameState.complete;
+		if (!this.options.logDirectory || !activeOrComplete) {
+			return;
+		}
+
+		// If there's no file stream and we have enough info to create one, then create one.
+		if (!this._logStream && gameState.active && gameState.numPlayers === 2) {
+			const [player1, player2] = gameState.getAllPlayers();
+			const ext = path.extname(this.options.logFile);
+			const filename = `${gameState.startTime}_${player1?.name ?? 'unknown'}_vs_${player2?.name ?? 'unknown'}${ext}`;
+
+			// Convert the name to something safe to save
+			const specialChars = String.raw`<>:"/\|?*`.split('');
+			const filenameSlugged = filename.split('').map(c => specialChars.includes(c) ? '!' : c).join('');
+
+			// Create write stream
+			const filepath = path.join(this.options.logDirectory, filenameSlugged);
+			this._logStream = fs.createWriteStream(path.normalize(filepath));
+
+			// Flush our "buffer"
+			this._logStream.write(this._linesQueued.join(''));
+			this._linesQueued = [];
+		}
+
+		// Write to output log.
+		// If we are still waiting for players to load,write to a buffer beforehand.
+		// This is because the filename is decided AFTER the file has started.
+		if (gameState.active || (gameState.complete && this._logStream)) {
+			if (this._logStream) {
+				this._logStream.write(line + '\n');
+			} else {
+				// No file stream, so write to our "buffer"
+				this._linesQueued.push(line + '\n');
+			}
+		}
+
+		// If the game is complete, close the output stream
+		if (gameState.complete) {
+			this._logStream?.end();
+			this._logStream = null;
+		}
 	}
 
 	private _update(filePath: string, stats: fs.Stats): void {

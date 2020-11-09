@@ -72,6 +72,7 @@ describe('hearthstone-log-watcher', () => {
 			// This is being tested elsewhere, so clear it out here
 			// Removed as a judgement call because this tests way too much.
 			gameState.matchLog = [];
+			delete gameState.startTime;
 
 			expect(gameState).deep.equal({
 				playerCount: 2,
