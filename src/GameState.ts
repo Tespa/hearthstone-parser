@@ -56,6 +56,10 @@ export interface Player {
 	name: string;
 	status: 'LOST' | 'WON' | 'TIED' | '';
 	turn: boolean;
+	turnHistory: Array<{
+		startTime: number;
+		duration?: number;
+	}>;
 	quests: Quest[];
 	timeout: number;
 	cardCount: number;

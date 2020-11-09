@@ -25,11 +25,20 @@ export class TurnLineParser extends AbstractLineParser {
 		if (player) {
 			player.turn = data.turn;
 
-			const opponent = gameState.getPlayerById(3 - player.id); // Player 1's opponent is Player 2, Player 2's opponent is Player 1
+			// Player 1's opponent is Player 2, Player 2's opponent is Player 1
+			const opponent = gameState.getPlayerById(3 - player.id);
 
 			// Turn opponent of the matched player opposite of the turn value
 			if (opponent) {
 				opponent.turn = !data.turn;
+			}
+
+			// Update turn history
+			if (data.turn) {
+				player.turnHistory.push({startTime: Date.now()});
+			} else if (player.turnHistory.length > 0) {
+				const lastTurn = player.turnHistory[player.turnHistory.length - 1];
+				lastTurn.duration = Date.now() - lastTurn.startTime;
 			}
 		}
 	}

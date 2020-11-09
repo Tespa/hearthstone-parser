@@ -62,6 +62,21 @@ describe('hearthstone-log-watcher', () => {
 			});
 		});
 
+		it('should calculate turn duration', function () {
+			const logBuffer = fs.readFileSync(logFileFixture);
+			const gameState = this.logWatcher.parseBuffer(logBuffer);
+
+			// Test that turn history has duration values
+			// If the log eventually adds time delay, test for positive values
+			for (const player of gameState.players) {
+				const turnHistory = player.turnHistory;
+				expect(turnHistory).to.not.be.empty;
+				for (const turn of turnHistory) {
+					expect(turn.duration).to.exist;
+				}
+			}
+		});
+
 		it('should correctly parse the state tree', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
 			const date = new Date();
@@ -73,6 +88,9 @@ describe('hearthstone-log-watcher', () => {
 			// Removed as a judgement call because this tests way too much.
 			gameState.matchLog = [];
 			delete gameState.startTime;
+			for (const player of gameState.players) {
+				delete player.turnHistory;
+			}
 
 			expect(gameState).deep.equal({
 				playerCount: 2,
@@ -388,6 +406,7 @@ describe('Gamestate', () => {
 				name: 'UNKNOWN HUMAN PLAYER',
 				status: '',
 				turn: false,
+				turnHistory: [],
 				timeout: 45,
 				cardCount: 0,
 				cards: [],

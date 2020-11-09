@@ -13,6 +13,7 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			name: parts[2],
 			status: '',
 			turn: false,
+			turnHistory: [],
 			timeout: 45,
 			cardCount: 0,
 			cards: [],
