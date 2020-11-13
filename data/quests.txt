@@ -1,5 +1,6 @@
 FB_Champs_UNG_067 | ROGUE | [x]<b>Quest:</b> Play four minions with the same name. <b>Reward:</b> Crystal Core.
 FB_Toki_Quest | WARRIOR | <b>Quest:</b> Defeat 8 Anomalies. <b>Effect: </b>Summon Anomalous Rex.
+Story_03_YShaarjsPower | WARRIOR | [x]<b>Quest:</b> Kill 8 enemy minions. <b>Reward:</b> Corruption.
 TB_207CatacombQ | NEUTRAL | [x]<b>Quest:</b> Play 4 minions. <b>Reward:</b> Master Chest!
 TB_Marin_001 | NEUTRAL | [x]<b>Quest:</b> 7 minions are played  by ANY player. <b>Reward:</b> Master Chests  for all!
 ULD_131 | DRUID | [x]<b>Quest:</b> End 4 turns with any unspent Mana. <b>Reward:</b> Ossirian Tear.
