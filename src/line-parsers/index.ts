@@ -10,9 +10,7 @@ import {ZoneChangeLineParser} from './zone-change';
 import {TagChangeLineParser} from './tag-change';
 import {GameState, MatchLogEntry} from '../GameState';
 import {MulliganStartParser} from './mulligan-start';
-import {ChoiceIdParser} from './choice-id';
-import {DiscoveryEndParser} from './discovery-end';
-import {DiscoveryStartParser} from './discovery-start';
+import {DiscoveryParser} from './discovery';
 import {MullinganResultParser} from './mulligan-result';
 import {BlockParser} from './block-parser';
 
@@ -26,9 +24,7 @@ export const lineParsers = [
 	new TagChangeLineParser(),
 	new GameTagChangeLineParser(),
 	new MulliganStartParser(),
-	new ChoiceIdParser(),
-	new DiscoveryStartParser(),
-	new DiscoveryEndParser(),
+	new DiscoveryParser(),
 	new MullinganResultParser()
 ];
 
@@ -42,7 +38,6 @@ export interface Events {
 	'tag-change': void;
 	'zone-change': void;
 	'mulligan-start': void;
-	'choice-id': void;
 	'discovery-start': void;
 	'discovery-end': void;
 	'mulligan-result': void;
