@@ -22,8 +22,10 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			quests: [],
 			discovery: {
 				enabled: false,
-				id: null
+				id: null,
+				options: []
 			},
+			discoverHistory: [],
 			cardsReplacedInMulligan: 0,
 			manaSpent: 0
 		});

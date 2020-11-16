@@ -51,6 +51,37 @@ export interface Card {
 	readonly isSpawnedCard: boolean;
 }
 
+export interface EntityProps {
+	cardId?: number;
+	cardName: string;
+	entityId: number;
+	player: 'top' | 'bottom';
+	damage?: number;
+	healing?: number;
+	dead?: boolean;
+}
+
+/**
+ * Extracts a subset of entity data for presentational use.
+ * @param entity CardEntity to pull data from
+ */
+export const simplifyEntity = (entity: CardEntity): EntityProps => {
+	return {
+		cardId: entity.cardId,
+		cardName: entity.cardName,
+		entityId: entity.entityId,
+		player: entity.player
+	};
+};
+
+export interface Discovery {
+	enabled: boolean;
+	id: string | null;
+	source?: EntityProps;
+	chosen?: EntityProps;
+	options: EntityProps[];
+}
+
 export interface Player {
 	id: number;
 	name: string;
@@ -66,22 +97,10 @@ export interface Player {
 	cards: Card[];
 	position: 'top' | 'bottom';
 	secrets: Secret[];
-	discovery: {
-		enabled: boolean;
-		id: string | null;
-	};
+	discovery: Discovery;
+	discoverHistory: Discovery[];
 	cardsReplacedInMulligan: number;
 	manaSpent: number;
-}
-
-export interface EntityProps {
-	cardId?: number;
-	cardName: string;
-	entityId: number;
-	player: 'top' | 'bottom';
-	damage?: number;
-	healing?: number;
-	dead?: boolean;
 }
 
 type MatchLogType = 'attack' | 'play' | 'trigger';
@@ -122,12 +141,7 @@ export class MatchLogEntry {
 	}
 
 	private createProps(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
-		return merge({
-			cardId: entity.cardId,
-			cardName: entity.cardName,
-			entityId: entity.entityId,
-			player: entity.player
-		}, ...props);
+		return merge(simplifyEntity(entity), ...props);
 	}
 }
 
