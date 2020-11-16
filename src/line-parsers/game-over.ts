@@ -26,6 +26,7 @@ export class GameOverLineParser extends AbstractLineParser {
 				lastTurn.duration = Date.now() - lastTurn.startTime;
 			}
 
+			gameState.matchDuration = Date.now() - gameState.startTime;
 			return 'The current game has ended.';
 		}
 

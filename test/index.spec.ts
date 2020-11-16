@@ -87,12 +87,13 @@ describe('hearthstone-log-watcher', () => {
 			// This is being tested elsewhere, so clear it out here
 			// Removed as a judgement call because this tests way too much.
 			gameState.matchLog = [];
-			delete gameState.startTime;
 			for (const player of gameState.players) {
 				delete player.turnHistory;
 			}
 
 			expect(gameState).deep.equal({
+				startTime: date.getTime(),
+				matchDuration: 0,
 				playerCount: 2,
 				players: [
 					{

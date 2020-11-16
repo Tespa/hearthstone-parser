@@ -148,6 +148,8 @@ export class MatchLogEntry {
 export class GameState {
 	startTime: number;
 
+	matchDuration: number;
+
 	playerCount: number;
 
 	gameOverCount: number;
