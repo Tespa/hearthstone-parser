@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.dts
+            ~/.npm
+          key: node${{ matrix.node-version }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: install dependencies
+        run: npm ci
+      - name: run test
+        run: npm t
+      - name: send coverage
+        run: npm run report-coverage
+      - name: build
+        run: npm run build
+      - name: release (if necessary)
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        run: npm run semantic-release
