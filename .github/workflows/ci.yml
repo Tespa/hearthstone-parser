@@ -26,8 +26,7 @@ jobs:
         run: npm ci
       - name: run test
         run: npm t
-      - name: send coverage
-        run: npm run report-coverage
+      - uses: codecov/codecov-action@v1
       - name: build
         run: npm run build
       - name: release (if necessary)
