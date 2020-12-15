@@ -1,0 +1,191 @@
+[
+  {
+    "manaSpent": 0,
+    "type": "play",
+    "source": {
+      "cardId": 1746,
+      "cardName": "The Coin",
+      "entityId": 68,
+      "player": "bottom"
+    },
+    "targets": []
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 555,
+      "cardName": "Arcane Intellect",
+      "entityId": 20,
+      "player": "bottom"
+    },
+    "targets": [
+      {
+        "cardId": 1087,
+        "cardName": "Pyroblast",
+        "entityId": 6,
+        "player": "bottom"
+      },
+      {
+        "cardId": 555,
+        "cardName": "Arcane Intellect",
+        "entityId": 5,
+        "player": "bottom"
+      }
+    ]
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 61639,
+      "cardName": "Darkmoon Dirigible",
+      "entityId": 44,
+      "player": "top",
+      "tags": [
+        "can-corrupt"
+      ]
+    },
+    "targets": []
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 53823,
+      "cardName": "Flame Ward",
+      "entityId": 17,
+      "player": "bottom"
+    },
+    "targets": []
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 61585,
+      "cardName": "Rigged Faire Game",
+      "entityId": 43,
+      "player": "top"
+    },
+    "targets": []
+  },
+  {
+    "manaSpent": 4,
+    "type": "play",
+    "source": {
+      "cardId": 61291,
+      "cardName": "Ring Toss",
+      "entityId": 7,
+      "player": "bottom",
+      "tags": [
+        "can-corrupt"
+      ]
+    },
+    "targets": [
+      {
+        "cardId": 56386,
+        "cardName": "Netherwind Portal",
+        "entityId": 94,
+        "player": "bottom"
+      }
+    ]
+  },
+  {
+    "manaSpent": 0,
+    "type": "trigger",
+    "source": {
+      "cardId": 61585,
+      "cardName": "Rigged Faire Game",
+      "entityId": 43,
+      "player": "top"
+    },
+    "targets": [
+      {
+        "cardId": 56439,
+        "cardName": "Starscryer",
+        "entityId": 52,
+        "player": "top"
+      },
+      {
+        "cardId": 61685,
+        "cardName": "Horrendous Growth",
+        "entityId": 61,
+        "player": "top",
+        "tags": [
+          "can-corrupt"
+        ]
+      },
+      {
+        "cardId": 621,
+        "cardName": "Ice Barrier",
+        "entityId": 50,
+        "player": "top"
+      }
+    ]
+  },
+  {
+    "manaSpent": 2,
+    "type": "play",
+    "source": {
+      "cardId": 62074,
+      "cardName": "Horrendous Growth",
+      "entityId": 40,
+      "player": "top",
+      "tags": [
+        "corrupt"
+      ]
+    },
+    "targets": []
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 621,
+      "cardName": "Ice Barrier",
+      "entityId": 50,
+      "player": "top"
+    },
+    "targets": [
+      {
+        "cardId": 56386,
+        "cardName": "Netherwind Portal",
+        "entityId": 94,
+        "player": "bottom"
+      }
+    ]
+  },
+  {
+    "manaSpent": 0,
+    "type": "trigger",
+    "source": {
+      "cardId": 56386,
+      "cardName": "Netherwind Portal",
+      "entityId": 94,
+      "player": "bottom"
+    },
+    "targets": [
+      {
+        "cardId": 51715,
+        "cardName": "Hench-Clan Shadequill",
+        "entityId": 99,
+        "player": "bottom"
+      }
+    ]
+  },
+  {
+    "manaSpent": 3,
+    "type": "play",
+    "source": {
+      "cardId": 61638,
+      "cardName": "Darkmoon Dirigible",
+      "entityId": 18,
+      "player": "bottom",
+      "tags": [
+        "corrupt"
+      ]
+    },
+    "targets": []
+  }
+]

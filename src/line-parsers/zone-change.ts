@@ -36,14 +36,14 @@ function formatParts(parts: string[]): Parts {
 const putCard = (
 	cardList: Card[],
 	{
-		cardEntityId,
+		entityId,
 		cardId,
 		cardName,
 		isSpawnedCard,
 		state
-	}: Partial<Card> & {cardEntityId: number}
+	}: Partial<Card> & {entityId: number}
 ) => {
-	const card = cardList.find(c => c.cardEntityId === cardEntityId);
+	const card = cardList.find(c => c.entityId === entityId);
 	if (card) {
 		if (cardId) {
 			card.cardId = cardId;
@@ -57,12 +57,12 @@ const putCard = (
 			card.state = state;
 		}
 	} else if (
-		cardEntityId &&
+		entityId &&
 		state &&
 		typeof isSpawnedCard !== 'undefined'
 	) {
 		cardList.push({
-			cardEntityId,
+			entityId,
 			state,
 			isSpawnedCard,
 			cardId,
@@ -131,7 +131,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			if (data.fromZone === 'DECK' || data.fromZone === 'HAND') {
 				putCard(fromPlayer.cards, {
 					state: 'OTHERS',
-					cardEntityId: data.entityId,
+					entityId: data.entityId,
 					cardId: cardRawData && cardRawData.dbfId,
 					cardName: cardRawData && cardRawData.name
 				});
@@ -158,7 +158,7 @@ export class ZoneChangeLineParser extends AbstractLineParser {
 			if (data.toZone === 'DECK' || data.toZone === 'HAND') {
 				putCard(toPlayer.cards, {
 					state: data.toZone,
-					cardEntityId: data.entityId,
+					entityId: data.entityId,
 					cardId: cardRawData && cardRawData.dbfId,
 					cardName: cardRawData && cardRawData.name,
 					// If it's not mulligan phase, it's spawned (not from the deck)

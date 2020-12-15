@@ -8,8 +8,29 @@ const UNKNOWN_CARDNAME = 'UNKNOWN ENTITY [cardType=INVALID]';
  * Tests if a card name is empty or the "empty string"
  * @param cardName
  */
-const isEmpty = (cardName: string) => {
+const isEmpty = (cardName?: string) => {
 	return !cardName || cardName === UNKNOWN_CARDNAME;
+};
+
+/**
+ * Returns an array of special tags that can be used to communicate additional properties of a card.
+ * Currently the available properties deal with corruption.
+ * @param entity
+ */
+const identifySpecialTags = (entity: CardEntity | undefined) => {
+	if (!entity || !entity.tags) {
+		return;
+	}
+
+	// Tags are handled here. These are the "simplified" version.
+	const tags = new Array<EntityTags>();
+	if (entity.tags.CORRUPTEDCARD === '1') {
+		tags.push('corrupt');
+	} else if (entity.tags.CORRUPT === '1') {
+		tags.push('can-corrupt');
+	}
+
+	return tags.length > 0 ? tags : undefined;
 };
 
 export interface Secret {
@@ -34,31 +55,47 @@ export interface Card {
 	/**
 	 * ID used by logs to distinguish same cards
 	 */
-	cardEntityId: number;
+	entityId: number;
+
 	/**
 	 * Numeric ID for the card (same for same card)
 	 * Unknown card has this undefined
 	 */
 	cardId?: number;
+
 	/**
 	 * Unknown card has this undefined
 	 */
 	cardName?: string;
+
 	state: CardState;
+
 	/**
 	 * If card is originally from the deck
 	 */
 	readonly isSpawnedCard: boolean;
+
+	/**
+	 * Additional tags for when cards have special types
+	 */
+	tags?: EntityTags[];
 }
 
+type EntityTags = 'can-corrupt' | 'corrupt';
+
 export interface EntityProps {
+	entityId: number;
 	cardId?: number;
 	cardName: string;
-	entityId: number;
 	player: 'top' | 'bottom';
 	damage?: number;
 	healing?: number;
 	dead?: boolean;
+
+	/**
+	 * Additional tags for when cards have special types
+	 */
+	tags?: EntityTags[];
 }
 
 /**
@@ -140,8 +177,38 @@ export class MatchLogEntry {
 		this.targets.push(this.createProps(entity, ...props));
 	}
 
+	/**
+	 * Marks targets/sources using the death entries.
+	 * Returns the entity ids of the cards that were successfully marked.
+	 * @param deaths Entity IDs that need to be marked
+	 * @returns the subset of deaths that were present in this log entry
+	 */
+	markDeaths(deaths: Set<number>) {
+		const marked = new Set<number>();
+
+		if (deaths.has(this.source.entityId)) {
+			this.source.dead = true;
+			marked.add(this.source.entityId);
+		}
+
+		for (const target of this.targets) {
+			if (deaths.has(target.entityId)) {
+				target.dead = true;
+				marked.add(target.entityId);
+			}
+		}
+
+		return marked;
+	}
+
 	private createProps(entity: CardEntity, ...props: Array<Partial<EntityProps> | undefined>) {
-		return merge(simplifyEntity(entity), ...props);
+		const tags = identifySpecialTags(entity);
+		const merged = merge(simplifyEntity(entity), ...props);
+		if (tags) {
+			merged.tags = tags;
+		}
+
+		return merged;
 	}
 }
 
@@ -155,6 +222,8 @@ export class GameState {
 	gameOverCount: number;
 
 	players: Player[];
+
+	beginPhaseActive: boolean;
 
 	mulliganActive: boolean;
 
@@ -197,6 +266,7 @@ export class GameState {
 	reset(): void {
 		this.players = [];
 		this.matchLog = [];
+		this.beginPhaseActive = true;
 		this.gameOverCount = 0;
 		this.#entities = {};
 		this.#missingEntityIds.clear();
@@ -268,22 +338,34 @@ export class GameState {
 	 * this handles the name resolution. Recommended place is the TAG_CHANGE event.
 	 * @param entity
 	 */
-	resolveEntity(entity: Pick<CardEntity, 'cardName' | 'entityId' | 'cardId'> & Partial<CardEntity>) {
+	resolveEntity(entity: Pick<CardEntity, 'entityId'> & Partial<CardEntity>) {
 		const existing = this.#entities[entity.entityId];
-		this.#entities[entity.entityId] = merge({
+		const newEntity = merge({
 			type: 'card',
 			tags: {},
-			player: 'bottom'
+			player: 'bottom',
+			cardName: ''
 		}, existing, entity);
 
-		const {cardName, entityId, cardId} = entity;
+		this.#entities[entity.entityId] = newEntity;
+		const {cardName, entityId, cardId} = newEntity;
 		const newProps = {entityId, cardName, cardId};
+
+		// Update player cards in case this entity updated any important tags (like corrupt)
+		for (const player of this.players) {
+			for (const card of player.cards.filter(c => c.entityId === entity.entityId)) {
+				const tags = identifySpecialTags(this.#entities[card.entityId]);
+				if (tags) {
+					card.tags = tags;
+				}
+			}
+		}
 
 		if (isEmpty(cardName) || !this.#missingEntityIds.has(entityId)) {
 			return;
 		}
 
-		// Update entities for each log entry
+		// Update entities for each match log entry (only card name, entity id, and card id)
 		for (const entry of this.matchLog) {
 			if (isEmpty(entry.source.cardName) && entry.source.entityId === entityId) {
 				entry.source = {...entry.source, ...newProps};

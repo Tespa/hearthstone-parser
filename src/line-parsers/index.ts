@@ -12,10 +12,11 @@ import {GameState, MatchLogEntry} from '../GameState';
 import {MulliganStartParser} from './mulligan-start';
 import {DiscoveryParser} from './discovery';
 import {MullinganResultParser} from './mulligan-result';
-import {BlockParser} from './block-parser';
+import {MatchLogParser} from './match-log';
+import {CardInitParser} from './card-init';
 
 export const lineParsers = [
-	new BlockParser(),
+	new MatchLogParser(),
 	new GameOverLineParser(),
 	new GameStartLineParser(),
 	new NewPlayerLineParser(),
@@ -25,7 +26,8 @@ export const lineParsers = [
 	new GameTagChangeLineParser(),
 	new MulliganStartParser(),
 	new DiscoveryParser(),
-	new MullinganResultParser()
+	new MullinganResultParser(),
+	new CardInitParser()
 ];
 
 export interface Events {
