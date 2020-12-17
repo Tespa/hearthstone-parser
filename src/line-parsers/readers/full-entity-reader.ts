@@ -61,6 +61,10 @@ export class FullEntityReader {
 
 	private _entity: FullEntity | null = null;
 
+	/**
+	 * Creates a new Full Entity Reader
+	 * @param prefix The prefix of each line. For example: "[Power] GameState.DebugPrintPower() -"
+	 */
 	constructor(private readonly prefix = '') {}
 
 	/**

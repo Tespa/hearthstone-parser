@@ -19,6 +19,14 @@ export class GameOverLineParser extends AbstractLineParser {
 
 	formatLogMessage(_: string[], gameState: GameState): string | false {
 		if (gameState.gameOverCount === 2) {
+			// Calculate turn duration of the current player, since it ended
+			const currentPlayer = gameState.players.find(p => p.turn);
+			if (currentPlayer && currentPlayer?.turnHistory?.length > 0) {
+				const lastTurn = currentPlayer.turnHistory[currentPlayer.turnHistory.length - 1];
+				lastTurn.duration = Date.now() - lastTurn.startTime;
+			}
+
+			gameState.matchDuration = Date.now() - gameState.startTime;
 			return 'The current game has ended.';
 		}
 

@@ -62,6 +62,21 @@ describe('hearthstone-log-watcher', () => {
 			});
 		});
 
+		it('should calculate turn duration', function () {
+			const logBuffer = fs.readFileSync(logFileFixture);
+			const gameState = this.logWatcher.parseBuffer(logBuffer);
+
+			// Test that turn history has duration values
+			// If the log eventually adds time delay, test for positive values
+			for (const player of gameState.players) {
+				const turnHistory = player.turnHistory;
+				expect(turnHistory).to.not.be.empty;
+				for (const turn of turnHistory) {
+					expect(turn.duration).to.exist;
+				}
+			}
+		});
+
 		it('should correctly parse the state tree', function () {
 			const logBuffer = fs.readFileSync(logFileFixture);
 			const date = new Date();
@@ -72,9 +87,13 @@ describe('hearthstone-log-watcher', () => {
 			// This is being tested elsewhere, so clear it out here
 			// Removed as a judgement call because this tests way too much.
 			gameState.matchLog = [];
-			delete gameState.startTime;
+			for (const player of gameState.players) {
+				delete player.turnHistory;
+			}
 
 			expect(gameState).deep.equal({
+				startTime: date.getTime(),
+				matchDuration: 0,
 				playerCount: 2,
 				players: [
 					{
@@ -89,8 +108,23 @@ describe('hearthstone-log-watcher', () => {
 						secrets: [],
 						position: 'bottom',
 						cardsReplacedInMulligan: 1,
-						discovery: {enabled: false, id: '3'},
-						cards: [{state: 'DECK', cardEntityId: 4, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 5, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 6, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 7, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 8, cardId: 47825, cardName: 'Militia Commander', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 9, cardId: 47133, cardName: 'Town Crier', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 10, cardId: 41406, cardName: 'Cornered Sentry', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 11, cardId: 49184, cardName: 'Zilliax', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 12, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 13, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 14, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 15, cardId: 41427, cardName: 'Fire Plume\'s Heart', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 16, cardId: 75, cardName: 'Brawl', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 17, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 18, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 19, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 20, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', cardEntityId: 21, cardId: 1023, cardName: 'Shield Block', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 22, cardId: 41243, cardName: 'Stonehill Defender', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 23, cardId: 46031, cardName: 'Drywhisker Armorer', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 24, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 25, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 26, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 27, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 28, cardId: 50776, cardName: 'Amani War Bear', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 29, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', cardEntityId: 30, cardId: 41243, cardName: 'Stonehill Defender', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 31, cardId: 1659, cardName: 'Acolyte of Pain', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 32, cardId: 47133, cardName: 'Town Crier', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 33, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 80, cardId: 1746, cardName: 'The Coin', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 102, cardId: 38738, cardName: 'Bloodhoof Brave', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 155, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 157, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}]
+						discoverHistory: [
+							{
+								chosen: {cardId: 38738, cardName: 'Bloodhoof Brave', entityId: 102, player: 'bottom'},
+								enabled: false,
+								id: '3',
+								options: [{cardId: 38738, cardName: 'Bloodhoof Brave', entityId: 102, player: 'bottom'}, {cardId: 38488, cardName: 'Twin Emperor Vek\'lor', entityId: 103, player: 'bottom'}, {cardId: 40364, cardName: 'Public Defender', entityId: 104, player: 'bottom'}],
+								source: {cardId: 41243, cardName: 'Stonehill Defender', entityId: 22, player: 'bottom'}
+							}
+						],
+						discovery: {
+							chosen: {cardId: 38738, cardName: 'Bloodhoof Brave', entityId: 102, player: 'bottom'},
+							enabled: false,
+							id: '3',
+							options: [{cardId: 38738, cardName: 'Bloodhoof Brave', entityId: 102, player: 'bottom'}, {cardId: 38488, cardName: 'Twin Emperor Vek\'lor', entityId: 103, player: 'bottom'}, {cardId: 40364, cardName: 'Public Defender', entityId: 104, player: 'bottom'}],
+							source: {cardId: 41243, cardName: 'Stonehill Defender', entityId: 22, player: 'bottom'}
+						},
+						cards: [{state: 'DECK', entityId: 4, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 5, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 6, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 7, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 8, cardId: 47825, cardName: 'Militia Commander', isSpawnedCard: true}, {state: 'HAND', entityId: 9, cardId: 47133, cardName: 'Town Crier', isSpawnedCard: true}, {state: 'OTHERS', entityId: 10, cardId: 41406, cardName: 'Cornered Sentry', isSpawnedCard: true}, {state: 'HAND', entityId: 11, cardId: 49184, cardName: 'Zilliax', isSpawnedCard: true}, {state: 'DECK', entityId: 12, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 13, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 14, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 15, cardId: 41427, cardName: 'Fire Plume\'s Heart', isSpawnedCard: true}, {state: 'HAND', entityId: 16, cardId: 75, cardName: 'Brawl', isSpawnedCard: true}, {state: 'DECK', entityId: 17, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 18, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 19, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 20, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', entityId: 21, cardId: 1023, cardName: 'Shield Block', isSpawnedCard: true}, {state: 'OTHERS', entityId: 22, cardId: 41243, cardName: 'Stonehill Defender', isSpawnedCard: true}, {state: 'OTHERS', entityId: 23, cardId: 46031, cardName: 'Drywhisker Armorer', isSpawnedCard: true}, {state: 'DECK', entityId: 24, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 25, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 26, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 27, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 28, cardId: 50776, cardName: 'Amani War Bear', isSpawnedCard: true}, {state: 'DECK', entityId: 29, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', entityId: 30, cardId: 41243, cardName: 'Stonehill Defender', isSpawnedCard: true}, {state: 'OTHERS', entityId: 31, cardId: 1659, cardName: 'Acolyte of Pain', isSpawnedCard: true}, {state: 'OTHERS', entityId: 32, cardId: 47133, cardName: 'Town Crier', isSpawnedCard: true}, {state: 'OTHERS', entityId: 33, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}, {state: 'OTHERS', entityId: 80, cardId: 1746, cardName: 'The Coin', isSpawnedCard: true}, {state: 'OTHERS', entityId: 102, cardId: 38738, cardName: 'Bloodhoof Brave', isSpawnedCard: true}, {state: 'OTHERS', entityId: 155, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}, {state: 'OTHERS', entityId: 157, cardId: 46634, cardName: 'Phantom Militia', isSpawnedCard: true}]
 					},
 					{
 						id: 2,
@@ -104,11 +138,13 @@ describe('hearthstone-log-watcher', () => {
 						quests: [],
 						position: 'top',
 						cardsReplacedInMulligan: 3,
-						discovery: {enabled: false, id: null},
-						cards: [{state: 'HAND', cardEntityId: 34, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 37, cardId: 493, cardName: 'Force of Nature', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 38, cardId: 52819, cardName: 'The Forest\'s Aid', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 39, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 40, cardId: 51781, cardName: 'Crystalsong Portal', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 41, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 42, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 43, cardId: 52438, cardName: 'Archmage Vargoth', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 44, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 45, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 46, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 47, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 48, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 49, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', cardEntityId: 50, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 51, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 54, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', cardEntityId: 55, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 56, cardId: 742, cardName: 'Savage Roar', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 57, cardId: 52810, cardName: 'Dreamway Guardians', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 58, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 61, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 62, cardId: 836, cardName: 'Wrath', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 65, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 66, cardId: 51790, cardName: 'Acornbearer', isSpawnedCard: true}, {state: 'DECK', cardEntityId: 67, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 68, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 69, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 72, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', cardEntityId: 75, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 106, cardId: 54315, cardName: 'Squirrel', isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 107, cardId: 54315, cardName: 'Squirrel', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 124, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', cardEntityId: 125, cardId: 40973, cardName: 'Shellshifter', isSpawnedCard: true}, {state: 'HAND', cardEntityId: 128, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', cardEntityId: 148, cardId: undefined, cardName: undefined, isSpawnedCard: true}]
+						discoverHistory: [],
+						discovery: {enabled: false, id: null, options: []},
+						cards: [{state: 'HAND', entityId: 34, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 37, cardId: 493, cardName: 'Force of Nature', isSpawnedCard: true}, {state: 'OTHERS', entityId: 38, cardId: 52819, cardName: 'The Forest\'s Aid', isSpawnedCard: true}, {state: 'DECK', entityId: 39, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 40, cardId: 51781, cardName: 'Crystalsong Portal', isSpawnedCard: true}, {state: 'DECK', entityId: 41, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 42, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 43, cardId: 52438, cardName: 'Archmage Vargoth', isSpawnedCard: true}, {state: 'HAND', entityId: 44, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 45, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 46, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 47, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 48, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 49, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', entityId: 50, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 51, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 54, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', entityId: 55, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 56, cardId: 742, cardName: 'Savage Roar', isSpawnedCard: true}, {state: 'OTHERS', entityId: 57, cardId: 52810, cardName: 'Dreamway Guardians', isSpawnedCard: true}, {state: 'DECK', entityId: 58, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 61, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 62, cardId: 836, cardName: 'Wrath', isSpawnedCard: true}, {state: 'DECK', entityId: 65, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 66, cardId: 51790, cardName: 'Acornbearer', isSpawnedCard: true}, {state: 'DECK', entityId: 67, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 68, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 69, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 72, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'DECK', entityId: 75, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 106, cardId: 54315, cardName: 'Squirrel', isSpawnedCard: true}, {state: 'OTHERS', entityId: 107, cardId: 54315, cardName: 'Squirrel', isSpawnedCard: true}, {state: 'HAND', entityId: 124, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'OTHERS', entityId: 125, cardId: 40973, cardName: 'Shellshifter', isSpawnedCard: true}, {state: 'HAND', entityId: 128, cardId: undefined, cardName: undefined, isSpawnedCard: true}, {state: 'HAND', entityId: 148, cardId: undefined, cardName: undefined, isSpawnedCard: true}]
 					}
 				],
 				gameOverCount: 2,
+				beginPhaseActive: false,
 				mulliganActive: false,
 				turnStartTime: date,
 				matchLog: []
@@ -377,6 +413,7 @@ describe('hearthstone-log-watcher', () => {
 
 		testMatchLog('matchlog-healing-and-procs');
 		testMatchLog('matchlog-secrets');
+		testMatchLog('matchlog-corruption');
 	});
 });
 
@@ -388,6 +425,7 @@ describe('Gamestate', () => {
 				name: 'UNKNOWN HUMAN PLAYER',
 				status: '',
 				turn: false,
+				turnHistory: [],
 				timeout: 45,
 				cardCount: 0,
 				cards: [],
@@ -396,8 +434,10 @@ describe('Gamestate', () => {
 				quests: [],
 				discovery: {
 					enabled: false,
-					id: null
+					id: null,
+					options: []
 				},
+				discoverHistory: [],
 				cardsReplacedInMulligan: 0,
 				manaSpent: 0
 			};

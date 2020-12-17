@@ -10,14 +10,13 @@ import {ZoneChangeLineParser} from './zone-change';
 import {TagChangeLineParser} from './tag-change';
 import {GameState, MatchLogEntry} from '../GameState';
 import {MulliganStartParser} from './mulligan-start';
-import {ChoiceIdParser} from './choice-id';
-import {DiscoveryEndParser} from './discovery-end';
-import {DiscoveryStartParser} from './discovery-start';
+import {DiscoveryParser} from './discovery';
 import {MullinganResultParser} from './mulligan-result';
-import {BlockParser} from './block-parser';
+import {MatchLogParser} from './match-log';
+import {CardInitParser} from './card-init';
 
 export const lineParsers = [
-	new BlockParser(),
+	new MatchLogParser(),
 	new GameOverLineParser(),
 	new GameStartLineParser(),
 	new NewPlayerLineParser(),
@@ -26,10 +25,9 @@ export const lineParsers = [
 	new TagChangeLineParser(),
 	new GameTagChangeLineParser(),
 	new MulliganStartParser(),
-	new ChoiceIdParser(),
-	new DiscoveryStartParser(),
-	new DiscoveryEndParser(),
-	new MullinganResultParser()
+	new DiscoveryParser(),
+	new MullinganResultParser(),
+	new CardInitParser()
 ];
 
 export interface Events {
@@ -42,7 +40,6 @@ export interface Events {
 	'tag-change': void;
 	'zone-change': void;
 	'mulligan-start': void;
-	'choice-id': void;
 	'discovery-start': void;
 	'discovery-end': void;
 	'mulligan-result': void;

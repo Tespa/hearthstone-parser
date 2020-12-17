@@ -6,7 +6,7 @@ import {Events, HspEventsEmitter} from './index';
  * Root class of all classes that read lines and emit events.
  */
 export abstract class LineParser {
-	abstract readonly eventName: keyof Events;
+	abstract readonly eventName: string;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering
 	private _logger: debug.IDebugger;
@@ -27,10 +27,10 @@ export abstract class LineParser {
 }
 
 /**
- * Regex based parser class that exists for backwards compatibility.
- * Not a recommended way of solving it.
+ * Regex based parser class used to handle one time events
  */
 export abstract class AbstractLineParser extends LineParser {
+	abstract readonly eventName: keyof Events;
 	abstract readonly regex: RegExp;
 
 	// eslint-disable-next-line @typescript-eslint/member-ordering

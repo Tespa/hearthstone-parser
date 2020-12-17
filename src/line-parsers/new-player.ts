@@ -13,6 +13,7 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			name: parts[2],
 			status: '',
 			turn: false,
+			turnHistory: [],
 			timeout: 45,
 			cardCount: 0,
 			cards: [],
@@ -21,8 +22,10 @@ export class NewPlayerLineParser extends AbstractLineParser {
 			quests: [],
 			discovery: {
 				enabled: false,
-				id: null
+				id: null,
+				options: []
 			},
+			discoverHistory: [],
 			cardsReplacedInMulligan: 0,
 			manaSpent: 0
 		});
