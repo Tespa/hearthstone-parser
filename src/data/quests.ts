@@ -19,7 +19,7 @@ const quests: {
 	ULD_711: {class: Class.Warrior, requirement: 5, sidequest: false},
 	ULD_724: {class: Class.Priest, requirement: 15, sidequest: false},
 	UNG_028: {class: Class.Mage, requirement: 8, sidequest: false},
-	UNG_067: {class: Class.Rogue, requirement: 5, sidequest: false},
+	UNG_067: {class: Class.Rogue, requirement: 4, sidequest: false},
 	UNG_116: {class: Class.Druid, requirement: 5, sidequest: false},
 	UNG_829: {class: Class.Warlock, requirement: 6, sidequest: false},
 	UNG_920: {class: Class.Hunter, requirement: 7, sidequest: false},

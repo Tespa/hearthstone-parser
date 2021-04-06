@@ -1,6 +1,9 @@
 FB_Champs_UNG_067 | ROGUE | [x]<b>Quest:</b> Play four minions with the same name. <b>Reward:</b> Crystal Core.
 FB_Toki_Quest | WARRIOR | <b>Quest:</b> Defeat 8 Anomalies. <b>Effect: </b>Summon Anomalous Rex.
-Story_03_YShaarjsPower | WARRIOR | [x]<b>Quest:</b> Kill 8 enemy minions. <b>Reward:</b> Corruption.
+Story_03_YShaarjsPower | WARRIOR | [x]<b>Quest:</b> Kill 6 enemy minions. <b>Reward:</b> Corruption.
+Story_04_FinalStand | PALADIN | [x]<b>Quest:</b> Survive 10 turns. <b>Reward:</b> Victory.
+Story_05_SolvetheRiddles | NEUTRAL | [x]<b>Quest:</b> Defeat the Jade Warlord, Untamed Ambertail, and Sam the Wise.
+Story_06_FutureGladiator | ROGUE | [x]<b>Quest:</b> Kill the  Training Totem. <b>Reward:</b> Victory!
 TB_207CatacombQ | NEUTRAL | [x]<b>Quest:</b> Play 4 minions. <b>Reward:</b> Master Chest!
 TB_Marin_001 | NEUTRAL | [x]<b>Quest:</b> 7 minions are played  by ANY player. <b>Reward:</b> Master Chests  for all!
 ULD_131 | DRUID | [x]<b>Quest:</b> End 4 turns with any unspent Mana. <b>Reward:</b> Ossirian Tear.
@@ -13,7 +16,7 @@ ULD_433 | MAGE | <b>Quest:</b> Cast 10 spells. <b>Reward: </b>Ascendant Scroll.
 ULD_711 | WARRIOR | [x]<b>Quest:</b> Attack 5 times with your hero. <b>Reward:</b> Anraphet's Core.
 ULD_724 | PRIEST | <b>Quest:</b> Restore 15 Health. <b>Reward:</b> Obelisk's Eye.
 UNG_028 | MAGE | [x]<b>Quest:</b> Cast 8 spells that didn't start in your deck. <b>Reward:</b> Time Warp.
-UNG_067 | ROGUE | [x]<b>Quest:</b> Play five minions with the same name. <b>Reward:</b> Crystal Core.
+UNG_067 | ROGUE | [x]<b>Quest:</b> Play four minions with the same name. <b>Reward:</b> Crystal Core.
 UNG_116 | DRUID | [x]<b>Quest:</b> Summon 5 minions with 5 or more Attack. <b>Reward:</b> Barnabus.
 UNG_829 | WARLOCK | [x]<b>Quest:</b> Discard 6 cards. <b>Reward:</b> Nether Portal.
 UNG_920 | HUNTER | [x]<b>Quest:</b> Play seven 1-Cost minions. <b>Reward:</b> Queen Carnassa.

@@ -1,7 +1,7 @@
 DRG_008 | PALADIN | <b>Sidequest:</b> Summon 5 minions. <b>Reward:</b> Give your minions +1/+1.
 DRG_051 | DRUID | <b>Sidequest:</b> Spend 10 Mana on minions. <b>Reward:</b> Summon a minion from your deck.
 DRG_251 | HUNTER | [x]<b>Sidequest:</b> Summon 3 <b>Rush</b> minions. <b>Reward:</b> Summon a 4/4 Gryphon with <b>Rush</b>.
-DRG_255 | HUNTER | [x]<b>Sidequest:</b> Use your Hero Power three times. <b>Reward:</b> Summon three 1/1 Leper Gnomes.
+DRG_255 | HUNTER | [x]<b>Sidequest:</b> Use your Hero Power three times. <b>Reward:</b> Summon three 2/1 Leper Gnomes.
 DRG_258 | PALADIN | [x]<b>Sidequest:</b> Take no damage for a turn. <b>Reward:</b> Summon a 3/6 minion with <b>Taunt</b>.
 DRG_317 | DRUID | <b>Sidequest:</b> Attack twice with your hero. <b>Reward:</b> Add 3 'Claw' spells to your hand.
 DRG_323 | MAGE | [x]<b>Sidequest:</b> Spend 8 Mana on spells. <b>Reward:</b> Summon a 6/6 Dragon.
