@@ -22,7 +22,12 @@ const main = async () => {
 		.join(os.EOL);
 
 	const questsInfo = cards
-		.filter((card) => card.text && card.text.includes("<b>Quest:</b>"))
+		.filter(
+			(card) =>
+				card.text &&
+				(card.text.includes("<b>Quest:</b>") ||
+					card.text.includes("<b>Questline:</b>"))
+		)
 		.map(
 			(card) =>
 				`${card.id} | ${card.cardClass} | ${card.text.replace(

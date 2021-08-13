@@ -102,5 +102,6 @@ export const secretToClass: { [id: string]: Class } = {
 	VAN_EX1_610: Class.Hunter,
 	VAN_EX1_611: Class.Hunter,
 	VAN_tt_010: Class.Mage,
+	WC_033: Class.Paladin,
 	YOP_017: Class.Rogue
 };

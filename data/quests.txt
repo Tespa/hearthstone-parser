@@ -4,6 +4,35 @@ Story_03_YShaarjsPower | WARRIOR | [x]<b>Quest:</b> Kill 6 enemy minions. <b>Rew
 Story_04_FinalStand | PALADIN | [x]<b>Quest:</b> Survive 10 turns. <b>Reward:</b> Victory.
 Story_05_SolvetheRiddles | NEUTRAL | [x]<b>Quest:</b> Defeat the Jade Warlord, Untamed Ambertail, and Sam the Wise.
 Story_06_FutureGladiator | ROGUE | [x]<b>Quest:</b> Kill the  Training Totem. <b>Reward:</b> Victory!
+SW_028 | WARRIOR | [x]<b>Questline:</b> Play 3 Pirates. <b>Reward:</b> Draw a weapon.
+SW_028t | WARRIOR | [x]<b>Questline:</b> Play 2 Pirates. <b>Reward:</b> Deal $2 damage to a random enemy twice.
+SW_028t2 | WARRIOR | [x]<b>Questline:</b> Play 2 Pirates. <b>Reward:</b> Cap'n Rokara.
+SW_031 | SHAMAN | [x]<b>Questline:</b> Play 3 cards  with <b>Overload</b>. <b>Reward:</b> Unlock your <b>Overloaded</b> Mana Crystals.
+SW_031t | SHAMAN | [x]<b>Questline:</b> Play 3 cards  with <b>Overload</b>. <b>Reward:</b> Summon a 3/3 Elemental with <b>Taunt</b>.
+SW_031t2 | SHAMAN | [x]<b>Questline:</b> Play 2 cards with <b>Overload</b>. <b>Reward:</b> Stormcaller Bru'kan.
+SW_039 | DEMONHUNTER | <b>Questline:</b> Draw 4 cards in one turn. <b>Reward:</b> Reduce the Cost of the cards drawn by (1).
+SW_039t | DEMONHUNTER | <b>Questline:</b> Draw 5 cards in one turn. <b>Reward:</b> Reduce the Cost of the cards drawn by (1).
+SW_039t3 | DEMONHUNTER | <b>Questline:</b> Draw 5 cards in one turn. <b>Reward:</b> Demonslayer Kurtrus.
+SW_052 | ROGUE | <b>Questline:</b> Play 2 SI:7 cards. <b>Reward:</b> Add a Spy Gizmo to your hand.
+SW_052t | ROGUE | <b>Questline:</b> Play 2 SI:7 cards. <b>Reward:</b> Add a Spy Gizmo to your hand.
+SW_052t2 | ROGUE | <b>Questline:</b> Play 2 SI:7 cards. <b>Reward:</b> Spymaster Scabbs.
+SW_091 | WARLOCK | [x]<b>Questline:</b> Take 6 damage on your turns. <b>Reward:</b> <b>Lifesteal</b>. Deal $3 damage to the enemy hero.
+SW_091t | WARLOCK | [x]<b>Questline:</b> Take 7 damage on your turns. <b>Reward:</b> <b>Lifesteal</b>. Deal $3 damage to the enemy hero.
+SW_091t3 | WARLOCK | [x]<b>Questline:</b> Take 8 damage on your turns. <b>Reward:</b> Blightborn Tamsin.
+SW_313 | PALADIN | <b>Questline:</b> Play 3 different 1-Cost cards. <b>Reward:</b> Equip a 1/4 Light's Justice.
+SW_313t2 | PALADIN | <b>Questline:</b> Play 3 different 1-Cost cards. <b>Reward:</b> Lightborn Cariel.
+SW_322 | HUNTER | <b>Questline:</b> Deal damage with 2 spells. <b>Reward:</b> Your Hero Power can target minions.
+SW_322t | HUNTER | [x]<b>Questline:</b> Deal damage with 2 spells. <b>Reward:</b> Set the Cost of your Hero Power to (0).
+SW_322t2 | HUNTER | [x]<b>Questline:</b> Deal damage with 2 spells. <b>Reward:</b> Tavish, Master Marksman.
+SW_428 | DRUID | <b>Questline:</b> Gain 4 Attack with your hero. <b>Reward:</b> Gain 5 Armor.
+SW_428t | DRUID | <b>Questline:</b> Gain 5 Attack with your hero. <b>Reward:</b> Gain 5 Armor and draw a card.
+SW_428t2 | DRUID | [x]<b>Questline:</b> Gain 6 Attack with your hero. <b>Reward:</b> Guff the Tough.
+SW_433 | PRIEST | [x]<b>Questline:</b> Play a 2, 3, and 4-Cost card. <b>Reward:</b> <b>Discover</b> a card from your deck.
+SW_433t | PRIEST | [x]<b>Questline:</b> Play a 5 and 6-Cost card. <b>Reward:</b> <b>Discover</b> a card from your deck.
+SW_433t2 | PRIEST | [x]<b>Questline:</b> Play a 7 and 8-Cost card. <b>Reward:</b> Xyrella, the Sanctified.
+SW_450 | MAGE | <b>Questline:</b> Cast a Fire, Frost, and Arcane spell. <b>Reward: </b>Draw a spell.
+SW_450t | MAGE | <b>Questline:</b> Cast a Fire, Frost, and Arcane spell. <b>Reward:</b> <b>Discover</b> one.
+SW_450t2 | MAGE | [x]<b>Questline:</b> Cast a Fire, Frost, and Arcane spell. <b>Reward:</b> Arcanist Dawngrasp.
 TB_207CatacombQ | NEUTRAL | [x]<b>Quest:</b> Play 4 minions. <b>Reward:</b> Master Chest!
 TB_Marin_001 | NEUTRAL | [x]<b>Quest:</b> 7 minions are played  by ANY player. <b>Reward:</b> Master Chests  for all!
 ULD_131 | DRUID | [x]<b>Quest:</b> End 4 turns with any unspent Mana. <b>Reward:</b> Ossirian Tear.
